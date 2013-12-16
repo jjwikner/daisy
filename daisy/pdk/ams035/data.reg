@@ -1,0 +1,8 @@
+
+DataFormat amsDatasheet {           // Define austriamicrosystems Data Sheets
+        Pattern = amsDocFile;
+        Default_Editor = dummyTool;
+        dfII_ViewType = amsDatasheet;
+        Co_Managed = amsDocFile;
+}
+

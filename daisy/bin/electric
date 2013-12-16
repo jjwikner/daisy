@@ -1,0 +1,12 @@
+# Starting script for electric
+#
+# Daisy flow
+#
+# J Jacob Wikner
+# Linkoping university
+# Jacob.Wikner@liu.se
+#
+
+cd $USERAREA/log
+java -classpath "$DAISYAREA/src/electricBinary-latest.jar:$DAISYAREA/../java/jython/jython.jar" com.sun.electric.Launcher
+

@@ -1,0 +1,14 @@
+#!/bin/tcsh
+# Author: Petter Kallstrom <petterk@isy.liu.se>
+# Date: Mar 2012
+#M Usage: $0 [-h] <args>
+#M   -h: show this text and exit
+#M Roughly the same as "ps aux | egrep -i $args
+#M 
+
+if ( $#argv == 0 || "$1" == "-h" ) then
+  cat $0 | egrep "^#M " | sed -e 's/#M /| /' -e 's/$0/psgrep/g'
+  exit 0
+endif
+
+ps aux | egrep -v "$0|\^USER \|" | egrep -i "^USER |$argv"

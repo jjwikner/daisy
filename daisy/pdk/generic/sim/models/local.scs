@@ -1,0 +1,5 @@
+*Composite device model library
+include "./nmos.scs"
+include "./pmos.scs"
+include "./diode.scs"
+* include "./stats.scs" section=stats

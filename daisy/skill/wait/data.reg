@@ -1,0 +1,17 @@
+DataFormat HTML { Pattern = *.html; Default_Editor = netscapeComposer;
+Co_Managed = *.html master.tag *.htm *.jpeg *.jpg *.gif *.pdf; } Tool
+netscapeComposer {}
+DataFormat FM { Pattern = *.fm; Default_Editor = adobeFrameMaker;
+Co_Managed = *.fm master.tag; } Tool adobeFrameMaker {}
+DataFormat DOC { Pattern = *.doc; Default_Editor = microsoftWord;
+Co_Managed = *.doc master.tag; } Tool microsoftWord {}
+DataFormat PDF { Pattern = *.pdf; Default_Editor = adobeAcrobatReader;
+Co_Managed = *.pdf master.tag; } Tool adobeAcrobatReader {}
+DataFormat PPT { Pattern = *.ppt; Default_Editor =
+microsoftPowerPoint; Co_Managed = *.ppt master.tag; } Tool
+microsoftPowerPoint {}
+DataFormat XLS { Pattern = *.xls; Default_Editor = microsoftExcel;
+Co_Managed = *.xls master.tag; } Tool microsoftExcel {}
+DataFormat SXW { Pattern = *.sxw; Default_Editor = openofficeSwriter;
+Co_Managed = *.sxw master.tag; } Tool openofficeSwriter {}
+DataFormat SXI { Pattern = *.sxi;

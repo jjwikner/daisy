@@ -1,0 +1,23 @@
+
+`include "constants.vams"
+`include "disciplines.vams"
+
+module daisyPinParasitics(vPackage, vPad, vgnd);
+   inout vPackage;
+   electrical vPackage;
+   inout vPad;
+   electrical vPad;
+   inout vgnd;
+   electrical vgnd;
+   parameter real padCap = 0.6p ;
+   parameter real leadRes = 0.05 ;
+   parameter real leadInd = 2n ;
+   parameter real leadCap = 3p ;
+   parameter real bondRes = 0.2 ;
+   parameter real bondInd = 1n ;
+
+   analog
+     V(vPackage, vPad) <+ (bondRes+leadRes)*I(vPackage, vPad);
+   
+   
+endmodule

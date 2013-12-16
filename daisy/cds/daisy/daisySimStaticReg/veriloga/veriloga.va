@@ -1,0 +1,56 @@
+`include "constants.vams"
+`include "disciplines.vams"
+
+module daisySimStaticReg(REG, vgnd, vpwr);
+   output [7:0] REG;
+   electrical [7:0] REG;
+   input     vgnd;
+   electrical vgnd;
+   input vpwr;
+   electrical vpwr;
+
+   parameter real numbase = 2;
+   parameter real regvalue = 0;
+   
+   `define NUM_REG_BITS 8
+   integer i;
+   real    vd[0: `NUM_REG_BITS-1];
+   real    convertbase;
+   real    unconverted;
+   
+  
+   analog begin
+
+     @ (initial_step) begin
+	unconverted = regvalue;
+
+        if (abs(numbase - 2) < 0.1) begin
+           convertbase = 10;
+        end
+
+        if (abs(numbase - 10) < 0.1) begin
+           convertbase = 2;
+        end
+
+	for (i = (`NUM_REG_BITS-1); i >= 0; i = i - 1) begin
+           if (unconverted + 0.1 > pow(convertbase,i)) begin
+	      vd[i] = 1;
+	      unconverted = unconverted - pow(convertbase,i);
+	   end else begin
+	      vd[i] = 0;
+	   end
+	end
+     end
+   
+     V(REG[7],vgnd) <+ vd[7]*V(vpwr,vgnd);
+     V(REG[6],vgnd) <+ vd[6]*V(vpwr,vgnd);
+     V(REG[5],vgnd) <+ vd[5]*V(vpwr,vgnd);
+     V(REG[4],vgnd) <+ vd[4]*V(vpwr,vgnd);
+     V(REG[3],vgnd) <+ vd[3]*V(vpwr,vgnd);
+     V(REG[2],vgnd) <+ vd[2]*V(vpwr,vgnd);
+     V(REG[1],vgnd) <+ vd[1]*V(vpwr,vgnd);
+     V(REG[0],vgnd) <+ vd[0]*V(vpwr,vgnd);
+     `undef NUM_REG_BITS
+  end
+ 
+endmodule

@@ -1,0 +1,42 @@
+
+`include "constants.vams"
+`include "disciplines.vams"
+
+module daisySimSupply(vgnd, vpwr10ana, vpwr10dig, vpwr33ana, vpwr33dig, vsub);
+inout vgnd;
+electrical vgnd;
+inout vpwr10ana;
+electrical vpwr10ana;
+inout vpwr10dig;
+electrical vpwr10dig;
+inout vpwr33ana;
+electrical vpwr33ana;
+inout vpwr33dig;
+electrical vpwr33dig;
+inout vsub;
+electrical vsub;
+parameter real tReadySupply = 1.2u ;
+parameter real tStartSupply = 1.0u ;
+parameter real globalGroundRes = 1 ;
+parameter real dig33ResOut = 1 ;
+parameter real dig10ResOut = 1 ;
+parameter real ana33ResOut = 1 ;
+parameter real ana10ResOut = 1 ;
+parameter real power10 = 1.0 ;
+parameter real substRes = 1 ;
+parameter real power33 = 3.3 ;
+
+   analog begin
+      
+      V(vpwr10ana, vgnd) <+ power10;
+      V(vpwr10dig, vgnd) <+ power10;
+      
+      V(vpwr33ana, vgnd) <+ power33;
+      V(vpwr33dig, vgnd) <+ power33;
+
+      V(vgnd) <+ globalGroundRes*I(vgnd);
+      V(vsub) <+ substRes*I(vsub);
+      
+   end
+
+endmodule

@@ -1,0 +1,122 @@
+
+This message is to announce the availability of Skill-mode 3.2
+production version for XEmacs/GnuEmacs V19, where at least 19.11/19.28
+is required. GnuEmacs19.30 is possible to use but has some flaws (e.g
+in the menu system). XEmacs19.13 and GnuEmacs19.28 are the recommeded
+versions to run on. Both Emacses has identical functionality although
+the XEmacs implementation is slightly more solid and with the nicer
+user interface.
+
+Features
+========
+
+Gate-to-Opus link
+Incremental completion mechanism.
+Comprehensive symbol libraries for DF-II 4.3
+Automatic argument help for 2200 standard functions.
+Brief documentation on 1200 standard functions.
+Hierarchy browser for browsing and moving through hierarchies.
+Hierarchical motion for effective navigation.
+Full-featured documentation headers for functions and files.
+Automatic declaration of local variables.
+Automatic indentation
+Automatic generation of end-comments.
+Auto-spacing for symmetry, uniformity and readability.
+Automatic check of parenthesis balance.
+Automatic case-unfolding.
+Syntax highlighting with colour or font variations.
+Comprehensive menu system
+Extensive menu-controlled customization.
+On-line postscript user's manual, 65 pages.
+
+Changes since 3.1
+=================
+
+** The tree browser: The sluggish re-scans is now done less often. By
+the use of a new option, il-tree_rescan-trigger, re-scan is deferred
+until N new functions has been added. The browser switch has been
+remolded to a "Tree" minor mode and all associated options has been
+renamed from the `move-' to the `tree_' prefix and has moved to the
+"Tree" minor mode menu entry.
+
+** New function category: `temporary function' that only exists within
+current session. Any `unknown fun' now becomes `temporary' if you decline
+the prototype query, or if the make-prototype switch is turned off.
+Thus, all unknown fun calls is recorded provided that arghelp mode is active.
+A new corresponding completion command has been added.
+
+** New option: il-syntax-blink-time, controls the blink time for
+matching parenthesis & double-quote. Previously, the blink time was
+hard-coded to 1 sec which was a bit slow. Default is now 0.2 sec.
+
+** Syntax warnings when visiting working files is output to a separate
+window without any additional delays. The messages "Probably unbalanced
+parentheses" and "Extraneous closing parenth" has been replaced with
+"End-of-fun regexp mismatch".
+
+** The "Submit-Bug-Report" command now includes help on how to create
+backtrace listings for inclusion in the bug report.
+
+** Help windows of Emacs standard commands is now always half a screen,
+regardless of any previous skill-mode help windows.
+
+** Updated User's manual.
+
+** Cleaned-up "Customize All" command.
+
+** Cleaned-up README file for the gateToOpus package.
+
+** skill-append/prepend hook-in files modified to work properly with
+AUC-TeX, ie. to always insert the skill/ dir directly under site-lisp/
+
+
+Getting Skill-mode 3.2
+=======================
+
+Downloading
+-----------
+
+Note that the ftp node is unfortunately not available for
+everyone. It's required that your host is registered in the so
+called DNS name-server of our site to accept your login request.
+
+# cd <some temporary working dir>
+
+# ftp euagate.eua.ericsson.se
+
+username: anonymous
+
+password: <user@node>
+
+ftp> binary
+
+ftp> cd pub/eua/tmp
+
+ftp> get skillmode3.2.tar.Z
+
+ftp> quit
+
+
+Unpacking
+---------
+
+# uncompress skillmode3.2.tar.Z
+
+# tar xvf skillmode3.2.tar
+
+# rm skillmode3.2.tar
+
+
+Installing
+----------
+
+Follow the instructions found in the file lisp/skill/INSTALL .
+
+
+Receipt
+-------
+
+Send a receipt-email to erajonj@kieras90a.ericsson.se to subscribe on the
+mailing-list for future updates.
+
+

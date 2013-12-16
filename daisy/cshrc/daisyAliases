@@ -1,0 +1,68 @@
+###########
+# Daisy aliases
+########### 
+
+   alias  cdwa  'cd $WORKAREA'
+   alias  cdw   'cd $WORKAREA'
+
+   alias  cds   'cd $DAISYSIM'
+   alias  cdo   'cd $DAISYSIM/ocean'
+   alias  cdm   'cd $USERAREA/m/'
+   alias  cdr   'cd $DAISYSIM/results'
+#   alias  cdp   'cd $PROJAREA'
+   alias  cde   'cd `cdp wa \!*`'
+   alias  cdv   'cd `cdp pv \!*`'
+   alias  cds   'cd `cdp s \!*`'
+   
+   if ($CDSDATABASE == "cds") then
+      alias  cad   'cdwa; icfb -log $CDS_LOG_PATH/CDS.$USER.`date '+20%y%m%d'`.$HOST.log&'
+   else   
+     alias  cad   'cdwa; virtuoso -log $CDS_LOG_PATH/CDS.$USER.`date '+20%y%m%d'`.$HOST.log&'
+   endif
+
+
+
+   alias  emacs 'emacs -l $DAISYAREA/emacs/dotemacs -fg black \!* &'
+   alias  sim   'cdwa; ocean < $DAISYSIM/ocean/\!*'
+   alias  oo    'soffice \!* &'
+   alias  o     'xterm -e osean \!* & '
+   alias  ol    'xterm -e osean  `ls -t | head -n 1` & '
+   alias src    'source ~/.tcshrc'
+
+   alias hitta  'find . -follow -iname \!*'
+   alias proc   'ps -ef | grep $USER'
+   alias ool    'oo `ls -t | grep -e "od[s t g]" | head -n 1`'
+   alias gret   'grep -Hi $1 $2'
+   alias help   'man  \!* '
+   alias a      'acroread \!* &'
+
+   #alias cvsuc  'cvs -qn update | grep "^?" | tr -d "^?" | tr -d "[:space:]"'
+
+   alias rm 'rm -i'
+   alias cp 'cp -i'
+   alias mv 'mv -i'
+   alias vd 'ls -Fla'
+   alias po 'popd'
+   alias pd 'pushd'
+   alias cd 'cd \!*;echo "["$cwd"]"'
+   alias las 'ls -las'
+   alias lats 'ls -t | head -n 1'
+
+################
+# Printing options
+################
+
+# Program code
+alias plpr	'enscript -G -fCourier7 -FCourier12 \!*'	   
+alias p2lpr	'enscript -rG2 -fCourier7 -FCourier12 \!*'	   # landscape 2 col
+alias tlpr	'enscript -G -fTimes-Roman10 -FTimes-Roman12 \!*'  # English
+alias slpr	'swscript -G -fTimes-Roman10 -FTimes-Roman12 \!*'  # Swedish
+
+alias zprint1  'a2ps -l -2 -r -nu -ns -nL -nP -H"\!*" -d < "\!*" | lpr'   # landscape 2 col
+alias zprint2  'a2ps -p -1 -r -nu -ns -nL -nP -H"\!*" -d < "\!*" | lpr'   # landscape 1 col
+alias zprint3  'a2ps -l -1 -r -nu -ns -nL -nP -H"\!*" -d < "\!*" | lpr'   # portrait 1 col
+
+alias zprint_info1 'echo "zprint1: Print landscape 2 columns"'
+alias zprint_info2 'echo "zprint2: Print landscape 1 column"'
+alias zprint_info3 'echo "zprint3: Print portrait  1 column"'
+################

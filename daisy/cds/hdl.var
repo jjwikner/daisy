@@ -1,0 +1,4 @@
+#INCLUDE $IUSINSTDIR/tools/inca/files/hdl.var	
+INCLUDE $CDS_HOME/tools/dfII/samples/artist/mixSig/vhdlImport/hdl.var
+#INCLUDE $IUS_INST_DIR/tools/inca/files/hdl.var	
+

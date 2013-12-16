@@ -1,0 +1,48 @@
+#!/bin/sh
+
+# pvReport
+
+# Wraps up and reports after a pv run.
+
+EMAIL_TRIGGER="OFF"
+
+if [ $EMAIL_TRIGGER = "ON" ]
+then
+    echo "The e-mail trigger is on. Sending run information."
+    case "$1" in
+	LVS) 
+	# echo "LVS"
+	    head -n 40 $3 | mutt -s "$1 results of cell $2."  $EMAIL
+	    ;;
+	XRC)
+	# echo "XRC"
+	    head -n 40 $3 | mutt -s "$1 results of cell $2."  $EMAIL
+#	    echo "Reporting results from $1 run to $USER" | mutt -s "$1 results of cell $2." -a $3 $EMAIL	
+	    ;;
+	DRC)
+	# echo "DRC"
+	    tail -n 8 $3  | mutt -s "$1 results of cell $2." $EMAIL
+	    ;;
+	DFM)
+	# echo "DFM"
+	    tail -n 8 $3  | mutt -s "$1 results of cell $2." $EMAIL
+	    ;;
+	N80)
+	# echo "N80"
+	    tail -n 8 $3  | mutt -s "$1 results of cell $2." $EMAIL
+	    ;;
+	ANT)
+	# echo "ANT"
+	    tail -n 8 $3  | mutt -s "$1 results of cell $2." $EMAIL
+	    ;;     
+	*)
+	    echo "$1 is not a recognized physical verification mode"
+	    ;;
+    esac
+else
+    echo "Email trigger is off. No information sent to user." 
+    if [ "$4" ] 
+	then
+	gzip -f $4
+    fi
+fi

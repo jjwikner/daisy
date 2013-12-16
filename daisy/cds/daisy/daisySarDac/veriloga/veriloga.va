@@ -1,0 +1,52 @@
+// VerilogA for daisy, daisySarDac, veriloga
+
+`include "constants.vams"
+`include "disciplines.vams"
+
+module daisySarDac(RESET, CLK, DATA, vOut);
+electrical RESET, CLK, DATA, vOut;
+integer count;
+real data;
+real vMin, vMax;
+real vRef;
+real vLo;
+analog
+  begin
+    @ ( initial_step ) 
+      begin
+	 count = 0;
+	 vMin = -1;
+	 vMax = 1;
+	 vLo = vMin;
+	 vRef = vLo + (vMax - vMin)/pow(2,count);
+      end
+
+    @ ( cross(V(RESET) - 0.5, 1, 1.0, RESET.potential.abstol)) 
+      begin
+	 count = 0;
+	 data = 0;
+	 vMin = -1;
+	 vMax = 1;	
+	 vLo = vMin;
+	 vRef = vLo + (vMax - vMin)/pow(2,count);
+      end
+
+    @ (cross(V(CLK) - 0.5, -1, 1.0, CLK.potential.abstol)) 
+      begin	 
+ 	 if (V(DATA) < 0) 
+	 begin
+	    vLo = vRef;
+	 end;		
+	 count = count + 1;
+	 if (count > 32)
+	 begin
+	   count = 32;
+	   end;
+
+	 vRef = vLo + (vMax - vMin)/pow(2,count);
+     end
+
+     V(vOut) <+ transition(vRef);
+ end
+
+endmodule

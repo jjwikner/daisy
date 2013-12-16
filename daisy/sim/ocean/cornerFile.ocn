@@ -1,0 +1,127 @@
+;; Simulation Script Template
+
+;; Use awd waveform viewer (older) since new one has a few bugs.
+(ocnWaveformTool 'awd )
+
+;; Default simulator is spectre.
+(simulator 'spectre )
+
+;; Set up testbench. 
+(setq desLib "daisyTest")
+(setq desCell "daisyTop_T")
+(setq desView "schematic")
+
+(design 
+ ?lib desLib
+ ?cell desCell
+ ?view desView)
+
+;; Why doesn't this work? Do I have to open the cells first?
+(createNetlist) ; ?recreateAll t )
+
+;; Set up paths -- no need to change unless wanted or other simulator...
+(setq simPath (strcat (getShellEnvVar "CDSSIMPATH") "/"))
+(setq designPath (strcat desCell "/" "spectre/" desView))
+(design	    (strcat simPath designPath "/netlist/netlist"))
+(resultsDir (strcat simPath designPath))
+
+;; Already set up in the cdsinit -- but repeated for convenience. 
+;; Required for running 80 nm.
+(envSetVal "spectre.opts"      "scale"      'string   "0.9")
+
+;; 
+(setq modelsPath (strcat (getShellEnvVar "WORKAREA") "/pdk/models/1d0_3d3/"))
+(setq modelsFile "cln80gc_3d3_lk_v1d0.scs")
+(setq modelsPtr  (strcat modelsPath modelsFile))
+
+;; Simulator and save statement
+(analysis 'dc 
+	  ?saveOppoint t 
+	  ?param "temp"  
+	  ?start "-40" 
+	  ?stop "120"  )
+(envOption  'firstRun  t)
+(saveOption ?saveahdlvars "all" )
+(saveOption 'useprobes    "yes" )
+(saveOption 'currents     "all" )
+(saveOption 'pwr          "all" )
+(saveOption 'save         "all" )
+
+;; Invoke the project corners in the daisy area.
+(setq cornerList 
+      (traverseCornersFile 
+       (strcat (getShellEnvVar "WORKAREA") 
+	       "/daisy/simulation/corners/daisyCorners_p1a.csv")))
+
+;; Select some of the corners
+(setq cornerNoList nil) 
+(for cornerNo 0 (plus -1 (length cornerList)) 
+     (setq cornerNoList (append cornerNoList (list cornerNo))))
+
+;; Generate a proper corner end analysis.
+(setq maxCoeffList (list))
+
+(setq origWinId (newWindow))
+
+;;(setq oport (outfile (setq tmpFileName (makeTempFileName "/tmp/cornerRun"))))
+;;(if oport (fprintf oport "Corner Sweep Progress \n"))
+;;(if oport (view tmpFileName nil "Corner Sweep Progress" t))
+
+(foreach cornerNo cornerNoList 
+	 
+	 (desVar  "vccr33" (float (evalstring (returnCorner cornerNo "vpwr33" cornerList))))
+	 (temp             (float (evalstring (returnCorner cornerNo "temp" cornerList))))
+	 
+	 ;; Can be done in a more neat way?
+	 (modelFile
+	  (list  modelsPtr  (returnTSMCCorner cornerList  cornerNo "std"        ))
+	  (list  modelsPtr  (returnTSMCCorner cornerList  cornerNo "bip"        ))
+	  (list  modelsPtr  (returnTSMCCorner cornerList  cornerNo "dio"        ))
+	  (list  modelsPtr  (returnTSMCCorner cornerList  cornerNo "dio_lvt"    ))
+	  (list  modelsPtr  (returnTSMCCorner cornerList  cornerNo "dio_33"     ))
+	  (list  modelsPtr  (returnTSMCCorner cornerList  cornerNo "dio_dnw"    ))
+	  (list  modelsPtr  (returnTSMCCorner cornerList  cornerNo "dio_na"     ))
+	  (list  modelsPtr  (returnTSMCCorner cornerList  cornerNo "dio_hvt"    ))
+	  (list  modelsPtr  (returnTSMCCorner cornerList  cornerNo "dio_na33"   ))
+	  (list  modelsPtr  (returnTSMCCorner cornerList  cornerNo "bip_npn"    ))
+	  (list  modelsPtr  (returnTSMCCorner cornerList  cornerNo "mos_cap"    ))
+	  (list  modelsPtr  (returnTSMCCorner cornerList  cornerNo "mos_cap_33" ))
+	  (list  modelsPtr  (returnTSMCCorner cornerList  cornerNo "res"        ))
+	  (list  modelsPtr  (returnTSMCCorner cornerList  cornerNo "33"         ))
+	  (list  modelsPtr  (returnTSMCCorner cornerList  cornerNo "na"         ))
+	  (list  modelsPtr  (returnTSMCCorner cornerList  cornerNo "hvt"        ))
+	  (list  modelsPtr  (returnTSMCCorner cornerList  cornerNo "na33"       ))
+	  (list  modelsPtr  (returnTSMCCorner cornerList  cornerNo "lvt"        ))
+	  ) 
+	 
+	 ;;(if oport (fprintf oport "Corner %d of %d is running. \n" cornerNo (length cornerNoList)))
+
+	 (run)
+	 
+	 ;; Statements from the calculator
+	 outputRef = (VS "/vRef")
+	 refDeriv = (deriv outputRef) * 1000000
+	 tempCoeff = refDeriv / outputRef
+	 	 
+	 ;; Save information for presenting corner results
+	 (setq maxCoeffList (append maxCoeffList (list (ymax (abs tempCoeff)))))
+	 
+	 ;; Plot intermediate results
+	 (hiSetCurrentWindow origWinId)
+	 (plot outputRef 
+	       ?expr (list (sprintf nil "Output Ref (V) -- cor%d " cornerNo)))
+	 (plot refDeriv
+	       ?expr (list (sprintf nil "Ref Derivative (uV/C -- cor%d " cornerNo)))
+	 (plot tempCoeff 
+	       ?expr (list (sprintf nil "Temperature coefficient (ppm/C)  -- cor%d " cornerNo)))
+	 ;; (simMail (sprintf nil "Corner %d of %d finished. \n" cornerNo (length cornerNoList)))
+	 )
+(if (boundp 'oport) (if oport (close oport)))
+
+;; Present the end results in a new graph
+
+(setq winId (newWindow))
+(addTitle "Corner Sweep Results")
+(setq maxCoeffWave (abMakeWaveform cornerNoList maxCoeffList))
+(plot maxCoeffWave 
+      ?expr (list "Max temp coeff over corners"))

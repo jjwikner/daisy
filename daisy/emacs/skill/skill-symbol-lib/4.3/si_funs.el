@@ -1,0 +1,11 @@
+(put 'si_funs 'symbol-type "simulation interface fun")
+(setq si_funs '(
+("simCleanRun" "")
+("simInitEnv" "") 
+("simInitEnvWithArgs" "t_runDirName  t_libPath/nil t_libName/nil t_libConfigName/nil t_cellName/nil t_viewName/nil t_versionNumber/nil t_simulatorName/nil forceInit ")
+("simJobMonitor" "")
+("simRunNetAndSim" "") 
+("simRunNetAndSimWithArgs" "t_libPath/nil t_libName/nil t_libConfigName/nil t_cellName/nil t_viewName/nil t_versionNumber/nil t_simulatorName/nil t/nil t/nil t/nil x_jobPriority ")
+("simRunNetAndSimWithCmd" "t_libPath/nil t_libName/nil t_libConfigName/nil t_cellName/nil t_viewName/nil t_versionNumber/nil t_simulatorName/nil t_cmdToBeExecuted t/nil x_jobPriority ") 
+("simWaveOpen" "")
+))

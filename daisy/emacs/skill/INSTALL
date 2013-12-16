@@ -1,0 +1,221 @@
+-------------------------------------------------------------------------
+SUGGESTED METHOD FOR INSTALLING SKILL-MODE 3.X
+-------------------------------------------------------------------------
+
+The installation must be carried out by a system administrator (or
+similar person) who has write-privileges in your Emacs installation.
+It also takes a knowledgeable Emacs & Skill user, to do the
+site-specific skill-mode setup. This guy will from now on serve as
+the local skill-mode administrator.
+
+Skill-mode 3.X requires XEmacs 19.11 or newer, or GnuEmacs 19.28 or
+newer.
+
+1. NOTIFY USERS
+   
+If your site already uses the old skill-mode 2.1, notify those users to
+  a) Remove any old skill-mode setup from their private ~/.emacs files.
+  b) Append the lisp/skill/.Xdefaults file to their private ~/.Xdefaults
+  c) Try setting transient-mark-mode (GnuEmacs) / zmacs-regions (XEmacs) 
+     to t. (This will cause the selected region to vanish at a subsequent 
+     region-command), and it will enable the grey-shading of region-commands
+     in the skill-mode menu system.
+
+It's assumed that you by now have downloaded and unpacked skill-mode
+according to the instructions in the announcement posting. If not, these
+can be found in the file lisp/skill/ANNOUNCEMENT .
+
+
+2. DO THE SITE-SPECIFIC SKILL-MODE SETUP
+
+In a shell-window:
+
+Goto lisp/skill. 
+
+Make a safety copy of skill-defaults.el. 
+
+Visit skill-defaults.el
+
+Go through the 21 administrator-options and modify the default
+settings if needed to fit your organization's programming standard.
+
+Avoid changing anything else than the default values and don't tangle
+with the complex regular expressions unless you are reasonably
+confident with their syntax.
+
+If you want to set il-header-VCS-history-keyw to nil, replace the
+whole 'concat'-clause with nil.
+
+If you know from earlier experience that some of the user-option
+defaults are inappropriate for your site, goto the section named
+"Options, for user customization" and change the defaults. This will
+save forthcoming users from the inconvenience of having to modify them
+individually.
+
+Save the file.
+
+3. TUNE TO A SPECIFIC EMACS VERSION
+
+If your Emacs is XEmacs, move up all files residing under skill/xemacs19.13
+one level up to the skill/ dir, and delete all files residing under 
+skill/gnuemacs19.28 . 
+
+If your Emacs is GnuEmacs, move up all files residing under
+skill/gnuemacs19.28 one level up to the skill/ dir, and delete all
+files residing under skill/xemacs19.13 .
+
+If your Emacs is XEmacs19.11 then 
+   rename: func-menu.el to func-menu.el.2.35 (since it doesn't work with 19.11)
+Endif
+
+Byte-compile the source-files in the distribution:
+Type: C-u 0 M-x byte-recompile-directory <RET> .../lisp/skill <RET>
+
+3.5 HARD-COPY PAPER SIZE
+
+The default postscript user-manual SKILL-MODE-MANUAL.ps is intended for
+US paper-size 8.5 x 11.0 inch. If you instead use european paper-size
+20.9 x 29.6 cm, you should rename the file
+SKILL-MODE-MANUAL.ps.european-size to SKILL-MODE-MANUAL.ps, in order
+to make it the default postscript file.
+
+4. LOCATE THE "site-lisp" DIRECTORY
+
+It's assumed that your Emacs installation has a "site-lisp" directory,
+for site specific additions to the standard distribution.  (It's
+normally placed in parallel to the standard distribution in order to
+remain unscathed by new Emacs releases.)  It's further assumed that
+this site-lisp dir is by default included in Emacs's load-path.
+
+If you are uncertain about the existence of this dir, do the following:
+
+Start Emacs. 
+
+Goto the *scratch* buffer. 
+
+Type: load-path <LINEFEED>
+
+Now you are supposed to get a list of elisp directories.  If you have
+any difficulties finding "site-lisp", make a simple search for it. By
+now you should have the full path to the site-lisp dir.
+
+
+5. MOVE THE LISP/SKILL DIRECTORY TO THE SITE-LISP DIRECTORY
+
+In a shell-window do:
+
+# mv lisp/skill ..../site-lisp
+
+All elisp files should now reside in the site-lisp/skill/ directory.
+
+
+6. FINDING OUT WHICH HOOK-IN METHOD TO USE
+
+Hooking-in is done by adding the skill directory to `load-path'. The
+natural location would normally be to append it to the end of load-path.
+However, things are compounded by the dependences to standard packages
+like fast-lock, lazy-lock, face-lock (GnuEmacs) and func-menu
+(XEmacs), all of which must be of rather recent versions to work
+properly with skill-mode. 
+
+The skill-mode distribution includes all these packages and by using
+the prepend hook-in (explained below) you will get the highest
+probability of a flawless operation. However, this method will shade
+the package versions in the Emacs distribution (which might be newer)
+for all other major modes as well, and will continue to shade also
+when newer Emacs versions are installed. So beware !
+
+Ideally, of course, the system should be setup so the most recent
+versions are used. Then, if you want to use the append hook-in, the
+newest package version should reside in the Emacs distribution. And
+conversely, if you want to use the prepend hook-in, the newest package
+version should reside in the skill/ directory. (Don't forget to
+re-compile if you only copy the .el file.) In reality, however, the
+differences between adjacent versions are seldom critical, so to some
+extent this boils down to how scrupulous you are. From my current
+(lack of) experience, I cannot categorically advocate one hook-in
+method before the other. I hope time will show.
+
+The following package versions are included in the skill-mode distribution:
+fast-lock.el  3.07  ; used for font-lock speed-up in both Emacses
+lazy-lock.el  1.14  ; used for font-lock speed-up in both Emacses
+face-lock.el  3.03  ; used for colour hilite in GnuEmacs
+func-menu.el  2.35  ; used for function-menu in XEmacs 19.12 and later
+
+Here's some package facts for various Emacses :
+GnuEmacs 19.28 lacks fast-lock & lazy-lock
+Xemacs19.11 includes fast-lock 3.03, func-menu 2.16
+Xemacs19.13 includes lazy-lock 1.12, fast-lock 3.07, func-menu 2.32
+
+Here's how to check the package version in the Emacs distribution:
+Type: M-x load-file ..../site-lisp/skill/find-library.el
+Type: C-x C-l <package> <RET>
+to check if <package>.el is existent.
+If so, check the version in the header.
+Compare the version against the list above.
+
+A NOTE ON THE func-menu PACKAGE IN XEmacs:
+
+The "Funs" menu of skill-mode uses the standard func-menu package.
+XEmacs 19.11 includes func-menu 2.16 which matches with skill-mode,
+whereas 19.13 includes func-menu 2.32 which doesnt match. Instead, the
+supplied func-menu 2.35 should be used.  Thus, replace the 2.32
+version that resides in /xemacs-19.13/lisp/packages, or use the
+prepend hook-in method.
+
+
+7. MAKING THE HOOK-IN
+
+The hook-in is normally made by creating a symbolic link called
+"default" in the "site-lisp" directory. This requires however that
+the "default" file-name is non-existing in load-path.
+
+Type: C-x C-l default <RET>
+to check if default.el is existent.
+If so, append the contents of the chosen hook-in .el file (se below)
+to default.el and byte-compile it with M-x byte-compile-file <RET>
+(shows target file name) <RET>
+
+If "default" is non-existent:
+In a shell-window, goto the "site-lisp" directory.
+
+Now make a symbolic link:
+
+Choose either the append hook-in:
+
+# ln -s skill/skill-append.elc default.elc
+
+or the prepend hook-in:
+
+# ln -s skill/skill-prepend.elc default.elc
+
+Confirm the new link:
+Type: M-x locate-library <RET> default <RET>
+The answer shall be : Library is file ...default.elc
+
+This code autoloads skill-mode each time you visit an *.il file.
+
+
+8. HOOKING IN THE GATE-TO-OPUS LINK
+
+Follow the instructions in the file lisp/gateToOpus/README
+
+
+9. CONFIRM THE INSTALLATION
+
+Start a new Emacs instance.
+Visit a *.il file.
+Skill-mode should now be autoloaded, with its menu system visible in
+the menu bar and "(Skill)" displayed in the mode-line.
+
+Verify the operation of the GateToOpus link by trying an Analys->Eval command.
+
+
+
+
+
+
+
+
+
+

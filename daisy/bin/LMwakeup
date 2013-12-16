@@ -1,0 +1,26 @@
+#!/bin/sh
+
+# $Id: LMwakeup.rca 1.1 Wed Apr 19 12:34:20 2006 dlr Experimental $
+# 
+# LMwakeup.sh
+# 
+# Copyright (c) 1999 by Cypress Semiconductor
+# 
+# Date  : Feb 19, 1999
+# Author: Danny Merchant/CAD Manager-CSDC (jim) @ CSDC
+# 
+# Description:
+#   This program is used as a timer.  It repeatedly sleeps for a specified
+# period of time and then echos its $0.  This program is used to
+# implement license TIMEOUTS within Cadence.  The the Cadence
+# skill file LMlicense.il for more information.
+#
+# Revision History:
+# 
+# 
+
+while [ 1 -eq 1 ]
+do
+sleep $1
+echo $0
+done

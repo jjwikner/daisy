@@ -1,0 +1,6 @@
+simulator lang=spice
+.model nmos4  nmos level=1 \
+    vto=0.5  kp=16u gamma=1.3 lambda=0.005 \
+    phi=0.7 pb=0.80 mjsw=0.3  cj=300u cjsw=500p  \
+    cgbo=200p cgso=450p cgdo=350p ld=0.2u tox=20n mj=0.5 
+simulator lang=spectre

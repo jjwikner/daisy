@@ -1,0 +1,16 @@
+#
+analogLib cap symbol
+CLoad
+#
+analogLib vdc symbol
+Vinput
+#
+daisyDemo daisyDemoPpar symbol
+Iresdivider
+#ISCELL
+daisy daisySheet symbol
+I0
+#ISCELL
+analogLib gnd symbol
+I2
+I3

@@ -1,0 +1,7 @@
+# DAISY, alias to launch Matlab with java interface
+# Added a & according to the wishes of grandmaster Nuke.
+
+echo "DAISY::$0"
+echo "DAISY::Launching mentor graphics"
+cd $WORKAREA
+xterm -T 'DAISY:: Mentor shell'  -e daisyMentor.sh &

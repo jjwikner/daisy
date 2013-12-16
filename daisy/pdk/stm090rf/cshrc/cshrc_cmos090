@@ -1,0 +1,97 @@
+setenv CMOS090_DIR /sw/mentor/libraries/CMOS090
+
+setenv CDSDIR $CMOS090_DIR/UNIOPUS/uniopus_5.0.33_Sol
+
+setenv LM_LICENSE_FILE 1833@cime450:5287@cime450
+
+setenv UCDLM_LICENSE_FILE 1833@cime450
+
+#################################################
+######  Mentor/Calibre setup ####################
+#################################################
+
+################################################################
+#  UNCOMMENT THE FOLLOWING FOR MGC/Calibre 
+#  And Edit the following 3 lignes depending on your installation
+#################################################################
+
+# setenv MGC_HOME /softs/calibre_2003_5_8/ss6_cal_2003.5_8
+# set path=($path /softs/calibre_2003_5_8/ss6_cal_2003.5_8/bin)
+# setenv LM_LICENSE_FILE ${LM_LICENSE_FILE}:1717@cime450
+
+
+## 
+setenv MGC_CALIBRE_DRC_RUNSET_FILE $CMOS090_DIR/DK_cmos090gp_7M2T_50A_4.0b/MODULES/DKcmos090GP_M7_2T_calibre/cmos090GP_M7_2T.calibreGuirunsetdrc
+setenv MGC_CALIBRE_LVS_RUNSET_FILE $CMOS090_DIR/DK_cmos090gp_7M2T_50A_4.0b/MODULES/DKcmos090GP_M7_2T_calibre/cmos090GP_M7_2T.calibreGuirunsetlvs
+
+setenv U2DK_CALIBRE_DRC_DECK $CMOS090_DIR/DK_cmos090gp_7M2T_50A_4.0b/MODULES/DKcmos090GP_M7_2T_calibre/cmos090GP_M7_2T.calibredrc_cgi
+setenv U2DK_CALIBRE_LVS_DECK $CMOS090_DIR/DK_cmos090gp_7M2T_50A_4.0b/MODULES/DKcmos090GP_M7_2T_calibre/cmos090GP_M7_2T.calibrelvs_cgi
+
+setenv MGC_CALIBRE_CUSTOMIZATION_FILE $CMOS090_DIR/DK_cmos090gp_7M2T_50A_4.0b/MODULES/DKcmos090GP_M7_2T_calibre/cmos090GP_M7_2T.calibreGuiswitchdef
+#################################################
+
+
+
+#####################################################
+######  CMOS090 Design-kit setup ####################
+#####################################################
+
+set path = ($path \
+$CMOS090_DIR/DK_cmos090gp_7M2T_50A_4.0b/bin \
+$CDSDIR/tools/bin \
+$CDSDIR/tools/dfII/bin \
+$CMOS090_DIR/DK_cmos090gp_7M2T_50A_4.0b/bin \
+$CMOS090_DIR/UnicadKernel_3.3/bin \
+$CMOS090_DIR/UnicadUtilities_3.0/bin \
+$CMOS090_DIR/Unidoc_2.7.b/bin)
+
+setenv MANPATH /usr/man:/usr/openwin/share/man:$CMOS090_DIR/UnicadKernel_3.3/man
+
+setenv LD_LIBRARY_PATH ${LD_LIBRARY_PATH}:$CMOS090_DIR/UNIOPUS/uniopus_5.0.33_Sol/tools/lib
+
+setenv UK_PATH $CMOS090_DIR/UnicadKernel_3.3
+setenv UNICAD_KERNEL_ROOT $UK_PATH
+setenv UCDPRJDIR $cwd
+setenv UK_CDS_PREFIX ${USER}.
+
+setenv CLS_CDSD_COMPATIBILITY_LOCKING NO
+setenv DD_DONT_DO_OS_LOCKS
+setenv opusVer 5.00
+setenv opusver 500
+setenv CDS_Netlisting_Mode Analog
+#setenv OPUSSERVERKEY  `/usr/bin/ps -o sid | /usr/bin/grep -v SID | /bin/sort -u | /usr/ucb/sed s\;\ \;\;g`
+setenv OPUSSERVERKEY  `/bin/ps -o sid | /bin/grep -v SID | /bin/sort -u | /bin/sed s\;\ \;\;g`
+
+#setenv STK_LIBRARY $UK_PATH/STk
+
+setenv STK_LOAD_PATH $CMOS090_DIR/UnicadUtilities_3.0/stk
+
+setenv ARTISTKITROOT $CMOS090_DIR/ArtistKit_4.3
+
+setenv SPECTRE_DEFAULTS -I.
+
+setenv DK_CMOS090GP_7M2T_50AROOT $CMOS090_DIR/DK_cmos090gp_7M2T_50A_4.0b
+setenv CORE90GPHVT_SNPS-AVTROOT $CMOS090_DIR/CORE90GPHVT_SNPS-AVT_2.1
+setenv CORE90GPSVT_SNPS-AVTROOT $CMOS090_DIR/CORE90GPSVT_SNPS-AVT_2.1
+setenv CORX90GPHVT_SNPS-AVTROOT $CMOS090_DIR/CORX90GPHVT_SNPS-AVT_4.1
+setenv CORX90GPSVT_SNPS-AVTROOT $CMOS090_DIR/CORX90GPSVT_SNPS-AVT_4.1
+setenv PR90M7_SNPS-AVTROOT $CMOS090_DIR/PR90M7_SNPS-AVT_2.1
+
+
+setenv UNIXBELIBRARIES CORE90GPHVT_SNPS-AVT:CORE90GPSVT_SNPS-AVT:CORX90GPHVT_SNPS-AVT:CORX90GPSVT_SNPS-AVT:PR90M7_SNPS-AVT
+
+setenv PM_PLATFORM sparc-solaris2
+
+setenv DKITROOT $CMOS090_DIR/DK_cmos090gp_7M2T_50A_4.0b
+
+setenv CDS_WORKAREA $CMOS090_DIR/DK_cmos090gp_7M2T_50A_4.0b/MODULES/TKITCMOS090/lib
+
+setenv ST_HSPICE_MODELS $CMOS090_DIR/DK_cmos090gp_7M2T_50A_4.0b/MODULES/DKcmos090gp_7M2T_50A_hspice/CONTINUOUS/CORNERS
+
+setenv NEODEVICEDK $CMOS090_DIR/DK_cmos090gp_7M2T_50A_4.0b/MODULES/DKcmos090_neockt/neoconfig/cmos090.NeoDevice
+
+setenv UNIDOCROOT $CMOS090_DIR/Unidoc_2.7.b
+
+setenv UK_LOAD_PRODS "ArtistKit CORE90GPHVT_SNPS-AVT CORE90GPSVT_SNPS-AVT CORX90GPHVT_SNPS-AVT CORX90GPSVT_SNPS-AVT DK_cmos090gp_7M2T_50A IO90GPHVT_3V3_50A_7M2T_SNPS-AVT PR90M7_SNPS-AVT UnicadUtilities Unidoc uniopus" 
+
+

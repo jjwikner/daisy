@@ -1,0 +1,14 @@
+blockemail=1
+configuretimeout=300
+distributionmethod=Local
+jobqueue=spectre_normal
+lingertimeout=300
+maxjobs=2
+name=ADE XL ams Default
+preemptivestart=1
+reconfigureimmediately=1
+runtimeout=-1
+showerrorwhenretrying=1
+showoutputlogerror=1
+startmaxjobsimmed=1
+starttimeout=300

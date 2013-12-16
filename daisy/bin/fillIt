@@ -1,0 +1,13 @@
+#!/bin/sh
+
+# $1 is the lib name
+# $2 is the cell name
+# $3 is the view name
+
+mkdir $WORKAREA/verification/$2
+mkdir $WORKAREA/verification/$2/fill
+mkdir $WORKAREA/verification/$2/gds
+cp $PDK_HOME/Calibre/fill/calibre.fill.met $WORKAREA/verification/$2/fill
+cp $PDK_HOME/Calibre/fill/calibre.fill.pod $WORKAREA/verification/$2/fill
+
+

@@ -1,0 +1,10 @@
+#!/bin/sh
+
+# tailog
+# tail -f <latest log file>
+
+# JJ Wikner
+
+# Could as well have been an alias, but what the heck...
+
+tail -f `ls -t *log | head -n 1`

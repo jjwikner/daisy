@@ -1,0 +1,7 @@
+;; Try something like this in matlab:
+
+integerVector = 1:100;
+fileId = fopen('/some/file/name','wt');
+fprintf(fileId, '%d\n', integerVector);
+fclose(fileId);
+

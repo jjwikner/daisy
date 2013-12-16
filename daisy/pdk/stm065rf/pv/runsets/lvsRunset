@@ -1,0 +1,198 @@
+*lvsRulesFile:      $U2DK_CALIBRE_LVS_DECK
+*lvsRunDir:         $VERAREA/%l/lvs/ 
+*lvsIncludeFiles:   $PDK_HOME/pv/lvs/calibre.lvs
+*lvsSourcePath:     %s.src.net $PDK_HOME/pv/lvs/stdCells.cdl
+*cmnTemplate_RL:    $U2DK_CALIBRE_LVS_DECK
+*cmnTemplate_RN:    $VERAREA/%l/lvs/
+*cmnTemplate_LP:    ../gds/%l.calibre.gds2
+*cmnTranscriptFile: ../log/%l.lvs.transcript
+*cmnTemplate_TF:    ../log/%l.lvs.transcript
+*lvsTemplate_SP:    ../cdl/%s.cdl $PDK_HOME/pv/lvs/stdCells.cdl
+*lvsTemplate_HF:    $PDK_HOME/pv/lvs/daisy.hcell
+*cmnRunHier: 1
+*cmnFDIRun64: 1
+*cmnRun64: 1
+*cmnRun64RVE: 1
+*cmnDontWaitForLicense: 1
+*lvsRulesFileLastLoad: 0
+*lvsLayoutPaths: %l.gds2
+*lvsLayoutPrimary: %l
+*lvsSourcePrimary: %s
+*lvsReportFile: %s.lvs.report
+*lvsMaskDBFile: %l.maskdb
+*lvsSpiceFile: %l.lay.net
+*lvsAutoMatch: 1
+*lvsUseHCells: 1
+*lvsHCellsFile: $PDK_HOME/pv/lvs/daisy.hcell
+*lvsReportOptions: A B C D
+*lvsAbortOnSoftchk: 0
+*lvsPowerNames: vpwr vpwrGuard vpwr10 vpwr10Guard vpwr33Guard vdd! vcc! vpwr33 VDDPST33 VDD VDD! vdd!: vdd! POC33 poc33 VDD3P3 vdd3p3 vddlv vpwr10_dig vpwr33ana vdd3p3 Vdd3 Vdd1 vdd1p0  VDD vdd "vdd!" "vdd;" VDDS vdds "vdds!" "vdds;"
+*lvsGroundNames: vgnd vgndGuard vgnddig vgndana gnd!  VSS VSSPST33 vss!:  vss! gnd!: vsslv VSS3P3 vss3p3 vgnd_dig vgndAna vss3p3 Vss1 Vss3 GND gnd "gnd!" "gnd;" GNDS gnds "gnds!" "gnds;"
+*cmnVConnectNames: "vdd;" "gnd;" VDD GND vdd gnd "vdd!" "gnd!" "vdds;" "gnds;" VDDS GNDS vdds gnds "vdds!" "gnds!"
+*lvsRecognizeGates: ALL
+*lvsIsolateShorts: 1
+*lvsERCDatabase: %l.erc.results
+*lvsERCSummaryFile: %l.erc.summary
+*lvsRunERC: 1
+*lvsLayoutSystem: GDSII
+*lvsLayoutGetFromViewer: 1
+*lvsSourceGetFromViewer: 1
+*lvsLayoutPrecision: 1000
+*lvsSourceSystem: SPICE
+*lvsViewReport: 1
+*lvsCreateSVDB: 1
+*lvsSVDBDir: svdb
+*lvsSVDBNoflat: 0
+*lvsSVDBquery: 1
+*lvsSVDBxcal: 0
+*lvsSVDBcci: 0
+*lvsSVDBtxref: 0
+*lvsSVDBpinloc: 0
+*lvsStartRVE: 1
+*lvsWriteMaskDB: 0
+*lvsWriteINXF: 0
+*lvsWriteBPF: 0
+*lvsWriteNL: 1
+*lvsRunWhat: LVN
+*lvsReportMaximumAll: 0
+*lvsReportMaximumCount: 10000
+*lvsAbortOnSupplyError: 0
+*lvsIgnorePorts: 0
+*lvsShowSeedPromotions: 1
+*lvsShowSeedPromotionsMax: 1000
+*lvsRecognizeGatesMixSubtypes: 0
+*lvsERCAppendSummary: 0
+*lvsERCMaxResultsAll: 1
+*lvsERCMaxResultsCount: 1000
+*lvsERCMaxVertexAll: 0
+*lvsERCMaxVertexCount: 4096
+*lvsIsolateShortsByLayer: 1
+*lvsIsolateShortsNoContacts: 1
+*lvsIsolateShortsUnmerged: 0
+*lvsIsolateShortsFlat: 0
+*lvsIsolateShortsInTopCell: 1
+*lvsIsolateShortsOp: AND
+*lvsIsolateShortsAllNames: 1
+*lvsIsolateShortsNames: 
+*lvsVConnectBoxColon: 0
+*lvsVConnectBoxNamesState: NONE
+*lvsVConnectBoxNames: 
+*lvsShowChecksAlpha: 0
+*lvsShowGroupsAlpha: 0
+*lvsShowGroupsHier: 0
+*lvsShowGroupsTop: 0
+*lvsEnvVars: 
+*lvsTemplate_LR: %l.lvs.report
+*lvsTemplate_ES: %l.sp
+*lvsTemplate_ED: %l.erc.results
+*lvsTemplate_EU: %l.erc.summary
+*lvsTemplate_SV: svdb
+*lvsTemplate_MD: %l.maskdb
+*lvsTemplate_IS: 1
+*cmnHostName: localhost
+*cmnHostPort: 9189
+*cmnSUseLayoutConn: 1
+*cmnSHostName: localhost
+*cmnSHostPort: 9199
+*cmnShowToolTips: 1
+*cmnProcessLocalLinks: 1
+*cmnDRCMaxVertexAll: 0
+*cmnDRCMaxVertexCount: 4096
+*cmnReadIOFromRules: 1
+*cmnWarnLayoutOverwrite: 0
+*cmnWarnSourceOverwrite: 0
+*cmnTranscriptIncludedFiles: 0
+*cmnWarnRunsetNotWritable: 0
+*cmnPromptSaveRunset: 0
+*cmnShowCustomDialog: 1
+*cmnPreTrigger: 
+*cmnPostTrigger: daisyPvWrapup.sh %d %r %h
+*cmnRunPostTriggerInBG: 0
+*cmnWarnNoCustomization: 0
+*cmnVConnectColon: 0
+*cmnVConnectReport: 1
+*cmnVConnectNamesState: NONE
+*cmnTranscriptFileAppend: 0
+*cmnTranscriptEchoToFile: 1
+*cmnTemplate_IL: 1
+*cmnTemplate_CF: 
+*cmnUseCBforRVE: 0
+*cmnV2LVS_VLOGLibFiles:
+*cmnV2LVS_SPICELibFiles: 
+*cmnV2LVS_SPICEIncFiles:
+*cmnV2LVS_UseRangeMode: 0
+*cmnV2LVS_KeepBackSlash: 0
+*cmnV2LVS_UseCBLicense: 0
+*cmnV2LVS_WarningsAreErrors: 0
+*cmnV2LVS_WarningLevel: 2
+*cmnV2LVS_DontConnectPower: 0
+*cmnV2LVS_LastTranslation: 0
+*cmnV2LVS_TranslateAlways: 0
+*cmnV2LVS_GenerateTemplate: 0
+*cmnV2LVS_s0Net: 
+*cmnV2LVS_s1Net: 
+*cmnV2LVS_Pprefix: 
+*cmnV2LVS_Uprefix: 
+*cmnV2LVS_Achars: 
+*cmnV2LVS_Cchars: 
+*cmnV2LVS_AddPins: 0
+*cmnV2LVS_AddPinNames: 
+*cmnV2LVS_PositionalPins: 0
+*cmnV2LVS_ConnectUPins: 0
+*cmnV2LVS_UserOptions: 
+*cmnCloseRVEonExit: 1
+*cmnPromptCloseRVE: 0
+*cmnDisableOptions: 0
+*cmnDisableSelectChecks: 0
+*cmnDisableERCChanges: 0
+*cmnDisableEnvEdit: 0
+*cmnDisableCustomEdit: 0
+*cmnSaveRunsetChanges: 0
+*cmnShowOptions: 1
+*cmnCheckForModifiedRules: 0
+*cmnReleaseLicense: 1
+*cmnLicenseReleaseTime: 0.1
+*cmnApplyTemplates: 1
+*cmnUseCustomFile: 0
+*cmnCustomFileName: 
+*cmnRemoteUserIsCurrentUser: 1
+*cmnRemoteUserName: 
+*cmnRemoteShellDefault: 1
+*cmnRemoteShellName: 
+*cmnRemoteMGCHOMEUseCurrent: 1
+*cmnRemoteMGCHOME: 
+*cmnRemoteLICENSEFILEName: LM_LICENSE_FILE
+*cmnRemoteLICENSEFILEValue: 
+*cmnRemoteLICENSEFILEUseCurrent: 1
+*cmnRunHostType: localhost
+*cmnNumTurbo: All
+*cmnNumTurboLitho: All
+*cmnRemoteHostName: 
+*cmnRemoteClusterQueueCmd: 
+*cmnRemoteClusterSynch: 0
+*cmnRunMT: 0
+*cmnRunHyper: 0
+*cmnSlaveHosts: {use {}} {hostName {}} {cpuCount {}} {a32a64 {}} {rsh {}} {maxMem {}} {workingDir {}} {layerDir {}} {mgcLibPath {}} {launchName {}}
+*cmnSlaveHostsViewDetails: 0
+*cmnLSFStTbl: 
+*cmnLSFMtTbl: 
+*cmnLSFMasterTbl: 
+*cmnLSFSlaveTbl: 
+*cmnLSFMasterTblViewDetails: 0
+*cmnGridStTbl: 
+*cmnGridMtTbl: 
+*cmnGridMasterTbl: 
+*cmnGridSlaveTbl: 
+*cmnGridMasterTblViewDetails: 0
+*cmnRemoteMGCHOME_ss5: 
+*cmnRemoteMGCHOME_hpu: 
+*cmnRemoteMGCHOME_ira: 
+*cmnRemoteMGCHOME_ixl: 
+*cmnRemoteMGCHOME_iil: 
+*cmnCloseRVEonRun: 1
+*cmnFDIReadNetsFromCell: ALL
+*cmnFDIReadText: 1
+*cmnFDIReadBlockages: 1
+*cmnFDIReadInstPinShapes: 0
+*cmnFDIViewListMW: CEL FRAM
+*cmnFDIViewListOA: layout abstract

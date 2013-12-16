@@ -1,0 +1,245 @@
+*pexRulesFile:  $WORKAREA/sicon/pdkSpecific/$CDSPROCESSNAME/verification/Calibre/xrc/calibre.xrc
+*pexRulesFileLastLoad: 0
+*pexRunDir: $WORKAREA/verification/%l/xrc/
+*pexLayoutPaths: 
+*pexLEFLayoutPaths: 
+*pexLayoutSystem: GDSII
+*pexLayoutPrimary: 
+*pexLayoutGetFromViewer: 1
+*pexLayoutGetLEFFromViewer: 0
+*pexLayoutPrecision: 1000
+*pexSourcePath: ../cdl/%s.cdl
+*pexVlogSourcePath: 
+*pexSourceSystem: HSPICE
+*pexSourcePrimary: %s
+*pexSourceGetFromViewer: 1
+*pexReportFile: ../xrc.report
+*pexViewLVSReport: 1
+*pexPexNetlistType: C
+*pexPexViewPexNetlist: 1
+*pexPexViewPexReport: 1
+*pexPexNetlistFile: %l.pex.netlist
+*pexPexNetlistFormat: CALIBREVIEW
+*pexPexNetlistNameSource: SOURCE
+*pexPexSizeMultiplier: 1
+*pexPexReport: 1
+*pexPexReportFile: %l.pex.report
+*pexPexReportFormat: ASCII
+*pexPexTopLevelIncludeNets: 0
+*pexPexTopLevelIncludeNetsValue: 
+*pexPexTopLevelExcludeNets: 0
+*pexPexTopLevelExcludeNetsValue: 
+*pexPexRecursiveIncludeNets: 0
+*pexPexRecursiveIncludeNetsValue: 
+*pexPexRecursiveExcludeNets: 0
+*pexPexRecursiveExcludeNetsValue: 
+*pexPexExtractSelectedNets: 0
+*pexPexGroundName: 1
+*pexPexGroundNameValue: vgnd
+*pexPexReduceLumpedCThreshold: 
+*pexPexSeparator: 0
+*pexPexSeparatorValue: /
+*pexPexLocation: 0
+*pexPexLoop: 1
+*pexPexRlocation: 0
+*pexPexRwidth: 0
+*pexPexRlayer: 0
+*pexSVDBDir: svdb
+*pexSVDBNoflat: 0
+*pexSVDBquery: 1
+*pexSVDBxcal: 1
+*pexSVDBcci: 1
+*pexSVDBtxref: 1
+*pexSVDBpinloc: 0
+*pexStartRVE: 1
+*pexWriteMaskDB: 0
+*pexMaskDBFile: %l.maskdb
+*pexWriteINXF: 0
+*pexWriteBPF: 0
+*pexWriteNL: 0
+*pexAutoMatch: 0
+*pexUseHCells: 1
+*pexHCellsFile: ../inc/hcells
+*pexxCellsFile: ../inc/xcells
+*pexBlockHWView: list
+*pexViaReductionLimit: 1
+*pexViaReductionLimitValue: 20
+*pexDefLayerMapFile: 
+*pexIncludeFiles: $WORKAREA/sicon/verification/sicon.lvs 
+*pexEnvVars: 
+*pexTemplate_SP: $WORKAREA/verification/%l/cdl/%s.pex.src.net
+*pexTemplate_LR: %l.lvs.report
+*pexTemplate_PR: %l.pex.report
+*pexTemplate_PN: %l.pex.netlist
+*pexTemplate_SV: svdb
+*pexTemplate_MD: %l.maskdb
+*pexTemplate_HF: 
+*pexTemplate_XF: 
+*pexTemplate_IS: 1
+*pexRunHierLVS: 1
+*pexUseCBforPEX: 1
+*pexUseCBforLVS: 0
+*pexRunPHDBStep: 1
+*pexRunPDBStep: 1
+*pexRunFMTStep: 1
+*pexPexExtractType: T
+*pexPexCreateTopLevelTemplateFile: 1
+*pexShowPEXSteps: 0
+*pexPexFMTOutputElem: all
+*pexPexFMTAllowGroundCoupling: 0
+*pexPexFMTGroundCoupling: 0
+*pexPexEnableTICER: 0
+*pexPexTICERThreshold: 
+*pexPexIncrementalPDB: 0
+*pexUseCBforRVE: 0
+*pexFmtWarnings: 0
+*pexPowerNames: vpwr vpwrGuard vpwr10 vpwr10Guard vpwr33 vpwr33Guard vpwr10dig vpwr10ana VDD vdd vdd!
+*pexGroundNames: vgnd vgndGuard vgnddig vgndana vss VSS gnd! gnd
+*pexReportOptions: 
+*pexRecognizeGates: ALL
+*pexRecognizeGatesMixSubtypes: 0
+*pexBlocksForSeparateExtraction: 
+*pexDCTechLibFiles: 
+*pexDCVerilogFiles: 
+*pexDCSDCFile: 
+*pexDCTool: TIME-IT
+*pexDCTimeItMgcHome: 
+*pexDCOtherToolCmd: 
+*pexDCFormat: SPEF
+*pexADMSNetlistOutputFiles: 
+*pexStopAfterLVSMismatch: 1
+*pexPexInductance: N
+*pexInductFreqGHz: 10
+*pexInductUseDRTFile: 0
+*pexInductDRTFile: driver.xl
+*pexInductUseDefaultRange: 1
+*pexInductRange: 
+*pexInductFilterType: APPROX
+*pexInductFilterTags: 
+*pexInductUseVpathFile: 0
+*pexInductVpathFile: victim.xl
+*pexInductRetPath: GANDP
+*pexPostLVSTrigger: 
+*pexProbeList: 
+*cmnHostName: localhost
+*cmnHostPort: 9189
+*cmnSUseLayoutConn: 1
+*cmnSHostName: localhost
+*cmnSHostPort: 9199
+*cmnShowToolTips: 1
+*cmnProcessLocalLinks: 1
+*cmnDRCMaxVertexAll: 0
+*cmnDRCMaxVertexCount: 4096
+*cmnReadIOFromRules: 1
+*cmnWarnLayoutOverwrite: 0
+*cmnWarnSourceOverwrite: 0
+*cmnTranscriptIncludedFiles: 0
+*cmnWarnRunsetNotWritable: 0
+*cmnPromptSaveRunset: 0
+*cmnShowCustomDialog: 1
+*cmnPreTrigger:  
+*cmnPostTrigger: pvReport XRC %S %d/%S.pex.report %l
+*cmnRunPostTriggerInBG: 0
+*cmnWarnNoCustomization: 0
+*cmnVConnectColon: 0
+*cmnVConnectReport: 0
+*cmnVConnectNamesState: NONE
+*cmnVConnectNames: 
+*cmnTranscriptFile: $WORKAREA/verification/%l/log/xrc.transcript
+*cmnTranscriptFileAppend: 0
+*cmnTranscriptEchoToFile: 1
+*cmnDontWaitForLicense: 0
+*cmnRunHier: 2
+*cmnRun64: 0
+*cmnRun64RVE: 0
+*cmnTemplate_LP: $WORKAREA/verification/%l/gds/%l.calibre.pex.gds2
+*cmnTemplate_IL: 1
+*cmnTemplate_RL:  $WORKAREA/sicon/pdkSpecific/$CDSPROCESSNAME/verification/Calibre/xrc/calibre.xrc
+*cmnTemplate_RN: $WORKAREA/verification/%l/xrc/
+*cmnTemplate_TF: 
+*cmnTemplate_CF: 
+*cmnUseCBforRVE: 0
+*cmnV2LVS_VLOGLibFiles: 
+*cmnV2LVS_SPICELibFiles: 
+*cmnV2LVS_SPICEIncFiles: 
+*cmnV2LVS_UseRangeMode: 0
+*cmnV2LVS_KeepBackSlash: 0
+*cmnV2LVS_UseCBLicense: 0
+*cmnV2LVS_WarningsAreErrors: 0
+*cmnV2LVS_WarningLevel: 2
+*cmnV2LVS_DontConnectPower: 0
+*cmnV2LVS_LastTranslation: 0
+*cmnV2LVS_TranslateAlways: 0
+*cmnV2LVS_GenerateTemplate: 0
+*cmnV2LVS_s0Net: 
+*cmnV2LVS_s1Net: 
+*cmnV2LVS_Pprefix: 
+*cmnV2LVS_Uprefix: 
+*cmnV2LVS_Achars: 
+*cmnV2LVS_Cchars: 
+*cmnV2LVS_AddPins: 0
+*cmnV2LVS_AddPinNames: 
+*cmnV2LVS_PositionalPins: 0
+*cmnV2LVS_ConnectUPins: 0
+*cmnV2LVS_UserOptions: 
+*cmnCloseRVEonExit: 1
+*cmnPromptCloseRVE: 0
+*cmnDisableOptions: 0
+*cmnDisableSelectChecks: 0
+*cmnDisableERCChanges: 0
+*cmnDisableEnvEdit: 0
+*cmnDisableCustomEdit: 0
+*cmnSaveRunsetChanges: 0
+*cmnShowOptions: 1
+*cmnCheckForModifiedRules: 0
+*cmnReleaseLicense: 1
+*cmnLicenseReleaseTime: 0.1
+*cmnApplyTemplates: 1
+*cmnUseCustomFile: 0
+*cmnCustomFileName: 
+*cmnRemoteUserIsCurrentUser: 1
+*cmnRemoteUserName: 
+*cmnRemoteShellDefault: 1
+*cmnRemoteShellName: 
+*cmnRemoteMGCHOMEUseCurrent: 1
+*cmnRemoteMGCHOME: 
+*cmnRemoteLICENSEFILEName: LM_LICENSE_FILE
+*cmnRemoteLICENSEFILEValue: 
+*cmnRemoteLICENSEFILEUseCurrent: 1
+*cmnRunHostType: localhost
+*cmnNumTurbo: All
+*cmnNumTurboLitho: All
+*cmnRemoteHostName: 
+*cmnRemoteClusterQueueCmd: 
+*cmnRemoteClusterSynch: 0
+*cmnRunMT: 0
+*cmnRunHyper: 0
+*cmnSlaveHosts: {use {}} {hostName {}} {cpuCount {}} {a32a64 {}} {rsh {}} {maxMem {}} {workingDir {}} {layerDir {}} {mgcLibPath {}} {launchName {}}
+*cmnSlaveHostsViewDetails: 0
+*cmnLSFStTbl: 
+*cmnLSFMtTbl: 
+*cmnLSFMasterTbl: 
+*cmnLSFSlaveTbl: 
+*cmnLSFMasterTblViewDetails: 0
+*cmnGridStTbl: 
+*cmnGridMtTbl: 
+*cmnGridMasterTbl: 
+*cmnGridSlaveTbl: 
+*cmnGridMasterTblViewDetails: 0
+*cmnRemoteMGCHOME_ss5: 
+*cmnRemoteMGCHOME_hpu: 
+*cmnRemoteMGCHOME_ira: 
+*cmnRemoteMGCHOME_ixl: 
+*cmnRemoteMGCHOME_iil: 
+*cmnCloseRVEonRun: 1
+*cmnFDIReadNetsFromCell: ALL
+*cmnFDIReadText: 1
+*cmnFDIReadBlockages: 1
+*cmnFDIReadInstPinShapes: 0
+*cmnFDIViewListMW: CEL FRAM
+*cmnFDIViewListOA: layout abstract
+*cmnFDIRun64: 1
+*pexPexReduceMinRes: 1
+*pexPexReduceMinResCombine: 10
+*pexPexReduceMinCap: 1
+*pexPexReduceMinCapCombine: 10

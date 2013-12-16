@@ -1,0 +1,18 @@
+Starting Monte Carlo Sampling...
+
+Current time: Wed Nov 21 14:03:17 2012 
+Received stop signal from user. 
+MonteCarlo.7 completed. 
+Current time: Wed Nov 21 14:03:53 2012 
+Design specs: 
+	modadcAnalogTest:modadcAnalogTestPparDemo_T:1	corner	Default - 
+Design parameters: 
+	cLoad		1p
+	vInDc		1
+	daisyRes		1k
+	daisyRes2		1k
+	daisyRes1		1k
+
+MonteCarlo.7
+Number of points completed: 300
+Number of simulation errors: 0

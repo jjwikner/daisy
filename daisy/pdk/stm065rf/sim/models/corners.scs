@@ -1,0 +1,1036 @@
+// 
+
+library corners
+
+section 0 
+
+	// Typical
+	//---------------------------------------------
+	// Simulation Corners file for simulator spectre scenario default 
+	// Mar 25 08:30:42 2010
+	//---------------------------------------------
+
+	include "/site/edu/es/DAISY/daisy/pdkSpecific/stm065rf/sim/models/stat_flags.scs"
+	include "/site/edu/es/DAISY/daisy/pdkSpecific/stm065rf/sim/models/global_flags.scs"
+
+	include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/common_poly.scs" section=TT
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/common_active.scs" section=TT
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/common_go1.scs" section=TT
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/common_be.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/common_metal.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/common_cmim5.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/common_go2.scs" section=TT
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/common_well.scs" section=TT
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/common_varactor.scs" section=MAX
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/common_varind.scs" section=MAX
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/diodegp.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/hvtgp.scs" section=TT
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/lvtgp.scs" section=TT
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/sramdpsvtgp.scs" section=TT
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/sramspsvtgp.scs" section=TT
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/svtgp.scs" section=TT
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/diodelp.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/hpalp.scs" section=TT
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/hvtlp.scs" section=TT
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/lvtlp.scs" section=TT
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/sramdphvtlp.scs" section=TT
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/sramdpsvtlp.scs" section=TT
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/sramsphvtlp.scs" section=TT
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/sramspsvtlp.scs" section=TT
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/svtlp.scs" section=TT
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/npnv.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/pnpv.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/cfringe.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/cfringelem.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/cmetal.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/cmim.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/cmim5.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/cplate.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/cpolyn18.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/cpolyp18.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/cpolyn25.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/cpolyp25.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/cpolynlp.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/cpolyplp.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/cstrip.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/diode18.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/diode25.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/dgnsvt18.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/dgpsvt18.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/dgnsvt25.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/dgpsvt25.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/diodeiso.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/dr18otp.scs" section=TT
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/dr25.scs" section=TT
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/dr25otp.scs" section=TT
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/ext18hv.scs" section=TT
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/ext25hv.scs" section=TT
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/svt18.scs" section=TT
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/svt25.scs" section=TT
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/svt25dram.scs" section=TT
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/zvt25.scs" section=TT
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/mtpcell.scs" section=TT
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/rpdiff.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/rpolyh.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/rpolyn.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/rpolyp.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/rpolys.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/rmetal.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/rpolyni.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/rpolypi.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/schottky.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/schottky2.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/var_pnw.scs" section=MAX
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/cpo12nw_var.scs" section=MAX
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/cpo18nw_var.scs" section=MAX
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/cpo18pw_var.scs" section=MAX
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/cpo25nw_var.scs" section=MAX
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/cpo25pw_var.scs" section=MAX
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/cmom.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/ind_pat_7m4x0y2z.scs" section=MAX
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/ind_lomf_7m4x0y2z.scs" section=MAX
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/ind_lonw_7m4x0y2z.scs" section=MAX
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/ind_nw_7m4x0y2z.scs" section=MAX
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/ind_la_7m4x0y2z.scs" section=MAX
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/resrdl_tsv.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/veriloga.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/mismatch_switch.scs" section=Crolles
+
+endsection 0
+
+section 1
+	
+	//FAST-FAST
+//---------------------------------------------
+// Simulation Corners file for simulator spectre scenario default 
+// Mar 25 08:50:27 2010
+//---------------------------------------------
+	include "/site/edu/es/DAISY/daisy/pdkSpecific/stm065rf/sim/models/stat_flags.scs"
+	include "/site/edu/es/DAISY/daisy/pdkSpecific/stm065rf/sim/models/global_flags.scs"
+	include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/common_poly.scs" section=FF
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/common_active.scs" section=FF
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/common_go1.scs" section=FF
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/common_be.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/common_metal.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/common_cmim5.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/common_go2.scs" section=TT
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/common_well.scs" section=TT
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/common_varactor.scs" section=MAX
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/common_varind.scs" section=MAX
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/diodegp.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/hvtgp.scs" section=FF
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/lvtgp.scs" section=FF
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/sramdpsvtgp.scs" section=FF
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/sramspsvtgp.scs" section=FF
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/svtgp.scs" section=FF
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/diodelp.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/hpalp.scs" section=FF
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/hvtlp.scs" section=FF
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/lvtlp.scs" section=FF
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/sramdphvtlp.scs" section=FF
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/sramdpsvtlp.scs" section=FF
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/sramsphvtlp.scs" section=FF
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/sramspsvtlp.scs" section=FF
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/svtlp.scs" section=FF
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/npnv.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/pnpv.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/cfringe.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/cfringelem.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/cmetal.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/cmim.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/cmim5.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/cplate.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/cpolyn18.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/cpolyp18.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/cpolyn25.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/cpolyp25.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/cpolynlp.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/cpolyplp.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/cstrip.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/diode18.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/diode25.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/dgnsvt18.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/dgpsvt18.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/dgnsvt25.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/dgpsvt25.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/diodeiso.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/dr18otp.scs" section=TT
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/dr25.scs" section=TT
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/dr25otp.scs" section=TT
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/ext18hv.scs" section=TT
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/ext25hv.scs" section=TT
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/svt18.scs" section=FF
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/svt25.scs" section=FF
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/svt25dram.scs" section=FF
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/zvt25.scs" section=FF
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/mtpcell.scs" section=TT
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/rpdiff.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/rpolyh.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/rpolyn.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/rpolyp.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/rpolys.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/rmetal.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/rpolyni.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/rpolypi.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/schottky.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/schottky2.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/var_pnw.scs" section=MAX
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/cpo12nw_var.scs" section=MAX
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/cpo18nw_var.scs" section=MAX
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/cpo18pw_var.scs" section=MAX
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/cpo25nw_var.scs" section=MAX
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/cpo25pw_var.scs" section=MAX
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/cmom.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/ind_pat_7m4x0y2z.scs" section=MAX
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/ind_lomf_7m4x0y2z.scs" section=MAX
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/ind_lonw_7m4x0y2z.scs" section=MAX
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/ind_nw_7m4x0y2z.scs" section=MAX
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/ind_la_7m4x0y2z.scs" section=MAX
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/resrdl_tsv.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/veriloga.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/mismatch_switch.scs" section=Crolles
+
+endsection 1
+
+section 2
+
+	// FFA
+
+//---------------------------------------------
+// Simulation Corners file for simulator spectre scenario default 
+// Mar 25 08:51:18 2010
+//---------------------------------------------
+	include "/site/edu/es/DAISY/daisy/pdkSpecific/stm065rf/sim/models/stat_flags.scs"
+	include "/site/edu/es/DAISY/daisy/pdkSpecific/stm065rf/sim/models/global_flags.scs"
+	include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/common_poly.scs" section=FFA
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/common_active.scs" section=FFA
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/common_go1.scs" section=FFA
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/common_be.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/common_metal.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/common_cmim5.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/common_go2.scs" section=FFA
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/common_well.scs" section=FFA
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/common_varactor.scs" section=MAX
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/common_varind.scs" section=MAX
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/diodegp.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/hvtgp.scs" section=FFA
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/lvtgp.scs" section=FFA
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/sramdpsvtgp.scs" section=FFA
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/sramspsvtgp.scs" section=FFA
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/svtgp.scs" section=FFA
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/diodelp.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/hpalp.scs" section=FFA
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/hvtlp.scs" section=FFA
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/lvtlp.scs" section=FFA
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/sramdphvtlp.scs" section=FFA
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/sramdpsvtlp.scs" section=FFA
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/sramsphvtlp.scs" section=FFA
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/sramspsvtlp.scs" section=FFA
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/svtlp.scs" section=FFA
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/npnv.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/pnpv.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/cfringe.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/cfringelem.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/cmetal.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/cmim.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/cmim5.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/cplate.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/cpolyn18.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/cpolyp18.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/cpolyn25.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/cpolyp25.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/cpolynlp.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/cpolyplp.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/cstrip.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/diode18.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/diode25.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/dgnsvt18.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/dgpsvt18.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/dgnsvt25.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/dgpsvt25.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/diodeiso.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/dr18otp.scs" section=FFA
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/dr25.scs" section=FFA
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/dr25otp.scs" section=FFA
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/ext18hv.scs" section=FFA
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/ext25hv.scs" section=FFA
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/svt18.scs" section=FFA
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/svt25.scs" section=FFA
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/svt25dram.scs" section=FFA
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/zvt25.scs" section=FFA
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/mtpcell.scs" section=TT
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/rpdiff.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/rpolyh.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/rpolyn.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/rpolyp.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/rpolys.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/rmetal.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/rpolyni.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/rpolypi.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/schottky.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/schottky2.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/var_pnw.scs" section=MAX
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/cpo12nw_var.scs" section=MAX
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/cpo18nw_var.scs" section=MAX
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/cpo18pw_var.scs" section=MAX
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/cpo25nw_var.scs" section=MAX
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/cpo25pw_var.scs" section=MAX
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/cmom.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/ind_pat_7m4x0y2z.scs" section=MAX
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/ind_lomf_7m4x0y2z.scs" section=MAX
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/ind_lonw_7m4x0y2z.scs" section=MAX
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/ind_nw_7m4x0y2z.scs" section=MAX
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/ind_la_7m4x0y2z.scs" section=MAX
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/resrdl_tsv.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/veriloga.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/mismatch_switch.scs" section=Crolles
+
+
+endsection 2
+
+section 3
+	// FS
+
+	//---------------------------------------------
+// Simulation Corners file for simulator spectre scenario default 
+// Mar 25 08:52:38 2010
+//---------------------------------------------
+	include "/site/edu/es/DAISY/daisy/pdkSpecific/stm065rf/sim/models/stat_flags.scs"
+	include "/site/edu/es/DAISY/daisy/pdkSpecific/stm065rf/sim/models/global_flags.scs"
+	include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/common_poly.scs" section=FFA
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/common_active.scs" section=FFA
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/common_go1.scs" section=FFA
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/common_be.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/common_metal.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/common_cmim5.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/common_go2.scs" section=FFA
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/common_well.scs" section=FFA
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/common_varactor.scs" section=MAX
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/common_varind.scs" section=MAX
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/diodegp.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/hvtgp.scs" section=FS
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/lvtgp.scs" section=FS
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/sramdpsvtgp.scs" section=FS
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/sramspsvtgp.scs" section=FS
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/svtgp.scs" section=FS
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/diodelp.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/hpalp.scs" section=FS
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/hvtlp.scs" section=FS
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/lvtlp.scs" section=FS
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/sramdphvtlp.scs" section=FS
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/sramdpsvtlp.scs" section=FS
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/sramsphvtlp.scs" section=FS
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/sramspsvtlp.scs" section=FS
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/svtlp.scs" section=FS
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/npnv.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/pnpv.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/cfringe.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/cfringelem.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/cmetal.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/cmim.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/cmim5.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/cplate.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/cpolyn18.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/cpolyp18.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/cpolyn25.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/cpolyp25.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/cpolynlp.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/cpolyplp.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/cstrip.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/diode18.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/diode25.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/dgnsvt18.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/dgpsvt18.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/dgnsvt25.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/dgpsvt25.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/diodeiso.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/dr18otp.scs" section=FFA
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/dr25.scs" section=FFA
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/dr25otp.scs" section=FFA
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/ext18hv.scs" section=FFA
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/ext25hv.scs" section=FFA
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/svt18.scs" section=FS
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/svt25.scs" section=FS
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/svt25dram.scs" section=FS
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/zvt25.scs" section=FS
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/mtpcell.scs" section=TT
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/rpdiff.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/rpolyh.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/rpolyn.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/rpolyp.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/rpolys.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/rmetal.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/rpolyni.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/rpolypi.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/schottky.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/schottky2.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/var_pnw.scs" section=MAX
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/cpo12nw_var.scs" section=MAX
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/cpo18nw_var.scs" section=MAX
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/cpo18pw_var.scs" section=MAX
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/cpo25nw_var.scs" section=MAX
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/cpo25pw_var.scs" section=MAX
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/cmom.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/ind_pat_7m4x0y2z.scs" section=MAX
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/ind_lomf_7m4x0y2z.scs" section=MAX
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/ind_lonw_7m4x0y2z.scs" section=MAX
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/ind_nw_7m4x0y2z.scs" section=MAX
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/ind_la_7m4x0y2z.scs" section=MAX
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/resrdl_tsv.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/veriloga.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/mismatch_switch.scs" section=Crolles
+
+	
+endsection 3
+
+section 4
+	// FSA
+
+	//---------------------------------------------
+// Simulation Corners file for simulator spectre scenario default 
+// Mar 25 08:53:10 2010
+//---------------------------------------------
+	include "/site/edu/es/DAISY/daisy/pdkSpecific/stm065rf/sim/models/stat_flags.scs"
+	include "/site/edu/es/DAISY/daisy/pdkSpecific/stm065rf/sim/models/global_flags.scs"
+	include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/common_poly.scs" section=FFA
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/common_active.scs" section=FFA
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/common_go1.scs" section=FFA
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/common_be.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/common_metal.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/common_cmim5.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/common_go2.scs" section=FFA
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/common_well.scs" section=FFA
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/common_varactor.scs" section=MAX
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/common_varind.scs" section=MAX
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/diodegp.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/hvtgp.scs" section=FSA
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/lvtgp.scs" section=FSA
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/sramdpsvtgp.scs" section=FSA
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/sramspsvtgp.scs" section=FSA
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/svtgp.scs" section=FSA
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/diodelp.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/hpalp.scs" section=FSA
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/hvtlp.scs" section=FSA
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/lvtlp.scs" section=FSA
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/sramdphvtlp.scs" section=FSA
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/sramdpsvtlp.scs" section=FSA
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/sramsphvtlp.scs" section=FSA
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/sramspsvtlp.scs" section=FSA
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/svtlp.scs" section=FSA
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/npnv.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/pnpv.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/cfringe.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/cfringelem.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/cmetal.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/cmim.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/cmim5.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/cplate.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/cpolyn18.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/cpolyp18.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/cpolyn25.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/cpolyp25.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/cpolynlp.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/cpolyplp.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/cstrip.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/diode18.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/diode25.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/dgnsvt18.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/dgpsvt18.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/dgnsvt25.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/dgpsvt25.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/diodeiso.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/dr18otp.scs" section=FFA
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/dr25.scs" section=FSA
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/dr25otp.scs" section=FFA
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/ext18hv.scs" section=FSA
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/ext25hv.scs" section=FSA
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/svt18.scs" section=FSA
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/svt25.scs" section=FSA
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/svt25dram.scs" section=FSA
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/zvt25.scs" section=FSA
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/mtpcell.scs" section=TT
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/rpdiff.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/rpolyh.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/rpolyn.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/rpolyp.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/rpolys.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/rmetal.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/rpolyni.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/rpolypi.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/schottky.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/schottky2.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/var_pnw.scs" section=MAX
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/cpo12nw_var.scs" section=MAX
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/cpo18nw_var.scs" section=MAX
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/cpo18pw_var.scs" section=MAX
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/cpo25nw_var.scs" section=MAX
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/cpo25pw_var.scs" section=MAX
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/cmom.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/ind_pat_7m4x0y2z.scs" section=MAX
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/ind_lomf_7m4x0y2z.scs" section=MAX
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/ind_lonw_7m4x0y2z.scs" section=MAX
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/ind_nw_7m4x0y2z.scs" section=MAX
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/ind_la_7m4x0y2z.scs" section=MAX
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/resrdl_tsv.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/veriloga.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/mismatch_switch.scs" section=Crolles
+
+endsection 4
+
+section 5
+	// SF
+	//---------------------------------------------
+// Simulation Corners file for simulator spectre scenario default 
+// Mar 25 08:54:16 2010
+//---------------------------------------------
+	include "/site/edu/es/DAISY/daisy/pdkSpecific/stm065rf/sim/models/stat_flags.scs"
+	include "/site/edu/es/DAISY/daisy/pdkSpecific/stm065rf/sim/models/global_flags.scs"
+	include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/common_poly.scs" section=FFA
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/common_active.scs" section=FFA
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/common_go1.scs" section=FFA
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/common_be.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/common_metal.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/common_cmim5.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/common_go2.scs" section=FFA
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/common_well.scs" section=FFA
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/common_varactor.scs" section=MAX
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/common_varind.scs" section=MAX
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/diodegp.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/hvtgp.scs" section=SF
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/lvtgp.scs" section=SF
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/sramdpsvtgp.scs" section=SF
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/sramspsvtgp.scs" section=SF
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/svtgp.scs" section=SF
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/diodelp.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/hpalp.scs" section=SF
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/hvtlp.scs" section=SF
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/lvtlp.scs" section=SF
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/sramdphvtlp.scs" section=SF
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/sramdpsvtlp.scs" section=SF
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/sramsphvtlp.scs" section=SF
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/sramspsvtlp.scs" section=SF
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/svtlp.scs" section=SF
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/npnv.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/pnpv.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/cfringe.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/cfringelem.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/cmetal.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/cmim.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/cmim5.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/cplate.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/cpolyn18.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/cpolyp18.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/cpolyn25.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/cpolyp25.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/cpolynlp.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/cpolyplp.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/cstrip.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/diode18.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/diode25.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/dgnsvt18.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/dgpsvt18.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/dgnsvt25.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/dgpsvt25.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/diodeiso.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/dr18otp.scs" section=FFA
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/dr25.scs" section=FSA
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/dr25otp.scs" section=FFA
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/ext18hv.scs" section=FSA
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/ext25hv.scs" section=FSA
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/svt18.scs" section=SF
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/svt25.scs" section=SF
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/svt25dram.scs" section=SF
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/zvt25.scs" section=SF
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/mtpcell.scs" section=TT
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/rpdiff.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/rpolyh.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/rpolyn.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/rpolyp.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/rpolys.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/rmetal.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/rpolyni.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/rpolypi.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/schottky.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/schottky2.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/var_pnw.scs" section=MAX
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/cpo12nw_var.scs" section=MAX
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/cpo18nw_var.scs" section=MAX
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/cpo18pw_var.scs" section=MAX
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/cpo25nw_var.scs" section=MAX
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/cpo25pw_var.scs" section=MAX
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/cmom.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/ind_pat_7m4x0y2z.scs" section=MAX
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/ind_lomf_7m4x0y2z.scs" section=MAX
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/ind_lonw_7m4x0y2z.scs" section=MAX
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/ind_nw_7m4x0y2z.scs" section=MAX
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/ind_la_7m4x0y2z.scs" section=MAX
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/resrdl_tsv.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/veriloga.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/mismatch_switch.scs" section=Crolles
+
+endsection 5
+
+section 6
+
+	// SFA
+
+//---------------------------------------------
+// Simulation Corners file for simulator spectre scenario default 
+// Mar 25 08:55:03 2010
+//---------------------------------------------
+	include "/site/edu/es/DAISY/daisy/pdkSpecific/stm065rf/sim/models/stat_flags.scs"
+	include "/site/edu/es/DAISY/daisy/pdkSpecific/stm065rf/sim/models/global_flags.scs"
+	include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/common_poly.scs" section=FFA
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/common_active.scs" section=FFA
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/common_go1.scs" section=FFA
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/common_be.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/common_metal.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/common_cmim5.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/common_go2.scs" section=FFA
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/common_well.scs" section=FFA
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/common_varactor.scs" section=MAX
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/common_varind.scs" section=MAX
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/diodegp.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/hvtgp.scs" section=SFA
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/lvtgp.scs" section=SFA
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/sramdpsvtgp.scs" section=SFA
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/sramspsvtgp.scs" section=SFA
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/svtgp.scs" section=SFA
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/diodelp.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/hpalp.scs" section=SFA
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/hvtlp.scs" section=SFA
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/lvtlp.scs" section=SFA
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/sramdphvtlp.scs" section=SFA
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/sramdpsvtlp.scs" section=SFA
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/sramsphvtlp.scs" section=SFA
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/sramspsvtlp.scs" section=SFA
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/svtlp.scs" section=SFA
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/npnv.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/pnpv.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/cfringe.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/cfringelem.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/cmetal.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/cmim.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/cmim5.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/cplate.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/cpolyn18.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/cpolyp18.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/cpolyn25.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/cpolyp25.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/cpolynlp.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/cpolyplp.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/cstrip.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/diode18.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/diode25.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/dgnsvt18.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/dgpsvt18.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/dgnsvt25.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/dgpsvt25.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/diodeiso.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/dr18otp.scs" section=FFA
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/dr25.scs" section=SFA
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/dr25otp.scs" section=FFA
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/ext18hv.scs" section=SFA
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/ext25hv.scs" section=SFA
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/svt18.scs" section=SFA
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/svt25.scs" section=SFA
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/svt25dram.scs" section=SFA
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/zvt25.scs" section=SFA
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/mtpcell.scs" section=TT
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/rpdiff.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/rpolyh.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/rpolyn.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/rpolyp.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/rpolys.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/rmetal.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/rpolyni.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/rpolypi.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/schottky.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/schottky2.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/var_pnw.scs" section=MAX
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/cpo12nw_var.scs" section=MAX
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/cpo18nw_var.scs" section=MAX
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/cpo18pw_var.scs" section=MAX
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/cpo25nw_var.scs" section=MAX
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/cpo25pw_var.scs" section=MAX
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/cmom.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/ind_pat_7m4x0y2z.scs" section=MAX
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/ind_lomf_7m4x0y2z.scs" section=MAX
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/ind_lonw_7m4x0y2z.scs" section=MAX
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/ind_nw_7m4x0y2z.scs" section=MAX
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/ind_la_7m4x0y2z.scs" section=MAX
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/resrdl_tsv.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/veriloga.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/mismatch_switch.scs" section=Crolles
+endsection 6
+
+section 7
+	// SS
+
+	//---------------------------------------------
+// Simulation Corners file for simulator spectre scenario default 
+// Mar 25 08:56:34 2010
+//---------------------------------------------
+	include "/site/edu/es/DAISY/daisy/pdkSpecific/stm065rf/sim/models/stat_flags.scs"
+	include "/site/edu/es/DAISY/daisy/pdkSpecific/stm065rf/sim/models/global_flags.scs"
+	include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/common_poly.scs" section=SS
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/common_active.scs" section=SS
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/common_go1.scs" section=SS
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/common_be.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/common_metal.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/common_cmim5.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/common_go2.scs" section=FFA
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/common_well.scs" section=FFA
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/common_varactor.scs" section=MAX
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/common_varind.scs" section=MAX
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/diodegp.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/hvtgp.scs" section=SS
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/lvtgp.scs" section=SS
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/sramdpsvtgp.scs" section=SS
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/sramspsvtgp.scs" section=SS
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/svtgp.scs" section=SS
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/diodelp.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/hpalp.scs" section=SS
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/hvtlp.scs" section=SS
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/lvtlp.scs" section=SS
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/sramdphvtlp.scs" section=SS
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/sramdpsvtlp.scs" section=SS
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/sramsphvtlp.scs" section=SS
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/sramspsvtlp.scs" section=SS
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/svtlp.scs" section=SS
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/npnv.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/pnpv.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/cfringe.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/cfringelem.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/cmetal.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/cmim.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/cmim5.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/cplate.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/cpolyn18.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/cpolyp18.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/cpolyn25.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/cpolyp25.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/cpolynlp.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/cpolyplp.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/cstrip.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/diode18.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/diode25.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/dgnsvt18.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/dgpsvt18.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/dgnsvt25.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/dgpsvt25.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/diodeiso.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/dr18otp.scs" section=FFA
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/dr25.scs" section=SFA
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/dr25otp.scs" section=FFA
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/ext18hv.scs" section=SFA
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/ext25hv.scs" section=SFA
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/svt18.scs" section=SS
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/svt25.scs" section=SS
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/svt25dram.scs" section=SS
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/zvt25.scs" section=SS
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/mtpcell.scs" section=TT
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/rpdiff.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/rpolyh.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/rpolyn.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/rpolyp.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/rpolys.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/rmetal.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/rpolyni.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/rpolypi.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/schottky.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/schottky2.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/var_pnw.scs" section=MAX
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/cpo12nw_var.scs" section=MAX
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/cpo18nw_var.scs" section=MAX
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/cpo18pw_var.scs" section=MAX
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/cpo25nw_var.scs" section=MAX
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/cpo25pw_var.scs" section=MAX
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/cmom.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/ind_pat_7m4x0y2z.scs" section=MAX
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/ind_lomf_7m4x0y2z.scs" section=MAX
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/ind_lonw_7m4x0y2z.scs" section=MAX
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/ind_nw_7m4x0y2z.scs" section=MAX
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/ind_la_7m4x0y2z.scs" section=MAX
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/resrdl_tsv.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/veriloga.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/mismatch_switch.scs" section=Crolles
+
+	
+endsection 7
+
+section 8
+	// SSA
+
+	//---------------------------------------------
+// Simulation Corners file for simulator spectre scenario default 
+// Mar 25 08:56:48 2010
+//---------------------------------------------
+	include "/site/edu/es/DAISY/daisy/pdkSpecific/stm065rf/sim/models/stat_flags.scs"
+	include "/site/edu/es/DAISY/daisy/pdkSpecific/stm065rf/sim/models/global_flags.scs"
+	include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/common_poly.scs" section=SSA
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/common_active.scs" section=SSA
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/common_go1.scs" section=SSA
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/common_be.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/common_metal.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/common_cmim5.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/common_go2.scs" section=SSA
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/common_well.scs" section=SSA
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/common_varactor.scs" section=MAX
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/common_varind.scs" section=MAX
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/diodegp.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/hvtgp.scs" section=SSA
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/lvtgp.scs" section=SSA
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/sramdpsvtgp.scs" section=SSA
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/sramspsvtgp.scs" section=SSA
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/svtgp.scs" section=SSA
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/diodelp.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/hpalp.scs" section=SSA
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/hvtlp.scs" section=SSA
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/lvtlp.scs" section=SSA
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/sramdphvtlp.scs" section=SSA
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/sramdpsvtlp.scs" section=SSA
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/sramsphvtlp.scs" section=SSA
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/sramspsvtlp.scs" section=SSA
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/svtlp.scs" section=SSA
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/npnv.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/pnpv.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/cfringe.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/cfringelem.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/cmetal.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/cmim.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/cmim5.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/cplate.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/cpolyn18.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/cpolyp18.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/cpolyn25.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/cpolyp25.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/cpolynlp.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/cpolyplp.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/cstrip.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/diode18.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/diode25.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/dgnsvt18.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/dgpsvt18.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/dgnsvt25.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/dgpsvt25.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/diodeiso.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/dr18otp.scs" section=SSA
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/dr25.scs" section=SSA
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/dr25otp.scs" section=SSA
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/ext18hv.scs" section=SSA
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/ext25hv.scs" section=SSA
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/svt18.scs" section=SSA
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/svt25.scs" section=SSA
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/svt25dram.scs" section=SSA
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/zvt25.scs" section=SSA
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/mtpcell.scs" section=TT
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/rpdiff.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/rpolyh.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/rpolyn.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/rpolyp.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/rpolys.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/rmetal.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/rpolyni.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/rpolypi.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/schottky.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/schottky2.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/var_pnw.scs" section=MAX
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/cpo12nw_var.scs" section=MAX
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/cpo18nw_var.scs" section=MAX
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/cpo18pw_var.scs" section=MAX
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/cpo25nw_var.scs" section=MAX
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/cpo25pw_var.scs" section=MAX
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/cmom.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/ind_pat_7m4x0y2z.scs" section=MAX
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/ind_lomf_7m4x0y2z.scs" section=MAX
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/ind_lonw_7m4x0y2z.scs" section=MAX
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/ind_nw_7m4x0y2z.scs" section=MAX
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/ind_la_7m4x0y2z.scs" section=MAX
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/resrdl_tsv.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/veriloga.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/mismatch_switch.scs" section=Crolles
+
+endsection 8
+
+section 9
+	// Cmax
+
+        include "/site/edu/es/DAISY/daisy/pdkSpecific/stm065rf/sim/models/stat_flags.scs"
+	include "/site/edu/es/DAISY/daisy/pdkSpecific/stm065rf/sim/models/global_flags.scs"
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/common_poly.scs" section=TT
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/common_active.scs" section=TT
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/common_go1.scs" section=TT
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/common_be.scs" section=cmax
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/common_metal.scs" section=cmax
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/common_cmim5.scs" section=cmax
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/common_go2.scs" section=TT
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/common_well.scs" section=TT
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/common_varactor.scs" section=TYP
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/common_varind.scs" section=TYP
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/diodegp.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/hvtgp.scs" section=TT
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/lvtgp.scs" section=TT
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/sramdpsvtgp.scs" section=TT
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/sramspsvtgp.scs" section=TT
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/svtgp.scs" section=TT
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/diodelp.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/hpalp.scs" section=TT
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/hvtlp.scs" section=TT
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/lvtlp.scs" section=TT
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/sramdphvtlp.scs" section=TT
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/sramdpsvtlp.scs" section=TT
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/sramsphvtlp.scs" section=TT
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/sramspsvtlp.scs" section=TT
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/svtlp.scs" section=TT
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/npnv.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/pnpv.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/cfringe.scs" section=cmax
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/cfringelem.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/cmetal.scs" section=cmax
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/cmim.scs" section=cmax
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/cmim5.scs" section=cmax
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/cplate.scs" section=cmax
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/cpolyn18.scs" section=cmax
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/cpolyp18.scs" section=cmax
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/cpolyn25.scs" section=cmax
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/cpolyp25.scs" section=cmax
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/cpolynlp.scs" section=cmax
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/cpolyplp.scs" section=cmax
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/cstrip.scs" section=cmax
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/diode18.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/diode25.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/dgnsvt18.scs" section=cmax
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/dgpsvt18.scs" section=cmax
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/dgnsvt25.scs" section=cmax
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/dgpsvt25.scs" section=cmax
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/diodeiso.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/dr18otp.scs" section=TT
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/dr25.scs" section=TT
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/dr25otp.scs" section=TT
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/ext18hv.scs" section=TT
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/ext25hv.scs" section=TT
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/svt18.scs" section=TT
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/svt25.scs" section=TT
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/svt25dram.scs" section=TT
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/zvt25.scs" section=TT
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/mtpcell.scs" section=TT
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/rpdiff.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/rpolyh.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/rpolyn.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/rpolyp.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/rpolys.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/rmetal.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/rpolyni.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/rpolypi.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/schottky.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/schottky2.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/var_pnw.scs" section=TYP
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/cpo12nw_var.scs" section=TYP
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/cpo18nw_var.scs" section=TYP
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/cpo18pw_var.scs" section=TYP
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/cpo25nw_var.scs" section=TYP
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/cpo25pw_var.scs" section=TYP
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/cmom.scs" section=cmax
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/ind_pat_7m4x0y2z.scs" section=TYP
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/ind_lomf_7m4x0y2z.scs" section=TYP
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/ind_lonw_7m4x0y2z.scs" section=TYP
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/ind_nw_7m4x0y2z.scs" section=TYP
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/ind_la_7m4x0y2z.scs" section=TYP
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/resrdl_tsv.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/veriloga.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/mismatch_switch.scs" section=Crolles
+
+endsection 9
+
+section 10
+	// Cmin
+
+        include "/site/edu/es/DAISY/daisy/pdkSpecific/stm065rf/sim/models/stat_flags.scs"
+	include "/site/edu/es/DAISY/daisy/pdkSpecific/stm065rf/sim/models/global_flags.scs"
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/common_poly.scs" section=TT
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/common_active.scs" section=TT
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/common_go1.scs" section=TT
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/common_be.scs" section=cmin
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/common_metal.scs" section=cmin
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/common_cmim5.scs" section=cmin
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/common_go2.scs" section=TT
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/common_well.scs" section=TT
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/common_varactor.scs" section=TYP
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/common_varind.scs" section=TYP
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/diodegp.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/hvtgp.scs" section=TT
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/lvtgp.scs" section=TT
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/sramdpsvtgp.scs" section=TT
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/sramspsvtgp.scs" section=TT
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/svtgp.scs" section=TT
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/diodelp.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/hpalp.scs" section=TT
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/hvtlp.scs" section=TT
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/lvtlp.scs" section=TT
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/sramdphvtlp.scs" section=TT
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/sramdpsvtlp.scs" section=TT
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/sramsphvtlp.scs" section=TT
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/sramspsvtlp.scs" section=TT
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/svtlp.scs" section=TT
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/npnv.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/pnpv.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/cfringe.scs" section=cmin
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/cfringelem.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/cmetal.scs" section=cmin
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/cmim.scs" section=cmin
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/cmim5.scs" section=cmin
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/cplate.scs" section=cmin
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/cpolyn18.scs" section=cmin
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/cpolyp18.scs" section=cmin
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/cpolyn25.scs" section=cmin
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/cpolyp25.scs" section=cmin
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/cpolynlp.scs" section=cmin
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/cpolyplp.scs" section=cmin
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/cstrip.scs" section=cmin
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/diode18.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/diode25.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/dgnsvt18.scs" section=cmin
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/dgpsvt18.scs" section=cmin
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/dgnsvt25.scs" section=cmin
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/dgpsvt25.scs" section=cmin
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/diodeiso.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/dr18otp.scs" section=TT
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/dr25.scs" section=TT
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/dr25otp.scs" section=TT
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/ext18hv.scs" section=TT
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/ext25hv.scs" section=TT
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/svt18.scs" section=TT
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/svt25.scs" section=TT
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/svt25dram.scs" section=TT
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/zvt25.scs" section=TT
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/mtpcell.scs" section=TT
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/rpdiff.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/rpolyh.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/rpolyn.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/rpolyp.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/rpolys.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/rmetal.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/rpolyni.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/rpolypi.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/schottky.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/schottky2.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/var_pnw.scs" section=TYP
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/cpo12nw_var.scs" section=TYP
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/cpo18nw_var.scs" section=TYP
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/cpo18pw_var.scs" section=TYP
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/cpo25nw_var.scs" section=TYP
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/cpo25pw_var.scs" section=TYP
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/cmom.scs" section=cmin
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/ind_pat_7m4x0y2z.scs" section=TYP
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/ind_lomf_7m4x0y2z.scs" section=TYP
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/ind_lonw_7m4x0y2z.scs" section=TYP
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/ind_nw_7m4x0y2z.scs" section=TYP
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/ind_la_7m4x0y2z.scs" section=TYP
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/resrdl_tsv.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/veriloga.scs" section=typ
+include "/sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/SPECTRE/CORNERS/mismatch_switch.scs" section=Crolles
+
+endsection 10
+
+endlibrary

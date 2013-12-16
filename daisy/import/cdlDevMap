@@ -1,0 +1,98 @@
+devMap := nfet nch_na33
+propMatch := subtype NY
+addProp := model nch_hvt
+termMap := D D S S G G B B
+
+devMap := pfet pch_na33
+propMatch := subtype PY
+addProp := model pch_hvt
+termMap := D D S S G G B B
+
+
+devMap := nfet nch_hvt
+propMatch := subtype NB
+addProp := model nch_hvt
+termMap := D D S S G G B B
+
+devMap := pfet pch_hvt
+propMatch := subtype PB
+addProp := model pch_hvt
+termMap := D D S S G G B B
+
+
+devMap := nfet nch
+propMatch := subtype NA
+addProp := model nch
+termMap := D D S S G G B B
+
+devMap := pfet pch
+propMatch := subtype PA
+addProp := model pch
+termMap := D D S S G G B B
+
+devMap := nfet nch_33
+propMatch := subtype NH
+addProp := model nch_33
+termMap := D D S S G G B B
+
+devMap := pfet pch_33
+propMatch := subtype PH
+addProp := model pch_33
+termMap := D D S S G G B B
+
+devMap := diode ndio_33
+propMatch := subtype ND
+addProp := model ndio_33
+termMap := PLUS PLUS MINUS MINUS
+
+devMap := diode pdio_33
+propMatch := subtype PD
+addProp := model pdio_33
+termMap := PLUS PLUS MINUS MINUS
+
+devMap := diode ndio
+propMatch := subtype NX
+addProp := model ndio
+termMap := PLUS PLUS MINUS MINUS
+
+devMap := diode ndio_esd
+propMatch := subtype NE
+addProp := model ndio_esd
+termMap := PLUS PLUS MINUS MINUS
+
+devMap := diode pdio
+propMatch := subtype PX
+addProp := model pdio
+termMap := PLUS PLUS MINUS MINUS
+
+
+devMap := resistor rm1
+addProp := model rm1
+propMatch := subtype R1
+termMap := PLUS PLUS MINUS MINUS
+
+devMap := resistor rm2
+addProp := model rm2
+propMatch := subtype R2
+termMap := PLUS PLUS MINUS MINUS
+
+devMap := resistor rppoly
+addProp := model rppoly
+propMatch := subtype RP
+termMap := PLUS PLUS MINUS MINUS
+
+devMap := resistor rppolywo
+addProp := model rppolywo
+propMatch := subtype RW
+termMap := PLUS PLUS MINUS MINUS
+
+devMap := resistor rnpolywo
+addProp := model rppolywo
+propMatch := subtype RY
+termMap := PLUS PLUS MINUS MINUS
+
+devMap := resistor rppolys
+addProp := model rppolys
+propMatch := subtype RQ
+termMap := PLUS PLUS MINUS MINUS
+

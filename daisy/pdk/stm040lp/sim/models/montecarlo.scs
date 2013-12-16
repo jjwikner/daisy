@@ -1,0 +1,27 @@
+//---------------------------------------------
+// Model file for Monte Carlo Simulation
+// global_flags_mc.scs sets the flags to enable variations
+// June 11:55 2012
+//---------------------------------------------
+
+include "global_flags_mc.scs"
+include "STaddon.scs" section=MODEL
+include "cmom.scs" section=statcrolles
+include "common_mc.scs" section=typ
+include "cpolyn18.scs" section=stat
+include "cpolynlp.scs" section=stat
+include "cpolyp18.scs" section=stat
+include "diode18.scs" section=stat
+include "diodeiso.scs" section=stat
+include "diodelp.scs" section=stat
+include "dr18.scs" section=stat
+include "dr18otp.scs" section=stat
+include "hvtlp.scs" section=stat
+include "lvtlp.scs" section=stat
+include "npnv.scs" section=stat
+include "pnpv.scs" section=stat
+include "resistor.scs" section=stat
+include "resmetal.scs" section=stat
+include "svt18.scs" section=stat
+include "svt18ps.scs" section=stat
+include "svtlp.scs" section=stat

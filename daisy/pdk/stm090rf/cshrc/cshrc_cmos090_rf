@@ -1,0 +1,124 @@
+#!/bin/tcsh -f
+#
+#
+
+setenv CMOS090_DIR /sw/mentor/libraries/cmos090_61_RF
+
+#####################################################
+##  Check if the line below is correct :
+##  1) if you are running a different version than 5.1.41
+##  2) if you are running on Linux or hp
+#####################################################
+
+setenv CDS_INST_DIR $CMOS090_DIR/UNIOPUS/uniopus/5.1.41/sun
+
+
+#######################################################
+# Modify the LM_LICENSE_FILE with your installation ###
+######  (Cadence license server) ######################
+#######################################################
+
+setenv LM_LICENSE_FILE 1706@license.isy.liu.se
+setenv RCXT_HOME_DIR /sw/synopsys/Star-RCXT/X-2005.06.SP2/
+setenv AVANTI_STAR_HOME_DIR /sw/synopsys/Star-RCXT/X-2005.06.SP2/sparc64_star-rcxt
+setenv PATH ${PATH}:${AVANTI_STAR_HOME_DIR}/bin
+
+
+#setenv LM_LICENSE_FILE 5287@cime450:5280@cimeserv
+
+
+
+##########################################################
+######## Environment for Calibre #########################
+# 1) Uncomment the 3 following lines         ############# 
+# 2) Modify the path to Calibre installation #############
+# 3) Modify the LM_LICENSE_FILE with your installation ###
+##########################################################
+
+
+#setenv MGC_HOME /sw/mentor/calibre_2004.2_5.19
+#set path=($path $MGC_HOME/bin )
+#setenv LM_LICENSE_FILE ${LM_LICENSE_FILE}:1706@license.isy.liu.se
+
+#setenv MGC_HOME /softs/calibre2005_3_12/ss5_cal_2005.3_12.18
+#set path=($path $MGC_HOME/bin )
+#setenv LM_LICENSE_FILE ${LM_LICENSE_FILE}:1717@cime450
+
+#######################################################
+#######################################################
+
+###################################################
+######## DON'T MODIFY THE LINES BELOW #############
+###################################################
+
+setenv UNICAD_KERNEL_ROOT $CMOS090_DIR/UnicadKernel_3.4
+set path=($path $UNICAD_KERNEL_ROOT $UNICAD_KERNEL_ROOT/bin)
+
+setenv UK_PATH $CMOS090_DIR/UnicadKernel_3.4;
+
+## Modified by JJW
+setenv UCDPRJDIR $WORKAREA ## $cwd;
+
+source $CMOS090_DIR/UnicadKernel_3.4/lib/csh/uk-header.csh;
+
+
+setenv PRODUCT_ROOT $CDS_INST_DIR;
+source $CDS_INST_DIR/uniopus.csh;
+unsetenv PRODUCT_ROOT;
+
+setenv PRODUCT_ROOT $CMOS090_DIR/ArtistKit_4.7;
+source $CMOS090_DIR/ArtistKit_4.7/ArtistKit.csh;
+unsetenv PRODUCT_ROOT;
+
+setenv PRODUCT_ROOT $CMOS090_DIR/DK_cmos090gp_RF_7M2T_50A_6.1;
+source $CMOS090_DIR/DK_cmos090gp_RF_7M2T_50A_6.1/DK_cmos090gp_RF_7M2T_50A.csh;
+unsetenv PRODUCT_ROOT;
+
+setenv PRODUCT_ROOT $CMOS090_DIR/DftKit_1.4;
+source $CMOS090_DIR/DftKit_1.4/DftKit.csh;
+unsetenv PRODUCT_ROOT;
+
+setenv PRODUCT_ROOT $CMOS090_DIR/PLSKit_1.4.1;
+source $CMOS090_DIR/PLSKit_1.4.1/PLSKit.csh;
+unsetenv PRODUCT_ROOT;
+
+setenv PRODUCT_ROOT $CMOS090_DIR/SignOffKit_2.3.11.1;
+source $CMOS090_DIR/SignOffKit_2.3.11.1/SignOffKit.csh;
+unsetenv PRODUCT_ROOT;
+
+setenv PRODUCT_ROOT $CMOS090_DIR/SignOffTechnoKit_cmos090gp_7M2T_6.0;
+source $CMOS090_DIR/SignOffTechnoKit_cmos090gp_7M2T_6.0/SignOffTechnoKit_cmos090gp_7M2T.csh;
+unsetenv PRODUCT_ROOT;
+
+setenv PRODUCT_ROOT $CMOS090_DIR/SynopsysHandOffKit_2.3.11.1;
+source $CMOS090_DIR/SynopsysHandOffKit_2.3.11.1/SynopsysHandOffKit.csh;
+unsetenv PRODUCT_ROOT;
+
+setenv PRODUCT_ROOT $CMOS090_DIR/Unidoc_2.7.b;
+source $CMOS090_DIR/Unidoc_2.7.b/Unidoc.csh;
+unsetenv PRODUCT_ROOT;
+
+setenv PRODUCT_ROOT $CMOS090_DIR/UnixBudgetKit_2.3.5;
+source $CMOS090_DIR/UnixBudgetKit_2.3.5/UnixBudgetKit.csh;
+unsetenv PRODUCT_ROOT;
+
+setenv PRODUCT_ROOT $CMOS090_DIR/adv_AvantiKit_2.3.8.2;
+source $CMOS090_DIR/adv_AvantiKit_2.3.8.2/adv_AvantiKit.csh;
+unsetenv PRODUCT_ROOT;
+
+setenv PRODUCT_ROOT $CMOS090_DIR/adv_AvantiTechnoKit_cmos090_7M2T_M2H_AP_6.0;
+source $CMOS090_DIR/adv_AvantiTechnoKit_cmos090_7M2T_M2H_AP_6.0/adv_AvantiTechnoKit_cmos090_7M2T_M2H_AP.csh;
+unsetenv PRODUCT_ROOT;
+
+setenv PRODUCT_ROOT $CMOS090_DIR/adv_AvantiTechnoKit_cmos090_7M2T_M2V_AP_6.0;
+source $CMOS090_DIR/adv_AvantiTechnoKit_cmos090_7M2T_M2V_AP_6.0/adv_AvantiTechnoKit_cmos090_7M2T_M2V_AP.csh;
+unsetenv PRODUCT_ROOT;
+
+ 
+setenv UK_LOAD_PRODS "ArtistKit DK_cmos090gp_RF_7M2T_50A DftKit PLSKit SignOffKit SignOffTechnoKit_cmos090gp_7M2T SynopsysHandOffKit UnicadKernel UnixBudgetKit Unidoc adv_AvantiKit adv_AvantiTechnoKit_cmos090_7M2T_M2H_AP adv_AvantiTechnoKit_cmos090_7M2T_M2V_AP uniopus";
+
+
+
+source $CMOS090_DIR/UnicadKernel_3.4/lib/csh/uk-tailer.csh;
+
+#######################################################

@@ -1,0 +1,33 @@
+// VerilogA for daisy, daisyStopTran, veriloga
+
+// Thanks to Ian Watson
+
+`include "constants.vams"
+`include "disciplines.vams"
+
+module daisyStopTran(vInterrupt);
+
+input vInterrupt;
+electrical vInterrupt;
+
+parameter real stopTime = 1.0 from (0:inf);
+
+analog 
+       
+       begin
+       
+       // Stop simulation if either $abstime has passed the stopTime 
+       // or if the interrupt voltage is higher than 0.5 V.
+
+         if ($abstime > stopTime ) 
+	      begin
+		$finish(0);
+	      end
+         if ( V(vInterrupt) > 0.5 ) 
+	    begin 
+	       $finish(0);
+	       end
+    end
+     
+
+endmodule

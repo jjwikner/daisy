@@ -1,0 +1,428 @@
+mgc_layer_map(list(
+                list("ndiff" `(ndiff net))
+                list("pdiff" `(pdiff net))
+                list("diffcon" '(CONT net))
+                list("ndiffcon" '(CONT net))
+                list("pdiffcon" '(CONT net))
+                list("routingpoly" '(POLY1 net))
+                list("poly1con" '(CONT net))
+                list("routingpoly2" '(POLY2 net))
+                list("poly2con" '(CONT net))
+                list("routingmet1" '(MET1 net))
+                list("routingvia" '(VIA1 net))
+                list("routingmet2" '(MET2 net))
+                list("routingvia2" '(VIA2 net))
+                list("routingmet3" '(MET3 net))
+                list("routingvia3" '(VIA3 net))
+                list("routingmet4" '(MET4 net))
+              )
+)
+
+(pmos4 (PRIMLIB pmos4 symbol)
+  (
+    (g G)
+    (s S)
+    (d D)
+    (b B)
+  )
+  (
+    (nil ng 1) ; Property ng (number of gates) is not in the layout
+               ; so set its value in the schematic.
+    (w wtot)   ; wtot is not in the layout, it is an ams property.
+    (w w)      ; Here, ng=1 so we set wtot=w.
+  )
+)
+
+(pmosm4 (PRIMLIB pmosm4 symbol)
+  (
+    (g G)
+    (s S)
+    (d D)
+    (b B)
+  )
+  (
+    (nil ng 1) ; Property ng (number of gates) is not in the layout
+               ; so set its value in the schematic.
+    (w wtot)   ; wtot is not in the layout, it is an ams property.
+    (w w)      ; Here, ng=1 so we set wtot=w.
+  )
+)
+
+(pmosrf (PRIMLIBRF pmosrf symbol)
+  (
+    (g G)
+    (s S)
+    (d D)
+    (b B)
+  )
+  (
+    (nil ng 1) ; Property ng (number of gates) is not in the layout
+               ; so set its value in the schematic.
+    (w wtot)   ; wtot is not in the layout, it is an ams property.
+    (w w)      ; Here, ng=1 so we set wtot=w.
+  )
+)
+
+(pmosl4 (PRIMLIB pmosl4 symbol)
+  (
+    (g G)
+    (s S)
+    (d D)
+    (b B)
+  )
+  (
+    (nil ng 1) ; Property ng (number of gates) is not in the layout
+               ; so set its value in the schematic.
+    (w wtot)   ; wtot is not in the layout, it is an ams property.
+    (w w)      ; Here, ng=1 so we set wtot=w.
+  )
+)
+
+(pmosml4 (PRIMLIB pmosml4 symbol)
+  (
+    (g G)
+    (s S)
+    (d D)
+    (b B)
+  )
+  (
+    (nil ng 1) ; Property ng (number of gates) is not in the layout
+               ; so set its value in the schematic.
+    (w wtot)   ; wtot is not in the layout, it is an ams property.
+    (w w)      ; Here, ng=1 so we set wtot=w.
+  )
+)
+
+(nmos4 (PRIMLIB nmos4 symbol)
+  (
+    (g G)
+    (s S)
+    (d D)
+    (b B)
+  )
+  (
+    (nil ng 1) ; Property ng (number of gates) is not in the layout
+               ; so set its value in the schematic.
+    (w wtot)   ; wtot is not in the layout, it is an ams property.
+    (w w)      ; Here, ng=1 so we set wtot=w.
+  )
+)
+
+(nmosm4 (PRIMLIB nmosm4 symbol)
+  (
+    (g G)
+    (s S)
+    (d D)
+    (b B)
+  )
+  (
+    (nil ng 1) ; Property ng (number of gates) is not in the layout
+               ; so set its value in the schematic.
+    (w wtot)   ; wtot is not in the layout, it is an ams property.
+    (w w)      ; Here, ng=1 so we set wtot=w.
+  )
+)
+
+(nmosrf (PRIMLIBRF nmosrf symbol)
+  (
+    (g G)
+    (s S)
+    (d D)
+    (b B)
+  )
+  (
+    (nil ng 1) ; Property ng (number of gates) is not in the layout
+               ; so set its value in the schematic.
+    (w wtot)   ; wtot is not in the layout, it is an ams property.
+    (w w)      ; Here, ng=1 so we set wtot=w.
+  )
+)
+
+(nmosl4 (PRIMLIB nmosl4 symbol)
+  (
+    (g G)
+    (s S)
+    (d D)
+    (b B)
+  )
+  (
+    (nil ng 1) ; Property ng (number of gates) is not in the layout
+               ; so set its value in the schematic.
+    (w wtot)   ; wtot is not in the layout, it is an ams property.
+    (w w)      ; Here, ng=1 so we set wtot=w.
+  )
+)
+
+(nmosml4 (PRIMLIB nmosml4 symbol)
+  (
+    (g G)
+    (s S)
+    (d D)
+    (b B)
+  )
+  (
+    (nil ng 1) ; Property ng (number of gates) is not in the layout
+               ; so set its value in the schematic.
+    (w wtot)   ; wtot is not in the layout, it is an ams property.
+    (w w)      ; Here, ng=1 so we set wtot=w.
+  )
+)
+
+(nmosh (PRIMLIB nmosh4 symbol)
+  (
+    (g G)
+    (s S)
+    (d D)
+    (b B)
+  )
+  (
+    (nil ng 1) ; Property ng (number of gates) is not in the layout
+               ; so set its value in the schematic.
+    (w wtot)   ; wtot is not in the layout, it is an ams property.
+    (w w)      ; Here, ng=1 so we set wtot=w.
+  )
+)
+
+(nmosmh (PRIMLIB nmosmh4 symbol)
+  (
+    (g G)
+    (s S)
+    (d D)
+    (b B)
+  )
+  (
+    (nil ng 1) ; Property ng (number of gates) is not in the layout
+               ; so set its value in the schematic.
+    (w wtot)   ; wtot is not in the layout, it is an ams property.
+    (w w)      ; Here, ng=1 so we set wtot=w.
+  )
+)
+
+(nmoshl4 (PRIMLIB nmoshl4 symbol)
+  (
+    (g G)
+    (s S)
+    (d D)
+    (b B)
+  )
+  (
+    (nil ng 1) ; Property ng (number of gates) is not in the layout
+               ; so set its value in the schematic.
+    (w wtot)   ; wtot is not in the layout, it is an ams property.
+    (w w)      ; Here, ng=1 so we set wtot=w.
+  )
+)
+
+(nmosmhl4 (PRIMLIB nmosmhl4 symbol)
+  (
+    (g G)
+    (s S)
+    (d D)
+    (b B)
+  )
+  (
+    (nil ng 1) ; Property ng (number of gates) is not in the layout
+               ; so set its value in the schematic.
+    (w wtot)   ; wtot is not in the layout, it is an ams property.
+    (w w)      ; Here, ng=1 so we set wtot=w.
+  )
+)
+
+(pnpvert10 (PRIMLIB vert10_4 symbol)
+  (
+    (c C)
+    (b B)
+    (e E)
+    (nil SUB (C))
+  )
+  (
+    (area m (area*1e12))
+  )
+)
+
+(pnplat (PRIMLIB lat2 symbol)
+  (
+    (c C)
+    (b B)
+    (e E)
+    (s SUB)
+    (g G)
+  )
+  (
+    (area m (area*1e12))
+  )
+)
+
+(rpoly1 (PRIMLIB rpoly1 symbol)
+  (
+    (pos PLUS)
+    (neg MINUS)
+  )
+)
+
+(rpoly2 (PRIMLIB rpoly2 symbol)
+  (
+    (pos PLUS)
+    (neg MINUS)
+  )
+)
+
+(rpoly2rf (PRIMLIBRF rpoly2rf symbol)
+  (
+    (pos PLUS)
+    (neg MINUS)
+    (sub REF)
+  )
+  (
+    (bends Bends)
+  )
+)
+
+(rpolyh (PRIMLIB rpolyh symbol)
+  (
+    (pos PLUS)
+    (neg MINUS)
+  )
+)
+
+(rpolyhrf (PRIMLIBRF rpolyhrf symbol)
+  (
+    (pos PLUS)
+    (neg MINUS)
+    (sub REF)
+  )
+  (
+    (bends Bends)
+  )
+)
+
+(rdiffp3 (PRIMLIB rdiffp3 symbol)
+  (
+    (pos PLUS)
+    (neg MINUS)
+    (sub B)
+  )
+)
+
+(rdiffn3 (PRIMLIB rdiffn3 symbol)
+  (
+    (pos PLUS)
+    (neg MINUS)
+    (sub B)
+  )
+)
+
+(rnwell (PRIMLIB rnwell symbol)
+  (
+    (pos PLUS)
+    (neg MINUS)
+    (sub B)
+  )
+)
+
+(cpolya (PRIMLIB cpoly symbol)
+  (
+    (pos MINUS)
+    (neg PLUS)
+  )
+  (
+    (a area); (a*1e-12))
+    (p perimeter); (p*1e-6))
+  )
+)
+
+(cpolyrf (PRIMLIBRF cpolyrf symbol)
+  (
+    (pos PLUS)
+    (neg MINUS)
+    (sub REF)
+  )
+)
+
+(cmim (PRIMLIB cmim symbol)
+  (
+    (pos PLUS)
+    (neg MINUS)
+  )
+)
+
+(cvar (PRIMLIB cvar symbol)
+  (
+    (g G)
+    (s S)
+    (d nil)
+    (b B)
+  )
+)
+
+(nd (PRIMLIB subdiode symbol)
+  (
+    (pos PLUS)
+    (neg MINUS)
+  )
+  (
+    (area area); (area*1e-12))
+    (pj perimeter); (pj*1e-6))
+  )
+)
+
+(pd (PRIMLIB welldiode symbol)
+  (
+    (pos PLUS)
+    (neg MINUS)
+  )
+  (
+    (area area); (area*1e-12))
+    (pj perimeter); (pj*1e-6))
+  )
+)
+
+(nwd (PRIMLIB nwd symbol)
+  (
+    (pos PLUS)
+    (neg MINUS)
+  )
+  (
+    (area area); (area*1e-12))
+    (pj perimeter); (pj*1e-6))
+  )
+)
+
+(zd2sm24 (PRIMLIB zd2sm24 symbol)
+  (
+    (pos A)
+    (neg C)
+    (sub S)
+  )
+)
+
+(short (PRIMLIB short symbol)
+  (
+    (pos PLUS)
+    (neg MINUS)
+  )
+)
+
+(SP026S200D (SPIRALS_4M SP026S200D symbol)
+  (
+    (pos P1)
+    (neg P2)
+    (sub SUB)
+  )
+)
+
+
+
+((p cap c) (PRIMLIB pcapacitor symbol)
+  (
+    (PLUS)
+    (MINUS)
+  )
+)
+
+((p res r) (PRIMLIB presistor symbol)
+  (
+    (PLUS)
+    (MINUS)
+  )
+)

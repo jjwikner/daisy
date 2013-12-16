@@ -1,0 +1,13 @@
+#!/bin/sh
+
+# lefoux
+
+# performs def out on the given cell, lib, etc.
+
+# lefoux DDCNAME LIBNAME CELLNAME 
+
+# You must create the reference lib cell list too. 
+
+cd $WORKAREA
+mkdir -p $WORKAREA/$1/pnr/lef/$3
+lefout -lef $WORKAREA/$1/pnr/lef/$3/$2.$3.lef -lib $2 -cellList $WORKAREA/$1/pnr/lef/$3/cellList  -overwrite -busBitChar [] -dividerChar / -ver 5.5

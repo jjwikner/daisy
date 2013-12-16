@@ -1,0 +1,20 @@
+#--|---------------------------------------------------------------------------
+#--| Alias definitions
+#--|---------------------------------------------------------------------------
+
+
+#--| Utskrift av filer --------------------------------------------------------
+
+alias plpr	'enscript -G -fCourier7 -FCourier12 \!*'	   # Programkod
+alias p2lpr	'enscript -rG2 -fCourier7 -FCourier12 \!*'	   # liggande 2 kol
+alias tlpr	'enscript -G -fTimes-Roman10 -FTimes-Roman12 \!*'  # Engelsk text
+alias slpr	'swscript -G -fTimes-Roman10 -FTimes-Roman12 \!*'  # Svensk text
+
+alias zprint1  'a2ps -l -2 -r -nu -ns -nL -nP -H"\!*" -d < "\!*" | lpr'   # liggande 2 kol
+alias zprint2  'a2ps -p -1 -r -nu -ns -nL -nP -H"\!*" -d < "\!*" | lpr'   # liggande 1 kol
+alias zprint3  'a2ps -l -1 -r -nu -ns -nL -nP -H"\!*" -d < "\!*" | lpr'   # stående 1 kol
+
+
+alias zprint_info1 'echo "zprint:  Utskrift liggande 2 kol"'
+alias zprint_info2 'echo "zprint2: Utskrift liggande 1 kol"'
+alias zprint_info3 'echo "zprint3: Utskrift stående  1 kol"'

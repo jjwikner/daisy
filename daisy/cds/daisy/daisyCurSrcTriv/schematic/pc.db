@@ -1,0 +1,10 @@
+#
+analogLib idc symbol
+I1
+#ISCELL
+basic iopin symbolr
+PIN4
+PIN5
+#ISCELL
+daisy daisySheet symbol
+I0

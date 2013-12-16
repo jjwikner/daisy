@@ -1,0 +1,44 @@
+
+# Set the pdk specifik bin directory to the path
+setenv PATH ${PATH}:$WORKAREA/daisy/pdkSpecific/$CDSPROCESSNAME/bin
+
+# Run the STM source file
+
+
+if ($CDSDATABASE == "oa") then
+
+	source $PDK_HOME/cshrc/cshrc_cmos040_lp
+	setenv PDKAREA  /sw/cadence/libraries/cmos040lp_21/PDK_STM_cmos040lp_AMS_7m4x0y2z_2V51V8@2.1/LIB/CADENCE_OA
+else
+	## This should potentially be another cshrc from ST for the
+	## CDBA format.
+
+	source $PDK_HOME/cshrc/cshrc_cmos040_lp
+	setenv PDKAREA /sw/cadence/libraries/cmos040lp_11a/DK_cmos040lp_AMS_7m4x0y2z_2V51V8@1.1a/DATA/LIB/lib/cmos045/
+
+endif
+
+setenv AVANTI_STAR_HOME_DIR /sw/synopsys/Y-2006.06-SP1_star-RCXT/linux_star-rcxt
+setenv PATH ${PATH}:${AVANTI_STAR_HOME_DIR}/bin
+
+echo "Check the DRC deck settings (daisy comment)"
+# setenv DAISY_DRC_DECK $U2DK_CALIBRE_DRC_DECK
+
+# Setup the calibre runset files (daisy specific -- override ST !)
+# These will most likely be more useful for something like UMC
+
+setenv MGC_CALIBRE_DRC_RUNSET_FILE $PDK_HOME/pv/drcRunset
+setenv MGC_CALIBRE_DFM_RUNSET_FILE $PDK_HOME/pv/drcDfmRunset
+setenv MGC_CALIBRE_N80_RUNSET_FILE $PDK_HOME/pv/drcN80Runset
+setenv MGC_CALIBRE_ANT_RUNSET_FILE $PDK_HOME/pv/antRunset
+setenv MGC_CALIBRE_LVS_RUNSET_FILE $PDK_HOME/pv/lvsRunset
+setenv MGC_CALIBRE_PEX_RUNSET_FILE $PDK_HOME/pv/xrcRunset
+
+# This disables the compilation of veriloga code (to avoid bugs in
+# larger projects)
+# Could probably be moved to daisy/tcshrc instead
+setenv CDS_AHDLCMI_ENABLE NO
+
+# setenv DAISY_DRC_DECK $WORKAREA/daisy/pdkSpecific/$CDSPROCESSNAME/verification/Calibre/drc/calibre.drc
+
+

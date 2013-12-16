@@ -1,0 +1,16 @@
+#
+# Edit Lock-Stake file. CAUTION: Please do not change.
+#
+# Information about current Edit Lock Owner.
+#
+LockStakeVersion               1.1
+LoginName                      petterk
+HostName                       jarl.isy.liu.se
+ProcessIdentifier              8777
+ProcessCreationTime_UTC        1323958804
+ProcessCreationTime_Readable   Thu Dec 15 15:20:04 2011 CET
+AppIdentifier                  OA File System Design Manager
+OSType                         unix
+ReasonForPlacingEditLock       OpenAccess edit lock
+FilePathUsedToEditLock         /site/edu/es/DAISY/daisy/oa/daisyAlpha/daisyLike/layout/layout.oa.cdslck
+TimeEditLocked                 Fri Dec 16 16:15:32 2011 CET

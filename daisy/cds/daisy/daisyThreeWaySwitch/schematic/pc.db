@@ -1,0 +1,15 @@
+#
+analogLib switch symbol
+W2
+W0
+#ISCELL
+daisy daisySheet symbol
+I0
+#ISCELL
+basic iopin symbolr
+PIN2
+PIN1
+PIN0
+#ISCELL
+basic ipin symbol
+PIN3

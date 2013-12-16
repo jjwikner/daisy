@@ -1,0 +1,127 @@
+#!/bin/csh -f
+#
+#
+
+setenv CMOS065RF_DIR  /sw/cadence/libraries/cmos065_RF_534
+
+#####################################################
+##  Modify the line below with the path to your installation
+##  of MMSIM from Cadence
+#####################################################
+
+setenv CDS_MMSIM_DIR /sw/cadence/MMSIM10.1
+#setenv CDS_MMSIM_DIR /sw/cadence/MMSIM72
+
+#####################################################
+##  Check and modify the line below 
+#####################################################
+
+setenv CDS_INST_DIR $CMOS065RF_DIR/UNIOPUS/uniopus/cadence_amsAMS2010.1_32_mmsim
+
+
+#######################################################
+# Modify the LM_LICENSE_FILE with your installation ###
+######  (Cadence license server) ######################
+#######################################################
+
+#setenv LM_LICENSE_FILE 5287@cimepe37:5280@v212
+setenv LM_LICENSE_FILE 1706@license.isy.liu.se
+setenv RCXT_HOME_DIR /sw/synopsys/Star-RCXT/X-2005.06.SP2
+
+
+##########################################################
+######## Environment for Calibre ######################### 
+# 1) Modify the path to Calibre installation #############
+# 2) Modify the LM_LICENSE_FILE with your installation ###
+##########################################################
+
+#setenv MGC_HOME /cmp/cad/calibre2009_3_32/ixl_cal_2009.3_32.24/
+#set path=($path $MGC_HOME/bin )
+#setenv LM_LICENSE_FILE ${LM_LICENSE_FILE}:1717@v212:1719@v211
+
+setenv MGC_HOME /sw/mentor/calibre_2006.1_19.20
+set path=($path $MGC_HOME/bin )
+
+setenv LM_LICENSE_FILE ${LM_LICENSE_FILE}:1706@license.isy.liu.se
+
+
+#######################################################
+#######################################################
+
+
+
+
+###################################################
+######## DON'T MODIFY THE LINES BELOW #############
+###################################################
+
+setenv UNICAD_KERNEL_ROOT $CMOS065RF_DIR/UnicadKernel@3.4.2a
+set path=($path $CDS_MMSIM_DIR/tools/bin $UNICAD_KERNEL_ROOT $UNICAD_KERNEL_ROOT/bin)
+
+setenv UK_PATH $CMOS065RF_DIR/UnicadKernel@3.4.2a;
+
+setenv UCDPRJDIR $WORKAREA; 
+
+source $CMOS065RF_DIR/UnicadKernel@3.4.2a/lib/csh/uk-header.csh;
+
+
+setenv PRODUCT_ROOT $CDS_INST_DIR;
+source $CDS_INST_DIR/.uk/uniopus.csh;
+unsetenv PRODUCT_ROOT;
+
+setenv PRODUCT_ROOT $CMOS065RF_DIR/ADSKit@3.1;
+source $PRODUCT_ROOT/ADSKit.csh;
+unsetenv PRODUCT_ROOT;
+
+setenv PRODUCT_ROOT $CMOS065RF_DIR/ArtistKit@5.6.0.1;
+source $PRODUCT_ROOT/ArtistKit.csh;
+unsetenv PRODUCT_ROOT;
+
+setenv PRODUCT_ROOT $CMOS065RF_DIR/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4;
+source $PRODUCT_ROOT/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8.csh;
+unsetenv PRODUCT_ROOT;
+
+setenv PRODUCT_ROOT $CMOS065RF_DIR/PLSCore@2.4.1;
+source $PRODUCT_ROOT/PLSCore.csh;
+unsetenv PRODUCT_ROOT;
+
+setenv PRODUCT_ROOT $CMOS065RF_DIR/FrontEndKit@3.0;
+source $PRODUCT_ROOT/FrontEndKit.csh;
+unsetenv PRODUCT_ROOT;
+
+setenv PRODUCT_ROOT $CMOS065RF_DIR/IccKit@1.5.1;
+source $PRODUCT_ROOT/IccKit.csh;
+unsetenv PRODUCT_ROOT;
+
+setenv PRODUCT_ROOT $CMOS065RF_DIR/SignOffKit@2.3.16.7;
+source $PRODUCT_ROOT/SignOffKit.csh;
+unsetenv PRODUCT_ROOT;
+
+setenv PRODUCT_ROOT $CMOS065RF_DIR/SignOffTechnoKit_cmos065lp_7m4x0y2z@5.3.4;
+source $PRODUCT_ROOT/SignOffTechnoKit_cmos065lp_7m4x0y2z.csh;
+unsetenv PRODUCT_ROOT;
+
+setenv PRODUCT_ROOT $CMOS065RF_DIR/EncounterKit@4.5.2;
+source $PRODUCT_ROOT/EncounterKit.csh;
+unsetenv PRODUCT_ROOT;
+
+setenv PRODUCT_ROOT $CMOS065RF_DIR/EncounterTechnoKit_cmos065_7m4x0y2z_AP@5.3.1;
+source $PRODUCT_ROOT/EncounterTechnoKit_cmos065_7m4x0y2z_AP.csh;
+unsetenv PRODUCT_ROOT;
+
+setenv PRODUCT_ROOT $CMOS065RF_DIR/adv_AvantiTechnoKit_cmos065_7m4x0y2z_AP@5.3.4;
+source $PRODUCT_ROOT/adv_AvantiTechnoKit_cmos065_7m4x0y2z_AP.csh;
+unsetenv PRODUCT_ROOT;
+
+setenv PRODUCT_ROOT $CMOS065RF_DIR/Unidoc_2.7.c;
+source $PRODUCT_ROOT/Unidoc.csh;
+unsetenv PRODUCT_ROOT;
+
+
+setenv UK_LOAD_PRODS "ADSKit ArtistKit DK_cmos065lpgp_RF_7m4x0y2z_2V51V8 PLSCore FrontEndKit IccKit SignOffKit SignOffTechnoKit_cmos065lp_7m4x0y2z EncounterKit EncounterTechnoKit_cmos065_7m4x0y2z_AP adv_AvantiTechnoKit_cmos065_7m4x0y2z_AP UnicadKernel Unidoc uniopus";
+
+
+
+source $CMOS065RF_DIR/UnicadKernel@3.4.2a/lib/csh/uk-tailer.csh;
+
+#######################################################

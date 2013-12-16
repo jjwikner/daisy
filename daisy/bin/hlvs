@@ -1,0 +1,27 @@
+#!/bin/sh
+
+if [ $USER = "jawi" ]
+    then
+      LJUSER="ctuser_jw"
+fi
+
+if [ $USER = "chja" ]
+    then
+      LJUSER="ctuser_sg"
+fi
+
+DIR="verification"
+
+if [ $HOST = "veda" ]
+    then
+      DIR="verification2"
+fi
+
+chmod -R gou+rwx $WORKAREA/verification/$1
+
+command="cd /home/$LJUSER/test/$DIR/$1/run/; run $1"
+
+echo $command
+
+
+ rexec -l $LJUSER -p cadence ljung `echo $command`

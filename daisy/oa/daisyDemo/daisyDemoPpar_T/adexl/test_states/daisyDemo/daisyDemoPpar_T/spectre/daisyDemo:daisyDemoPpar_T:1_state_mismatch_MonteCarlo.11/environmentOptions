@@ -1,0 +1,16 @@
+(envOpts enableArclength) nil
+(envOpts analysisOrder) ("ac")
+(envOpts sst2usecolon) nil
+(envOpts stopViewList) ("SimMosfetStandard" "SimDiodeStandard" "SimCpolyStandard" "SimCmetalStandard" "SimCfringeStandard" "SimCfringeAccurate" "SimResistorStandard" "SimResistorAccurate" "SimResistorHF" "SimResistorHFV" "SimBipolarStandard" "SimCmimStandard" "SimCapaStd" "SimCapaAcc" "SimMosfetAccurate" "SimMosfetBip" "SimMosfetrfStandard" "SimMosfetrfPSP" "SimVaractorStandard" "SimCmomStandard" "SimCmomAccurate" "SimCmomRF" "SimInductorStandard" "SimInductorAccurate" "SimRdlStandard" "spectre" "ahdl" "veriloga")
+(envOpts pllPlugin) ""
+(envOpts restart) ""
+(envOpts userCmdLineOption) ""
+(envOpts firstRun) nil
+(envOpts printComments) t
+(envOpts pllWizardinfo) ""
+(envOpts switchViewList) ("SimMosfetStandard" "SimDiodeStandard" "SimCpolyStandard" "SimCmetalStandard" "SimCfringeStandard" "SimCfringeAccurate" "SimResistorStandard" "SimResistorAccurate" "SimResistorHF" "SimResistorHFV" "SimBipolarStandard" "SimCmimStandard" "SimCapaStd" "SimCapaAcc" "SimMosfetAccurate" "SimMosfetBip" "SimMosfetrfStandard" "SimMosfetrfPSP" "SimVaractorStandard" "SimCmomStandard" "SimCmomAccurate" "SimCmomRF" "SimInductorStandard" "SimInductorAccurate" "SimRdlStandard" "spectre" "auCmos_sch" "cmos_sch" "cmos.sch" "ads_schematic" "schematic" "auGate_sch" "auGate.sch" "gate_sch" "gate.sch" "extracted" "ahdl" "veriloga")
+(envOpts vcoType) ""
+(envOpts savestate) ""
+(envOpts cmd64bit) nil
+(envOpts autoDisplay) t
+(envOpts paramRangeCheckFile) ""

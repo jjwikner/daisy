@@ -1,0 +1,13 @@
+;;
+;; Just some example files
+;;
+;; J Jacob Wikner, Jacob.Wikner@liu.se
+
+
+cvId = (hiGetCurrentWindow)->cellView
+
+(foreach instance cvId->instances
+	 (printf "%s\n" instance->name)
+)
+
+;; Then you can do more or less any operation you like...

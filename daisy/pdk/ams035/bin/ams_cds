@@ -1,0 +1,25 @@
+#!/bin/tcsh -f 
+
+# Workaround to start AMS kit
+# AMS skill files looks for the process id of ams_cds
+setenv AMS_PROGNAME `basename $0`                                  
+setenv AMS_CURR_DIR `pwd`
+setenv AMS_ERROR "${AMS_PROGNAME}: "
+setenv AMS_PLATFORM `${AMS_DIR}/programs/bin/ams_architecture`
+setenv AMS_DEFAULT_LIB "c35"
+
+# Set stream out template file (if available)
+if ( -e $WORKAREA/.xstreamOut ) then
+  setenv XST_OUT .xstreamOut
+endif
+
+if ( $CDSDATABASE == "oa" ) then
+  setenv AMS_DB "cds"
+  # Run the same command as cad in $DAISYAREA/cshrc/daisyAliases
+  virtuoso -log $CDS_LOG_PATH/CDS.$USER.`date '+20%y%m%d'`.$HOST.log &
+else
+  setenv AMS_DB "artist"
+  # Run the same command as cad in $DAISYAREA/cshrc/daisyAliases
+  icfb -log $CDS_LOG_PATH/CDS.$USER.`date '+20%y%m%d'`.$HOST.log &
+endif
+

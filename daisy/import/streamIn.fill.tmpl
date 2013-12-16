@@ -1,0 +1,46 @@
+;;(setq streamFile (strcat streamCell ".gds2.gz"))
+
+(setq streamInKeys
+      (list nil
+	    'runDir			(getShellEnvVar "STREAMPATH")
+	    'inFile			(strcat (getShellEnvVar "STREAMPATH") "/" streamFile)
+;;	    'primaryCell		streamCell
+	    'libName			streamLib
+	    'errFile		        (sprintf nil "%s/streamIn.%s.log" (getShellEnvVar "STREAMPATH") streamCell)
+	    'techfileName		""
+	    'scale			0.001000
+	    'units			"micron"
+	    'refLib			t
+	    'hierDepth     		32
+	    'maxVertices		1024
+	    'checkPolygon		nil
+	    'snapToGrid			nil
+	    'arrayToSimMosaic		nil
+	    'caseSensitivity		"preserve"
+	    'textCaseSensitivity	"preserve"
+	    'zeroPathToLine		"lines"
+	    'convertNode		"ignore"
+	    'keepPcell			nil
+	    'replaceBusBitChar		t
+	    'skipUndefinedLPP		nil
+	    'ignoreBox			nil
+	    'mergeUndefPurposToDrawing	nil
+	    'reportPrecision		nil
+	    'keepStreamCells		t
+	    'attachTechfileOfLib	techLib
+	    'runQuiet			nil
+	    'noWriteExistCell		nil
+	    'NOUnmappingLayerWarning	nil
+	    'comprehensiveLog		nil
+	    'ignorePcellEvalFail	nil
+	    'appendDB			nil
+	    'genListHier		nil
+	    'cellMapTable		""
+	    'layerTable			""
+	    'textFontTable		""
+	    'restorePin			0
+	    'propMapTable		""
+	    'propSeparator		","
+	    'userSkillFile		""
+	    'rodDir			""
+	    'refLibOrder		refLibs ))

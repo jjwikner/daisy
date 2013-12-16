@@ -1,0 +1,47 @@
+
+echo "DAISY:: Loading STM-specific daisy setup"
+
+# Set the pdk specifik bin directory to the path
+setenv PATH ${PATH}:$WORKAREA/daisy/pdkSpecific/$CDSPROCESSNAME/bin
+
+# Run the STM source file
+
+if ($CDSDATABASE == "oa") then
+	source $PDK_HOME/cshrc/cshrc_cmos065_rf_oa
+	#source $PDK_HOME/cshrc/cshrc_cmos065_rf
+	setenv PDKAREA /sw/cadence/libraries/cmos065RF_534_IC615.010/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/LIB/lib/OpenAccess/cmos065
+else
+	source $PDK_HOME/cshrc/cshrc_cmos065_rf_2
+
+	setenv PDKAREA /sw/cadence/libraries/cmos065_RF_534/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8@5.3.4/DATA/LIB/lib/cmos065/
+
+endif
+
+# ===================================================
+# Quick fix and should eventually be removed
+# ===================================================
+setenv AVANTI_STAR_HOME_DIR /sw/synopsys/Y-2006.06-SP1_star-RCXT/linux_star-rcxt
+setenv PATH ${PATH}:${AVANTI_STAR_HOME_DIR}/bin
+# ===============================
+
+setenv DAISY_DRC_DECK $U2DK_CALIBRE_DRC_DECK
+
+# Setup the calibre runset files (daisy specific -- override ST !)
+
+setenv MGC_CALIBRE_LVS_RUNSET_FILE $PDK_HOME/pv/runsets/lvsRunset
+setenv MGC_CALIBRE_DRC_RUNSET_FILE $PDK_HOME/pv/drcRunset
+
+#setenv MGC_CALIBRE_DFM_RUNSET_FILE $PDK_HOME/pv/drcDfmRunset
+#setenv MGC_CALIBRE_N80_RUNSET_FILE $PDK_HOME/pv/drcN80Runset
+#setenv MGC_CALIBRE_ANT_RUNSET_FILE $PDK_HOME/pv/antRunset
+#setenv MGC_CALIBRE_PEX_RUNSET_FILE $PDK_HOME/pv/xrcRunset
+
+setenv CDS_AHDLCMI_ENABLE NO
+
+#MGC_CALIBRE_DRC_RUNSET_FILE=/sw/mentor/libraries/cmos065RF_v.522/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8_5.2.2/DATA/CALIBRE_CUSTOM/calibreGuirunsetdrc
+#MGC_CALIBRE_LVS_RUNSET_FILE=/sw/mentor/libraries/cmos065RF_v.522/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8_5.2.2/DATA/CALIBRE_CUSTOM/calibreGuirunsetlvs
+
+
+
+
+

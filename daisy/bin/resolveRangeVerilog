@@ -1,0 +1,135 @@
+#! /usr/bin/perl -w
+
+########################################################
+### Sicon Semiconductors AB
+###
+###  Author: Henrik Steffansson
+###   Descr: Script to "flatten" ranged instances in
+###          verilog from Virtouso
+### DF Hist: 1.0     2008-Sep-02 Initial version
+my($sver)=  "1.1" ;# 2008-Sep-10 Renamed instances using <inst>[<bit>] naming
+###                              Fixed bug on empty portlist
+###
+########################################################
+### Usage  : resolveRangeVerilog <badVerilog> [-debug <lvl>] > <goodVerilog>
+
+use strict;
+
+################################################################
+### Variables
+my($vin)=my($line)=my($cell)=my($inst)=my($port)=my($ports)=my($rawports)=my($rawport)=my($busnet)="";
+my($verbose)=my($msb)=my($lsb)=my($found)=my($first)=my($bit)=my($lcnt)=0;
+
+################################################################
+### Program sequence
+
+### 0. Handle arguments
+for (my($i)=0;$i<=$#ARGV;$i++) {
+  if      ($ARGV[$i]=~/^-verbose$/ || $ARGV[$i] =~ /^-debug/ || $ARGV[$i] =~ /^-d$/) {
+    $verbose = $ARGV[$i+1]; $i++;
+  } elsif ($ARGV[$i] =~ /^(-h)$|^(-help)$/) {
+    printHelp();
+  } elsif ($ARGV[$i] =~ /(-.*)/) {
+    print "\n ERROR main: Option $1 not supported, yet... \n";
+    printHelp();
+  } elsif ($vin eq  "") {
+    $vin=$ARGV[$i];
+  } else {
+    print "\n ERROR main: Only one verilog file can be passed as an argument\n";
+    printHelp();
+  }
+}
+if ($vin eq  "") { print "\n ERROR: Missing verilog argument\n"; printHelp()}
+if ($verbose>0) { print " VERBOSE $verbose main: Debug/info level $verbose\n"}
+
+### 1. Main
+open (IN, "<$vin") or die "\n ERROR: Could not open Verilog file $vin for reading\n";
+if ($verbose<=0) { print "\n// Netlist processed with textEdit script resolveRangeVerilog version $sver\n\n" }
+while ($line=<IN>) {
+  $lcnt++;
+  chomp $line;
+  if ($verbose>5) { print " VERBOSE $verbose main: Line $lcnt - $line\n"}
+  if ($line =~ /^\s*([a-zA-Z0-9_]+)\s+([a-zA-Z0-9_]+)\[(\d+)\:(\d+)\]\s*(\(.*)$/) {
+    print "// $line\n";
+    $cell=$1; $inst=$2; $msb=$3; $lsb=$4; $rawports=$5;
+    if ($msb<$lsb) {($lsb,$msb)=($msb,$lsb)}
+    if ($verbose>4) { print " VERBOSE $verbose main: Portlist initially found - $rawports\n"}
+    $found++;
+    while ($line !~ /\)\s*\;/) {
+      if ($verbose>3) { print " VERBOSE $verbose main: No complete instanciation, continuing to next line\n"}
+      $line=<IN>;
+      chomp $line;
+      print "// $line\n";
+      $lcnt++;
+      if ($verbose>2) { print " VERBOSE $verbose main: Line $lcnt - $line\n"}
+      if ($line =~ /^\s*(.*)\s*\)\s*\;\s*$/) {
+        $rawports= $rawports . $1;
+      } else { print " ERROR - Check script on multiple line instantiations\n" }
+      if ($verbose>4) { print " VERBOSE $verbose main: Updated portlist: $rawports\n"}
+    }
+    if ($verbose>0) { print " VERBOSE $verbose main: Ranged inst found $cell $inst $msb $lsb $rawports\n"}
+    foreach $bit ($lsb .. $msb) {
+      print "$cell ${inst}_[${bit}] ( ";
+      $first=0;
+      foreach $rawport (split(",",$rawports)) {
+        if ($verbose>0) { print " VERBOSE $verbose main: Handling port $rawport\n"}
+        if ($rawport =~ /\.([A-Za-z0-9_]+)\s*\(\s*([A-Za-z0-9_]+)\[/) {
+          $port=$1; $busnet=$2;
+          if ($verbose>0) { print " VERBOSE $verbose main: Found port $port connected to bus $busnet\n"}
+          if ($first>0) {print ", "}
+          print ".${port}(${busnet}\[${bit}\])";
+          $first++;
+        } elsif ($rawport =~ /\.([A-Za-z0-9_]+)\s*\(\s*([A-Za-z0-9_]+)/) {
+          $port=$1; $busnet=$2;
+          if ($verbose>0) { print " VERBOSE $verbose main: Found port $port connected to net $busnet\n"}
+          if ($first>0) {print ", "}
+          print ".${port}(${busnet})";
+          $first++;
+        } elsif ($rawport =~ /\(\s*\)\s*\;/) {
+          if ($verbose>0) { print " VERBOSE $verbose main: Found empty portlist on cell $cell, great! Nothing connected then.\n"}
+        } else { print " ERROR - Check script on port/bus recognition\n" }
+      }
+      print " );\n";
+    }
+  }
+  elsif ($verbose>5) { print " VERBOSE $verbose main: Verilog line is\n$line\n"}
+  elsif ($verbose<=0) { print "$line\n" }
+}
+
+### Sub-routines
+
+### Print support info
+sub printHelp {
+  print <<EOT;
+
+ SCRIPT: resolveRangeVerilog
+
+ AUTHOR: Henrik Steffansson
+         Henrik.Steffansson\@siconsemi.com
+
+ SYNTAX: resolveRangeVerilog <verilog> [-debug <lvl>]
+
+ DESCRIPTION
+
+    This script reads Verilog netlist and searches for ranged
+    instantioations, could be output from Virtouso, which EncounterSOC
+    cannot read properly. This script flattens all these and prints
+    result to STD out.
+
+    Argument
+
+    <verilog>  The verilog that require resolving of ranged
+               instanciations, only one verilog at a time.
+
+EXAMPLE:
+
+   resolveRangeVerilog virtousoVerilog.v > noRangedInstVirtousoVerilog.v
+
+NOTE:
+
+   Have not been tested on real design yet.
+
+EOT
+  exit;
+}
+

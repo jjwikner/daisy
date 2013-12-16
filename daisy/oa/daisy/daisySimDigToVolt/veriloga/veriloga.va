@@ -1,0 +1,35 @@
+// Converts a logical signal between 0 and 1 to vgnd and vpwr
+// so that we do not need to consider supply voltage when 
+// specifying logical signals
+
+`include "constants.vams"
+`include "disciplines.vams"
+
+module daisySimDigToVolt(sigout, sigin, vgnd, vpwr);
+   output sigout;
+   electrical sigout;
+   input  sigin;
+   electrical sigin;
+   input  vgnd;
+   electrical vgnd;
+   input  vpwr;
+   electrical vpwr;
+   
+   real   sigout_val;
+   real   supply_val;
+   
+   analog begin
+      supply_val = V(vpwr,vgnd);
+      sigout_val = supply_val * V(sigin,vgnd);
+      
+      if (sigout_val > supply_val) begin
+	 sigout_val = supply_val;
+      end
+      
+      if (sigout_val < 0) begin
+	 sigout_val = 0;
+      end
+      
+      V(sigout,vgnd) <+ sigout_val;
+   end
+endmodule

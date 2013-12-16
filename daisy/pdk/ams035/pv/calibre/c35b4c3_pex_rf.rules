@@ -1,0 +1,15 @@
+////////////////////////////////////////////////////
+// Owner: austriamicrosystems AG                  //
+//================================================//
+// HIT-Kit: Digital                               //
+////////////////////////////////////////////////////
+//
+// Rule file for process C35B4 option C3
+// Defining the process option, a more accurate parasitic extraction 
+// for rf-devices and including the main rule file
+// Use for PEX only!
+
+#DEFINE process_C35B4C3
+#DEFINE PEXSWITCH
+
+INCLUDE $AMS_DIR/calibre/c35b4/cac35b4rules_all.run

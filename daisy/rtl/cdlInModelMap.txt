@@ -1,0 +1,5 @@
+NDIO=ndio
+NCH_33 = nch_33
+PCH_33 = pch_33
+rppolys = rppoly
+rppolyl = rppoly

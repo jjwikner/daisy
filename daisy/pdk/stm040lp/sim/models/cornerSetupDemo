@@ -1,0 +1,52 @@
+
+(foreach supplyVoltage (list "vccr10" "vccr12" "vccr25" "vccr33")
+	 (corAddDesignVar    supplyVoltage )
+	 (corSetDesignVarVal supplyVoltage "" ))
+
+(setq cornerProcess "corners")
+(setq cornerFileName "corners.scs")
+
+(corAddProcess cornerProcess (strcat (getShellEnvVar "PDK_HOME") "/sim/models/") "multipleModelLib" )
+(corAddModelFileAndSectionChoices cornerProcess cornerFileName (list "0" "1" "2" "3" "4" "5" "6" "7" "8"))
+
+(setq cornerName "TYP")
+(setq cornerPointer 0)
+
+(corAddCorner             cornerProcess cornerName )
+(corSetCornerGroupVariant cornerProcess cornerName cornerFileName "0" )
+
+(corSetCornerRunTempVal   cornerProcess cornerName 70 )
+
+(corSetCornerVarVal       cornerProcess cornerName "vccr10" "1.0" )
+(corSetCornerVarVal       cornerProcess cornerName "vccr12" "1.2" )
+(corSetCornerVarVal       cornerProcess cornerName "vccr25" "2.5" )
+(corSetCornerVarVal       cornerProcess cornerName "vccr33" "3.3" )
+
+(foreach cornerName (list "FFF" "SSS" "FST" "SFT" "FSS" "SFS" "FSF" "SFF")
+	 (setq cornerPointer (plus cornerPointer 1))
+	 (foreach supply (list "HI" "LO")
+		  (foreach temper (list -20 150)
+			   (setq cornerName (sprintf nil "%s_%s_%d" cornerName supply temper))
+			   
+			   (corAddCorner             cornerProcess cornerName )
+			   
+			   (corSetCornerGroupVariant cornerProcess cornerName cornerFileName (sprintf nil "%d" cornerPointer))
+			   
+			   (corSetCornerRunTempVal   cornerProcess cornerName  temper )
+			   
+			   (if (equal supply "HI")
+			       (progn
+				 (corSetCornerVarVal       cornerProcess cornerName "vccr10" "1.1" )
+				 (corSetCornerVarVal       cornerProcess cornerName "vccr12" "1.3" )
+				 (corSetCornerVarVal       cornerProcess cornerName "vccr25" "2.8" )
+				 (corSetCornerVarVal       cornerProcess cornerName "vccr33" "3.6" ))
+			     (progn
+			       (corSetCornerVarVal       cornerProcess cornerName "vccr10" "0.9" )
+			       (corSetCornerVarVal       cornerProcess cornerName "vccr12" "1.1" )
+			       (corSetCornerVarVal       cornerProcess cornerName "vccr25" "2.2" )
+			       (corSetCornerVarVal       cornerProcess cornerName "vccr33" "3.0" ))
+			     )
+			   )
+		  )
+	 
+	 )

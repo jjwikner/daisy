@@ -1,0 +1,216 @@
+;; Simulation Script Template
+
+;; Use awd waveform viewer (older) since new one has a few bugs.
+(ocnWaveformTool 'awd )
+
+;; Default simulator is spectre.
+(simulator 'spectre )
+
+;; Set up testbench. 
+(setq desLib  "daisyTest")
+(setq desCell "daisyTop_T")
+(setq desView "schematic")
+(setq simTag  "DC")
+
+(design 
+ ?lib desLib
+ ?cell desCell
+ ?view desView)
+
+;; Why doesn't this work? Do I have to open the cells first?
+(createNetlist) ; ?recreateAll t )
+
+;; Set up paths -- no need to change unless wanted or other simulator...
+(setq simPath     (strcat (getShellEnvVar "CDSSIMPATH") "/"))
+(setq designPath  (strcat desCell "/" "spectre/" desView))
+(setq resultsPath (strcat simPath designPath))
+(design	    (strcat simPath designPath "/netlist/netlist"))
+(resultsDir resultsPath)
+
+;; Already set up in the cdsinit -- but repeated for convenience. 
+;; Required for running 80 nm.
+(envSetVal "spectre.opts"      "scale"      'string   "0.9")
+(envSetVal "spectre.opts"      "firstRun"   'boolean   nil)
+(envSetVal "spectre.opts"      "temp"       'string   "70")
+(envSetVal "spectre.opts"      "gmin"       'string   "1e-15")
+
+;; 
+(setq modelsPath (strcat (getShellEnvVar "WORKAREA") "/pdk/models/1d0_3d3/"))
+(setq modelsFile "cln80gc_3d3_lk_v1d0.scs")
+(setq modelsPtr  (strcat modelsPath modelsFile))
+
+;; Simulator and save statement
+;; ==========================================================================
+(saveOption  ?outputParamInfo nil )
+(saveOption  ?elementInfo nil )
+(saveOption  ?modelParamInfo nil )
+(saveOption  ?saveahdlvars "selected" )
+(saveOption  'subcktprobelvl "0" )
+(saveOption  'currents "selected" )
+(saveOption  'pwr "none" )
+(saveOption  'save "all")
+
+;; Define the corners
+;; ==========================================================================
+
+;; Invoke the project corners in the daisy area.
+(setq cornerList 
+      (traverseCornersFile 
+       (strcat (getShellEnvVar "WORKAREA") 
+	       "/daisy/simulation/corners/daisyCorners_compact_p1a.csv")))
+
+;; Select some of the corners
+(setq cornerNoList nil) 
+(for cornerNo 0 (plus (length cornerList) -1) 
+     (setq cornerNoList (append cornerNoList (list cornerNo))))
+;; (setq cornerNoList (list 0 1 5))
+
+;; Define some corner results listsö
+;; ==========================================================================
+
+;; Generate a proper corner end analysis.
+;;(setq vmidList (list))
+;;(setq voffList (list))
+;;(setq vrefList (list))
+;;(setq errorList (list))
+
+;; For presentation
+(setq xAxisList (list))
+(setq xCounter  -1)
+
+;; (setq origWinId (newWindow))
+
+;; Define the outputs results corner file
+;; ==========================================================================
+
+(setq csvFileName (strcat (getShellEnvVar "CDSSIMPATH") 
+			  "/results/" desLib "_" desCell "_" simTag ))
+
+(if (isFile (strcat csvFileName ".csv"))
+    (setq csvFileName (strcat (makeTempFileName csvFileName) ".csv"))
+  (setq csvFileName (strcat csvFileName ".csv")))
+
+(setq csvPort (outfile csvFileName))
+
+;; Add extra columns to the results file, typically the lists above...
+(if (boundp 'csvPort)
+    (if csvPort
+	(fprintf csvPort 
+		 (csvList (append (list "No" )
+				  (append (returnCornerHeader cornerList)			  
+					  (list  						 
+					         "op src N"
+						 "sat src N [mV]"
+						 "op csc N"
+						 "sat csc N [mV]"
+						 "op src P"
+						 "sat src P [mV]"
+						 "op csc P"
+						 "sat csc P [mV]"
+						 "N error [uA]"
+						 "N error [per]"
+						 "P error [uA]"
+						 "P error [per]"
+						 )))))))
+
+;; Define some auxillary design variables
+;; ==========================================================================
+
+;;(desVar   "PGAON"     0	)
+ 
+;; ==========================================================================
+
+
+(analysis 'dc 
+	  ?saveOppoint t  
+          ?save "all"  )
+	 	 
+(foreach cornerNo cornerNoList 		  
+	 
+	 (setq xAxisList (append xAxisList (list (setq xCounter (plus xCounter 1)))))
+	 (desVar  "vccr33" (float (evalstring (returnCorner cornerNo "vpwr33" cornerList))))
+	 (desVar  "vccr10" (float (evalstring (returnCorner cornerNo "vpwr10" cornerList))))
+	 (temp             (float (evalstring (returnCorner cornerNo "temp" cornerList))))
+	 (option  'temp    (float (evalstring (returnCorner cornerNo "temp" cornerList))))		  
+	 (updateCornersTSMC cornerList cornerNo modelsPtr)
+	 (run)		  
+  	 ;; (selectResult 'dc )
+	 
+	 ;; Plot intermediate results
+	 ;; (hiSetCurrentWindow origWinId)
+	 
+	 ;; 		  (setq vRef ( VDC "/vRef"))
+	 ;; 		  (setq vrefList  (append vrefList (list vRef)))
+	 ;; 		  (setq vOff ( VDC "/vOffsetOut"))
+	 ;; 		  (setq voffList  (append voffList (list vOff)))
+	 ;; 		  (setq vMid ( VDC "/vMidscale"))
+	 ;; 		  (setq vmidList  (append vmidList (list vMid)))
+	 
+	 (if (boundp 'csvPort)
+	     (if csvPort
+		 (fprintf csvPort 
+			  (csvList 
+			   (append (list (sprintf nil "%d" cornerNo ) ) 
+				   (append (returnCornerState cornerNo cornerList)			  
+					   (list 
+					    (returnTransistorRegion 						      
+					     (OP "/Ibiass/IprimNSrc/Msrc" "region") t)
+					    (sprintf nil "%5.5f" (float 1000*(OP  "/Ibiass/IprimNSrc/Msrc" "vdsat")))
+					    
+					    (returnTransistorRegion 						      
+					     (OP "/Ibiass/IprimNSrc/Mcsc" "region") t)
+					    (sprintf nil "%5.5f" (float 1000*(OP  "/Ibiass/IprimNSrc/Mcsc" "vdsat")))
+					    
+					    (returnTransistorRegion 						      
+					     (OP "/Ibiass/IprimPSrc/Msrc" "region") t)
+					    (sprintf nil "%5.5f" (float -1000*(OP  "/Ibiass/IprimPSrc/Msrc" "vdsat")))
+					    
+					    (returnTransistorRegion 						      
+					     (OP "/Ibiass/IprimPSrc/Mcsc" "region") t)
+					    (sprintf nil "%5.5f" (float -1000*(OP  "/Ibiass/IprimPSrc/Mcsc" "vdsat")))
+					    
+					    (sprintf nil "%5.5f" (float 1e6*((OP "/VsenseN<0>" "i") - (OP "/VdcN<0>" "i"))))
+					    (sprintf nil "%5.5f" (float 100*((OP "/VsenseN<0>" "i") - (OP "/VdcN<0>" "i"))/(OP "/VsenseN<0>" "i")))
+					    (sprintf nil "%5.5f" (float 1e6*((OP "/VsenseP<0>" "i") - (OP "/VdcP<0>" "i"))))
+					    (sprintf nil "%5.5f" (float 100*((OP "/VsenseP<0>" "i") - (OP "/VdcP<0>" "i"))/(OP "/VsenseP<0>" "i")))
+					    
+					    
+					    )))))))
+	 
+	 ;; Plot intermediate results
+	 ;; (hiSetCurrentWindow origWinId)
+	 )
+;;(simMail (sprintf nil "Corner %d of %d finished. Ref = %1.3f, Offset = %1.3f, Midscale = %1.3f. \n" 
+;;	  xCounter (length bundleList)*(length cornerNoList)
+;;  (float vRef) (float vOff) (float vMid)))
+
+(if (boundp 'oport) 
+    (if oport (close oport)))
+(if (boundp 'csvPort) 
+    (if csvPort 
+	(progn
+	  (fprintf csvPort "\nLib Name:,%s\nCell Name:,%s\nTag:,%s\nDesigner:,%s\nDate:,%s"
+		   desLib desCell simTag 
+		   (getShellEnvVar "USER")
+		   "Today"		   )
+	  (close csvPort) )))
+
+;; Present the end results in a new graph
+;;(setq xAxisList cornerNoList)
+;;(setq xAxisList vinacList)
+
+;;(setq winId (newWindow))
+
+;;(addTitle "Corner Sweep Results -- Output DC voltages")
+;;(setq subWinId (addSubwindow))
+;;(addSubwindowTitle "HD 2")
+;;(setq refWave (abMakeWaveform xAxisList  vrefList))
+;;(plot refWave    ?expr (list "Reference [V]"))
+
+;;(setq subWinId (addSubwindow))
+;;(addSubwindowTitle "HD3")
+;;(setq offWave (abMakeWaveform xAxisList voffList))
+;;(plot offWave       ?expr (list "Offset [V]"))
+
+;;(setq midWave (abMakeWaveform xAxisList vmidList))
+;;(plot midWave     ?expr (list "Midscale [V]"))

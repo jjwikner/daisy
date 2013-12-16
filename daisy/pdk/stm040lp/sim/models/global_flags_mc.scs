@@ -1,0 +1,42 @@
+//---------------------------------------------
+// Global Flags definition 
+// ArtistKit 5.4.1 (C) STMicroelectronics
+// Mar  9 10:57:20 2011
+//---------------------------------------------
+parameters gflag__globalflag_mos_25od33__mos_25od33__cmos040lp = 1
+parameters gflag__globalflag_ncisr__ncisr__cmos040lp = 1
+parameters gflag__globalflag_mos_18__mos_18__cmos040lp = 1
+parameters gflag__globalflag_mos_hvt__mos_hvt__cmos040lp = 1
+parameters gflag__globalflag_dpsr__dpsr__cmos040lp = 1
+parameters gflag__globalflag_mos_lvt__mos_lvt__cmos040lp = 1
+parameters gflag__globalflag_mos_25__mos_25__cmos040lp = 1
+parameters gflag__globalflag_mos__mos__cmos040lp = 1
+parameters gflag__globalflag_mos_25ud18__mos_25ud18__cmos040lp = 1
+parameters gflag__globalflag_sr__sr__cmos040lp = 1
+parameters gflag__mismatchflag_res__res__cmos040lp = 1
+parameters gflag__mismatchflag_disres__disres__cmos040lp = 1
+parameters gflag__mismatchflag_bip__bip__cmos040lp = 1
+parameters gflag__mismatchflag_mos_lvt__mos_lvt__cmos040lp = 1
+parameters gflag__mismatchflag_sr__sr__cmos040lp = 1
+parameters gflag__mismatchflag_mos_25od33__mos_25od33__cmos040lp = 1
+parameters gflag__mismatchflag_bip_npn__bip_npn__cmos040lp = 1
+parameters gflag__mismatchflag_mos__mos__cmos040lp = 1
+parameters gflag__mismatchflag_mos_18__mos_18__cmos040lp = 1
+parameters gflag__mismatchflag_dpsr__dpsr__cmos040lp = 1
+parameters gflag__mismatchflag_mos_25__mos_25__cmos040lp = 1
+parameters gflag__mismatchflag_mos_25ud18__mos_25ud18__cmos040lp = 1
+parameters gflag__mismatchflag_ncisr__ncisr__cmos040lp = 1
+parameters gflag__mismatchflag_mos_hvt__mos_hvt__cmos040lp = 1
+parameters gflag__totalflag_mos_lvt__mos_lvt__cmos040lp = 1
+parameters gflag__totalflag_mos_25od33__mos_25od33__cmos040lp = 1
+parameters gflag__totalflag_mos__mos__cmos040lp = 1
+parameters gflag__totalflag_mos_18__mos_18__cmos040lp = 1
+parameters gflag__totalflag_mos_25__mos_25__cmos040lp = 1
+parameters gflag__totalflag_mos_25ud18__mos_25ud18__cmos040lp = 1
+parameters gflag__totalflag_mos_hvt__mos_hvt__cmos040lp = 1
+parameters gflag__totalflag_mos_svt18ps__mos_svt18ps__cmos040lp = 1
+parameters gflag__totalflag_mos_dr18otp__mos_dr18otp__cmos040lp = 1
+parameters gflag__mismatchflag_mos_svt18ps__mos_svt18ps__cmos040lp = 1
+parameters gflag__totalflag_mos_dr18__mos_dr18__cmos040lp = 1
+parameters gflag__mismatchflag_mos_dr18otp__mos_dr18otp__cmos040lp = 1
+parameters gflag__mismatchflag_mos_dr18__mos_dr18__cmos040lp = 1

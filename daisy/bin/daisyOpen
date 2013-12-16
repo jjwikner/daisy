@@ -1,0 +1,36 @@
+#!/bin/sh
+
+# Script to open up the daisy database. The input argument would be the path
+#
+# JJW, with some help from Thomas for sanity check.
+#
+# Changed to quiet functions, 11-11-14, JJW
+# Changed to also add the sticky bit to the folders, 2012-06-27, JJW
+# Changed to not add the sticky bit to user perms, 2012-11-02, DS
+#
+ 
+cd $PROJAREA
+
+if [ $# -eq 1 ]
+then
+    cd $1
+    echo $PWD
+fi
+
+echo "DAISY:: Opens $PWD for group rwx. Might be a lengthy operation..."
+echo "DAISY:: Changing group settings ..." 
+
+# Here we could clean up a bit wrt. argument and others, however, we need
+# to be a bit backwards compatible yet ...
+
+chgrp --quiet -R $GROUP `find . -maxdepth 1 -type d | grep -v daisySetupProj` 
+
+#chmod -R gu+rwx `find . -type d -maxdepth 1 | grep -v daisySetupProj`
+#chmod -R o-rx   `find . -type d -maxdepth 1 | grep -v daisySetupProj`
+
+echo "DAISY:: Changing access permissions on files"
+find .  -type f -user $USER -exec chmod ug+rw,o-rwx --quiet {}  \;
+
+echo "DAISY:: Changing access permissions on directories"
+find .  -type d -user $USER -exec chmod u+rwx,g+rwxs,o-rwx --quiet {}  \; 
+

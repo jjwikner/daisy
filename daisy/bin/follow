@@ -1,0 +1,27 @@
+#!/bin/sh
+
+# follow
+
+# Tails the current drc/lvs run.
+
+case "$1" in
+    drc) 
+	# echo "drc"
+	tail -f `ls -t *log | head -n 1`
+	;;
+    ant) 
+	# echo "drc"
+	tail -f `ls -t *log | head -n 1`
+	;;
+    lvs) 
+	# echo "drc"
+	tail -f `ls -t *log | head -n 1`
+	;;
+    fill) 
+	# echo "drc"
+	tail -f `ls -t *log | head -n 1`
+	;;
+    *)
+	echo "$1 is not a recognized physical verification mode"
+	;;
+esac

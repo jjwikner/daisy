@@ -1,0 +1,4 @@
+techLib "c35b4"
+userSkillFile "/sw/cadence/libraries/ams_hit-4.10/cds/HK_C35/skill/ams_sdl.il"
+case "preserve"
+maxVertices 1024

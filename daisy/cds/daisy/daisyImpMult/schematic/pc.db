@@ -1,0 +1,16 @@
+#
+analogLib vdc symbol
+V0
+#
+analogLib cccs symbol
+F1
+#ISCELL
+basic iopin symbolr
+PIN2
+PIN3
+#ISCELL
+basic ipin symbol
+PIN0
+#ISCELL
+daisy daisySheet symbol
+I0

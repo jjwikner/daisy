@@ -1,0 +1,6 @@
+# DAISY, alias to launch Matlab with java interface
+# Added a & according to the wishes of grandmaster Nuke.
+
+echo "DAISY:: Launching MATLAB without Java Interface"
+cd $WORKAREA
+xterm -T 'DAISY:: MATLAB (nojava)'  -e matlab -nojvm -nosplash -logfile "$USERAREA/log/matlab.log" -r "run('daisy/m/daisy.m')" &

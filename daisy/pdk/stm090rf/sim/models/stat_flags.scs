@@ -1,0 +1,51 @@
+//---------------------------------------------
+// Process and Mismatch variations selection 
+// Nov 11 09:34:29 2009
+//---------------------------------------------
+parameters common_poly_dev=0
+parameters common_active_dev=0
+parameters common_go1_dev=0
+parameters common_go2_dev=0
+parameters common_be_dev=0
+parameters common_inductor_dev=0
+parameters common_varactor_dev=0
+parameters diode_dev=0
+parameters diodeiso_dev=0
+parameters diode25_dev=0
+parameters svt_dev=0
+parameters sramspsvt_dev=0
+parameters sramdpsvt_dev=0
+parameters lvt_dev=0
+parameters hvt_dev=0
+parameters svt25_dev=0
+parameters dgnsvt25_dev=0
+parameters dgpsvt25_dev=0
+parameters dr25_dev=0
+parameters cmim_dev=0
+parameters cfring_dev=0
+parameters cfringelem_dev=0
+parameters cpolyn25_dev=0
+parameters cpolyp25_dev=0
+parameters cnat_dev=0
+parameters cmsbe_dev=0
+parameters pnpv_dev=0
+parameters npnv_dev=0
+parameters rpolyn_dev=0
+parameters rpolys_dev=0
+parameters rndiff_dev=0
+parameters rpolyh_dev=0
+parameters rpolyp_dev=0
+parameters rpdiff_dev=0
+parameters rmetal_dev=0
+parameters rpolyni_dev=0
+parameters rpolypi_dev=0
+parameters ind_la_dev=0
+parameters ind_low_dev=0
+parameters ind_nw_dev=0
+parameters ind_pat_dev=0
+parameters var_sg_nmos25_dev=0
+parameters var_sg_pmos25_dev=0
+parameters var_pnw_dev=0
+parameters cmom_dev=0
+parameters veriloga_dev=0
+parameters mtpcell_dev=0

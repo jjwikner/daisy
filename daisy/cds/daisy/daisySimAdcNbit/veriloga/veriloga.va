@@ -1,0 +1,92 @@
+// Connect the output pins 0-n, where n=numBits-1 and numBits is the 
+// number of bits used for the conversion set by parameter numBits
+// Input range is code value*FSscale to have reasonable voltages in 
+// the simulator
+// Christer Jansson 2008-06-19
+
+`include "constants.vams"
+`include "disciplines.vams"
+
+module daisySimAdcNbit(DATA, vin, vclk);
+   output [31:0] DATA;
+   electrical[31:0]  DATA;
+   input 	vin;
+   electrical vin;
+   input 	vclk;
+   electrical vclk;
+   parameter 	real tRiseFallDel = 0 from [0:inf);
+   parameter 	real vLogicHigh   = 1.0;
+   parameter 	integer numBits   = 32;
+   parameter 	real   FSscale = 0.001;
+
+   real 	approximated;
+   real         vlogic_low, vtrans_clk, vref;   
+   real 	vd[0:31];
+   integer 	i;
+   
+   analog begin
+
+     @ (initial_step) begin
+       for (i = 31; i >= 0 ; i = i - 1) begin
+         vd[i] = 0;
+       end
+     end
+
+      vtrans_clk = vLogicHigh/2.0;
+      vlogic_low = 0.0;
+      vref = pow(2,numBits)*FSscale;      
+
+      @ (cross(V(vclk) - vtrans_clk, 1)) begin   
+      approximated = 0;
+      for (i = (numBits-1); i >= 0 ; i = i - 1) begin
+        vref = vref/2;
+        vd[i] = 0;
+        if ( (V(vin)-(approximated+vref)) > -0.5*FSscale )  
+          begin
+            vd[i] = vLogicHigh; 
+            approximated = approximated+vref;
+          end 
+        else
+          begin
+            vd[i] = vlogic_low;
+          end
+      end	 
+      end
+
+      V(DATA[31]) <+  vd[31];
+      V(DATA[30]) <+  vd[30];
+      V(DATA[29]) <+  vd[29];
+      V(DATA[28]) <+  vd[28];
+      V(DATA[27]) <+  vd[27];
+      V(DATA[26]) <+  vd[26];
+      V(DATA[25]) <+  vd[25];
+      V(DATA[24]) <+  vd[24];
+      V(DATA[23]) <+  vd[23];
+      V(DATA[22]) <+  vd[22];
+      V(DATA[21]) <+  vd[21];
+      V(DATA[20]) <+  vd[20];
+      V(DATA[19]) <+  vd[19];
+      V(DATA[18]) <+  vd[18];
+      V(DATA[17]) <+  vd[17];
+      V(DATA[16]) <+  vd[16];
+      V(DATA[15]) <+  vd[15];
+      V(DATA[14]) <+  vd[14];
+      V(DATA[13]) <+  vd[13];
+      V(DATA[12]) <+  vd[12];
+      V(DATA[11]) <+  vd[11];
+      V(DATA[10]) <+  vd[10];
+      V(DATA[9])  <+  vd[9];
+      V(DATA[8])  <+  vd[8];
+      V(DATA[7])  <+  vd[7];
+      V(DATA[6])  <+  vd[6];
+      V(DATA[5])  <+  vd[5];
+      V(DATA[4])  <+  vd[4];
+      V(DATA[3])  <+  vd[3];
+      V(DATA[2])  <+  vd[2];
+      V(DATA[1])  <+  vd[1];
+      V(DATA[0])  <+  vd[0];
+
+      
+   end
+  `undef NUM_ADC_BITS
+endmodule

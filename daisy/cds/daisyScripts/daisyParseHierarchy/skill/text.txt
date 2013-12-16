@@ -1,0 +1,54 @@
+cvId = (hiGetCurrentWindow)->cellView
+
+(defun daisyAsiHierName (inst  @optional (tag "m1"))
+  
+  rexCompile("/")
+  
+  
+  )
+
+(defun parseInstances (instance)
+  ;; Allocate local list variables
+  (let ( (instanceList nil)
+	 (instId nil ) )        
+    
+    ;; Start of function
+    (if (listp instance->instances) 
+	;; If there are sub-instances,  parse further, i.e., this is a cellview
+
+	(foreach inst instance->instances		 
+		 ;; Loop over all instances in cell view
+		 
+		 ;; Print some results
+		 (if (equal inst->libName "cmos065")
+		     (printf "========================================> %s\n" inst->cellName))		 
+
+		 ;; Check if the cellview has a child or not 
+		 instId = (dbOpenCellViewByType 
+		      inst->libName
+		      inst->cellName
+		      "schematic" ) ;; Notice that you might have to change schematic to the currently switched view
+		 
+		 ;; Check if the instances has any children - if not, no need to parse further, just add instance to the list.
+
+		 (if (not instId)
+		     (setq instanceList (append instanceList (list inst)))
+
+		   ;; If it does have children, parse through them
+		   (setq instanceList    
+			 (append 
+			  (append instanceList (list inst))
+			  (parseInstances instId)))
+		   )
+		 )
+      (setq instanceList inst))
+    instanceList))
+
+a = (parseInstances cvId)
+(printf "%L \n" a~>cellName)
+
+
+
+
+geGetInstHier()
+

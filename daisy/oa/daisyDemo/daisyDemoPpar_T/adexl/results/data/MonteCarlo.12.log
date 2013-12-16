@@ -1,0 +1,18 @@
+Starting Monte Carlo Sampling...
+
+Current time: Thu Dec  5 13:24:15 2013 
+Best design point: 1
+Design specs: 
+	daisyDemo:daisyDemoPpar_T:1	corner	Default - 
+Design parameters: 
+	cLoad		1p
+	vInDc		1
+	daisyRes		1k
+	daisyRes2		1k
+	daisyRes1		1k
+
+MonteCarlo.12
+Number of points completed: 3
+Number of simulation errors: 0
+MonteCarlo.12 completed. 
+Current time: Thu Dec  5 13:24:28 2013 

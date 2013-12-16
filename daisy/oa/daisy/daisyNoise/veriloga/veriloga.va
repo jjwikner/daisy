@@ -1,0 +1,24 @@
+// VerilogA for bodyLinkModelTest, bodyLinkModel_Random_Noise, veriloga
+
+`include "constants.vams"
+`include "disciplines.vams"
+
+module daisyNoise(vout);
+
+output vout;
+electrical vout;
+
+parameter real Amplitude = 1 from [0:inf);
+integer i;
+
+analog begin
+
+   @(initial_step) begin
+      i = 564;
+   end
+
+      V(vout) <+ Amplitude * $random(i)/2147483648;
+
+   end
+
+endmodule

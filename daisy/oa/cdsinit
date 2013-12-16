@@ -1,0 +1,44 @@
+;; Load Cadence Master Cdsinit file.
+
+(if (not (boundp 'onlyOcean)) 
+    (setq onlyOcean nil))
+
+(printf "Loading Cadence init ...")
+(loadi (strcat (getShellEnvVar "CDS_HOME") 
+	       "/tools/dfII/cdsuser/.cdsinit"))
+
+(printf "Loading Linkoping University init...\n")
+
+;; Project dir should change more dynamically.
+
+(setq daisyDir   "daisy")
+(setq projDir    "daisy")
+
+;; Using the EMACS editor
+
+(setq editor     "emacs  -fg black ")
+(setq EDITOR     "emacs  -fg black ")
+
+(loadi (strcat (getShellEnvVar "WORKAREA") 
+	       "/" daisyDir "/skill/daisy.il"))
+
+;; Add project cdsinit
+
+(printf " ... loading project .cdsinit ... \n")
+(if (not onlyOcean)    
+    (if (isFile (strcat (getShellEnvVar "WORKAREA") 
+			"/daisyProjSetup/cds/cdsinit"))
+	(loadi (strcat (getShellEnvVar "WORKAREA") 
+		       "/daisyProjSetup/cds/cdsinit"))))
+
+
+;; Add private cdsinit
+(printf " ... loading private .cdsinit ... \n")
+
+(if (not onlyOcean)    
+    (if (isFile (strcat (getShellEnvVar "USERAREA") 
+			"/cds/cdsinitPrivate"))
+	(loadi (strcat (getShellEnvVar "USERAREA") 
+		       "/cds/cdsinitPrivate"))))
+
+ 

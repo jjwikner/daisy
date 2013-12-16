@@ -1,0 +1,35 @@
+//---------------------------------------------
+// Simulation Corners file for simulator spectre scenario default 
+// ArtistKit 5.4.1 (C) STMicroelectronics
+// Mar  9 10:56:02 2011
+//---------------------------------------------
+
+// library corners
+
+// section 0 
+// TYPICAL CORNER
+
+include "/site/edu/es/DAISY/daisy/pdkSpecific/stm040lp/sim/models/global_flags.scs"
+
+include "/sw/cadence/libraries/cmos040lp_21/PDK_STM_cmos040lp_AMS_7m4x0y2z_2V51V8@2.1/SIMU/SPECTRE/1V8/STaddon.scs" section=MODEL
+include "/sw/cadence/libraries/cmos040lp_21/PDK_STM_cmos040lp_AMS_7m4x0y2z_2V51V8@2.1/SIMU/SPECTRE/1V8/cmom.scs" section=typ
+include "/sw/cadence/libraries/cmos040lp_21/PDK_STM_cmos040lp_AMS_7m4x0y2z_2V51V8@2.1/SIMU/SPECTRE/1V8/common_mc.scs" section=typ
+include "/sw/cadence/libraries/cmos040lp_21/PDK_STM_cmos040lp_AMS_7m4x0y2z_2V51V8@2.1/SIMU/SPECTRE/1V8/cpolyn18.scs" section=typ
+include "/sw/cadence/libraries/cmos040lp_21/PDK_STM_cmos040lp_AMS_7m4x0y2z_2V51V8@2.1/SIMU/SPECTRE/1V8/cpolynlp.scs" section=typ
+include "/sw/cadence/libraries/cmos040lp_21/PDK_STM_cmos040lp_AMS_7m4x0y2z_2V51V8@2.1/SIMU/SPECTRE/1V8/cpolyp18.scs" section=typ
+include "/sw/cadence/libraries/cmos040lp_21/PDK_STM_cmos040lp_AMS_7m4x0y2z_2V51V8@2.1/SIMU/SPECTRE/1V8/diode18.scs" section=typ
+include "/sw/cadence/libraries/cmos040lp_21/PDK_STM_cmos040lp_AMS_7m4x0y2z_2V51V8@2.1/SIMU/SPECTRE/1V8/diodeiso.scs" section=typ
+include "/sw/cadence/libraries/cmos040lp_21/PDK_STM_cmos040lp_AMS_7m4x0y2z_2V51V8@2.1/SIMU/SPECTRE/1V8/diodelp.scs" section=typ
+include "/sw/cadence/libraries/cmos040lp_21/PDK_STM_cmos040lp_AMS_7m4x0y2z_2V51V8@2.1/SIMU/SPECTRE/1V8/dr18.scs" section=TT
+include "/sw/cadence/libraries/cmos040lp_21/PDK_STM_cmos040lp_AMS_7m4x0y2z_2V51V8@2.1/SIMU/SPECTRE/1V8/dr18otp.scs" section=TT
+include "/sw/cadence/libraries/cmos040lp_21/PDK_STM_cmos040lp_AMS_7m4x0y2z_2V51V8@2.1/SIMU/SPECTRE/1V8/hvtlp.scs" section=TT
+include "/sw/cadence/libraries/cmos040lp_21/PDK_STM_cmos040lp_AMS_7m4x0y2z_2V51V8@2.1/SIMU/SPECTRE/1V8/lvtlp.scs" section=TT
+include "/sw/cadence/libraries/cmos040lp_21/PDK_STM_cmos040lp_AMS_7m4x0y2z_2V51V8@2.1/SIMU/SPECTRE/1V8/npnv.scs" section=typ
+include "/sw/cadence/libraries/cmos040lp_21/PDK_STM_cmos040lp_AMS_7m4x0y2z_2V51V8@2.1/SIMU/SPECTRE/1V8/pnpv.scs" section=typ
+include "/sw/cadence/libraries/cmos040lp_21/PDK_STM_cmos040lp_AMS_7m4x0y2z_2V51V8@2.1/SIMU/SPECTRE/1V8/resistor.scs" section=typ
+include "/sw/cadence/libraries/cmos040lp_21/PDK_STM_cmos040lp_AMS_7m4x0y2z_2V51V8@2.1/SIMU/SPECTRE/1V8/resmetal.scs" section=typ
+include "/sw/cadence/libraries/cmos040lp_21/PDK_STM_cmos040lp_AMS_7m4x0y2z_2V51V8@2.1/SIMU/SPECTRE/1V8/svt18.scs" section=TT
+include "/sw/cadence/libraries/cmos040lp_21/PDK_STM_cmos040lp_AMS_7m4x0y2z_2V51V8@2.1/SIMU/SPECTRE/1V8/svt18ps.scs" section=TT
+include "/sw/cadence/libraries/cmos040lp_21/PDK_STM_cmos040lp_AMS_7m4x0y2z_2V51V8@2.1/SIMU/SPECTRE/1V8/svtlp.scs" section=TT
+
+//endsection 0

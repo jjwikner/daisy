@@ -1,0 +1,6 @@
+#!/bin/sh
+
+# Script to run the ocean script given an ocean file ($1)
+
+cd $CDSSIMPATH/ocean
+ocean < $CDSSIMPATH/ocean/$1

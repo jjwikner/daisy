@@ -1,0 +1,152 @@
+/* 
+File Name:    :    .simrc
+File path:    :    /sw/cadence/libraries/ams_hit-4.10/cds/HK_C35
+Author        :    Douglas Pattullo: austriamicrosystems Design Support
+Date          :    11-Dec-1996
+Version:      :    1.0 for HIT Kit 3.xx
+Include Files :
+
+Owner: austriamicrosystems
+HIT-Kit: Digital
+*/
+
+
+/* 
+
+11/12/96  DP  Modified for Cadence 4.4
+15/1/97   DP  Macro-cell LVS viewList editted for msps
+17/1/97   DP  Verilog explicit netlisting options enabled
+22/1/97   DP  Simulation Precision forced to 1pS
+4/2/97    DP  Default transistor level view List for LVS added
+11/2/97   DP  viewLists and stopLists added for cdl and auCdl
+12/3/97   DP  'extracted' view added to the lvs-Layout-View-Lists
+25/3/97   DP  Hyphens added to the above comment to keep things sweet
+25/3/97   DP  Hyphens added to the above comment to keep things sweet
+7/4/97    DP  Defaults for CDL and auCDL added
+15/4/97   DP  pr_sch and prc_sch removed from Analog Artist LVS viewList
+16/4/97   DP  verilog binary commented out - TLF available in all techs
+24/4/97   DP  cmos_sch view removed form macro-mode LVS viewList
+16/5/97   MM  cdlSimViewList, cdlSimStopList added
+16/6/97   DP  cdlSimViewList, cdlSimStopList removed (written by ams_cds!)
+6/10/97   DP  simVerilogInvocationOptions defined for standalone verilog
+22/07/98  KG  symbol views added to MACRO LVS stop lists
+6/7/99    DP  'netlist' view added to LVS schematic viewLists
+1/8/99    DP  'cmos_sch' view added to LVS schematic viewLists
+21/11/03  HGR 'ansCdlLDDN' added for the netlistung of H35 devices  
+*/
+  
+
+/*
+ DESCRIPTION  
+
+ This is the .simrc template for use with the ams_cds script
+
+*/
+
+AMS_LIB = "/sw/cadence/libraries/ams_hit-4.10/cds/HK_C35"
+AMS_VERSION = "4.10"
+AMS_TECH = "c35b4"
+
+/* Select AMS process:
+  cbe, cbo, cbh, cax, cao, bax, czx, cyx, byx, cxx, cux
+*/
+
+AMS_kit = "develop"
+AMS_process = "c35b4"
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;verilog
+
+
+simVerilogFlattenBuses               = 'nil
+simVerilogLaiLmsiNetlisting          = 'nil
+simReNetlistAll                      = 't
+simVerilogNetlistExplicit            = 't
+hnlVerilogNetlistStopCellExplicit    = 't
+hnlVerilogNetlistNonStopCellExplicit = 't
+simVerilogPwrNetList                 = '("dummyPwrNet")
+simVerilogGndNetList                 = '("dummyGndNet")
+simVerilogSimPrecisionUnit           = "ps"
+
+/* Power supply pins vdd! gnd! etc. should NOT be used with the AMS HIT-Kit */
+
+verilogSimStopList = '( "symbol" )
+
+verilogSimViewList = '("behavioral" "functional" "schematic" "symbol" )
+
+
+; verilogSimBinary                 = "/sw/cadence/libraries/ams_hit-4.10/cds/HK_ALL/veritools/verilog_2.3"
+
+simVerilogLibraryDirectory       = ""
+simVerilogLibraryFile            = ""
+
+
+simVerilogInteractiveCommandFile = ""
+simVerilogInvocationOptionsFile  = "/sw/cadence/libraries/ams_hit-4.10/cds/../verilog/c35b4/vxl.inc"
+simNCVerilogOptFile  = "/sw/cadence/libraries/ams_hit-4.10/cds/../verilog/c35b4/vxl.inc"
+simVerilogInvocationOptions = "+libext+.v+ +incdir+hdlFilesDir +sdf_verbose "
+
+; Post-layout simulation variables.
+;
+; The value "nil" of simVerilogDelayPrimitive means that the Cadence default 
+; delay calculator used is $dcalc_path(..., "net.cap"). If the value is "t", the
+; task dcalc_prim(..., "net.cap") will show up in the Run Directory
+; file "delayTask.cmd".
+;
+; For delay paths to be back-annotated:
+; Note 1: Cell ports are scalars.
+; Note 2: Port names are the same as their net names.
+; Note 3: No wired logic on a output port.
+;
+simVerilogDelayPrimitive    = nil
+; The report info goes into the file "si.out", and contains information
+; on the interconnect nets.
+simVerilogDelayDetailReport = t
+simVerilogDelayUseDefault   = t
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; for veritime
+; veritimeSimBinary    = "/sw/cadence/libraries/ams_hit-4.10/cds/HK_C35/veritools/veritime_1.5"
+; vtiInvocationOptions = "-f /sw/cadence/libraries/ams_hit-4.10/cds/HK_C35/veritools/vxl.inc_vtime"
+
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; For Analog Artist transistor level LVS comparison 
+  lvsSchematicViewList = '( "auLvs" "schematic" "cmos_sch" "netlist" "symbol" )
+  lvsLayoutViewList    = '( "auLvs" "extracted" "schematic" "symbol")
+  lvsSchematicStopList = '( "auLvs" )
+  lvsLayoutStopList    = '( "auLvs" )
+
+; For Analog Artist macro-cell comparison 
+; lvsSchematicViewList = '( "msps" "auLvs" "schematic" "cmos_sch" "pr_sch" "prc_sch" "netlist" "symbol" )
+; lvsLayoutViewList    = '( "msps" "auLvs" "extracted" "schematic" "symbol")
+; lvsSchematicStopList = '( "msps" "auLvs" "symbol")
+; lvsLayoutStopList    = '( "msps" "auLvs" "symbol")
+
+; For non Analog Artist (DFII) LVS comparison 
+; lvsSchematicViewList = '( "lvs" "schematic" "cmos_sch" "netlist")
+; lvsLayoutViewList    = '( "lvs" "extracted" "schematic" "cmos_sch" )
+; lvsSchematicStopList = '( "lvs" )
+; lvsLayoutStopList    = '( "lvs" )
+
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+load("/sw/cadence/libraries/ams_hit-4.10/cds/HK_ALL/skill/ansCdlCompPrim.il")
+;; load("/sw/cadence/libraries/ams_hit-4.10/cds/HK_ALL/skill/ansCdlLDDN.il")   ;; HGE added for H35 21.Nov.03
+auCdlCheckLDD = t
+; auCdlCDFPinCntrl = t
+;auCdlCheckRESI = t
+;auCdlCheckRESSIZE = t
+
+; simSetDef('auCdlSimViewList, '("auCdl" "schematic" "cmos_sch"))
+; simSetDef('auCdlSimStopList, '("auCdl"))
+; simSetDef('cdlSimViewList,   '("cdl"   "schematic" "cmos_sch"))
+; simSetDef('cdlSimStopList,   '("cdl"))
+ 
+cdlSimViewList=list("auCdl" "schematic" "cmos_sch")
+cdlSimStopList=list("auCdl")
+ 

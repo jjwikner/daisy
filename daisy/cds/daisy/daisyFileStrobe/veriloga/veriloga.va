@@ -1,0 +1,34 @@
+// VerilogA for daisy, daisyFileWriter2, veriloga
+
+`include "constants.vams"
+`include "disciplines.vams"
+
+module daisyFileStrobe(CLK, vIn);
+
+input CLK;
+electrical CLK;
+
+input vIn;
+electrical vIn;
+
+parameter real vThreshold = 0.5 ;
+parameter string fileName = "/tmp/daisyFileWriter.txt";
+
+integer outputFileId;
+
+analog 
+
+begin
+	
+	@(initial_step) 
+	begin
+	  outputFileId = $fopen(fileName);
+	end	
+
+	@ (cross(V(CLK) - vThreshold, 1)) 
+	begin
+	   $fwrite(outputFileId, "%f %f\n", $abstime*1e9, V(vIn));
+	end
+end
+
+endmodule

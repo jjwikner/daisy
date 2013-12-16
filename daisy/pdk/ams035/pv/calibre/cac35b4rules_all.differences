@@ -1,0 +1,26 @@
+--- /sw/cadence/libraries/ams_hit-4.00/calibre/c35b4/cac35b4rules_all.run	2008-07-16 10:34:21.000000000 +0200
++++ cac35b4rules_all.run	2012-08-13 16:53:31.565304714 +0200
+@@ -663,8 +663,8 @@
+    TRACE PROPERTY C(cpolyrf) w w 1
+    TRACE PROPERTY C(cpolyrf) l l 1
+ //
+-   TRACE PROPERTY C a a  1  
+-   TRACE PROPERTY C p p  1  
++   TRACE PROPERTY C "area" a  1  
++   TRACE PROPERTY C "perimeter" p  1  
+ //
+ //
+    TRACE PROPERTY D a a 1
+@@ -8981,8 +8981,10 @@
+ DEVICE c(cpolya) cpoly_norf routingpoly(POS) routingpoly2(NEG)
+ [
+    property A,P
+-   A = area(cpoly_norf) * 1e+12
+-   P = perimeter(cpoly_norf) * 1e+6
++   //A = area(cpoly_norf) * 1e+12
++   A = area(cpoly_norf)
++   //P = perimeter(cpoly_norf) * 1e+6
++   P = perimeter(cpoly_norf)
+ ]
+ #ELSE
+   ILL_CPOLYA_UNAVAILABLE { @ Process Modules : CPOLYA device not available

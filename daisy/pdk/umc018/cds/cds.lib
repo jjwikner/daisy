@@ -1,0 +1,4 @@
+DEFINE UMC_18_CMOS /sw/cadence/libraries/umc/MIXED_MODE_RFCMOS18-1.8V_3.3V-C02/UMC_18_CMOS
+DEFINE  avTech  /sw/cadence/ASSURA320/tools/assura/etc/avtech/avTech 
+SOFTINCLUDE /sw/cadence/IUS820/tools/inca/files/cds.lib
+DEFINE  Example /sw/cadence/libraries/umc/0.18_v2/Example

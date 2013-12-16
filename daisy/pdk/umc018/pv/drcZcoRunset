@@ -1,0 +1,176 @@
+*drcRulesFile:     $WORKAREA/pdk/Calibre/drc/calibre.zco
+*drcRunDir:        $WORKAREA/verification/%l/zco/
+*drcIncludeFiles:  
+
+*drcLayoutPrimary: 
+*drcLayoutPaths:   
+*drcResultsFile:   
+*drcSummaryFile:   
+
+*cmnRunHier: -1
+
+*cmnRemoteLICENSEFILEName: MGLS_LICENSE_FILE
+*cmnRemoteLICENSEFILEUseCurrent: 1
+
+*cmnRemoteLICENSEFILEValue: 
+
+*cmnTranscriptIncludedFiles: 0
+*cmnTranscriptFile: ../log/zco.transcript
+*cmnTranscriptFileAppend: 0
+*cmnTranscriptEchoToFile: 1
+
+*drcResultsFormat: ASCII
+*drcRulesFileLastLoad: 0
+*drcLayoutSystem: GDSII
+*drcLayoutGetFromViewer: 1
+*drcLayoutLibrary: 
+*drcLEFLayoutPathsFDI: 
+*drcDEFLayoutPathFDI: 
+*drcLayoutView: 
+*drcResultsFormat: ASCII
+*drcResultsCellSuffix: 
+*drcResultsPseudoCells: 0
+*drcCellName: 0
+*drcCellNameSpace: 1
+*drcCellNameXform: 1
+*drcCellNameAll: 0
+*drcCellText: 0
+*drcDRCMaxResultsAll: 0
+*drcDRCMaxResultsCount: 1000
+*drcAutoHalo: 1
+*drcHaloSize: 0.0
+*drcLayoutPrecision: 1000
+*drcStartRVE: 1
+*drcWriteSummary: 1
+*drcAppendSummary: 0
+*drcViewSummary: 1
+*drcShowChecksAlpha: 0
+*drcShowGroupsAlpha: 0
+*drcShowGroupsHier: 0
+*drcShowGroupsTop: 0
+*drcDRCCheckArea: 0
+*drcDRCCheckPrevResAreas: 0
+*drcDRCCheckPrevResErrType: 0
+*drcDRCCheckPrevFailedChecks: 0
+*drcDRCCheckPrevFailedChecksErrType: 0
+*drcDRCAreaCoords: 
+*drcClipToArea: 1
+*drcDFMClipToArea: 1
+*drcEnvVars: 
+*drcTemplate_RD: %l.zco.results
+*drcTemplate_SF: %l.zco.summary
+*drcRun64RVE: 1
+*drcCAAInfo: 
+*drcAnnotateFPC: 1
+*drcDynamicRVE: 1
+*drcDRCRunIncrDRC: 0
+*cmnHostName: localhost
+*cmnHostPort: 9189
+*cmnSUseLayoutConn: 1
+*cmnSHostName: localhost
+*cmnSHostPort: 9199
+*cmnShowToolTips: 1
+*cmnProcessLocalLinks: 1
+*cmnDRCMaxVertexAll: 0
+*cmnDRCMaxVertexCount: 4096
+*cmnReadIOFromRules: 1
+*cmnWarnLayoutOverwrite: 0
+*cmnWarnSourceOverwrite: 0
+*cmnWarnRunsetNotWritable: 0
+*cmnPromptSaveRunset: 0
+*cmnShowCustomDialog: 1
+*cmnPreTrigger: 
+*cmnPostTrigger:  pvReport DRC %L %m %l
+*cmnRunPostTriggerInBG: 0
+*cmnWarnNoCustomization: 0
+*cmnVConnectColon: 0
+*cmnVConnectReport: 0
+*cmnVConnectNamesState: NONE
+*cmnVConnectNames: 
+*cmnDontWaitForLicense: 1
+*cmnRun64: 0
+*cmnRun64RVE: 0
+*cmnTemplate_LP: ../gds/%l.calibre.zco.gds
+*cmnTemplate_IL: 1
+*cmnTemplate_RL: $WORKAREA/pdk/Calibre/drc/calibre.zco
+*cmnTemplate_RN: $WORKAREA/verification/%l/zco/
+*cmnTemplate_TF: 
+*cmnTemplate_CF: 
+*cmnUseCBforRVE: 0
+*cmnV2LVS_VLOGLibFiles: 
+*cmnV2LVS_SPICELibFiles: 
+*cmnV2LVS_SPICEIncFiles: 
+*cmnV2LVS_UseRangeMode: 0
+*cmnV2LVS_KeepBackSlash: 0
+*cmnV2LVS_UseCBLicense: 0
+*cmnV2LVS_WarningsAreErrors: 0
+*cmnV2LVS_WarningLevel: 2
+*cmnV2LVS_DontConnectPower: 0
+*cmnV2LVS_LastTranslation: 0
+*cmnV2LVS_TranslateAlways: 0
+*cmnV2LVS_GenerateTemplate: 0
+*cmnV2LVS_s0Net: 
+*cmnV2LVS_s1Net: 
+*cmnV2LVS_Pprefix: 
+*cmnV2LVS_Uprefix: 
+*cmnV2LVS_Achars: 
+*cmnV2LVS_Cchars: 
+*cmnV2LVS_AddPins: 0
+*cmnV2LVS_AddPinNames: 
+*cmnV2LVS_PositionalPins: 0
+*cmnV2LVS_ConnectUPins: 0
+*cmnV2LVS_UserOptions: 
+*cmnCloseRVEonExit: 1
+*cmnPromptCloseRVE: 0
+*cmnDisableOptions: 0
+*cmnDisableSelectChecks: 0
+*cmnDisableERCChanges: 0
+*cmnDisableEnvEdit: 0
+*cmnDisableCustomEdit: 0
+*cmnSaveRunsetChanges: 0
+*cmnShowOptions: 1
+*cmnCheckForModifiedRules: 0
+*cmnReleaseLicense: 1
+*cmnLicenseReleaseTime: 0.1
+*cmnApplyTemplates: 1
+*cmnUseCustomFile: 0
+*cmnCustomFileName: 
+*cmnRemoteUserIsCurrentUser: 1
+*cmnRemoteUserName: 
+*cmnRemoteShellDefault: 1
+*cmnRemoteShellName: 
+*cmnRemoteMGCHOMEUseCurrent: 1
+*cmnRemoteMGCHOME: 
+*cmnRunHostType: localhost
+*cmnNumTurbo: All
+*cmnNumTurboLitho: All
+*cmnRemoteHostName: 
+*cmnRemoteClusterQueueCmd: 
+*cmnRemoteClusterSynch: 0
+*cmnRunMT: 0
+*cmnRunHyper: 0
+*cmnSlaveHosts: {use {}} {hostName {}} {cpuCount {}} {a32a64 {}} {rsh {}} {maxMem {}} {workingDir {}} {layerDir {}} {mgcLibPath {}} {launchName {}}
+*cmnSlaveHostsViewDetails: 0
+*cmnLSFStTbl: 
+*cmnLSFMtTbl: 
+*cmnLSFMasterTbl: 
+*cmnLSFSlaveTbl: 
+*cmnLSFMasterTblViewDetails: 0
+*cmnGridStTbl: 
+*cmnGridMtTbl: 
+*cmnGridMasterTbl: 
+*cmnGridSlaveTbl: 
+*cmnGridMasterTblViewDetails: 0
+*cmnRemoteMGCHOME_ss5: 
+*cmnRemoteMGCHOME_hpu: 
+*cmnRemoteMGCHOME_ira: 
+*cmnRemoteMGCHOME_ixl: 
+*cmnRemoteMGCHOME_iil: 
+*cmnCloseRVEonRun: 1
+*cmnFDIReadNetsFromCell: ALL
+*cmnFDIReadText: 1
+*cmnFDIReadBlockages: 1
+*cmnFDIReadInstPinShapes: 0
+*cmnFDIViewListMW: CEL FRAM
+*cmnFDIViewListOA: layout abstract
+*cmnFDIRun64: 0

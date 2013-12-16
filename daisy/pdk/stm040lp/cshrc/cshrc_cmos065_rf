@@ -1,0 +1,104 @@
+#!/bin/csh -f
+#
+#
+
+setenv CMOS065RF_DIR /sw/mentor/libraries/cmos065RF_v.522
+
+#####################################################
+##  Modify the line below with the path to your installation
+##  of MMSIM from Cadence
+#####################################################
+
+setenv CDS_MMSIM_DIR /cmpsoft1/cds/cdsmmsim6031
+
+#####################################################
+##  Check if the line below is correct :
+##  1) if you are running a different version than 5.1.41
+##  2) if you are running on Linux or hp
+#####################################################
+
+setenv CDS_INST_DIR $CMOS065RF_DIR/UNIOPUS/uniopus/5.1.41/sun
+
+
+#######################################################
+# Modify the LM_LICENSE_FILE with your installation ###
+######  (Cadence license server) ######################
+#######################################################
+
+
+#setenv LM_LICENSE_FILE 5287@cime450:5280@cimeserv
+setenv LM_LICENSE_FILE 1706@license.isy.liu.se
+setenv RCXT_HOME_DIR /sw/synopsys/Star-RCXT/X-2005.06.SP2
+
+
+##########################################################
+######## Environment for Calibre #########################
+# 1) Uncomment the 3 following lines         ############# 
+# 2) Modify the path to Calibre installation #############
+# 3) Modify the LM_LICENSE_FILE with your installation ###
+##########################################################
+
+#setenv MGC_HOME /cmpsoft1/mgc/calibre2007_3_36_25/ss5_cal_2007.3_36.25
+#set path=($path $MGC_HOME/bin )
+
+#setenv LM_LICENSE_FILE ${LM_LICENSE_FILE}:1717@v212
+
+#setenv MGC_HOME /sw/mentor/calibre_2006.1_19.20
+#set path=($path $MGC_HOME/bin )
+
+#setenv LM_LICENSE_FILE ${LM_LICENSE_FILE}:1706@license.isy.liu.se
+
+
+#######################################################
+#######################################################
+
+
+
+
+###################################################
+######## DON'T MODIFY THE LINES BELOW #############
+###################################################
+
+setenv UNICAD_KERNEL_ROOT $CMOS065RF_DIR/UnicadKernel_3.4.1
+set path=($path $CDS_MMSIM_DIR/tools/bin $UNICAD_KERNEL_ROOT $UNICAD_KERNEL_ROOT/bin)
+
+setenv UK_PATH $CMOS065RF_DIR/UnicadKernel_3.4.1;
+
+## Modified by JJW
+setenv UCDPRJDIR $WORKAREA ## $cwd;
+
+source $CMOS065RF_DIR/UnicadKernel_3.4.1/lib/csh/uk-header.csh;
+
+
+setenv PRODUCT_ROOT $CDS_INST_DIR;
+source $CDS_INST_DIR/uniopus.csh;
+unsetenv PRODUCT_ROOT;
+
+setenv PRODUCT_ROOT $CMOS065RF_DIR/ADSKit_2.1;
+source $CMOS065RF_DIR/ADSKit_2.1/ADSKit.csh;
+unsetenv PRODUCT_ROOT;
+
+setenv PRODUCT_ROOT $CMOS065RF_DIR/ArtistKit_5.1;
+source $CMOS065RF_DIR/ArtistKit_5.1/ArtistKit.csh;
+unsetenv PRODUCT_ROOT;
+
+setenv PRODUCT_ROOT $CMOS065RF_DIR/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8_5.2.2;
+source $PRODUCT_ROOT/DK_cmos065lpgp_RF_7m4x0y2z_2V51V8.csh;
+unsetenv PRODUCT_ROOT;
+
+setenv PRODUCT_ROOT $CMOS065RF_DIR/PLSKit_2.1;
+source $CMOS065RF_DIR/PLSKit_2.1/PLSKit.csh;
+unsetenv PRODUCT_ROOT;
+
+setenv PRODUCT_ROOT $CMOS065RF_DIR/Unidoc_2.7.c;
+source $CMOS065RF_DIR/Unidoc_2.7.c/Unidoc.csh;
+unsetenv PRODUCT_ROOT;
+
+
+setenv UK_LOAD_PRODS "ADSKit ArtistKit DK_cmos065lpgp_RF_7m4x0y2z_2V51V8 PLSKit UnicadKernel Unidoc uniopus";
+
+
+
+source $CMOS065RF_DIR/UnicadKernel_3.4.1/lib/csh/uk-tailer.csh;
+
+#######################################################

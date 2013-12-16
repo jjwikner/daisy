@@ -1,0 +1,119 @@
+#!/bin/csh -f
+#
+#
+
+setenv CMOS040LP_DIR /sw/cadence/libraries/cmos040lp_21
+setenv DKITROOT $CMOS040LP_DIR/PDK_STM_cmos040lp_AMS_7m4x0y2z_2V51V8@2.1
+
+#####################################################
+##  Modify the line below with the path to your installation
+##  of MMSIM from Cadence
+#####################################################
+
+setenv CDS_MMSIM_DIR /sw/cadence/MMSIM72
+
+#####################################################
+##  Check if the line below is correct :
+##  1) if you are running a different version than 5.1.41
+##  2) if you are running on Linux or hp
+#####################################################
+
+# Modified by JJW
+# setenv CDS_INST_DIR /sw/cadence/IC6.14.509
+
+
+#######################################################
+# Modify the LM_LICENSE_FILE with your installation ###
+######  (Cadence license server) ######################
+#######################################################
+
+#setenv LM_LICENSE_FILE 5287@cimepe37:5280@v212
+setenv LM_LICENSE_FILE ${LM_LICENSE_FILE}:1706@license.isy.liu.se
+
+##########################################################
+######## Environment for Calibre #########################
+# 1) Uncomment the 3 following lines         ############# 
+# 2) Modify the path to Calibre installation #############
+# 3) Modify the LM_LICENSE_FILE with your installation ###
+##########################################################
+
+setenv MGC_HOME /sw/mentor/calibre_2010.2_13.12
+set path=($path $MGC_HOME/bin )
+
+setenv LM_LICENSE_FILE ${LM_LICENSE_FILE}:1706@license.isy.liu.se
+
+#######################################################
+#######################################################
+
+
+
+
+###################################################
+######## DON'T MODIFY THE LINES BELOW #############
+###################################################
+
+setenv UNICAD_KERNEL_ROOT $CMOS040LP_DIR/UnicadKernel@3.4.2a
+set path=($path $CDS_MMSIM_DIR/tools/bin $CDS_INST_DIR/tools/bin $CDS_INST_DIR/tools/dfII/bin $UNICAD_KERNEL_ROOT $UNICAD_KERNEL_ROOT/bin)
+
+setenv UK_PATH $CMOS040LP_DIR/UnicadKernel@3.4.2a;
+
+setenv UCDPRJDIR $cwd;
+
+## Modified by JJW
+setenv UCDPRJDIR $WORKAREA ## $cwd;
+
+source $CMOS040LP_DIR/UnicadKernel@3.4.2a/lib/csh/uk-header.csh;
+
+
+setenv PRODUCT_ROOT $CMOS040LP_DIR/ArtistKit@5.6.0.1;
+source $PRODUCT_ROOT/ArtistKit.csh;
+unsetenv PRODUCT_ROOT;
+
+setenv PRODUCT_ROOT $CMOS040LP_DIR/CadenceTechnoKit_cmos040_7m4x0y2z_AP@2.3.1.0;
+source $PRODUCT_ROOT/CadenceTechnoKit_cmos040_7m4x0y2z_AP.csh;
+unsetenv PRODUCT_ROOT;
+
+setenv PRODUCT_ROOT $CMOS040LP_DIR/PDK_STM_cmos040lp_AMS_7m4x0y2z_2V51V8@2.1;
+source $PRODUCT_ROOT/PDK.csh;
+unsetenv PRODUCT_ROOT;
+
+setenv PRODUCT_ROOT $CMOS040LP_DIR/PLSCore@2.4.2;
+source $PRODUCT_ROOT/PLSCore.csh;
+unsetenv PRODUCT_ROOT;
+
+setenv PRODUCT_ROOT $CMOS040LP_DIR/FrontEndKit@3.0.1;
+source $PRODUCT_ROOT/FrontEndKit.csh;
+unsetenv PRODUCT_ROOT;
+
+setenv PRODUCT_ROOT $CMOS040LP_DIR/SocEncounterKit@3.1.2;
+source $PRODUCT_ROOT/SocEncounterKit.csh;
+unsetenv PRODUCT_ROOT;
+
+setenv PRODUCT_ROOT $CMOS040LP_DIR/SignOffKit@4.5;
+source $PRODUCT_ROOT/SignOffKit.csh;
+unsetenv PRODUCT_ROOT;
+
+setenv PRODUCT_ROOT $CMOS040LP_DIR/SignOffTechnoKit_cmos040lp_7m4x0y2z@2.0;
+source $PRODUCT_ROOT/SignOffTechnoKit_cmos040lp_7m4x0y2z.csh;
+unsetenv PRODUCT_ROOT;
+
+setenv PRODUCT_ROOT $CMOS040LP_DIR/SynopsysTechnoKit_cmos040_7m4x0y2z_AP@2.0.1;
+source $PRODUCT_ROOT/SynopsysTechnoKit_cmos040_7m4x0y2z_AP.csh;
+unsetenv PRODUCT_ROOT;
+
+setenv PRODUCT_ROOT $CMOS040LP_DIR/IccKit@2.2.1;
+source $PRODUCT_ROOT/IccKit.csh;
+unsetenv PRODUCT_ROOT;
+
+setenv PRODUCT_ROOT $CMOS040LP_DIR/Unidoc_2.7.c;
+source $PRODUCT_ROOT/Unidoc.csh;
+unsetenv PRODUCT_ROOT;
+
+
+setenv UK_LOAD_PRODS "ArtistKit PDK CadenceTechnoKit_cmos040_7m4x0y2z_AP PLSCore FrontEndKit SocEncounterKit SignOffKit SignOffTechnoKit_cmos040lp_7m4x0y2z SynopsysTechnoKit_cmos040_7m4x0y2z_AP IccKit UnicadKernel unidoc";
+
+
+
+source $CMOS040LP_DIR/UnicadKernel@3.4.2a/lib/csh/uk-tailer.csh;
+
+#######################################################

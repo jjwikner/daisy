@@ -1,0 +1,11 @@
+#
+analogLib res symbol
+R2
+R1
+#ISCELL
+daisy daisySheet symbol
+I0
+#ISCELL
+basic iopin symbolr
+PIN1
+PIN0

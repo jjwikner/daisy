@@ -1,0 +1,87 @@
+AI-2-MIF   Version 1.0                     DATE:  5/6/94
+
+
+      BY:  Deron Jackson
+  E-mail:  (djackson@mit.edu)
+Platform:  Windows/DOS
+Compiler:  Borland C++ Version 2.0
+
+
+This code is written explicitly for converting MATLAB 4.2's Adobe
+Illustrator output into Frame MIF (Maker Interchange Format).
+This allows MATLAB graphics to be imported into Frame.  The resulting
+importing graphic is then EDITABLE in Frame.
+
+
+USAGE:
+-----
+This programs is very simple to use.  I found it easiest to create an
+M-file in MATLAB that generates a MIF file automatically.  Such a M-file
+is given below.
+
+   function printmif(arg1)
+   %PRINT  Print graph to an Adobe Illustrator file then use
+   %       AI2MIF to convert it to FrameMaker MIF format.
+   %
+   ai2mifpath='c:\cpp\programs\ai2mif';    % Insert appropriate path here
+   %
+   temp=cd;                                % Get the current directory
+   tmp=['print -dill ' arg1 '.ai'];
+   eval(tmp);                              % Print to an AI file
+   tmp=[ai2mifpath temp '\' arg1 '.ai ' temp '\' arg1 '.mif > NUL |'];
+   eval(['!' tmp]);                        % Execute AI2MIF in background
+   delete([temp '\' arg1 '.ai']);          % Delete the AI file
+   end
+
+Otherwise the program can be used manually from the DOS prompt as follows.
+
+   ai2mif infile {outfile}
+
+The program creates a file named "default.mif" if the "outfile" parameter
+is not specified.
+
+
+NOTES:
+-----
+1) This code is a quick and somewhat dirty solution to the problem of
+importing MATLAB graphics.  The code should support any MATLAB "line"
+graphic.  This includes any 2D, 3D, mesh and contour plots consisting only
+of lines and text.  However any SURFACE or BITMAPS graphics are not
+supported.
+
+2) The code contains almost no error checking so use it at your own risk.
+
+3) I am quite certain that this code will NOT WORK with anything other than
+a MATLAB AI file.  I wrote the program by deciphering the symbol meanings
+from a number of MATLAB outputs.  I had no references to the TRUE AI format.
+
+4) Object clipping is rather crudely implemented.  This keeps graphs from
+exceeding their axis edges.  However I have not accounted for a few unlikely
+possibilities.
+
+5) Matlab plots using NON-SOLID linetypes (dashed, dotted, etc.) which have
+a LARGE number of points will appear solid in FRAME.  You can fix this by
+ungrouping the graphic after it is imported and using the Frame SMOOTH
+command on the individual traces.  Frame seems to display the linetype
+correctly when the POLYLINE is smoothed.
+
+6) You will notice that if you SCALE the graphic once imported into Frame
+the text size will not scale with it.  This is annoying but I don't know a
+way around it.  You can easily scale the text manually using the "character
+designer" menu.
+
+7) All colors are mapped to Frame BLACK or NONE.  Color support would not
+be to bad to add but I have no need for it.
+
+
+Disclaimer:
+----------
+
+The author of this program accepts no responsibility for damages
+that are caused by this program and make NO WARRANTY or
+representation, either express or implied, with respect to this
+software.  This software is provided "AS IS", and you, its user,
+assume the entire risk when you use it.
+
+AI2MIF is copyright (C) 1994, Deron Jackson.  All rights reserved.
+

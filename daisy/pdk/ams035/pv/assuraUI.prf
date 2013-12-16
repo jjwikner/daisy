@@ -1,0 +1,26 @@
+
+;;;;;----------------QUEUING PREFERENCES--------------------------
+
+ vuiQueueing = list( nil
+
+    ;;;; ------------ Command -----------------------------------
+
+   'command     "bsub -q"
+
+    ;;;; ------------ Use Remote Run Dir ------------------------
+
+   'Roption     nil
+
+    ;;;; ------------ DRC   -----------------------------------
+
+   'DRCqueues     list("asdrc_normal")
+   'DRCflags      ""
+    ;;;; ------------ LVS   -----------------------------------
+
+   'LVSqueues     list("aslvs_normal")
+   'LVSflags      ""
+    ;;;; ------------ RCX   -----------------------------------
+
+   'RCXqueues     list("asrcx_normal")
+   'RCXflags      ""
+)

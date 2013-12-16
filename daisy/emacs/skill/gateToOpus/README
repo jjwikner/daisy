@@ -1,0 +1,89 @@
+Description
+-----------
+
+This package is a suite of scripts which allow Emacs to communicate
+directly with Opus. Emacs can send its buffers directly to the Opus
+Skill interpreter. This can make life easier for Skill developers
+since they need not exit Emacs to test their code.
+
+Files
+-----
+
+gateToOpus.c	- C equivalent of gateToOpus.ksh
+gateToOpus.il	- Opus Skill code to read data from Emacs
+gateToOpus.ksh	- Intermediate program communicating between 
+		  Emacs and Opus
+makefile        - a simple makefile
+README		- This file
+
+Installation
+------------
+
+A simple makefile is provided which compiles the C code and also
+installs the files. The makefile cannot alter the Opus startup file so
+this step must be done by hand, fortunately if the site-wide
+initialisation file is edited this need be done only once.
+
+1. Edit makefile to set the INSTALLDIR variable. One recommended place
+   is:
+
+   	<cdsinstdir>/tools/dfII/local
+
+2. Ensure that the directory referenced by the INSTALLDIR exists and
+   that it has the appropriate protection.
+
+3. Run 'make install', this will compile the C code and copy the files
+   to the INSTALLDIR directory.
+
+4. Edit the site-wide Opus initialisation file (.cdslocal or .cdsinit)
+   to include the line:
+
+   load( "INSTALLDIR/gateToOpus.il" )
+
+   where INSTALLDIR is the same one as that in the makefile.
+
+Alternatively, step 4 may be performed on a user by user basis.
+
+By default, the makefile copies the file to a single directory which
+may be placed anywhere. This directory is set by the INSTALLDIR
+variable in the makefile. If it is wished, the installer may place the
+skill and executable files in separate directories, in this case the
+gateToOpus.il file must be altered so that the GateToOpusPath string
+variable points to the directory where the gateToOpus and
+gateToOpus.ksh executables reside. The Opus initialisation file must
+also load the Skill file from the appropriate areas.
+
+Notes
+-----
+
+The file gateToOpus.c is a C rewrite of the code in gateToOpus.ksh,
+with slightly reduced functionality. It is supplied for users who do
+not have the Korn shell on their system. It is preferable to use the
+Korn shell script, the compiled gateToOpus program is only used when
+/bin/ksh doesn't exist. If the Korn shell is in a different place on
+your system then edit gateToOpus.il appropriately.
+
+How does it work ?
+------------------
+
+This is a slightly simplified explanation, for more details see the
+code, it's not too difficult to understand.
+
+   Opus starts up and as part of its initialisation it starts a child
+process. This child program is either gateToOpus (compiled C program)
+or gateToOpus.ksh (if /bin/ksh exists). This child program has the
+ability to communicate with the Opus Skill interpreter. The program is
+also sensitive to a particular signal. If one of these signals is
+received then the program sends Opus a command to load a file called
+~/.dataForOpus. The data in ~/.dataForOpus is then interpreted by Opus
+just as if the user had typed (load "~/.dataForOpus").
+
+Emacs meanwhile has been started up by the user. The Skill mode in
+Emacs will write the Skill code to ~/.dataForOpus and then send a
+signal to the Opus child program to make Opus read the data.
+
+This package was written by :
+Wouter Batelaan, batelaan@ukpsshp1.serigate.philips.nl and 
+Allan Cochran, acochran@armltd.co.uk and was integrated in skill-mode 3.x by 
+Jonas Jarnestrom, euajojm@eua.ericsson.se .
+

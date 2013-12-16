@@ -1,0 +1,88 @@
+// Spectre AHDL for daisy, daisyFileReader, ahdl
+
+// Some changes in the syntax. 2009-09-04 JJW
+
+module daisyFileReader ( b0, b1, b2, b3, b4, b5, b6, b7, b8, b9, b10, b11, clk) (clkThreshold, tRiseFall, vHigh, vLow, noSamples, filename)
+    node [V,I] b0;
+    node [V,I] b1;
+    node [V,I] b2;
+    node [V,I] b3;
+    node [V,I] b4;
+    node [V,I] b5;
+    node [V,I] b6;
+    node [V,I] b7;
+    node [V,I] b8;
+    node [V,I] b9;
+    node [V,I] b10;
+    node [V,I] b11;
+    node [V,I] clk;
+//parameters
+parameter real clkThreshold=1.65;
+parameter real tRiseFall=1e-9;
+parameter real vHigh=3.3;
+parameter real vLow=0;
+parameter integer noSamples=1024;
+parameter string filename="/tmp/simin.dat";
+
+{
+
+	//local variables
+	 integer datain[noSamples];
+	 real dataout[12];
+	 stream fid;
+
+	 integer fileInd=1;
+	 integer cnt=0;
+
+
+ integer bitno;
+ integer datatmp;
+
+
+ // Read noSamples of data from file
+ initial {
+  fid = $fopen(filename,"r");
+  while ( cnt<noSamples && fileInd==1 ) {
+   fileInd = $fread(fid, "%d", datain[cnt]);
+   cnt++;
+  }
+  cnt=0;
+ }
+
+// Output binary data at falling clock edges
+ analog {
+  if ($threshold(V(clk)-clkThreshold,-1)) {
+   if (cnt<noSamples) {
+// convert from integer to binary
+    datatmp=2048+datain[cnt];
+    for (bitno=11; bitno >= 0; bitno--) {
+     if (datatmp > pow (2,bitno)) {
+      dataout[bitno] = vHigh;
+      datatmp=datatmp-pow(2,bitno);
+     }
+     else {
+      dataout[bitno]=vLow;
+     }
+    }
+    cnt++;
+   }
+  }
+  V(b0) <- $transition(dataout[0],0,tRiseFall,tRiseFall);  
+  V(b1) <- $transition(dataout[1],0,tRiseFall,tRiseFall);  
+  V(b2) <- $transition(dataout[2],0,tRiseFall,tRiseFall);  
+  V(b3) <- $transition(dataout[3],0,tRiseFall,tRiseFall);  
+  V(b4) <- $transition(dataout[4],0,tRiseFall,tRiseFall);  
+  V(b5) <- $transition(dataout[5],0,tRiseFall,tRiseFall);  
+  V(b6) <- $transition(dataout[6],0,tRiseFall,tRiseFall);  
+  V(b7) <- $transition(dataout[7],0,tRiseFall,tRiseFall);  
+  V(b8) <- $transition(dataout[8],0,tRiseFall,tRiseFall);  
+  V(b9) <- $transition(dataout[9],0,tRiseFall,tRiseFall);  
+  V(b10) <- $transition(dataout[10],0,tRiseFall,tRiseFall);  
+  V(b11) <- $transition(dataout[11],0,tRiseFall,tRiseFall);
+ }
+
+// Close file 
+ final {
+  $fclose(fid);
+ }
+}

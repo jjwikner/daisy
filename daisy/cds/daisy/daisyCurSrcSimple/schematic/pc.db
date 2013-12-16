@@ -1,0 +1,27 @@
+#
+analogLib vdc symbol
+VcurrentProbeW
+VcurrentProbeWo
+#
+analogLib res symbol
+R6
+R5
+Rout
+#
+analogLib cccs symbol
+F2
+FoutputCurrent
+#ISCELL
+basic iopin symbolr
+PIN4
+PIN5
+#ISCELL
+daisy daisySheet symbol
+I0
+#ISCELL
+basic ipin symbol
+PIN0
+PIN1
+#ISCELL
+basic noConn symbol
+I3

@@ -1,0 +1,20 @@
+Starting Single Run, Sweeps and Corners...
+
+Current time: Tue Oct 15 16:18:06 2013 
+Best design point: 1
+Design specs: 
+	daisyDemo:daisyAmpOffset_T:1	corner	Default - 
+Design parameters: 
+	Acomp		1k
+	fClk		1M
+	vccr		1
+	vCom		1
+	vDiff		0
+	tStop		13u
+	NOC		13
+
+Interactive.1
+Number of points completed: 1
+Number of simulation errors: 0
+Interactive.1 completed. 
+Current time: Tue Oct 15 16:18:10 2013 

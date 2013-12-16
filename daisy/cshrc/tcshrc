@@ -1,0 +1,109 @@
+#################################################
+#################################################
+## Global site tcshrc for daisy projects       ##
+## J Jacob Wikner (jacob.wikner@liu.se)        ##
+#################################################
+#################################################
+
+#################################################
+## Clean this up to adjust to later 
+## align with the modules
+#################################################
+
+if ( ! ($?CDSDATABASE) ) then
+   echo "DAISY:: Going for cadence CDBA format (old cadence)"
+   echo "DAISY:: probably you forgot to load module ..."
+   setenv CDSDATABASE "cds"	
+endif
+
+setenv DAISYAREA /site/edu/es/DAISY/daisy/
+setenv PATH ${PATH}:${DAISYAREA}/bin/
+setenv USERAREA $WORKAREA/work_$USER/
+setenv VERAREA $USERAREA/pv
+setenv CDSSIMPATH $USERAREA/sim  # This should change name to DAISYSIM
+setenv DAISYSIM $USERAREA/sim
+
+#################################################
+# Generic cadence path setups
+#################################################
+
+setenv CDS_LOG_PATH $USERAREA/log
+setenv CDS_LOAD_ENV CWD  # Use only the project-specific cdsenv
+if ( ! $?CDSHOME ) then
+  setenv CDSHOME     $CDS_HOME  ## redefinition from module 
+endif
+setenv CDS_INST_DIR $CDSHOME
+
+#################################################
+### Mentor setup              
+#################################################
+   
+setenv MGC_CALIBRE_SAVE_ALL_RUNSET_VALUES 1
+setenv EMAIL_TRIGGER "ON"
+setenv HDS_PROJECT_DIR $USERAREA/hds
+
+#################################################
+## Setup for latex
+#################################################
+echo "DAISY:: Setting up latex template paths"
+setenv TEXINPUTS .:$DAISYAREA/doc/templates/springer/:$DAISYAREA/doc/templates/ieee/:$DAISYAREA/doc/templates/icecs/:
+
+#################################################
+## Setup for python      
+#################################################
+echo "DAISY:: Setting up python module path"
+if ( ! ($?PYTHONPATH) ) then
+   setenv PYTHONPATH ${DAISYAREA}/doc/python/:/opt/openoffice.org/basis3.1/program/
+else	  
+   setenv PYTHONPATH ${PYTHONPATH}:${DAISYAREA}/doc/python/:/opt/openoffice.org/basis3.1/program/
+endif
+
+##################################################
+## RUN PROJECT SPECIFIC TCSHRC
+##################################################
+
+# Notice that we need to point to workarea here and not the projarea
+source $WORKAREA/daisyProjSetup/cshrc/tcshrc
+
+##################################################
+# Daisy aliases
+##################################################
+
+source $DAISYAREA/cshrc/daisyAliases
+
+#################################################
+## RUN PROCESS SPECIFIC TCSHRC 
+## (EVENTUALLY MOVE TO PROJECT SETUP!!!)
+#################################################
+
+## RUN PROCESS SPECIFIC TCSHRC
+setenv PDK_HOME $DAISYAREA/pdkSpecific/$CDSPROCESSNAME/
+source $PDK_HOME/cshrc/tcshrc
+setenv MODELPATH $PDK_HOME/models/
+
+#################################################
+# Adding all the project paths
+#################################################
+setenv PATH ${PATH}:`cat $PROJAREA/daisyProjSetup/info/daisyPaths.txt`
+
+#################################################
+# Making sure that group permissions are maintained
+#################################################
+umask 0007
+
+#############################################
+# For bounces and others
+#############################################
+
+# Add a check for user type
+setenv EMAIL $USER@student.liu.se
+
+#############################################
+## RUN USER SPECIFIC TCSHRC
+#############################################
+
+if (-e  $USERAREA/cshrc/tcshrc ) then
+   source $USERAREA/cshrc/tcshrc
+   # And here you could overwrite that EMAIL
+endif  
+

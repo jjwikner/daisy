@@ -1,0 +1,66 @@
+#!/bin/tcsh
+# mvpattern -c -q <from-pattern> <to-patter> [file-list]
+# Perform a mv on all files in file-list (def: *) and change ev.
+#  occurences of <from-pattern> to <to-pattern>.
+# By default, it prints information about what's done.
+# If the -c flag is given, then give a compact output.
+# If the -q flag is given, then suppres all normal outputs.
+# Example:
+# |> mvpattern mx my
+# |Perform the following changes:
+# |   testmx.txt -> textmy.txt
+# |   mxths.tex -> myths.tex
+#
+# Author: Petter Kallstrom <petterk@isy.liu.se>
+# Date: This version was last changed on 2013-12-11.
+set flag = "";
+if ( "$1" == "-c" ) then
+  set flag = "-c";
+  shift
+endif
+if ( "$1" == "-q" ) then
+  set flag = "-q";
+  shift
+endif
+
+if ( "$2" == "" ) then
+  echo "$0 -c -q <from-pat> <to-pat> [file-list]"
+  echo "  Perform a mv on all files in file-list (def: *) and change ev. occurences"
+  echo "   from <from-pat> to <to-pat>."
+  echo "  Example> $0 mx my"
+  echo '   - Rename all files containing "mx" to corresponding name with "my".'
+  echo '  If the -c flag is given, then give a compact output.'
+  echo '  If the -q flag is given, then supress all normal outputs.'
+  exit 1
+endif
+
+set frompat = "$1"
+set topat = "$2"
+
+if ( "$3" == "" ) then
+  # Dirty hack: If no files are given, then call again with all files.
+  # Needed update: Check so there is at least one *$frompat*, or we'll
+  # get an infinit loop.
+  $0 $flag $frompat $topat *$frompat*
+  exit $status
+else
+  shift
+  shift
+endif
+
+if ( "$flag" == "-c" ) then
+  echo "change from '$frompat' to '$topat' in files $argv"
+else if ( "$flag" == "" ) then
+  echo "Performing the following changes:"
+endif
+while ( $# > 0 )
+  set x="$1"
+  set x2=`echo $1 | sed "s/$frompat/$topat/g"`
+  if ( "$x" != "$x2" ) then
+    if ( "$flag" == "" ) then
+      echo "  $x -> $x2"
+    endif
+    mv "$x" "$x2"
+  endif
+  shift
+end

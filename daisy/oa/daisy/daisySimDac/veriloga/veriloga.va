@@ -1,0 +1,39 @@
+		`include "discipline.h"
+`include "constants.h"
+
+module daisySimDac (DATA, vout);
+   input [7:0] DATA;
+   electrical[7:0]  DATA;
+   output 	vout;
+   electrical vout;
+
+   parameter 	real tRiseFallDel = 0 from [0:inf);
+   parameter 	real vLogicHigh = 1.0 from [0:inf);
+   parameter    real vref       = 1.0 from [0:inf);
+
+
+   real 	outScaled; // output scaled as fraction of 256
+//   real         vref;
+ 	
+   analog begin
+      
+      outScaled = 0;
+//      vref      = 0;
+
+      
+      outScaled = outScaled + ((V(DATA[7]) > vLogicHigh/2.0) ? 128 : 0);
+      outScaled = outScaled + ((V(DATA[6]) > vLogicHigh/2.0) ?  64 : 0);
+      outScaled = outScaled + ((V(DATA[5]) > vLogicHigh/2.0) ?  32 : 0);
+      outScaled = outScaled + ((V(DATA[4]) > vLogicHigh/2.0) ?  16 : 0);
+      outScaled = outScaled + ((V(DATA[3]) > vLogicHigh/2.0) ?   8 : 0);
+      outScaled = outScaled + ((V(DATA[2]) > vLogicHigh/2.0) ?   4 : 0);
+      outScaled = outScaled + ((V(DATA[1]) > vLogicHigh/2.0) ?   2 : 0);
+      outScaled = outScaled + ((V(DATA[0]) > vLogicHigh/2.0) ?   1 : 0);
+      V(vout) <+ transition( vref*outScaled/256, tRiseFallDel, tRiseFallDel, tRiseFallDel );
+   end
+endmodule
+
+
+	
+
+

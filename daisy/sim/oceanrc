@@ -1,0 +1,7 @@
+;; Ocean init file
+
+(setq onlyOcean t)
+(loadi (strcat (getShellEnvVar "WORKAREA") "/.cdsinit"))
+
+;; Ocean environment settings
+(envSetVal "spectre.envOpts" "firstRun" 'boolean nil)

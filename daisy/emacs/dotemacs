@@ -1,0 +1,377 @@
+;; .emacs
+
+;;; uncomment this line to disable loading of "default.el" at startup
+;; (setq inhibit-default-init t)
+
+;; turn on font-lock mode
+(global-font-lock-mode t)
+
+;; enable visual feedback on selections
+(setq transient-mark-mode t)
+
+;; set the default window size
+
+
+(setq default-major-mode 'text-mode)
+
+;; Want to compile?
+(global-set-key "\C-c\C-c" 'compile)
+(global-set-key "\C-c\C-n" 'next-error)
+(global-set-key "\C-c\C-p" 'previous-error)
+(global-set-key "\M-g" 'goto-line)
+(global-set-key [home] 'beginning-of-line)
+(global-set-key [end] 'end-of-line)
+(global-set-key [C-home] 'beginning-of-buffer)
+(global-set-key [C-end] 'end-of-buffer)
+(global-set-key [C-left] 'backward-word)
+(global-set-key [C-right] 'forward-word)
+(global-set-key [C-backspace] 'backward-kill-word)
+(global-set-key [delete] 'delete-backward-char)
+(global-set-key [backspace] 'delete-backward-char)
+(global-set-key [C-delete] 'kill-word)
+(global-set-key [next] 'page-down)
+(global-set-key [prior] 'page-up)
+
+(setq auto-mode-alist
+      (append '(("\\.c+\\'"             . c++-mode)
+                ("\\.h+\\'"             . c++-mode)
+		("\\.c$"                . c-mode)
+		("\\.h$"                . c-mode)
+		("\\.cc$"               . c++-mode)
+		("\\.C$"                . c++-mode)
+		("\\.H$"                . c++-mode)
+		("\\.y$"                . c-mode)
+                ("[]>:/][Mm]akefile"    . makefile-mode)
+		("\\.pas$"              . pascal-mode)
+                ("\\.p\\'"              . pascal-mode)
+                ("\\.F\\'"              . fortran-mode)
+		("\\.f$"                . fortran-mode)
+                ("\\.M\\'"              . M-mode)
+		("\\.el$"               . emacs-lisp-mode)
+		("[]>:/]\\..*emacs"     . emacs-lisp-mode)
+		("\\.ul$"               . lisp-mode)
+		("\\.ml$"               . lisp-mode)
+		(".cdsinit"               . lisp-mode)
+		("\\.l$"                . lisp-mode)
+		("\\.lsp$"              . lisp-mode)
+		("\\.lisp$"             . lisp-mode)
+		("\\.il$"               . lisp-mode)
+		("\\.ocn$"              . lisp-mode)
+		("\\.wpl$"              . perl-mode)
+		("\\.scm$"              . scheme-mode)
+		("\\.scm.[0-9]*$"       . scheme-mode)
+		("\\.mss$"              . scribe-mode)		
+		("\\.prolog$"           . prolog-mode)
+		("\\.pl$"               . perl-mode)
+		("\\.texinfo$"          . texinfo-mode)
+		("\\.tex$"              . TeX-mode)
+		("\\.TeX$"              . TeX-mode)
+		("\\.sty$"              . LaTeX-mode)
+		("\\.bbl$"              . LaTeX-mode)
+		("\\.bib$"              . bst-mode)
+		("\\.text$"             . text-mode)
+		("\\.article$"          . text-mode)
+		("\\.letter$"           . text-mode)
+		("^/tmp/Re"             . text-mode)
+		("^/tmp/fol/"           . text-mode)
+		("/Message[0-9]*$"      . text-mode)
+		("\\.ms$"               . nroff-mode)
+		("\\.man$"              . nroff-mode)
+		("\\.m$"                . matlab-mode)
+		("\\.pgs$"              . postgres-mode)
+		("\\.vhdl$"             . vhdl-mode)
+		("\\.vhd$"              . vhdl-mode)
+		("\\.v$"                . verilog-mode)
+		("\\.va$"               . verilog-mode)
+		("\\.vams$"              . verilog-mode)		
+		("\\.sp$"               . eldo-mode)
+		("\\.lis$"              . eldo-mode)
+		("\\.lib$"              . eldo-mode)
+		("\\.inc$"              . eldo-mode)
+		("\\.ckt$"              . eldo-mode)
+		("\\.cir$"              . eldo-mode)
+		("\\.net$"              . eldo-mode)
+		)
+              auto-mode-alist))
+
+;;; Definition of functions
+
+;;; Function page-up
+;;;
+
+(defun page-up ()
+  "Page Up."
+  (interactive)
+  (let ((line (count-lines (window-start) (point))))
+    (forward-line (- (max 1 (- (window-height)
+			       next-screen-context-lines))))
+    (recenter line)))
+
+;;;
+;;; Function page-down()
+
+(defun page-down ()
+  "Page Down."
+  (interactive)
+  (let ((line (count-lines (window-start) (point))))
+    (forward-line (max 1 (- (window-height)
+			       next-screen-context-lines)))
+    (recenter line)))
+
+
+;; Hilite
+;(cond (window-system
+;       (setq hilit-mode-enable-list '(not text-mode)
+;	     hilit-background-mode 'light
+;	     hilit-inhibit-mode nil
+;	     hilit-inhibit-rebinding nil)
+;       (require 'hilit22)
+;       ))
+;; Some inits
+
+(setq line-number-mode        t
+      default-major-mode      'text-mode
+      require-final-newline   t
+      inhibit-startup-message t
+      initial-major-mode      'text-mode
+      tex-default-mode        'latex-mode
+      tex-dvi-view-command    'xdvi)
+
+
+;; Background color
+(set-background-color "white")
+;; (set-background-color "lightgray")
+;; (set-background-color "blue")
+
+;; Foreground color
+(set-foreground-color "black")
+
+;;;----------------------------------------------------------------------
+;;; Make the *scratch* buffer behave like "The thing your aunt gave you,
+;;; which you don't know what is."
+(save-excursion
+  (set-buffer (get-buffer-create "*scratch*"))
+  (make-local-variable 'kill-buffer-query-functions)
+  (add-hook 'kill-buffer-query-functions 'kill-scratch-buffer))
+
+(defun kill-scratch-buffer ()
+  ;; The next line is just in case someone calls this manually
+  (set-buffer (get-buffer-create "*scratch*"))
+  
+  ;; Kill the current (*scratch*) buffer
+  (remove-hook 'kill-buffer-query-functions 'kill-scratch-buffer)
+  (kill-buffer (current-buffer))
+  
+  ;; Make a brand new *scratch* buffer
+  (set-buffer (get-buffer-create "*scratch*"))
+  (lisp-interaction-mode)
+  (make-local-variable 'kill-buffer-query-functions)
+  (add-hook 'kill-buffer-query-functions 'kill-scratch-buffer)
+  
+  ;; Since we killed it, don't let caller do that.
+  nil)
+;;;----------------------------------------------------------------------
+
+;; Specific load paths.
+
+(setq load-path (cons (expand-file-name (concat (getenv "WORKAREA") "/sicon/emacs/")) load-path))
+(setq load-path (cons (expand-file-name (concat (getenv "WORKAREA") "/sicon/emacs/skill/" )) load-path))
+
+;; Now for some autoloads
+
+;;(autoload 'matlab-mode   "matlab-mode"    "Enter Matlab mode." t)
+;;(autoload 'postgres-mode "postgres-mode"  "Enter PostGres mode." t)
+(autoload 'skill-mode    "skill-mode"     "Enter Skill mode." t)
+
+(autoload 'vhdl-mode       "vhdl-mode"      "VHDL Mode" t)
+(autoload 'eldo-mode      "eldo-mode"     "Eldo mode." t)
+(autoload 'spice-mode      "spice-mode"     "Spice mode." t)
+(autoload 'bst-mode      "bst-mode"     "BiBTeX mode." t)
+(autoload 'verilog-mode    "verilog-mode"     "Verilog mode." t)
+
+
+(setq visible-bell nil)
+(setq c-indent-level 4)
+(setq c-brace-imaginary-offset 0)
+(setq c-continued-statement-offset 4)
+(setq c-argdecl-indent 4)
+(setq c-tab-always-indent nil)
+(setq version-control t)
+(setq kept-old-versions 999)
+(setq kept-new-versions 999)
+(setq trim-versions-without-asking nil)
+(setq delete-auto-save-files nil)
+
+(global-set-key "\C-x\C-n" 'next-error)
+(global-set-key "\C-xn" 'other-window)
+(global-set-key "\eg" 'goto-line)
+
+(setq auto-mode-alist (append auto-mode-alist
+			      '(				
+				)))
+
+(defun my-matlab-mode-hook ()
+  (setq fill-column 76) 
+  (turn-on-auto-fill))
+
+(setq matlab-mode-hook 'my-matlab-mode-hook)
+
+(defun my-eldo-mode-hook ()
+  (setq fill-column 76) 
+  (turn-on-auto-fill))
+
+(setq eldo-mode-hook 'my-eldo-mode-hook)
+
+;; Hilite colors
+
+(setq hilit-face-translation-table '((comment . Red-bold) (include . ForestGreen) 
+				     (define . ForestGreen-bold) (defun . RoyalBlue-bold) 
+				     (decl . CadetBlue-bold) (type) 
+				     (keyword . RoyalBlue-bold) (label . red-underline) 
+				     (string . grey30) (struct . black-bold) 
+				     (glob-struct . magenta) (named-param . DarkGoldenrod) 
+				     (crossref . DarkGoldenrod) (formula . Goldenrod) 
+				     (active-error . default/pink-bold) (error . red-bold) 
+				     (warning . blue-italic) (rule . blue-bold-underline) 
+				     (msg-subject . blue-bold) (msg-from . purple-bold) 
+				     (msg-header . firebrick-bold) 
+				     (msg-separator . black/tan-bold) 
+				     (msg-quote . ForestGreen) (summary-seen . grey40) 
+				     (summary-killed . grey50) (summary-Xed . OliveDrab2) 
+				     (summary-deleted . firebrick) 
+				     (summary-unread . RoyalBlue) 
+				     (summary-new . blue-bold) 
+				     (summary-current . default/skyblue-bold) 
+				     (gnus-group-unsubscribed . grey50) (gnus-group-empty) 
+				     (gnus-group-full . ForestGreen) 
+				     (gnus-group-overflowing . firebrick) 
+				     (dired-directory . blue-bold) 
+				     (dired-link . firebrick-italic) 
+				     (dired-ignored . ForestGreen) 
+				     (dired-deleted . red-bold-italic) 
+				     (dired-marked . purple) (jargon-entry . blue-bold) 
+				     (jargon-xref . purple-bold) 
+				     (jargon-keyword . firebrick-underline)))
+
+;; Options Menu Settings
+;; =====================
+(cond
+ ((and (string-match "XEmacs" emacs-version)
+       (boundp 'emacs-major-version)
+       (or (and
+            (= emacs-major-version 19)
+            (>= emacs-minor-version 14))
+           (= emacs-major-version 20))
+       (fboundp 'load-options-file))
+  (load-options-file "~/.xemacs-options")))
+;; ============================
+;; End of Options Menu Settings
+
+
+;; Multiplatform usage
+
+(defun unix2dos () 
+  "Converts the whole buffer from UNIX text file format to MS-DOS. 
+  Lines that already have an MS-DOS line ending will not be changed." 
+  (interactive) 
+  (save-excursion 
+    ;; go to beginning of buffer 
+    (goto-char (point-min)) 
+    ;; fix all line endings 
+    (while (re-search-forward "\015*\012" nil t) 
+      (replace-match "\015\012" nil t)) 
+    )) 
+
+(defun dos2unix () 
+  "Converts the whole buffer from MS-DOS text file format to UNIX." 
+  (interactive) 
+  (save-excursion 
+    ;; go to beginning of buffer 
+    (goto-char (point-min)) 
+    ;; fix all line endings (also CR+CR+LF line endings) 
+    (while (re-search-forward "\015+\012" nil t) 
+      (replace-match "\012" nil nil)) 
+    ;; delete any Control-Z at end of buffer 
+    (goto-char (1- (point-max))) 
+    (if (looking-at "\C-z") 
+	(delete-char 1)))) 
+
+(defun dos2mac () 
+  "Converts the whole buffer from MS-DOS text file format to MAC." 
+  (interactive) 
+  (save-excursion 
+    ;; go to beginning of buffer 
+    (goto-char (point-min)) 
+    ;; fix all line endings (also CR+CR+LF line endings) 
+    (while (re-search-forward "\015+\012" nil t) 
+      (replace-match "\015" nil nil)) 
+    ;; delete any Control-Z at end of buffer 
+    (goto-char (1- (point-max))) 
+    (if (looking-at "\C-z") 
+	(delete-char 1)))) 
+
+(defun mac2dos () 
+  "Converts the whole buffer from MAC text file format to MS-DOS." 
+  (interactive) 
+  (save-excursion 
+    ;; go to beginning of buffer 
+    (goto-char (point-min)) 
+    ;; fix all line endings 
+    (while (search-forward "\015" nil t) 
+      (replace-match "\015\012" nil t)) 
+    )) 
+
+(defun mac2unix () 
+  "Converts the whole buffer from MAC text file format to UNIX." 
+  (interactive) 
+  (save-excursion 
+    ;; go to beginning of buffer 
+    (goto-char (point-min)) 
+    ;; fix all line endings 
+    (while (search-forward "\015" nil t) 
+      (replace-match "\012" nil t)) 
+    )) 
+
+(defun unix2mac () 
+  "Converts the whole buffer from UNIX text file format to MAC." 
+  (interactive) 
+  (save-excursion 
+    ;; go to beginning of buffer 
+    (goto-char (point-min)) 
+    ;; fix all line endings 
+    (while (search-forward "\012" nil t) 
+      (replace-match "\015" nil t)) 
+    )) 
+
+(defconst ifx-copyright-s "(c) Infineon Technologies Wireless Solutions Sweden AB" "")
+
+(defun ifx-copyright ()
+  "Inserts the Infineon Technologies copyright disclaimer."
+  (interactive)
+  (insert ifx-copyright-s)
+  )
+
+;; Mail settings
+
+;;(define-coding-system-alias 'iso-latin-1 'iso-8859-1) 
+;;(setq send-mail-function 'smtpmail-send-it) ; if you use `mail' 
+;;(setq smtpmail-smtp-server "brsg501a.brs.infineon.com") 
+;;(setq smtpmail-smtp-service "smtp") 
+;;(setq smtpmail-local-domain nil) 
+;;(setq smtpmail-debug-info t) ; only to debug problems 
+;;(setq smtpmail-debug-verb t) ; verbose debugging 
+;;(setq smtpmail-auth-credentials  ; or use ~/.authinfo 
+;;      '(("brsg501a.brs.infineon.com" 25 "wiknerja" ""))) 
+;;(setq smtpmail-code-conv-from nil) 
+;;(setq user-full-name "J Jacob Wikner") 
+;;(setq mail-default-reply-to "jacob.wikner@infineon.com") 
+;;(setq user-mail-address "jacob.wikner@infineon.com") 
+;;(load-library "smtpmail")   
+
+
+(put 'downcase-region 'disabled nil)
+
+(put 'upcase-region 'disabled nil)
+(custom-set-variables
+ '(load-home-init-file t t))
+(custom-set-faces)

@@ -1,0 +1,12 @@
+(put 'am_funs 'symbol-type "library development fun")
+(setq am_funs '(
+("amlUPCopy" "srcLibId destLibId @key propL")     
+("amlUPCurrentLib" "libName")
+("amlUPCurrentManuf" "manufName")
+("amlUPCurrentProp" "propName propType valueType view")
+("amlUPDone" "")
+("amlUPEnter" "entryTable")
+("amlUPListMissingProp" "libId prop @key cellL")
+("amlUPPDelete" " libId prop doCellviews")
+("amlUPUpdateLib" "libId prop value @key cellL")   
+))

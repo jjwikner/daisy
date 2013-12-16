@@ -1,0 +1,6230 @@
+
+abs( fx_number ) => fx_result
+
+Returns the absolute value of a floating-point number or integer.
+
+acos( fx_number ) => f_result
+
+Returns the arc cosine of a floating-point number or integer.
+
+add1( fx_number ) => fx_result
+
+Adds one to a floating-point number or integer.
+
+alias( s_aliasName  s_functionName ) => s_aliasName
+
+Defines a symbol as an alias for a function. This is an nlambda function.
+
+alphalessp( st_arg1 st_arg2 ) => t/nil
+
+Compares two string or symbol names alphabetically.
+
+alphaNumCmp( st_arg1 st_arg2 [g_arg3]) => 1/0/-1
+
+Compares two string or symbol names alphanumerically or numerically.
+
+append( l_list1 l_list2 ) => l_result
+
+Creates a list containing the elements of list1 followed by the
+elements of list2 or returns an original association table including
+new entries.
+
+append1( l_list g_arg ) => l_result
+
+Adds new arguments to the end of a list.
+
+apply( sl_func g_args ) => g_result
+
+Evaluates the arguments given and applies the function to the argument list.
+
+arglist( s_function ) => l_argumentList
+
+Returns the number and types of arguments expected for a function.
+
+arrayp( g_value ) => t/nil
+
+Checks if an object is an array.
+
+asin( fx_number ) => f_result
+
+Returns the arc sine of a floating-point number or integer.
+
+assoc( g_searchKey l_dataList ) => l_result/nil
+
+Searches association lists. Uses equal for comparison.
+
+assq( g_searchKey l_dataList ) => l_result
+
+Searches association lists. Uses the faster eq for comparison.
+
+atan( fx_number ) => f_result
+
+Returns the arc tangent of a floating-point number or integer.
+
+atom( g_arg ) => t/nil
+
+Checks if an object is an atom.
+
+bcdp( g_value ) => t/nil
+
+Checks if an object is a binary function.
+
+boundp( s_arg ) => t/nil
+
+Checks if a symbol is bound, that is, has been assigned a value.
+
+break( ) => none
+
+Forces entry to the break handler if inserted directly into a SKILL function.
+
+breakpt( [s_function...] [entry/exit/both g_condition]) => g_result
+
+Sets breakpoints on one or more functions. This is an nlambda function.
+
+buildString( l_strings [t_glueCharacters] ) => t_string
+
+Concatenates a list of strings with separation characters.
+
+caaar( l_list ) => g_result
+
+Takes apart a list. Equivalent to car( car( car( l_list))).
+
+caadr( l_list ) => g_result
+
+Takes apart a list. Equivalent to car( car( cdr( l_list))).
+
+caar( l_list ) => g_result
+
+Takes apart a list. Equivalent to car( car( l_list)).
+
+cadr( l_list ) => g_result
+
+Takes apart a list. Equivalent to car( cdr( l_list)).
+
+callInitProc( t_contextName ) => t
+
+Calls all the initialization functions associated with a context.
+
+car( l_list ) => g_result
+
+Returns the first element of a list.
+
+case( g_selectionExpr l_clause1 [l_clause2 ...] ) => g_result/nil
+
+Evaluates an expression, matches the resulting selectors sequentially
+against comparators defined in clauses, and executes the expressions
+in the matching clause. This is an nlambda function.
+
+caseq( g_selectionExpr l_clause1 [l_clause2 ...] ) => g_result/nil
+
+Evaluates an expression, matches the resulting selectors sequentially
+against comparators defined in clauses, and executes the expressions
+in the matching clause. This is an nlambda function.
+
+cdar( l_list ) => g_result
+
+Takes apart a list. Equivalent to cdr( car( l_list)).
+
+cddr( l_list ) => g_result
+
+Takes apart a list. Equivalent to cdr( cdr( l_list)).
+
+cdr( l_list ) => l_result
+
+Returns the tail of the list, that is, the list without its first element.
+
+changeWorkingDir( [t_name] ) => t
+
+Changes the working directory.
+
+clear( ) => t
+
+Clears all tracing and breakpoints.
+
+clearExitProcs( ) => t
+
+Removes all registered exit functions.
+
+close( p_port ) => t
+
+Drains, closes, and frees a port.
+
+compareTime( t_time1 t_time2 ) => x_difference
+
+Compares two string arguments, representing a clock-calendar time.
+
+compress( t_sourceFile t_destFile ) => t
+
+Reduces the size of a SKILL file and places the output into another file.
+
+concat( stx_arg1 [stx_arg2 ...] ) => s_result
+
+Concatenates strings, symbols, or integers into a single symbol.
+
+cond( l_clause1 ... )  => g_result
+
+Examines conditional clauses from left to right until either a clause
+is satisfied or there are no more clauses remaining. This is an
+nlambda function.
+
+cons( g_element l_list ) => l_result
+
+Adds an element to the beginning of a list.
+
+cont( )
+Continues execution from a breakpoint. cont and continue are identical.
+
+continue( )
+Continues execution from a breakpoint. cont and continue are identical.
+
+copy( l_arg ) => l_result
+
+Returns a copy of a list, that is, a list with all the top-level cells
+duplicated.
+
+copy_<name>( r_defstruct ) => r_defstruct
+
+Created by the defstruct function where <name> is the name of the
+defstruct. Creates and returns a copy of a structure.
+
+copyDefstructDeep( r_object) => r_defstruct
+
+Performs a deep or recursive copy on defstructs with other defstructs
+as sub-elements, making copies of all the defstructs encountered.
+
+cos( fx_number ) => f_result
+
+Returns the cosine of a floating-point number or integer.
+
+count( [s_function ... | t]) => g_result/nil
+
+Counts the number of times a function has been called. This is an
+nlambda function.
+
+createDir( st_name ) => t/nil
+
+Creates a directory.
+
+csh( [t_command] ) => t/nil
+
+Starts the UNIX C-shell as a child process to execute a command
+string.
+
+debugQuit( ) => nil
+
+Exits one level of the SKILL debugger.
+
+debugStatus( ) => nil
+
+Prints the functions and variables being traced, functions that have
+breakpoints set, and the functions being counted.
+
+declare( s_arrayName[x_sizeOfArray] ) => a_newArray
+
+Creates an array with a specified number of elements. This is an
+nlambda function.
+
+declareLambda( s_name1 ... s_nameN ) => s_nameN
+
+Tells the evaluator that certain (forward referenced) functions are of
+lambda type (as opposed to nlambda or macro).
+
+declareNLambda( s_name1 ... s_nameN ) => s_nameN
+
+Tells the evaluator that certain (forward referenced) functions are of
+nlambda type (as opposed to lambdas or macros).
+
+defCapDepends( s_context l_dependsList ) => t
+
+Specifies which contexts depend on which other contexts.
+
+defCapPrefixes( s_context l_prefixList ) => t
+
+Specifies which prefixes are acceptable for a context's global
+variables.
+
+defInitProc( t_contextName s_procName ) => t
+
+Registers a function that the system calls immediately after loading a
+context.
+
+defmacro( s_macroName ( l_formalArglist ) g_expr1 ...) => s_macroName
+
+Registers a function that the system calls immediately after loading a
+context.
+
+defprop( sl_id g_value s_name ) => g_value
+
+Adds properties to symbols or disembodied property lists but none of
+its arguments are evaluated. This is an nlambda function.
+
+defstruct( s_name s_slot1 [s_slot2..]) => t
+
+Creates a defstruct, a named structure that is a collection of one or
+more variables.
+
+defstructp( g_object [st_name] ) => t/nil
+
+Checks if an object is a defstruct.
+
+defun( s_funcName ( l_formalArglist ) g_expr1 ...) => s_funcName
+
+Defines a function with the name and formal argument list you
+specify. This is an nlambda function.
+
+defUserInitProc( t_contextName s_procName ) => (( t_contextName
+s_procName ))
+
+Registers a user-defined function that the system calls immediately
+after loading a context.
+
+defvar( s_varName [g_value]) => g_value/nil
+
+Defines a variable (symbol) and assigns a value.
+
+deleteDir( st_name ) => t/nil
+
+Deletes a directory.
+
+deleteFile( st_name ) => t/nil
+
+Deletes a file.
+
+drain( [p_outputPort] ) => t/nil
+
+Writes out all characters that are in the output buffer of a port.
+
+dtpr( g_value ) => t/nil
+
+Checks if an object is a non-empty list.
+
+dump( [x_variables] ) => nil
+
+Prints the current value of all the local variables on the stack.
+
+ed( t_fileName ) => t/nil
+
+Edits a file.
+
+edi( t_fileName ) => t/nil
+
+Edits a file, then includes the file into SKILL.
+
+edit( st_object [g_loadFlag] ) => x_childId
+
+Edits a file, function, or variable. This is an nlambda function.
+
+edl( t_fileName ) => t/nil
+
+Edits a file, then loads the file into SKILL.
+
+encrypt( t_sourceFile t_destFile [t_password] ) => t
+
+Encrypts a SKILL file and places the output into another file.
+
+eq( g_arg1 g_arg2 ) => t/nil
+
+Checks addresses when testing for equality.
+
+equal( g_arg1 g_arg2 ) => t/nil
+
+Checks contents of strings and lists when testing for equality.
+
+err( [g_value] ) => none
+
+Causes an error.
+
+error( [st_message1 [st_message2] ...] ) => none
+
+Prints error messages and calls err.
+
+errset( g_expr [g_errprint] ) => g_result/nil
+
+Encapsulates the execution of an expression in an environment safe
+from the error mechanism. This is an nlambda function.
+
+errsetstring( t_string [errprint] ) => l_value/nil
+
+Reads and evaluates an expression stored in a string. Same as
+evalstring except that it calls errset to catch any errors that might
+occur during the parsing and evaluation.
+
+eval( g_expression ) => g_result
+
+Evaluates an argument and returns its value.
+
+evalstring( t_string ) => g_value
+
+Reads and evaluates an expression stored in a string.
+
+evenp( x_num ) => t/nil
+
+Checks if a number is an even integer.
+
+exists( s_formalVar l_valueList g_predicateExpr ) => g_result
+
+Returns the first tail of l_valueList whose car satisfies a predicate
+expression. Also verifies whether an entry in an association table
+satisfies a predicate expression. This is an nlambda function.
+
+exit( [x_status] ) => nil
+
+Causes SKILL to exit with a given process status (defaults to 0),
+whether in interactive or batch mode.
+
+exp( fx_number ) => f_result
+
+Raises e to a given power.
+
+expandMacro( g_form ) => g_expandedForm
+
+Expands one level of macro call for a form.
+
+fileLength( st_name ) => x_size
+
+Determines the number of bytes in a file.
+
+fileSeek( p_port x_offset x_whence ) => t/nil
+
+Sets the position for the next operation to be performed on the file
+opened on a port.
+
+fileTell( p_port ) => x_offset
+
+Returns the current offset in bytes for the file opened on a port.
+
+fix( n_arg ) => x_result
+
+Converts a floating-point number to an integer.
+
+fixp( g_value ) => t/nil
+
+Checks if an object is a fixed number.
+
+float( n_arg ) => f_result
+
+Converts an integer into a floating-point number.
+
+floatp( g_value ) => t/nil
+
+Checks if an object is a floating-point number.
+
+for( s_loopVar x_initialValue x_finalValue g_expr1 [g_expr2 ...] )  => t
+
+Evaluates the sequence g_expr1, g_expr2 ... for each loop variable
+named in s_loopVar, beginning with x_initialValue and ending with
+x_finalValue. This is an nlambda function.
+
+forall( s_formalVar l_valueList g_predicateExpr ) => t/nil
+
+Checks if g_predicateExpr evaluates to non-nil for every element in
+l_valueList. This is an nlambda function.
+
+foreach( s_formalVar  g_exprList  g_expr1 [g_expr2 ...] ) =>
+l_valueList
+
+Evaluates one or more expressions for each element of a list of
+values. This is an nlambda function.
+
+fprintf( p_port t_formatString  [ g_arg1 ...] ) => t
+
+Writes formatted output to a port.
+
+fscanf( p_inputPort t_formatString [s_var1 ...]  ) => x_items/nil
+
+Reads input from a port according to format specifications and returns
+the number of items read in.
+
+gc( [t_string] ) => nil
+
+Forces a garbage collection. This function is also called by the
+system.
+
+gcsummary( ) => t
+
+Prints a summary of memory allocation and garbage collection
+statistics in the current SKILL run.
+
+gensym( [st_arg] ) => s_result
+
+Returns a new symbol based on the input argument.
+
+get( sl_id s_name ) => g_result/nil
+
+Returns the value of a property in a property list.
+
+get_pname( s_arg ) => t_result
+
+Returns the print name of a symbol as a string.
+
+get_string( st_arg ) => t_result
+
+Converts symbols to strings.
+
+getAllLoadedFiles( ) => l_files/nil
+
+Returns a list of all files loaded since debug mode was turned on.
+
+getc( [p_inputPort] ) => s_char
+
+Reads and returns a single character from an input port.
+
+getchar( st_arg x_index ) => s_char/nil
+
+Returns an indexed character of a string or the print name if the
+string is a symbol.
+
+getCurrentTime( ) => t_timeString
+
+Returns the current time.
+
+getd( s_functionName ) => g_definition/nil/t
+
+Returns the function binding for a function.
+
+getDirFiles( st_name ) => l_strings
+
+Lists the names of all files and directories (including . and ..) in a
+directory.
+
+getFnWriteProtect( s_name ) => t/nil
+
+Returns the value of the write-protect bit for a function.
+
+getFunctions( t_fileName ) => l_functions/nil
+
+Returns the functions defined in a file loaded after debug mode is
+turned on.
+
+getInstallPath( ) => l_string
+
+Returns the installation path (the directory where the Cadence
+products are installed in your system.
+
+getq( sl_id s_name ) => g_result/nil
+
+Returns the value of a property in a property list. Same as get except
+that the second argument is not evaluated.
+
+getqq( sl_id s_name ) => g_result/nil
+
+Returns the value of a property in a property list. Same as get except
+that neither argument is evaluated.
+
+gets( s_variableName [p_inputPort] ) => t_string/nil
+
+Reads a line from the input port and stores the line as a string in
+the variable. This is an nlambda function.
+
+getShellEnvVar( t_UnixShellVariableName ) => t_value/nil
+
+Returns the value of a UNIX environment variable.
+
+getSkillPath( ) => l_strings/nil
+
+Returns the current SKILL path.
+
+getVarWriteProtect( s_name )  => t/nil
+
+Returns the value of the write-protect bit on a variable.
+
+getVersion( ) => t_version
+
+Returns the version number of the software you are currently using.
+
+getWarn( ) => t_warning
+
+Returns any warning that has not already been printed.
+
+getWorkingDir( ) => t_currentDir
+
+Returns the working directory as a string.
+
+go( s_label )
+Transfers control to the statement following the label argument. This
+is an nlambda function.
+
+if( g_condition g_thenExpression [g_elseExpression] ) => g_result
+
+Selectively evaluates two groups of one or more expressions. This is
+an nlambda function.
+
+ilToolBox() => t
+
+Brings up the SKILL Development toolbox.
+
+index( t_string1 st_string2 ) => t_result/nil
+
+Returns the remainder of string1 beginning with the first occurrence
+of string2.
+
+infile( st_fileName ) => p_inport/nil
+
+Opens an input port ready to read a file.
+
+installDebugger( ) => t/nil
+
+Installs the SKILL debugger as the error handler.
+
+instring( t_string ) => p_port
+
+Opens a string for reading, just as infile would open a file.
+
+isCallable( s_function ) => t/nil
+
+Checks if a function is defined or is autoloadable from a context.
+
+isDir( st_name [ tl_path ]) => t/nil
+
+Checks if a path exists and if it is a directory name.
+
+isExecutable( st_name [ tl_path ]) => t/nil
+
+Checks if you have permission to execute a file or search a directory.
+
+isFile( st_name [ tl_path ]) => t/nil
+
+Checks if a file exists. Identical to isFileName, except that
+directories are not viewed as (regular) files.
+
+isFileEncrypted( st_name ) => t/nil
+
+Checks if a file exists and is encrypted.
+
+isFileName( st_name [ tl_path ]) => t/nil
+
+Checks if a file exists.
+
+isLink( st_name [ t_path ]) => t/nil
+
+Checks if a path exists and if it is a symbolic link. t_path overrides
+the SKILL path.
+
+isReadable( st_name [ tl_path ]) => t/nil
+
+Checks if you have permission to read a file or list a directory.
+
+isWritable( st_name [ tl_path ]) => t/nil
+
+Checks if you have permission to write to a file or update a
+directory.
+
+lambda( ( s_formalArgument ) g_expr1 ...) => g_result
+
+Defines a function without a name.
+
+last( l_arg ) => l_result
+
+Returns the last list cell in a list.
+
+lconc( l_ptr l_x ) => l_result
+
+Uses a tconc structure to efficiently splice a list to the end of
+another list.
+
+length( la_arg ) => x_result
+
+Determines the length of a list, array, or association table.
+
+let( l_bindings g_expr1 ... ) => g_result
+
+Provides a faster alternative to prog for binding local variables
+only. This is a syntax function.
+
+lineread( p_inputPort ) => t/nil/l_results
+
+Parses the next line in the input port into a list.
+
+linereadstring( t_string ) => g_value/nil
+
+Executes lineread on a string and returns the first form read in.
+
+list( [g_arg1 g_arg2 ...] ) => l_result/nil
+
+Creates a list with the given elements.
+
+listFunctions( t_pattern ) => l_functions/nil
+
+Returns all functions that contain the given substring or regular
+expression as part or all of their print name.
+
+listp( g_value ) => t/nil
+
+Checks if an object is a list.
+
+listVariables( t_pattern ) => l_variables
+
+Returns all variables that contain the given substring or regular
+expression as part or all of their print name.
+
+load( t_fileName [t_password]) => t
+
+Opens a file, repeatedly calls lineread to read in the file, and
+immediately evaluates each form after it is read in.
+
+loadContext( t_contextFileName ) => t/nil/error
+
+Loads a context file into the current session.
+
+loadi( t_fileName [t_password]) => t
+
+Identical to load, except that loadi ignores errors encountered during
+the load, prints an error message, and then continues loading.
+
+loadstring( t_string ) => t
+
+Opens a string for reading, then parses and executes expressions
+stored in the string.
+
+log( fx_number ) => f_result
+
+Returns the natural logarithm of a floating-point number or integer.
+
+lowerCase( st_string ) => t_result
+
+Replaces uppercase alphabetic characters with their lowercase
+equivalents.
+
+make_<name>( ) => r_defstruct
+
+Creates an instance of a defstruct specified by <name>.
+
+makeTable( S_name [g_default_value]) => o_table
+
+Creates and defines an association table.
+
+makeTempFileName( st_nameTemplate ) => t_name
+
+Appends a string suffix to the last component of a path template so
+that the resulting composite string does not duplicate any existing
+file name.
+
+map( u_func l_arg1 [l_arg2 ...] ) => l_arg1
+
+Iterates over all the list cells of the list passed as the
+argument. When used with foreach, the current list cell is bound to
+the loop variable and the foreach body is evaluated. The foreach
+function returns the original list.
+
+mapc( u_func l_arg1 [l_arg2 ...] ) => l_arg1
+
+Iterates over all the elements of a list passed as the argument. When
+used with foreach, the current element is bound to the loop variable
+and the foreach body is evaluated. The foreach function returns the
+original list.
+
+mapcan( u_func l_arg1 [l_arg2 ...] ) => l_result
+
+Iterates over all the elements of the list passed as the
+argument. When used with foreach, the current element is bound to the
+loop variable and the foreach body is evaluated. The result, which
+must be a list, is stored in a list. The foreach function returns the
+result of appending these intermediate results.
+
+mapcar( u_func l_arg1 [l_arg2 ...] ) => l_result
+
+Iterates over all the elements of the list passed as the
+argument. When used with foreach, the current element is bound to the
+loop variable and the foreach body is evaluated with the result saved
+in a list. The foreach function returns the list of the intermediate
+results.
+
+maplist( u_func l_arg1 [l_arg2 ...] ) => l_result
+
+Iterates over all the list cells of the list passed as the
+argument. When used with foreach, the current list cell is bound to
+the loop variable and the foreach body is evaluated with the result
+saved in a list. The foreach function returns the list of the
+intermediate results.
+
+max( fx_num1 fx_num2 [fx_num3 ...] ) => fx_result
+
+Returns the maximum of the values passed in.
+
+measureTime( g_expression ) => g_result
+
+Measures the time needed to evaluate an expression. This is an nlambda
+function.
+
+member( g_arg1 l_arg2 ) => l_subarg2/nil
+
+Returns the largest sublist of arg2 whose first element is equal to
+arg1. Uses the equal function for comparison.
+
+memq( g_arg1 l_arg2 ) => l_subarg2/nil
+
+Returns the largest sublist of arg2 whose first element is equal to
+arg1. Uses the eq function for com parison.
+
+min( fx_num1 fx_num2 [fx_num3 ...] ) => fx_result
+
+Returns the minimum of the floating-point numbers or integers.
+
+minusp( fx_num ) => t/nil
+
+Checks if a value is a negative number.
+
+mod( x_num1 x_num2) => x_result
+
+Returns the integer remainder of dividing the first integer by the
+second integer.
+
+mprocedure( s_funcName( s_formalArgument ) g_expr1 ...) => s_funcName
+
+Defines a macro function with a given function name and a single
+formal argument. This is a syntax function.
+
+nconc( l_arg1 l_arg2 [l_arg3 ...] ) => l_result
+
+Equivalent to a destructive append where the first argument is
+actually modified.
+
+ncons( g_element ) => l_result
+
+Builds a list containing an element. Equivalent to cons( g_element nil
+).
+
+needNCells( s_cellType|st_userType x_cellCount) => t/nil
+
+Allocates the appropriate number of pages to accommodate a cell count.
+
+neq( g_arg1 g_arg2 ) => t/nil
+
+Checks if two arguments are not equal, and returns t if they are not.
+
+nequal( g_arg1 g_arg2 ) => t/nil
+
+Checks if two arguments are not logically equivalent and returns t if
+they are not.
+
+newline( [p_outputPort] ) => nil
+
+Prints a newline (\n) character and then flushes the output port.
+
+next( [x_steps] ) => none
+
+Allows execution to proceed until the next expression.
+
+nindex( t_string1 st_string2 ) => x_result/nil
+
+Finds the symbol or string, string2, in string1 and returns the
+character index, starting from one, of the first point at which the
+string2 matches part of string1.
+
+nlambda( ( s_formalArgument ) g_expr1 ...) => g_result
+
+Allows functions to be defined without having names. In all other
+respects, nlambda is identical to nprocedure.
+
+nprocedure( s_funcName( s_formalArgument ) g_expr1 ...) => s_funcName
+
+Defines an nlambda function with a function name and a single formal
+argument. This is an nlambda function.
+
+nth( x_index0 l_list ) => g_result
+
+Returns an index-selected element of a list, assuming a zero-based
+index.
+
+nthcdr( x_count l_list ) => l_result
+
+Applies cdr to a list a given number of times.
+
+nthelem( x_index1 l_list ) => g_result/nil
+
+Returns the indexed element of the list, assuming a one-based index.
+
+null( g_value ) => t/nil
+
+Checks if an object is equal to nil.
+
+numberp( g_value ) => t/nil
+
+Checks if a data object is a number, either an integer or
+floating-point number.
+
+numOpenFiles( ) => (x_current x_maximum)
+
+Returns the number of files now open and the maximum number of files
+that a process can open.
+
+oddp( x_num ) => t/nil
+
+Checks if a value is an odd integer.
+
+onep( fx_num ) => t/nil
+
+Checks if a value is equal to one.
+
+otherp( g_value ) => t/nil
+
+Checks if an object is a foreign data pointer.
+
+outfile( st_fileName [t_mode] ) => p_outport/nil
+
+Opens an output port ready to write to a file.
+
+parseString( t_string [t_breakCharacters] ) => l_strings
+
+Breaks a string into a list of substrings with break characters.
+
+plist( s_symbolName ) => l_propertyList
+
+Returns the property list associated with a symbol.
+
+plusp( fx_num ) => t/nil
+
+Checks if a value is a positive number.
+
+portp( g_value ) => t/nil
+
+Checks if an object is an input-output port.
+
+pp( s_functionName [p_outputPort] ) => nil
+
+Pretty prints the definition of a function. This is an nlambda
+function.
+
+pprint( g_value [ p_outputPort] ) => nil
+
+Identical to print except that it pretty prints the value whenever
+possible.
+
+prependInstallPath( st_name ) => t_string
+
+Prepends the Cadence installation path to a file or directory and
+returns the resulting path as a string.
+
+print( g_value [p_outputPort] ) => nil
+
+Prints the value of an expression using the default format for the
+data type of the value.
+
+printf( t_formatString [g_arg1 ...] ) => t
+
+Writes formatted output to poport.
+
+printFunctions( t_pattern [ p_outport ] ) => t
+
+Prints all functions that contain a substring or regular expression as
+part or all of the print name.
+
+printlev( g_value x_level x_length [p_outputPort] ) => nil
+
+Prints a list with a limited number of elements and levels of nesting.
+
+println( g_value [p_outputPort] ) => nil
+
+Prints the value of an expression using the default format for the
+data type of the value.
+
+printstruct( g_object ) => g_object
+
+Prints the contents of an association table or defstruct in a tabular
+format.
+
+printVariables( t_pattern [ p_outport ] ) => t
+
+Prints all variables and their values that contain a substring or
+regular expression as part or all of the print name.
+
+procedure( s_funcName( l_formalArglist ) g_expr1 ...) => s_funcName
+
+Defines a function using a formal argument list. The body of the
+procedure is a list of expressions to evaluate.
+
+profile( s_profileField ) => t
+
+Turns on global SKILL profiling for measuring time or memory.
+
+profileReset( ) => t
+
+Resets all SKILL profiler data.
+
+profileSummary( [?file t_filename] [?sort s_sortKey] [?filters
+g_filterSpec] [?maxFns x_maxDisplayed] [?minSecs f_minSecs] [?minBytes
+x_minBytes] [?children g_showChildren]) => t 
+
+Prints a summary of profiling results, showing either the execution
+time or memory allocated to SKILL functions that were executed.
+
+prog( l_localVariables [ s_label ] g_expr1 ... ) => g_result/nil
+
+Allows for local variable bindings and permits abrupt exits on control
+jumps.
+
+prog1( g_expr1 [ g_expr2 ...] ) => g_result
+
+Evaluates expressions from left to right and returns the value of the
+first expression.
+
+prog2( g_expr1 g_expr2 ... ) => g_result
+
+Evaluates expressions from left to right and returns the value of the
+second expression.
+
+progn( g_expr1 ... ) => g_result
+
+Evaluates expressions from left to right and returns the value of the
+last expression.
+
+putd( s_functionName yl_functionDef ) => yl_functionDef
+
+Assigns a new function binding, which must be a binary function, a
+lambda expression, or nil, to a function.
+
+putprop( sl_id g_value s_name ) => g_value
+
+Adds properties to symbols or disembodied property lists.
+
+putpropq( sl_id g_value s_name ) => g_value
+
+Adds properties to symbols or disembodied property lists. Identical to
+putprop except that s_name is not evaluated.
+
+putpropqq( sl_id g_value s_name ) => g_value
+
+Adds properties to symbols or disembodied property lists. Identical to
+putprop except that sl_id and s_name are not evaluated.
+
+random( [x_number] ) => x_result
+
+Returns a random integer between zero and a given number minus one.
+
+readTable( S_fileName o_table ) => t/nil
+
+Reads and appends the contents of a file to an existing association
+table.
+
+regExitAfter( s_name ) => t/nil
+
+Registers the action to be taken after the exit function has performed
+its bookkeeping tasks but before it returns control to the operating
+system.
+
+regExitBefore( s_name ) => t
+
+Registers the action to be taken before the exit function is executed.
+
+remd( g_x l_arg ) => l_result
+
+Removes all top-level elements equal to a SKILL object from a
+list. This is a destructive removal.
+
+remdq( g_x l_arg ) => l_result
+
+Removes all top-level elements equal to a SKILL object from a
+list. This is a destructive removal.
+
+remExitProc( s_name ) => t
+
+Removes a registered exit procedure.
+
+remove( g_x l_arg ) => l_result
+
+Returns a copy of an argument with all top-level elements equal to a
+SKILL object removed. Can also be used with an association table.
+
+remprop( sl_id s_name ) => l_result/nil
+
+Physically removes a property from a property list and returns its
+former value.
+
+remq( g_x l_arg ) => l_result
+
+Returns a copy of a list with all top-level elements equal to a SKILL
+object removed.
+
+return( [g_expression] ) => g_expression/nil
+
+Forces the enclosing prog to exit and return an expression as a value.
+
+reverse( l_arg ) => l_result
+
+Returns the elements of a list in reverse order.
+
+rexCompile( t_pattern ) => t
+
+Compiles a regular expression string pattern into an internal
+representation to be used by succeeding calls to rexExecute.
+
+rexExecute( st_target ) => t/nil
+
+Matches a string or symbol against the previously compiled pattern set
+up by the last rexCompile call.
+
+rexMagic( [g_state] ) => t/nil
+
+Turns on or off the special interpretation associated with the
+meta-characters in regular expressions.
+
+rexMatchAssocList( t_pattern l_targets ) => l_results/nil
+
+Returns a new association list created out of those elements of an
+association list whose key matches a regular expression string
+pattern.
+
+rexMatchList( t_pattern l_targets ) => l_results/nil
+
+Matches a list of strings or symbols against a regular expression
+string pattern.
+
+rexMatchp( t_pattern st_target ) => t/nil
+
+Finds a pattern within a string or symbol.
+
+rexReplace( t_source t_replacement x_index ) => t_result
+
+Replaces the substring(s) in the source string that matched the last
+regular expression compiled by the replacement string.
+
+rexSubstitute( t_string ) => t_result/nil
+
+Substitutes the pattern tags in the argument string with previously
+matched (sub)strings.
+
+rindex( t_string1 st_string2 ) => t_result/nil
+
+Returns the remainder of string1 beginning with the last occurrence of
+string2.
+
+round( n_arg ) =>  x_result
+
+Rounds a floating-point number to its closest integer value.
+
+rplaca( l_arg1 g_arg2 ) => l_result
+
+Replaces the first element of a list with an object.
+
+rplacd( l_arg1 l_arg2 ) => l_result
+
+Replaces the tail of a list with the elements of a second list.
+
+saveContext( t_contextFileName ) => t/nil
+
+Saves the current state of the SKILL language interpreter as a binary
+file.
+
+set( s_variableName g_newValue ) => g_result
+
+Sets a variable to a new value. Similar to setq but the first argument
+for set is evaluated.
+
+setContext( t_contextName ) => t
+
+Allows contexts to be saved incrementally, creating micro contexts
+from a session's SKILL context.
+
+setFnWriteProtect( s_name ) => t/nil
+
+Sets the write protect bit on a function.
+
+setof( s_formalVar l_valueList g_predicateExpression ) => g_result
+
+Returns a new list containing only those elements in a list or the
+keys in an association table that satisfy an expression.
+
+setplist( s_atom l_plist ) => l_plist
+
+Sets the property list of an object to a new property list; the old
+property list attached to the object is lost.
+
+setq( s_variableName g_newValue ) => g_result
+
+Sets a variable to a new value. setq is the same as the equals (=)
+
+operator.
+
+setShellEnvVar( t_UnixShellVariableExpr ) => t/nil
+
+Sets the value of a UNIX environment variable to a new value.
+
+setSkillPath( tl_paths/nil ) => l_strings/nil
+
+Sets the internal SKILL path.
+
+setVarWriteProtect( s_name ) => t/nil
+
+Sets the write-protect on a variable.
+
+sh( [t_command] ) => t/nil
+
+Starts the UNIX shell sh as a child process to execute a command
+string.
+
+shell( [t_command] ) => t/nil
+
+Starts the UNIX shell sh as a child process to execute a command
+string.
+
+simplifyFilename( t_name ) => t_result
+
+Expands the name of a file to its full path.
+
+sin( fx_number ) => f_result
+
+Returns the sine of a floating-point number or integer.
+
+skDisableMessage( S_functionName S_messageName [x_occurrences]) => t
+
+Disables a SKILL Lint message from being reported inside a given
+function definition.
+
+skIgnoreMessage( g_ignoreList ) => t
+
+Turns the reporting of specified SKILL Lint error messages off.
+
+skillDebugger( ) => nil
+
+Activates the SKILL Debugger.
+
+sklint([?file t_inputFileName] [?context t_contextName] [?prefixes
+l_prefixList] [?outputFile t_outputFileName] [?noPrintLog
+g_noPrintLog] [?ignores l_ignoresMessageList] [?checkNlambda
+g_checkNlambda] ) => t/nil 
+
+Checks a SKILL file or context and reports potential errors and ways
+to clean up your code.
+
+skUnignoreMessage( g_ignoreList ) => t
+
+Turns the reporting of specified SKILL Lint error messages on.
+
+sort( l_data u_comparefn ) => l_result
+
+Sorts a list according to a sort function; defaults to an alphabetical
+sort.
+
+sortcar( l_data u_comparefn ) => l_result
+
+Similar to sort except that only the car of each element in a list is
+used for comparison by the sort function.
+
+sprintf( s_Var/nil t_formatString [g_arg1 ...] ) => t_string
+
+Formats the output and puts the resultant string into the variable
+given as the first argument.
+
+sqrt( fx_number ) => f_result
+
+Returns the square root of a floating-point number or integer.
+
+srandom( x_number ) => t
+
+Sets the initial state of the random number generator to a given
+number.
+
+sstatus( s_name g_switchValue ) => g_switchValue
+
+Sets the internal system variable named to a given value. This is an
+nlambda function.
+
+stacktrace( [g_unevaluated] [x_depth] [x_skip] [p_port] ) => x_result
+
+Prints the functions on the stack and their arguments to the depth
+specified, or to the bottom of the stack.
+
+status( s_name ) => t/nil
+
+Returns the value of the internal system variable named. This is an
+nlambda function.
+
+step( [x_steps] )
+Steps into functions and executes a given number of SKILL functions.
+
+stepout( [x_steps] )
+Allows execution to proceed until the evaluator returns from the
+current function.
+
+strcat( t_string1 [t_string2 t_string3 ...] ) => t_result
+
+Takes input strings and concatenates them.
+
+strcmp( t_string1 t_string2 ) => 1/0/-1
+
+Compares two argument strings alphabetically.
+
+stringp( g_value ) => t/nil
+
+Checks if an object is a string.
+
+stringToFunction( t_string ) => u_function
+
+Wraps and converts a string of SKILL code into a parameterless SKILL
+function.
+
+strlen( t_string ) => x_length
+
+Gives the length of a string in characters.
+
+strncat( t_string1 t_string2 x_max ) => t_result
+
+Creates a new string by appending a maximum number of characters from
+string2 to string1.
+
+strncmp( t_string1 t_string2 x_max )  => 1/0/-1
+
+Compares two argument strings alphabetically only up to a maximum
+number of characters.
+
+sub1( fx_number ) => fx_result
+
+Subtracts one from a floating-point number or integer.
+
+subst( g_x g_y l_arg ) => l_result
+
+Substitutes one object for another object in a list.
+
+substring( st_string x_index [x_length] ) => t_result/nil
+
+Creates a new substring from an input string, starting at an index
+point and continuing for a given length.
+
+sxtd( x_number x_bits) => x_result
+
+Sign-extends the rightmost bits of a number by a specified number of
+bits.
+
+symbolp( g_value ) => t/nil
+
+Checks if an object is a symbol.
+
+symeval( s_symbol ) => g_result
+
+Returns the value of a symbol.
+
+symstrp( g_value ) => t/nil
+
+Checks if an object is either a symbol or a string.
+
+tablep( g_object ) => t/nil
+
+Checks if an object is an association table.
+
+tableToList( o_table ) => l_an_assoc_list
+
+Converts the contents of an association table to an association list.
+
+tailp( l_arg1 l_arg2 ) => l_arg1/nil
+
+Returns arg1 if a list cell eq to arg1 is found by cdr'ing down arg2
+zero or more times, nil otherwise.
+
+tan( fx_number ) => f_result
+
+Returns the tangent of a floating-point number or integer.
+
+tconc( l_ptr g_x ) => l_result
+
+Creates a list cell whose car points to a list of the elements being
+constructed.
+
+tracef( [ s_function | t_fileName ... | t ]) => g_result
+
+Turns on tracing. Shows the functions called with their evaluated
+parameters and return values. This is an nlambda function.
+
+tracep( [S_property...|t] ) => g_result
+
+Turns on tracing of property assignments. This is an nlambda function.
+
+tracev( [s_variable ... | t] ) => g_result
+
+Turns on tracing for assignments to variables. This is an nlambda
+function.
+
+type( g_value ) => s_type/nil
+
+Returns a symbol whose name describes the type of a data object.
+
+typep( g_value ) => s_type/nil
+
+Returns a symbol whose name describes the type of a data object.
+
+unalias( s_aliasName1 ... ) => l_result
+
+Undefines the aliases specified in an argument list and returns a list
+containing the aliases undefined by the call. This is an nlambda
+function.
+
+unbreakpt( [s_function... | t] ) => g_result
+
+Clears breakpoints. This is an nlambda function.
+
+uncount( [s_function ... | t] ) => g_result
+
+Turns off counting. This is an nlambda function.
+
+uninstallDebugger( ) => t/nil
+
+Uninstalls the SKILL debugger as the error handler.
+
+unless( g_condition g_expr1 ... ) => g_result/nil
+
+Evaluates a condition. If the result is true (non-nil), it returns
+nil; otherwise evaluates the body expressions in sequence and returns
+the value of the last expression.
+
+unprofile( ) => t
+
+Turns off SKILL profiling.
+
+untrace( [s_function | t_fileName ... | t] ) => g_result
+
+Turns tracing off for all functions specified that were traced using
+the tracef function. This is an nlambda function.
+
+untracep( [S_property...|t] ) => g_result
+
+Turns off tracing of properties. This is an nlambda function.
+
+untracev( [s_variable ... | t] ) => g_result
+
+Turns off tracing for assignments to variables. This is an nlambda
+function.
+
+upperCase( st_string ) => t_result
+
+Replaces lowercase alphabetic characters with their uppercase
+equivalents.
+
+warn( t_formatString [g_arg1 ...] ) => nil
+
+Prints a warning message with given arguments inserted using the same
+format specification as sprintf, printf, and fprintf.
+
+when( g_condition g_expr1 ... ) => g_result/nil
+
+Evaluates a condition. If the result is non-nil, evaluates the
+sequence of expressions and returns the value of the last expression.
+
+where( [g_unevaluated] [x_depth] [x_skip] [p_port] ) => x_result
+
+Prints the functions on the stack and their arguments to the depth
+specified, or to the bottom of the stack, including the local
+variables and their bindings.
+
+whereIs( s_function) => t/nil
+
+Prints the last file loaded in debug mode in which a function was
+defined, as well as the starting line number.
+
+while( g_condition g_expr1 ... ) => t
+
+Evaluates a condition and sequence of expressions until the condition
+evaluates to false.
+
+writeTable( S_fileName o_table) => t/nil
+
+Writes the contents of an association table to a print file with one
+key/value pair per line.
+
+xcons( l_list g_element ) => l_result
+
+Adds an element to the beginning of a list. Equivalent to cons but the
+order of the arguments is reversed.
+
+zerop( fx_num ) => t/nil
+
+Checks if a value is equal to zero.
+
+zxtd( x_number x_bits) => x_result
+
+Zero-extends the rightmost bits of a number by the specified number of
+bits.
+
+hiOpenWindow( [?bBox l_boxSpec] [?type t_widgetType] [?appType
+t_applicationType] [?menus l_menus] [?labels l_labels] [?help
+t_helpString] [?scroll g_scrollbars] [?form g_form] [?closeProc
+s_closeProc] [?iconPosition l_iconPosition] ) => w_windowId/nil
+
+Creates and displays a window.
+
+hiCreateWindow( g_boxSpec t_widgetType t_applicationType [t_help]
+[g_scrollbars] [g_form] [l_iconPosition] ) => w_windowId/nil 
+
+Creates but does not display a window.
+
+hiSetWindowAtts( [?window w_windowId] [?appType t_applicationType]
+[?help t_help] [?scroll g_scrollbars] ) => t/nil 
+
+Changes the application type, help string, or scrollbar attributes of
+a window.
+
+hiDisplayWindow( w_windowId ) => t/nil 
+
+Displays the window created by hiCreateWindow.
+
+hiCloseWindow( w_windowId ) => t/nil 
+
+Closes and deletes a window.
+
+hiRegCloseProc( w_windowId s_closeProc ) => t
+
+Registers the procedure to be performed when a window is closed.
+
+hiUnregCloseProc( w_windowId s_closeProc) => t/nil
+
+Unregisters the closing procedure for the specified window.
+
+hiGetWindowState( w_windowId) => s_state/nil
+
+Identifies the display state of a window.
+
+hiSwitchWindowType( w_windowId t_widgetType t_appType t_help
+[g_scroll] ) => t/nil 
+
+Switches the widget type of a window from text to graphics or from
+graphics to text.
+
+hiIconifyWindow( w_windowId ) => t/nil 
+
+Converts a window to an icon.
+
+hiDeiconifyWindow( w_windowId ) => t/nil 
+
+Converts an icon to a window.
+
+hiGetWindowIconifyState( w_windowId) => l_iconPosition/nil
+
+Returns the icon position of an iconified window.
+
+hiLowerWindow( w_windowId ) => t/nil 
+
+Lowers a window to the bottom of the list of visible windows.
+
+hiRaiseWindow( w_windowId ) => t/nil 
+
+Raises a window to the top of the list of visible windows.
+
+hiMapWindow( w_windowId ) => t/nil 
+
+Displays a window on screen.
+
+hiUnmapWindow( w_windowId ) => t/nil 
+
+Removes a window from the screen without closing or destroying it.
+
+hiMoveWindowhiMoveWindow( w_windowId l_point ) => t/nil 
+
+Moves the lower left corner of a window to a new screen location.
+
+hiResizeWindow( w_windowId l_bBox ) => t/nil 
+
+Resizes a window to the size of a bounding box.
+
+hiFocusToCursor( g_cursorFocus ) => t 
+
+Sets the window focus mechanism. If set to t, the current window is
+set by moving the cursor into a window. If set to nil, you must click
+in a window to make it current.
+
+hiGetWindowList( ) => lw_windowId 
+
+Returns a list of all window IDs that have been created and not
+closed.
+
+hiSetWindowName( w_windowId t_label ) => t/nil 
+
+Sets the text in the window manager frame of a window.
+
+hiGetWindowName( w_windowId ) => t_windowName 
+
+Gathers the text in the window manager frame of a window.
+
+hiSetIconName( w_windowId t_iconName ) => t/nil 
+
+Sets the icon name of a window.
+
+hiGetIconName( w_windowId ) => t_iconName 
+
+Retrieves the icon name of a window.
+
+hiSetWindowIcon( w_windowId l_icon ) => t/nil 
+
+Sets the icon of a window.
+
+hiGetWidgetType( w_windowId ) => t_widgetType 
+
+Returns the widget type of a window.
+
+hiIsWidgetType( t_widgetType ) => t/nil 
+
+Determines if a widget type is valid or not.
+
+hiGetAppType( w_windowId ) => t_applicationType 
+
+Returns the application type of a window.
+
+hiGetCurrentWindow( ) => w_windowId
+
+Returns the identity of the current window.
+
+hiSetCurrentWindow( w_windowId ) => t/nil 
+
+Sets the current window to be the window you specify.
+
+hiGetMaxScreenCoords( ) => l_coord_pair 
+
+Retrieves the screen coordinates of the upper-right corner on the
+display screen. The lower-left corner of the screen always has screen
+coordinates 0:0.
+
+hiGetAbsWindowScreenBBox( w_windowId [g_includeWMOffsets] ) => l_bBox 
+
+Returns the absolute screen coordinates of a window, assuming 0:0 is
+the lower-left corner of the screen.
+
+hiGetWMOffsets( ) => l_offsets 
+
+Returns a list of the offsets (dimensions) of the window manager
+border placed around a window.
+
+hiAddFixedMenu( [?window w_window] ?fixedMenu r_fixMenu [?menuSide
+s_menuSide] ) => t/nil 
+
+Adds or replaces a fixed menu on a window.
+
+hiRemoveFixedMenu( [w_window] ) => t/nil
+
+Removes the current fixed menu from a window.
+
+hiMoveFixedMenu( [?window w_window] [?menuSide s_menuSide] ) => t/nil
+
+Moves the fixed menu to the opposite side of the window.
+
+hiGetWindowFixedMenu( [w_window] ) => r_fixMenu/nil
+
+Identifies the fixed menu on a window.
+
+windowp( g_object ) => t/nil 
+
+Checks whether the specified object is a valid, opened window.
+
+window( w_windowNumber ) => w_windowId 
+
+Retrieves the window identity of a window number.
+
+hiZoomIn( [w_window] [l_bBox] ) => t/nil 
+
+Zooms in to a design.
+
+hiZoomOut( [w_window] [l_bBox] ) => t/nil 
+
+Zooms out of a design.
+
+hiZoomRelativeScale( [w_window] [n_scale] ) => t/nil 
+
+Zooms in or out with a scale relative to the current window.
+
+hiZoomAbsoluteScale( [w_window] [n_scale] ) => t/nil 
+
+Zooms in or out with an absolute scale.
+
+hiGetViewBBox( [w_window] ) => l_bBox 
+
+Returns the bounding box displayed in a window.
+
+hiPan( [w_window] [l_point] ) => t/nil 
+
+Scrolls a window so that the display is centered on a point.
+
+hiVectorPan( [w_window] [l_refPt] [l_destPt] ) => t/nil 
+
+Scrolls the view of the design in any direction by specifying two
+points in user units.
+
+hiDeltaPan( [w_window] [n_deltax] [n_deltay] ) => t/nil 
+
+Pans the view of the design in any direction by specifying the
+displacements in user units.
+
+hiAbsolutePan( [w_window] [n_xPercent] [n_yPercent] ) => t/nil 
+
+Scroll a window in any direction by specifying the amount to pan as a
+percentage of the window size.
+
+hiRedraw( [w_window] ) => t/nil 
+
+Redraws the contents of a window.
+
+hiSaveView( t_viewName [w_window] ) => t/nil 
+
+Saves the current viewing parameters for a window.
+
+hiListView( [t_viewName] [w_window] ) => l_viewList 
+
+Lists the saved viewing parameters for a given view, or all saved
+views if viewName is not specified.
+
+hiRestoreView( t_viewName [w_window] ) => t/nil 
+
+Restores a window to the view under the specified viewName.
+
+hiPrevWinView( w_window ) => t/nil 
+
+Restores a window to the view displayed before the last zoom or pan
+command.
+
+hiNextWinView( w_window ) => t/nil 
+
+Undoes hiPrevWinView.
+
+hiGetUndoLimit( ) => n_undoLimit 
+
+Returns the maximum number of hiUndo commands it is possible to
+perform.
+
+hiSetUndoLimit( n_undoLimit ) => t/nil 
+
+Sets the maximum number of hiUndo commands that can be performed in
+sequence.
+
+hiUndo( ) => t/nil 
+
+Undoes the last user command that modified the database and that has
+not been undone by a previous hiUndo.
+
+hiRedo( ) => t/nil 
+
+Undoes the last hiUndo, assuming no other database modifications have
+occurred.
+
+hiChangeBannerLabel( w_windowId t_bannerLabel x_labelPosition ) =>
+t/nil
+
+Overwrites or adds a banner label in a window.
+
+hiDeleteBannerLabel( w_windowId x_labelPosition ) => t/nil
+
+Deletes a label in the banner of a window.
+
+hiInsertBannerMenu( w_windowId g_menu x_menuPosition ) => t/nil 
+
+Inserts a menu into the banner of a window.
+
+hiDeleteBannerMenu( w_windowId x_menuPosition) => t/nil 
+
+Deletes a menu from the banner of a window.
+
+hiDeleteBannerMenus( w_windowId ) => t/nil 
+
+Deletes all menus from the banner of a window.
+
+hiDeleteStatusBanner( w_windowId ) => t/nil 
+
+Deletes the status banner of a window.
+
+hiGetBannerMenus( w_windowId ) => l_menuSymbols 
+
+Creates a list of menus that are in the menu banner of a window.
+
+hiGetNumMenus( w_windowId ) => x_numMenus 
+
+Counts the menus in the menu banner of a window.
+
+hiIsMenuSlotFilled( w_windowId x_position ) => t/nil 
+
+Checks a menu position in the banner of a window for the existence of
+a menu.
+
+hiReplaceAllBannerMenus( w_windowId l_menulist ) => t/nil 
+
+Replaces all banner menus in a window with new menus.
+
+hiSetBindKey( [t_application_type] [t_key] [t_skill_cmd] ) => t/nil 
+
+Binds a SKILL command string to a keyboard key or mouse sequence for
+an application.
+
+hiGetBindKey( [t_application_type] [t_key] ) => t_skill_cmd/nil 
+
+Returns the SKILL command string bound to a key or mouse button for an
+application.
+
+hiShowBindKeys( [g_appTypeOrWindow] ) => t/nil
+
+Displays the bindkeys for an application or window.
+
+hiShowBindKeysByAppType( [t_application_type] [t_widgetType) => t/nil
+
+Displays the bindkeys for an application.
+
+hiShowBindKeysByWindow( [w_window] ) => t/nil
+
+Displays the bindkeys for a window.
+
+hiRegisterBindKeyPrefix( t_application_type [t_widgetType] ) => t/nil 
+
+Registers the application bindkey prefix that you do not want or need
+to register with the Design Editor application.
+
+hiInheritBindKey( t_application_type t_from_app_type ) => t/nil 
+
+Causes a registered application to inherit bindkeys from another
+application.
+
+hiGetBindKeyInheritRoot( t_application_type ) => t_application/nil 
+
+Returns the application name from which t_application_type inherits
+bindkeys.
+
+hiGetBindKeyInheritAlias( t_application_type ) => l_application/nil 
+
+Returns a list of application names that inherit the bindkeys from
+t_application_type.
+
+hiCreateColorArray( ) => a_iconColorArray 
+
+Returns a 27-element color array that can be used in a call to
+hiStringToIcon. The first 26 items correspond to the letters of the
+alphabet; the 27th item corresponds to .
+
+hiMatchColor( l_RGBcolor ) => x_colormapIndex 
+
+Returns the index of the color in the colormap that most closely
+matches the specified RGB triplet.
+
+hiMatchColorByName( t_colorName ) => x_colormapIndex 
+
+Returns the index of the color in the colormap that most closely
+matches the name supplied.
+
+hiStringToIcon( a_colorArray t_iconString x_width x_height ) =>
+l_hiIcon 
+
+Returns an internal icon description that can be used in calls to
+other functions.
+
+hiAddMenuItem( r_hiMenu r_menuItem ) => t/nil 
+
+Adds a menu item to the end of all instances of a menu.
+
+hiCreate2DMenu( s_menuHandle t_menuName l_menuItems ) => r_hiMenu 
+
+Creates and returns an internal data structure describing a
+two-dimensional menu object.
+
+hiCreateHorizontalFixedMenu( s_menuHandle l_menuItems x_rows x_cols )
+=> r_hiMenu 
+
+Creates and returns an internal data structure describing a horizontal
+fixed menu object.
+
+hiCreateMenu( s_menuHandle t_menuTitle l_menuItems ) => r_hiMenu 
+
+Creates and returns the SKILL representation of a pop-up menu.
+
+hiCreateMenuItem( ?name s_itemHandle ?itemText t_menuItemText
+[?itemIcon l_menuIcon] [?callback t_itemCallback] [?disable
+g_disabled] ) => r_hiMenuItem 
+
+Creates a menu item that is used in the argument list to create any
+menu (except two-dimensional menus and simple menus).
+
+hiCreatePulldownMenu( s_menuHandle g_menuTitle l_menuItems ) =>
+r_hiMenu 
+
+Creates and returns the SKILL description of a pull-down menu.
+
+hiCreateSimpleMenu( s_menuHandle t_menuTitle l_menuItems
+l_menuItemCallbacks ) => r_hiMenu 
+
+Creates and returns the SKILL description of a simple menu-that is, a
+single-level menu containing only text menu items, with none of its
+entries invoking another menu.
+
+hiCreateSliderMenuItem( ?name s_itemHandle ?itemText t_menuItemText
+?subMenu r_pulldownMenu [?itemIcon l_menuIcon] [?disable g_disabled] )
+=> r_hiMenuItem 
+
+Creates and returns a slider menu item that is used in the argument
+list to create a menu (except a simple, fixed, or two-dimensional
+menu).
+
+hiCreateVerticalFixedMenu( s_menuHandle l_menuItems x_rows x_cols ) =>
+
+r_hiMenu 
+Creates and returns an internal data structure that describes a
+vertical fixed menu object.
+
+hiDeleteMenu( r_hiMenu ) => t/nil 
+
+Destroys a menu and the menu items in it.
+
+hiDeleteMenuItem( r_hiMenu s_itemHandle ) => t/nil 
+
+Deletes a menu item from all instances of a menu.
+
+hiDisableMenuItem( r_hiMenu s_itemHandle [w_windowId] ) => t/nil 
+
+Grays out menu items on pull-down, pop-up, or fixed menus, making them
+unselectable.
+
+hiDisplayEdgeMenu( r_hiMenu [l_menuLocation] [x_width] [x_height] ) =>
+t/nil 
+
+Displays an Edge(TM)-style pop-up menu or fixed menu, created from the
+menutrans program.
+
+hiDisplayFixedMenu( r_hiMenu g_menuLocation [x_width] [x_height] ) =>
+t/nil 
+
+Displays a fixed menu in the default root window (screen) for the
+application.
+
+hiDisplayMenu( r_hiMenu [l_position] ) => t/nil 
+
+Displays a menu created by hiCreateMenu, hiCreateSimpleMenu, or
+hiCreate2DMenu.
+
+hiDisplayWindowMenu( w_windowId ) => t/nil 
+
+Displays the menu associated with a window.
+
+hiEdgeFixedMenuDone( r_hiMenu  ) => t/nil 
+
+Removes an Edge-style fixed menu from the screen.
+
+hiEnableMenuItem( r_hiMenu s_itemHandle [w_windowId] ) => t/nil 
+
+Makes unselectable menu items in pull-down, pop-up, or fixed menus
+selectable again.
+
+hiFixedMenuDown( r_hiMenu  ) => t/nil 
+
+Removes a fixed menu from the screen. This function should only be
+used for Edge-style fixed menus.
+
+hiGetWindowMenu( w_windowId ) => s_hiMenu 
+
+Returns the symbol of the menu associated with the specified window.
+
+hiInsertMenuItem( r_hiMenu r_menuItem g_position ) => t/nil 
+
+Inserts a menu item into a specified position of all instances of a
+menu.
+
+hiIs2DMenu( g_menu ) => t/nil 
+
+Determines whether a menu is a valid two-dimensional menu.
+
+hiIsIcon( g_icon ) => t/nil 
+
+Determines whether an icon is a valid icon.
+
+hiIsMenu( g_menu ) => t/nil 
+
+Determines whether a menu is a valid menu.
+
+hiIsMenuItemEnabled( r_hiMenu s_itemHandle [w_windowId] ) => t/nil 
+
+Determines whether a menu item is enabled.
+
+hiSetFixedMenuSize( w_windowId ) => t/nil 
+
+Sets the window position and size of an Edge-style fixed menu.
+
+hiSetMenuItemCallback( r_hiMenu s_itemHandle t_callback ) => t/nil 
+
+Changes the callback associated with all instances of a specified menu
+item.
+
+hiSetMenuItemText( r_hiMenu s_itemHandle t_itemText ) => t/nil 
+
+Changes the item text associated with all instances of a menu item.
+
+hiSetWindowMenu( g_menu w_windowId ) => t/nil 
+
+Associates a menu with a window.
+
+hiDisplayAppDBox( ?name s_dboxHandle [?dboxBanner t_dboxBanner]
+[?dboxText t_dboxText] [?callback t_callback] [?dialogType
+x_dialogType] [?dialogStyle s_dialogStyle] [?buttonLayout
+s_buttonLayout] [?location l_location] [?help t_help] ) => t/nil
+
+Creates and displays a dialog box.
+
+hiDisplayModalDBox( s_dBoxHandle t_dBoxBannerText t_dBoxMsg t_dBoxHelp
+t_confirmAction [l_location] [x_dboxType] ) => t/nil 
+
+Creates and displays an application modal dialog box.
+
+hiDisplayModelessDBox( s_dBoxHandle t_dBoxBannerText t_dBoxMsg
+t_dBoxHelp t_confirmAction [l_location] [x_dboxType] ) => t/nil
+
+Creates and displays a modeless dialog box.
+
+hiDisplaySysModalDBox( s_dBoxHandle t_dBoxBannerText t_dBoxMsg
+t_dBoxHelp t_confirmAction [l_location] [x_dboxType] ) => t/nil
+
+Creates and displays a system modal dialog box.
+
+hiDisplayListBox( s_listBoxHandle t_listBoxTitle l_listItems t_help )
+=> t/nil 
+
+Creates and displays a list box. Use hiShowListBox instead of this
+function.
+
+hiShowListBox( ?name s_listBoxHandle ?choices lt_listItems ?callback
+s_callback [?title t_listBoxTitle] [?multipleSelect g_multiSelect]
+[?value lt_selectedItem] [?appData g_appData] [?applyButton
+g_applyButton] ) => t/nil 
+
+Creates and displays a list box.
+
+hiListBoxCancel( o_listBox ) => t/nil 
+
+Performs the same action as the Cancel button on the list box.
+
+hiListBoxDone( o_listBox ) => t/nil 
+
+Performs the same action as the OK button on the list box.
+
+exit( ) 
+Exits SKILL, and therefore the CIW and the Cadence software, whether
+in interactive or batch mode.
+
+setPrompts( s_prompt1 s_prompt2 ) => t/nil
+
+Sets the prompt text string for the CIW.
+
+hiFocusToCIW( [w_windowId] ) => t/nil
+
+Temporarily refocuses the input window to the CIW until a return is
+entered.
+
+hiGetAttention( ) => t/nil 
+
+Rings the bell in the keyboard or terminal.
+
+hiGetCommandPoint( [w_windowId] ) => pointList/nil 
+
+Gets the cursor xy location within a window.
+
+hiGetCIWindow( ) => w_windowId 
+
+Retrieves the window identity of the CIW.
+
+hiGetPoint( w_windowId ) => pointList/nil 
+
+Gets the current cursor xy location within a window.
+
+hiRepeat( ) => t/nil 
+
+Re-executes the last command processed by the CIW.
+
+hiReplayFile( s_fileName ) => t/nil 
+
+Reads in a file of SKILL functions.
+
+hiSetFilter( [s_filter] ) => t/nil 
+
+Sets the output message filter for the CIW with the option specified
+by s_filter. If no option is specified, a form appears allowing you to
+specify the display options you want.
+
+hiSetFilterOptions( inputMenuCommands inputPrompts
+outputProgramResults outputMenuCommands outputUser messageErrors
+messageWarnings ) => t/nil 
+
+Sets the output message filter for the CIW with the specified options.
+
+hiGetStringResource( t_resourceName [t_resourceClass] ) => g_resource
+
+Gets resources from the resource database of the X Window System.
+
+hiGetGeometryResource( t_resourceName [t_resourceClass] ) =>
+l_resource
+
+Gets geometry resources from the X resource database.
+
+hiGetBBoxResource( t_resourceName [t_resourceClass] ) => l_bBoxSpec 
+
+Returns the bounding box specification defined in the .Xdefaults file
+for the specified resource.
+
+hiStartLog( t_filename ) => t/nil
+
+Writes a transaction log to a file.
+
+hiEndLog( ) => t/nil
+
+Stops writing the transaction log to the file previously specified by
+hiStartLog.
+
+hiGetFont( t_fontType ) => t_font
+
+Returns the name of the font associated with the specified font type.
+
+hiQueryFont( t_fontName ) => l_fontAttributes
+
+Returns the values of the attributes of t_fontName.
+
+hiSetFont( t_fontType t_fontName ) => t/nil
+
+Sets the font type to use the specified font t_fontName.
+
+hiGetTextWidth( t_fontName t_text ) => x_width
+
+Returns the width in pixels of a text string in a specified font.
+
+hiEncap( [g_boxSpec] [t_cmd] [t_title] ) => w_window/nil
+
+Invokes an encapsulation session by creating and displaying an
+encapsulation window.
+
+hiSetEncapSkillCmd( w_windowId t_skillCmd ) => t/nil
+
+Registers the SKILL function that wraps or embraces the input command
+line entered during the current encapsulation session.
+
+hiGetEncapSkillCmd( w_window ) => t_skillCmd
+
+Returns the SKILL function associated with a window.
+
+hiSetEncapPrompt( w_window t_prompt ) => t/nil
+
+Sets the prompt in an encapsulation window.
+
+hiSetEncapHistory( w_window t_msg [g_redraw] ) => t/nil
+
+Copies a message into the next available insertion position in an
+encapsulation output window.
+
+hiAppendInputCmd( w_window t_cmd ) => t/nil
+
+Appends a command to the input area of an encapsulation window.
+
+hiFocusToEncap( w_encap [w_window] ) => t/nil
+
+Temporarily focuses the keyboard input to an encapsulation window.
+
+view( t_file [g_boxSpec] [g_title] [g_autoUpdate] ) => w_windowId
+
+Creates a viewfile window, inserts the banner menu, sets the window
+and icon name, and displays a file in the window.
+
+hiSetViewfile( w_windowId t_fileName ) => t/nil
+
+Reads in the file from disk and displays its contents in the viewfile
+window.
+
+hiSaveViewfile( [w_windowId] [t_fileName] ) => t/nil
+
+Saves the contents of a viewfile window to a disk file.
+
+hiSaveAsViewfile( [w_windowId] [t_fileName] ) => t/nil
+
+Saves the contents of the current window to the specified name. Unlike
+hiSaveViewfile, does not save the file if the file name already
+exists. You must specify another file name.
+
+hiStartGenTextIndex( w_windowId t_text ) => x_index
+
+Searches for a text string from the top of the file and returns the
+first character position, x_index, of the matching text.
+
+hiGenTextIndex( w_windowId t_text x_fromIndex ) => x_index
+
+Returns the character position, x_index, which is the next occurrence
+of the text string relative to the specified position in the file.
+
+hiGetTextSelection( w_windowId [x_class] ) => S_text
+
+Retrieves the currently selected text string in the specified class.
+
+hiGetTextSelByLoc( w_windowId [x_class] ) => l_locationPair
+
+Returns a list of starting and ending location pairs of all the
+currently selected text strings in a class.
+
+hiSetTextSelection( w_windowId t_text [x_class] )=> t/nil 
+
+Selects (highlights) the next occurrence of a string.
+
+hiSelectTextByLoc( w_windowId l_locationPair [x_class] ) => t/nil 
+
+Selects (highlights) a list of strings specified as a list of starting
+and ending location pairs.
+
+hiSetTextSelectAll( w_windowId t_text [x_class] ) => t/nil 
+
+Selects (highlights) all occurrences of a string. Afterwards, the
+cursor position is reset to the top of the file.
+
+hiUnselectText( w_windowId t_text [x_class] ) => t/nil 
+
+Deselects (unhighlights) the next occurrence of selected text in the
+viewfile.
+
+hiUnselectTextByLoc( w_windowId l_locationPair [x_class] ) => t/nil 
+
+Deselects (unhighlights) a list of selected text specified as a list
+of starting and ending location pairs in a window.
+
+hiUnselectTextClass( w_windowId x_class ) => t/nil 
+
+Deselects (unhighlights) all occurrences of text belonging to the
+specified class.
+
+hiUnselectTextAll( w_windowId [t_text] [x_class] ) => t/nil 
+
+Deselects (unhighlights) all occurrences of the selected text that
+match the pattern t_text and class x_class.
+
+hiScrollWindowLeft( w_windowId ) => t/nil 
+
+Scrolls the window to the left one screenful of text.
+
+hiScrollWindowRight( w_windowId ) => t/nil 
+
+Scrolls the window to the right one screenful of text.
+
+hiScrollWindowUp( w_windowId ) => t/nil 
+
+Scrolls the window up one screenful of text.
+
+hiScrollWindowDown( w_windowId ) => t/nil 
+
+Scrolls the window down one screenful of text.
+
+hiScrollWindowTop( w_windowId ) => t/nil
+
+Scrolls the window to the top position of the viewable window.
+
+hiScrollWindowBottom( w_windowId ) => t/nil 
+
+Scrolls the window to the bottom position of the viewable window.
+
+hiScrollWindowToCurrentIndex( w_windowId ) => t/nil 
+
+Scrolls the window to the current cursor index position in the
+viewable window.
+
+hiScrollWindowToIndex( w_windowId x_index ) => t/nil 
+
+Scrolls the window to the index position and displays the text.
+
+hiGetCurrentIndex( w_windowId ) => x_index/nil 
+
+Returns the current cursor index position of the text relative to 0:0.
+
+hiSetCurrentIndex( w_windowId x_index ) => t/nil 
+
+Sets the current cursor index position of the text in a window.
+
+hiDisableTailViewfile( w_windowId ) => t/nil 
+
+Turns off the ability to repeatedly read from the end of a file.
+
+hiEnableTailViewfile( w_windowId ) => t/nil 
+
+Turns on the ability to repeatedly read from the end of a file and
+update the viewfile window.
+
+hiGetTextClass( w_windowId ) => x_class 
+
+Retrieves a text class.
+
+hiSetTextClass( w_windowId x_class ) => t/nil 
+
+Sets the active selection (highlight) text class in a window.
+
+hiSetTextHighlightColor( x_class l_foreground l_background ) => t/nil 
+
+Sets the foreground and background highlight colors of a class to the
+specified RGB values.
+
+hiTextDisplayString( w_windowId t_text g_erase [g_dontScrollTop] ) =>
+t/nil 
+
+Displays a text string in a window.
+
+hiRefreshTextWindow(w_window ) => t/nil 
+
+Redraws all the selections and refreshes the viewfile window.
+
+hiUpdateTextSelectionColors( w_windowId ) => t/nil 
+
+Redraws all the selections visible in the window and updates any
+colors previously reset with hiSetTextHighlightColor.
+
+hiGetTextWordDelimiter( w_windowId ) => l_delimiters/nil 
+
+Returns the current settings of the word delimiter list for the
+window.
+
+hiAddTextWordDelimiter( w_windowId t_delimiters ) => t/nil 
+
+Adds characters to the word delimiter list for the window.
+
+hiRemoveTextWordDelimiter( w_windowId t_delimiters ) => t/nil 
+
+Removes characters from the word delimiter list for the window.
+
+hiReplaceTextWordDelimiter( w_windowId t_delimiters ) => t/nil 
+
+Replaces the original word delimiters for the window with a new set of
+characters.
+
+hiGetTextCharAtLoc( w_windowId x_location ) => c_text/nil 
+
+Returns the character of the specified character index location for a
+window.
+
+hiGetTextSourceLength( w_windowId ) => x_length/nil 
+
+Returns the length of the source in a window.
+
+hiGetTextLineColumn( w_windowId x_location )=> l_lineColumn/nil 
+
+Returns the line and column number for an index location in a window.
+
+hiGetTextIndexLoc( w_windowId x_line x_column ) => x_location/nil 
+
+Returns the character index location of a line and column number in a
+window.
+
+hiGetTextDispLoc( w_windowId ) => l_topBottom/nil 
+
+Returns the top and bottom character locations of the current visible
+region of a window.
+
+hiDisableTextSelDefault( w_windowId ) => t/nil 
+
+Disables the default multi-click selection.
+
+hiChangeFormCallback( r_form t_newFormAction ) => t 
+
+Changes the doneAction of a form to the SKILL callback procedure
+newFormAction.
+
+hiChangeFormTitle( r_form t_newTitle ) => t 
+
+Changes the window manager title of a form.
+
+hiCreateAppForm( ?name s_name ?fields l_fieldEntries [?formTitle
+t_formTitle] [?callback g_callback][?unmapAfterCB g_unmapAfterCB]
+[?formType s_formType] [?dialogStyle s_dialogStyle] [?buttonLayout
+g_buttonLayout] [?help g_help] [?initialSize g_initialSize] ) =>
+r_form 
+
+Returns the SKILL representation of a form with the specified field
+entries and name.
+
+hiCreateBBoxField( ?name s_fieldName [prompt t_fieldPrompt] ?value
+l_currentValue [?help t_fieldHelp] [?defValue l_defaultValue] [?font
+t_font] [?callback t_callback] [?editable g_editable] ) =>
+r_fieldHandle 
+
+Creates a bounding box field for a form.
+
+hiCreateBooleanButton( ?name s_fieldName ?buttonText t_buttonText
+?callback t_callback ?value g_booleanValue [?defValue g_defaultValue]
+[?help t_fieldHelp] [?font t_font] ) => r_fieldHandle 
+
+Creates a single Boolean button for a form.
+
+hiCreateButton( ?name s_fieldName ?buttonText t_buttonText ?callback
+t_callback [?buttonIcon l_buttonIcon] [?help t_fieldHelp] [?font
+t_font] ) => r_fieldHandle 
+
+Creates a standalone push button for a form or two-dimensional menu.
+
+hiCreateButtonBoxField( ?name s_fieldName ?choices l_buttonText
+?callback l_callbackList ?prompt t_fieldPrompt [?help t_fieldHelp]
+[?font t_font] ) => r_fieldHandle 
+
+Creates a button box field for a form.
+
+hiCreateCyclicField( ?name s_fieldName ?choices l_enumerations ?prompt
+t_fieldPrompt ?value g_currentValue [?defValue g_defaultValue]
+[?callback t_callback] [?help t_fieldHelp] [?font t_font] ) =>
+r_fieldHandle 
+
+Creates a cyclic field for a form.
+
+hiCreateFloatField( ?name s_fieldName ?value f_currentValue [?prompt
+t_fieldPrompt] [?defValue f_defaultValue] [?help t_fieldHelp] [?font
+t_font] [?callback t_callback] [?range l_fieldRange] [?format
+t_fieldFormat] [?editable g_editable] ) => r_fieldHandle 
+
+Creates a float field for a form. A float field accepts only
+floating-point numbers as input.
+
+hiCreateFrameField( ?name s_fieldName [?labelText t_labelText] ) =>
+
+r_fieldHandle 
+Creates a frame field for a two-dimensional form.
+
+hiCreateForm( s_formHandle t_formName g_formAction l_fieldEntries
+t_formHelp [g_unmapAfterCB] ) => r_form 
+
+Returns the SKILL representation of a form with the specified field
+entries and handle.
+
+hiCreateIntField( ?name s_fieldName [?prompt t_fieldPrompt] ?value
+x_currentValue [?help t_fieldHelp] [?defValue x_defaultValue] [?font
+t_font] [?callback t_callback] [?format t_fieldFormat] [?range
+l_fieldRange] [?editable g_editable] ) => r_fieldHandle 
+
+Creates an integer field for a form.
+
+hiCreateLabel( ?name s_fieldName ?labelText t_labelText
+[?justification s_justification] [?font t_font] [?help t_fieldHelp] )
+=> r_fieldHandle 
+
+Creates a standalone label entry for a form or two-dimensional menu.
+
+hiCreateLayerCyclicField( d_libId t_fieldPrompt t_callback l_layers
+[l_LPpair] ) => r_fieldHandle 
+
+Creates a cyclic field entry containing iconic representations of
+specified layers for a form.
+
+hiCreateListField( ?name s_fieldName ?value l_currentValue [?help
+t_fieldHelp] [?prompt t_fieldPrompt] [?defValue l_defaultValue] [?font
+t_font] [?callback t_callback] [?editable g_editable]) =>
+r_fieldHandle 
+
+Creates a list field for a form.
+
+hiCreateListBoxField( ?name s_fieldName [?prompt t_prompt] ?choices
+l_listItems [?value l_selectedItem] [?defValue l_defSelectedItem]
+[?callback t_callback] [?changeCB t_changeCB] [?numRows x_numRows]
+[?multipleSelect g_multipleSelect][?doubleClickCB t_doubleClickCB] )
+=> r_fieldHandle 
+
+Creates a list box field for a form.
+
+hiCreateOptionsForm( s_formHandle t_formName l_fieldEntries t_help )
+=> r_form
+
+Generates an options form.
+
+hiCreatePointField( ?name s_fieldName ?value l_currentValue [?help
+t_fieldHelp] [?prompt t_fieldPrompt] [?defValue l_defaultValue] [?font
+t_font] [?callback t_callback] [?editable g_editable]) =>
+r_fieldHandle 
+
+Creates a point field for a form. This field accepts only a single
+point as input.
+
+hiCreatePointListField( ?name s_fieldName ?value l_currentValue [?help
+t_fieldHelp] [?prompt t_fieldPrompt] [?defValue l_defaultValue] [?font
+t_font] [?callback t_callback] [?editable g_editable]) =>
+r_fieldHandle 
+
+Creates a point list field for a form. This field accepts only a list
+of points as input.
+
+hiCreateRadioField( ?name s_fieldName ?choices l_radioList [?help
+t_fieldHelp] [?prompt t_fieldPrompt] [?value t_currentSelection]
+[?defValue t_defaultSelection] [?itemsPerRow x_itemsPerRow] [?font
+t_font] [?callback l_radioListCallbacks] ) => r_fieldHandle 
+
+Creates a radio field for a form. This is a field that contains radio
+buttons.
+
+hiCreateScaleField( ?name s_fieldName [?prompt t_prompt] ?value
+x_currentValue [?callback t_callback] [?range l_range] [?defValue
+x_defaultValue] [?help t_fieldHelp ] [?precision x_precision] [?font
+t_font] ) => r_fieldHandle 
+
+Creates a scale field for a form. This field indicates a value in a
+range and allows the user to input or modify a value from the range.
+
+hiCreateSeparatorField( ?name s_fieldName ) => r_fieldHandle
+
+Creates a separator field for a form.
+
+hiCreateStringField( ?name s_fieldName [?prompt t_fieldPrompt] ?value
+t_currentValue [?help t_fieldHelp] [?defValue t_defaultValue] [?font
+t_font] [?callback t_callback] [?format t_fieldFormat] [?editable
+g_editable] ) => r_fieldHandle 
+
+Creates a string field for a form.
+
+hiCreateToggleField( ?name s_fieldName ?choices l_toggleList [?help
+t_fieldHelp] [?numSelect x_numSelectable] [?prompt t_fieldPrompt]
+[?value l_currentValues] [?defValue l_defaultValues] [?itemsPerRow
+x_itemsPerRow] [?font t_font] [?callback l_toggleListCallbacks] ) =>
+
+r_fieldHandle 
+Creates a toggle field entry for a form.
+
+hiDeleteForm( r_form ) => t/nil 
+
+Deletes a form and any fields it contains.
+
+hiDisplayForm( r_form [l_location] ) => t/nil 
+
+Displays a standard form. (Does not display options forms.)
+
+hiFormCancel( r_form ) => t 
+
+Performs the same action as clicking the Cancel button on the form.
+
+hiFormDone( r_form ) => t 
+
+Performs the same action as clicking the OK button on the form.
+
+hiFormUnmap( r_form ) => t/nil 
+
+Removes the form from the screen. This function is useful for long
+callback routines that must do error checking in the beginning.
+
+hiGetCurrentForm( ) => r_form 
+
+Returns the last active form, that is, the form that the cursor was
+last in.
+
+hiGetLayerCyclicValue( d_libId r_form ) => d_layerId 
+
+Returns the layer object associated with the current value of the
+layer cyclic field.
+
+hiInstantiateForm( r_form) => t/nil 
+
+Instantiates the C structure of a form from SKILL.
+
+hiIsForm( g_FormOrMenu ) => t/nil 
+
+Checks whether a form or menu is valid.
+
+hiIsFormDisplayed( r_form ) => t/nil 
+
+Checks whether a form is displayed.
+
+hiIsInstantiated( r_formOrMenu ) => t/nil 
+
+Returns t if a form has been displayed at least once or a menu has
+been placed in a window.
+
+hiLayerMatchCyclicStr( l_choices t_layer ) => l_layerValue 
+
+Returns the cyclic value associated with a layer.
+
+hiLayerStringToLPP( d_libId t_layer ) => d_layerId 
+
+Returns the layer object in the specified library object associated
+with the specified layer.
+
+hiSetCallbackStatus( r_form g_booleanStatus ) => t /nil 
+
+Overrides the removal (unmapping) of a form when the form's OK button
+is pressed.
+
+hiSetFormPosition( l_location ) => t/nil
+
+Sets the default initial location for forms displayed without an
+explicit location argument.
+
+hiSetFormToDefaults( r_form ) => t/nil 
+
+Sets each field in the form to its default value.
+
+hiSetLayerCyclicValue( d_libId l_lpp r_form ) => t/nil 
+
+Sets the current value of the layer cyclic field.
+
+hiStoreFormLocation( s_formName l_location ) => t
+
+Stores a form's location coordinates so that the form can be restored
+to the same position in the next session.
+
+hiAddCyclicChoice( r_form s_cyclicField g_newChoice ) => t/nil 
+
+Adds a new choice to the end of the list of choices in a cyclic field.
+
+hiChangeCyclicChoices( r_form s_cyclicField l_newChoices ) => t/nil 
+
+Replaces the choices in a cyclic field with new choices.
+
+hiAddField( r_form g_fieldDescription ) => t/nil
+
+Adds one field to a form.
+
+hiAddFields( r_form l_fieldDescriptions ) => t/nil
+
+Adds one or more fields to a form.
+
+hiDeleteField( r_form s_field ) => t/nil
+
+Deletes one field from a form.
+
+hiDeleteFields( r_form l_fields ) => t/nil
+
+Deletes one or more fields from a form.
+
+hiGetCurrentField( r_form) => s_fieldName/nil
+
+Returns the name of the type-in field that has input focus.
+
+hiGetFieldInfo( r_2DFormOr2DMenu s_field ) => l_dimensions
+
+Returns the dimensions of any form field or two-dimensional menu item.
+
+hiHighlightField( r_form s_field s_highlightType ) => t/nil 
+
+Highlights a single type-in field on a form.
+
+hiMoveField( r_2DFormOr2DMenu s_field l_location ) => t/nil 
+
+Moves a field to a new location.
+
+hiMoveInsBarToEnd( r_form s_field) => t/nil
+
+Places the cursor (insertion point) at the end of a text field,
+scrolling the field so the cursor is visible.
+
+hiOffsetField( r_2DFormOr2DMenu s_field l_offsets ) => t/nil 
+
+Offsets one field from its current position.
+
+hiOffsetFields( r_2DFormOr2DMenu l_fieldsl_offsets ) => t/nil 
+
+Offsets several fields from their current positions.
+
+hiResizeField( r_2DForm s_field l_resizeDescription) => t/nil 
+
+Changes the width or height of a field or the width of the prompt box.
+
+hiSetCurrentField( r_form s_fieldName) => t/nil
+
+Makes the specified type-in field the current field.
+
+hiSetFieldEditable( r_field g_editable ) => t/nil 
+
+Makes a field editable or noneditable in all forms where it appears.
+
+hiSetFormHighlights( r_form s_highlightType ) => t/nil 
+
+Highlights all type-in fields on a form.
+
+hiEditPropList( g_object [t_title] [g_modifiable] ) => t/nil
+
+Invokes the property list editor for an object.
+
+hiIgnoreProp( s_objType t_propName ) => t/nil
+
+Prevents a property from being displayed on the Property List Editor
+form created from hiEditPropList.
+
+hiBeginProcess( t_command [t_hostName] [t_ioHandler] [t_errHandler]
+[t_postFunc] [t_logFile] ) => x_childId Invokes a UNIX process to
+
+execute a command or sequence of commands.
+
+hiSkillProcess( t_command [t_hostName] [t_ioHandler] [t_errHandler]
+[t_postFunc] [t_logFile] ) => x_childId Invokes a UNIX process to
+
+execute SKILL functions.
+
+hiBatchProcess( t_command t_hostName t_logFile ) => x_childId
+
+Invokes a UNIX process to execute batch commands.
+
+hiReadChild( x_childId x_timeOut ) => s_data
+
+Reads data from the child process. Permits you to specify a time, in
+seconds, beyond which the read operation must not block.
+
+hiWriteChild( x_childId t_data ) => t/nil 
+
+Writes data to the child's stdin port.
+
+hiIsAliveChild( x_childId ) => t/nil 
+
+Checks if a child process is still alive.
+
+hiKillChild( x_childId ) => t/nil 
+
+Kills the UNIX process identified by x_childId.
+
+hiKillAllProcs( ) => t 
+
+Kills every process initiated by the parent through one of the
+hiBeginProcess class of functions.
+
+hiSoftInterrupt( x_childId ) => t/nil
+
+Equivalent to the UNIX kill -2 command. If the child process is active
+it is sent a soft interrupt. The child is responsible for catching the
+signal.
+
+hiGetExitStatus( x_childId ) => x_status
+
+Returns the exit value of the child process.
+
+hiSleep( x_time ) => t
+
+Causes the parent process to sleep for the given number of seconds.
+
+hiWait( x_childId ) => t
+
+Causes the parent process to suspend until the child process
+terminates.
+
+hiWaitForChild( x_childId ) => t
+
+Causes the parent process to suspend until the child process is alive
+ready for communication.
+
+hiStopChild( x_childId ) => t/nil
+
+Causes the child process to suspend its execution. Is equivalent to
+sending a STOP signal through the UNIX kill command.
+
+hiContChild( x_childId ) => t/nil
+
+Causes a suspended child process to resume executing. Equivalent to
+sending a CONT signal.
+
+hiIsActiveChild( x_childId ) => t/nil
+
+Determines if a child process is alive and active.
+
+hiActivateBatch( x_childId ) => t/nil
+
+Switches a child process to batch mode.
+
+hiActivateMessages( x_childId ) => t/nil
+
+Switches a child process to interactive mode. In interactive mode,
+output from the child is written to a log file and is passed on to the
+parent process.
+
+hiSetSkillDesc( x_SkillCommand x_SkillResult ) => t/nil
+
+Overrides the default descriptors used for communications in child
+processes using the SKILL language of the parent. Then every
+SKILLProcess invoked uses the CmdSkill and ResSkill descriptor values
+to communicate to the parent.
+
+hiSetPriority( x_NiceValue ) => t/nil
+
+Sets the priority value of a child process. Child spawning functions
+that you call after invoking hiSetPriority carry the same priority.
+
+hiGetPriority( ) => x_priority
+
+Gets the current default priority.
+
+hiCloseChild( x_cid) => t/nil
+
+Closes the input channel of the child process.
+
+hiGetPid( ) => x_pid
+
+Returns the runtime process identification number of the process
+executing this function.
+
+geChangeCellView( [w_windowId] [t_libName] [t_cellName] [t_viewName]
+[t_versionName] [t_access_mode] ) => w_windowId Opens a design in an
+
+existing window.
+
+geChangeEditMode( t_newMode [w_windowId] ) => t/nil 
+
+Sets the mode of a design, allowing you to edit or view the design.
+
+geDiscardEdits( [w_windowId] ) => t/nil 
+
+Discards all edits made to a design.
+
+geNewWindow( [w_windowId] ) => w_windowId/nil 
+
+Makes a copy of a window.
+
+geReturn( [w_windowId] ) => t/nil
+
+Returns to the previous (parent) level displayed in a window before a
+descend, edit in place, or switch was done.
+
+geReturnToLevel( w_windowId) => t/nil
+
+Displays a list box containing the levels to which you can return.
+
+geSave( [w_windowId] ) => t/nil 
+
+Saves a design.
+
+geSaveAs( [w_windowId] [t_libName] [t_cellName] [t_viewName] ) =>
+t/nil 
+
+Saves a design under another name.
+
+geEditSelSet( [d_cellViewId] ) => t/nil
+
+Displays and edits the properties of each object in the selected set
+in a cellview.
+
+geEditSingleObject( d_objectId) => t/nil
+
+Displays and edits the properties of an object.
+
+geEditToWindowPoint( w_windowId l_edit_cellView_point) =>
+
+l_window_cellView_point Translates coordinate values when you are
+editing a cell in place. geWindowToEditPoint applies the top-level
+cellview's coordinates to the cellview being edited;
+geEditToWindowPoint does the reverse.
+
+geWindowToEditPoint( w_windowId l_window_cellView_point) =>
+
+l_edit_cellView_point Translates coordinate values when you are
+editing a cell in place. geWindowToEditPoint applies the top-level
+cellview's coordinates to the cellview being edited;
+geEditToWindowPoint does the reverse.
+
+geEquivWindow( w_windowId) => w_window_equiv/nil
+
+Returns the ID of a window that has the same edit cellview as the
+specified window.
+
+geEquivWindowSet( w_windowId) => l_window_list
+
+Returns a list of all windows that have the same edit cellview as the
+specified window.
+
+geFindPathtoCellviewInst( d_cellViewIdd_master_Id) => l_hierPath / nil
+
+Returns a hierarchical path of one of the references to a particular
+master in a cellview.
+
+geGetCellViewWindow( d_cellViewId) => w_windowId/nil
+
+Returns the ID of a window in which the specified cellview is
+displayed.
+
+geGetEditCellView( [w_windowId] ) => d_cellViewId
+
+Returns the ID for the cellview being edited.
+
+geGetHierMemInst( [w_windowId] ) => l_list/nil
+
+Returns a list describing the hierarchy of instances that have been
+descended into or edited-in-place to arrive at the cellview in the
+window.
+
+geGetInstHier( [w_windowId] ) => t_instance-hierarchy/nil
+
+Returns a string describing the hierarchy of instances that have been
+descended into or edited-in-place in the current window to arrive at
+the cellview in the window.
+
+geGetInstHierPath( w_windowId) => instance-hierarchy/nil
+
+Similar to geGetInstHier but returns additional information for mosaic
+instances.
+
+geGetTopLevelCellView( [w_windowId] ) => d_cellViewId
+
+Returns the ID of the top-level cellview displayed in a window.
+
+geGetWindowCellView( [w_windowId] )=> d_cellViewId
+
+Returns the ID of the cellview displayed in a window.
+
+geGetWindowBox( w_windowId) => l_bBox/nil 
+
+Returns the lower left and upper right coordinates of the current
+window display.
+
+geRefresh( ) => t/nil 
+
+Redraws all areas of all windows that have not been updated since the
+last redraw.
+
+geRefreshCellView( d_cellViewId [l_bBox] ) => t/nil 
+
+Redraws a cellview. If the bounding box l_bBox is specified, only that
+area is redrawn.
+
+geRefreshWindow( [w_windowId] [l_bBox] ) => t/nil 
+
+Redraws a window. If the bounding box l_bBox is specified, only that
+area is redrawn.
+
+geDeleteAllAreaViewLevel( w_windowId) => t/nil 
+
+Removes all area view levels from a window.
+
+geDeleteAllInstViewLevel( w_windowId) => t/nil 
+
+Removes all instance-specific view levels from a window.
+
+geDeleteAreaViewLevel( w_windowId l_bBox) => t/nil 
+
+Removes from a window all area view levels located in the bounding box
+l_bBox.
+
+geDeleteInstViewLevel( [w_windowId] d_instId) => t/nil 
+
+Removes all instance-specific view levels associated with an instance
+ID.
+
+geGetAllAreaViewLevel( w_windowId) => l_bBox_startStop/nil 
+
+Retrieves all area view levels set for a window.
+
+geGetAllInstViewLevel( w_windowId) => l_inst_startStop/nil 
+
+Retrieves the start level and stop level assigned within a window.
+
+geGetAreaViewLevel( w_windowId l_bBox) => l_startStop/nil 
+
+Retrieves an area view level overlapping a bounding box.
+
+geGetInstViewLevel( w_windowId d_instId) => l_startStop/nil 
+
+Retrieves the start level and stop level of an instance.
+
+geSetAreaViewLevel( w_windowId l_bBox n_start n_stop) => t/nil 
+
+Sets display start and stop threshold levels for an area independently
+of the window levels.
+
+geSetInstViewLevel( w_windowId d_instId n_start n_stop) => t/nil 
+
+Sets display start and stop threshold levels for an instance
+independently of the window levels.
+
+geRestoreWinView( w_windowId) => t/nil
+
+Restores the view saved with geSaveWinView.
+
+geSaveWinView( [w_windowId] [t_name] ) => t/nil
+
+Saves the current view of the window w_windowId to the name t_name.
+
+geEditInPlace( w_windowId t_accessMode d_instId x_iteration x_row
+x_col g_cancel) => t/nil Edits an instance in place.
+
+
+gePush( w_windowId t_accessMode d_instId x_iteration x_row x_col
+g_cancel) => t/nil Pushes into an instance.
+
+
+geSwitch( w_windowId t_accessMode d_instId x_iteration x_row x_col
+g_cancel) => t/nil Switches into an instance.
+
+
+geCenter( [w_windowId] ) => t/nil
+
+Pans the display so that the cellview is centered in the window.
+
+geGetScrollPercent( ) => x_percent
+
+Obtains the percentage used by geScroll when shifting the drawing.
+
+geScroll( [g_windowId] [t_dir] [g_zoom] ) => t/nil
+
+Scrolls a view.
+
+geSetScrollPercent( n_percent) => n_percent_old
+
+Controls the percentage of the drawing currently visible that is
+shifted when geScroll is activated.
+
+geShift( [w_windowId] [t_dir] ) => t/nil
+
+Shifts the window w_windowId in the direction t_dir.
+
+geZoomtoGrid( ) => t / nil
+
+Zooms in on a subject up to the last point at which the major grid is
+still visible.
+
+geAddSelectBox( [w_windowId] [g_partial] [l_bBox] ) => t/nil
+
+Implements the add mode of area selection.
+
+geAddSelectPoint( [w_windowId] [g_partial] [l_point] ) => t/nil
+
+Implements the add mode of point selection.
+
+geDeselectAllFig( [d_cellViewId] ) => t/nil
+
+Deselects all objects in a cellview.
+
+geDeselectFig( d_figId) => t/nil
+
+Removes an object from the selected set if the object passes the
+selection filter.
+
+geDeselectFigPoint( d_figId l_vertex) => t/nil
+
+Removes vertices from the selected set if they pass the selection
+filter.
+
+geGetSelectedSet( [d_cellViewId] ) => l_figs/nil
+
+Returns a list of selected objects in a cellview.
+
+geGetSelSetCount( [d_cellViewId] ) => n_count/0
+
+Counts selected objects in a cellview.
+
+geGetSelSetFigPoint( d_figId) => l_selPoints/nil
+
+Returns a list indicating whether points are selected for an object.
+
+geIsFigAllSelected( d_figId) => t/nil
+
+Checks whether an object is completely selected.
+
+geIsFigPartiallySelected(d_figId) => t/nil
+
+Checks whether an object is partially, but not completely, selected.
+
+geIsFigSelected(d_figId) => t/nil
+
+Checks whether an object is at least partially selected.
+
+gePointQuery(w_windowId l_point g_filterProc)=> d_figId/nil
+
+Returns the IDs of all objects found at the point l_point.
+
+gePointToFig( [w_windowId] [g_ignoreSelect] [l_list] ) => d_figure/nil
+
+
+Returns the IDs of all objects located at the coordinates given in
+l_list.
+
+geSelectAllFig( [d_cellViewId] ) => t/nil
+
+Selects all objects in a cellview that pass the selection filter.
+
+geSelectFig( d_figId) => t/nil
+
+Adds an object to the selected set if the object passes the selection
+filter.
+
+geSelectFigPoint( d_figId l_vertex) => t/nil
+
+Adds vertices of an object to the selected set if they pass the
+selection filter.
+
+geSingleSelectBox( [w_windowId] [g_partial] [l_point] ) => t/nil
+
+Implements the single mode of area selection.
+
+geSingleSelectPoint( [w_windowId] [g_partial] [l_point] ) => t/nil
+
+Implements the single mode of point selection.
+
+geSubSelectBox( [w_windowId] [g_partial] [l_bBox] ) => t/nil
+
+Implements the sub mode of area selection.
+
+geSubSelectPoint( [w_windowId] [g_partial] [l_bBox] ) => t/nil
+
+Implements the sub mode of point selection.
+
+geTogglePartialSelect( ) => t/nil
+
+Toggles partial selection off and on.
+
+geAddHilightArc( g_hlSetId l_ellipse_bBox l_arc_bBox) =>
+g_hlObjectId/nil
+
+Adds an arc to a highlight set.
+
+geAddHilightCircle( g_hlSetId l_center n_radius) => g_hlObjectId/nil
+
+Adds a circle to a highlight set.
+
+geAddHilightDonut( g_hlSetId l_center n_outR n_holeR) =>
+g_hlObjectId/nil
+
+Adds a donut to a highlight set.
+
+geAddHilightDot( g_hlSetId l_point n_width n_height) =>
+g_hlObjectId/nil
+
+Adds a dot to a highlight set.
+
+geAddHilightEllipse( g_hlSetId l_bBox) => g_hlObjectId/nil
+
+Adds an ellipse to a highlight set.
+
+geAddHilightFig( g_hlSetId d_figId [g_drawAll] ) => g_hlObjectId/nil
+
+Adds a figure to a highlight set.
+
+geAddHilightLabel( g_hlSetId l_origin t_label t_just t_orient t_font
+n_height g_draftingP [g_overBar] )=> g_hlObjectId/nil Adds a label to
+
+a highlight set.
+
+geAddHilightLine( g_hlSetId l_points) => g_hlObjectId/nil
+
+Adds a line to a highlight set.
+
+geAddHilightPath( g_hlSetId l_points n_width) => g_hlObjectId/nil
+
+Adds a path to a highlight set.
+
+geAddHilightPolygon( g_hlSetId l_points) => g_hlObjectId/nil
+
+Adds a polygon to a highlight set.
+
+geAddHilightRectangle( g_hlSetId l_bBox) => g_hlObjectId/nil
+
+Adds a rectangle to a highlight set.
+
+geCreateHilightSet( d_cellViewId l_layerPurposePair [g_notGlobal] ) =>
+
+g_hlSetId/nil Creates a highlight set.
+
+geDeleteHilightObject( g_hlObjectId) => t/nil
+
+Deletes a highlight object from the highlight set.
+
+geDeleteHilightSet( g_hlSetId) => t/nil
+
+Deletes a highlight set.
+
+geGetCurrentHilightSet( d_cellViewId) => g_hlSetId/nil
+
+Retrieves the current highlight set.
+
+geGetFigHilightObjectId( g_hlSetId d_figId) => g_hlObjectId/nil
+
+Returns the highlight object ID of the object d_figId in the highlight
+set g_hlSetId.
+
+geIsValidHilightObject( h_hlObjectId) => t/nil
+
+Determines whether the highlighted object is valid.
+
+geIsValidHilightSet( h_hlSetId) => t/nil
+
+Determines whether a highlight set is valid.
+
+gePopHilightStack( d_cellViewId) => t/nil
+
+Pops the current highlight set out of the highlight stack.
+
+gePushHilightStack( g_hlSetId) => t/nil
+
+Pushes a highlight set into the highlight stack of the cellview to
+which the highlight belongs.
+
+geCreateMarker( d_dbobjectId t_severity t_owner t_reason
+t_displayText) => d_shapeId/nil Creates a box-shaped marker whose size
+
+and position are determined by the software.
+
+geCreateMarkerByBBox( d_cellViewId t_type t_owner t_reason
+t_displayText l_bBox) => d_shapeId/nil Creates a rectangular marker
+
+whose size you define with l_bBox.
+
+geCreateMarkerByPoints( d_cellViewId t_type t_owner t_reason
+t_displayText l_points) => d_shapeId/nil Creates a polygon-shaped
+
+marker.
+
+geDeleteAllMarker( d_cellViewId [l_owner [l_severity]] ) => t/nil
+
+Deletes all markers in cellview d_cellViewId that have owner l_owner
+and severity l_severity.
+
+geGetMarkerDisplayText( d_figId) => t_string/nil
+
+Displays the text associated with a marker.
+
+geGetMarkerOwner( d_figId) => t_string/nil
+
+Displays the owner of a marker.
+
+geGetMarkerReason( d_dbobjectId) => t_reason/nil
+
+Displays the reason for a marker.
+
+geGetMarkerType( d_figId) => t_type/nil
+
+Displays the type of a marker.
+
+geHasMarker( d_cellViewId [l_owner [l_type]] ) => t/nil
+
+Queries whether the cellview contains any markers with owner l_owner
+and type l_type.
+
+geHiDeleteMarker( ) => t/nil
+
+Deletes the current marker in the current window.
+
+geHiExplainMarker( ) => t/nil
+
+Explains the current marker in the current cellview.
+
+geHiFindMarker( ) => t/nil
+
+Locates the current marker in the current window.
+
+geIsMarkerShape( d_dbobjectId) => t/nil
+
+Checks whether a shape was created as a marker.
+
+geAddInstProbe( [w_windowId] [l_lpp] [lt_probeSpec] ) => o_probe
+
+Adds an instance probe to a window.
+
+geAddNetProbe( [w_windowId] [l_lpp] [lt_probeSpec]) => o_probe
+
+Adds a net probe to a window.
+
+geAddPathProbe( [w_windowId] [l_lpp] [lt_probeSpec1] [lt_probeSpec2] )
+=> o_probe Adds a path probe to a window.
+
+
+geAddTermProbe( [w_windowId] [l_lpp] [lt_probeSpec] ) => o_probe
+
+Adds a terminal probe to a window.
+
+geDeleteAllProbe( [w_windowId] [g_crossProbeFlag] ) => t/nil 
+
+Removes all the probes from a window.
+
+geDeleteInstProbe( [w_windowId] [lt_probeSpec] ) => t/nil
+
+Deletes an instance probe from a window.
+
+geDeleteNetProbe( [w_windowId] [lt_probeSpec] ) => t/nil
+
+Deletes a net probe from a window.
+
+geDeletePathProbe( [w_windowId] [lt_probeSpec] ) => t/nil
+
+Deletes a path probe from a window.
+
+geDeleteProbe( w_windowId o_userType [g_crossProbeFlag] ) => t/nil 
+
+Removes a probe from a set of probes in a window.
+
+geDeleteTermProbe( [w_windowId] [lt_probeSpec] ) => t/nil
+
+Deletes a terminal probe from a window.
+
+geExplainProbe( [w_windowId] [lt_probeSpec] ) => t/nil
+
+Explains the probes in a window.
+
+geGetAllProbe( [w_windowId] ) => l_probes/nil 
+
+Gets a list of all the probes in a window.
+
+geGetCrossProbeValue( t_viewTypeName) => value/nil
+
+Queries the view type to see if it is set.
+
+geGetProbeNetStopLevel( ) => x_netDisplayStopLevel
+
+Gets the display stop level of net probes.
+
+geGetProbeUserLPP( ) => l_lpp/nil
+
+Gets the layer-purpose pair to be used by the geAdd*Probe functions if
+no layer-purpose pair is passed into these functions.
+
+geLoadNextProbe( [w_window] [p_port] [s_prop] [s_cond] [g_value]
+[s_loadCount] ) => t/nil 
+
+Loads a probe into a window. Identical to geLoadProbe except that
+s_loadCount is a symbol containing the index of the probe to be
+loaded.
+
+geLoadProbe( [w_windowId] [p_port] [s_prop] [s_cond] [g_value] ) =>
+t/nil
+
+Loads probes into a window.
+
+geMakeProbeWithColor( ?window w_windowId ?name t_name ?object g_object
+?otherObject g_otherObject ?color g_color ?probeType t_probeType
+?displayStyle t_displayStyle ?viewTypeList l_viewTypesToCrossProbe
+?message t_messageString) => o_probe_object 
+
+Creates a probe of the specified type and gives it the specified
+color.
+
+geMakeProbeWithLabel( ?window w_windowId ?name t_name ?object g_object
+?otherObject g_otherObject ?label g_label ?probeType t_probeType
+?displayStyle t_displayStyle ?viewTypeList g_viewTypesToCrossProbe
+?message t_messageString ?labelName t_labelName ?labelColor
+l_labelColor ?labelOffset l_labelOffset ?labelFont t_labelFont
+?labelFontSize f_labelFontSize ?labelJust t_labelJust ?labelOrient
+t_labelOrient) => o_probe_objectId 
+
+Creates a probe and gives it the specified label.
+
+geMakeProbeWithOnColor( ?window w_windowId ?name t_name ?object
+g_object ?otherObject g_otherObject ?onColor g_onColor ?probeType
+t_probeType ?displayStyle t_displayStyle ?viewTypeList
+g_viewTypesToCrossProbe ?message t_messageString) => o_probe_objectId
+
+Creates an instance probe and gives it the specified color.
+
+gePrintAllProbe( [w_windowId] [p_port] ) => t/nil
+
+Prints a list of all probes in a window.
+
+geProbeP( o_probe) => t/nil
+
+Checks if the value passed in is a probe.
+
+geSaveProbe( [w_windowId] [p_port] ) => t/nil
+
+Saves probes to a port.
+
+geSetCrossProbeValue( t_viewTypeName [g_value]) => t/nil
+
+Sets the view types to cross-probe.
+
+geSetProbeNetStopLevel( x_netDisplayStopLevel) => t/nil
+
+Sets the display stop level of net probes.
+
+geSetProbeUserLPP( l_lpp) => t/nil
+
+Sets the layer-purpose pair to be used by the geAdd*Probe functions if
+no layer-purpose pair is passed in to these functions.
+
+geCellViewToDlist( d_cellViewId) => l_dlist/nil
+
+Returns a display list of all the objects in a cellview.
+
+geLoadIcon( [t_iconName] [t_fileName] [x_width] [x_height] [x_bgColor]
+) => t/nil 
+
+Creates an icon from a SKILL file.
+
+geSaveIcon( [w_windowId] [t_iconName] [t_fileName] ) => t/nil
+
+Saves a cellview as a SKILL icon file.
+
+geClosePolygon( d_cellViewId l_points t_snapMode) => t/nil
+
+Creates a closed polygon from a list of points.
+
+geCompressPointArray( d_cellViewId l_points g_closedList) =>
+l_pointList/nil
+
+Searches a point list in a cellview for colinear points and deletes
+the intermediate colinear points.
+
+geCoordp( coord) => t/nil
+
+Determines whether the data supplied in coord is a point coordinate.
+
+geHiDragFig( w_windowId x_form t_srcPrompt t_dstPrompt t_cmdName
+l_figList g_useMultiWindow [l_firstPoint] ) => ((d_srcCellView
+
+l_srcPt)(d_dstCellView l_dstPt)) / nil 
+Builds commands that move figures from one point to another, or from
+one window to another.
+
+geInstIdToFileSpec( d_instId t_mode) => t/nil
+
+Creates a file from the data in an instance.
+
+geIsPathReentrant( d_cellViewId l_points n_width [t_style]
+[n_beginExt] [n_endExt] ) => t/nil 
+
+Determines whether a path is self intersecting.
+
+geIsPolygonReentrant( d_cellViewId l_points) => t/nil
+
+Determines whether a polygon is self intersecting.
+
+geOpen( ?window w_windowId ?lib t_lib ?cell t_cell ?view t_view
+?version t_version ?mode t_mode) => t/nil 
+
+Opens a design in a new window.
+
+geQuerySelSet( [w_windowId] ) => t/nil
+
+Displays the properties of each object in the selected set.
+
+geResetCellView( d_cellViewId) => t/nil
+
+Redisplays the last saved version of a cellview.
+
+geTransformUserBBox( l_point l_list)=> l_bBox_new 
+
+Transforms a coordinate pair or list of coordinate pairs by the
+displacement and rotation passed in. Similar to geTransformUserPoint
+but always uses exactly two coordinate pairs as arguments and always
+resolves the resulting pair of coordinate pairs such that the first
+coordinate pair is the lower left corner and the second coordinate
+pair is the upper right corner of the resulting box.
+
+geTransformUserPoint( l_point l_list) => l_point/nil 
+
+Transforms a coordinate pair or list of coordinate pairs by the
+displacement and rotation passed in.
+
+geValidateWindow( [w_windowId] ) => w_windowId/nil
+
+Verifies the database ID of a window.
+
+geWriteCellView( d_cellViewId t_libName t_cellName t_viewName
+[t_version] [d_contextId] ) => t/nil 
+
+Creates a copy of a cellview.
+
+geCreateBend( d_cellViewId tx_layer l_points f_width1 f_width2
+t_bendStyle f_bendFac f_radFac f_chamFac x_nPtsToPi) => d_bendId/nil
+
+Creates a transmission line bend in a cellview.
+
+geCreateTaper( d_cellViewId tx_layer l_points f_width1 f_width2
+t_taperStyle x_nPtsToTaper ) => d_taperId/nil 
+
+Creates a tapered transmission line in a cellview.
+
+geCreateTrl( d_cellViewId tx_layer l_points f_width t_bendStyle
+f_bendFac f_radFac f_chamFac x_nPtsToPI ) => d_trlId/nil 
+
+Creates a transmission line in a cellview.
+
+dbGetPath( ) => t_pathList 
+
+Returns the current setting of the library search path as a
+string. Identical to dmGetLibPath.
+
+dbSetPath( t_pathList ) => t_pathList/nil 
+
+Sets the library search path.
+
+dbOpenCellView( dt_lib/nil t_cellName lt_viewName [t_version [t_mode
+[d_contextCellView]]] ) => nil/d_cellView 
+
+Opens a cellview.
+
+dbOpenPanicCellView( dt_lib/nil t_cellName lt_viewName [t_version
+[t_mode [d_contextCellView]]] ) => nil/d_cellView 
+
+Opens the panic file for a cellview.
+
+dbOpen( t_CellandView [d_contextCellView [t_mode] ] ) =>
+d_cellView/nil
+
+Identical to dbOpenCellView with both the library and version
+specified as nil. This function is maintained for compatibility with
+earlier versions of the software.
+
+dbOpenHier( d_cellView x_numLevels ) => t/nil
+
+Opens and binds masters of instances that constitute a design
+hierarchy.
+
+dbFindOpenCellView( d_libId t_cellName t_viewName t_versionName) =>
+
+d_cellViewId / nil 
+Finds the requested version of a cellview if it is open.
+
+dbGetAnyInstSwitchMaster( d_anyInst t_viewList ) => d_cellView/nil
+
+Switches into a different view of a master cell instance and opens the
+corresponding cellview.
+
+dbGetCellViewVersionId( dt_lib t_cellName t_viewList [t_version] ) =>
+
+d_version / nil 
+Gets and displays the requested version of a cellview.
+
+dbGetVersionTimeStamp( d_version ) => t_time / nil
+
+Returns the time that a version of a cellview was last saved.
+
+dbReopen( d_cellview t_mode ) => t/nil 
+
+Changes the mode on an open cellview from read to append.
+
+dbSave( d_cellView [t_libName t_cellName t_viewName [t_version
+[d_contextCellView]]] ) => t/nil 
+
+Saves the results of a modified cellview that has been opened for
+write or append mode.
+
+dbCompactCellView( d_cellView [t_libName t_cellName t_viewName
+[t_version [d_contextCellView]]] ) => t/nil 
+
+Saves a cellview in compacted format.
+
+dbClose( d_cellView ) => t/nil 
+
+Closes a cellview.
+
+dbPurge( d_cellView ) => t/nil 
+
+Forces a cellview to close and removes it from virtual memory.
+
+dbFullPath( d_cellView ) => t_fullPath/nil
+
+Returns the full path of a cellview.
+
+dbAllCellViews( d_lib t_cellName [d_contextCellView] ) =>
+l_viewName/nil
+
+Lists all the view names of a cell.
+
+dbCheck( [d_cellView/nil] ) => t/nil 
+
+Checks for corruption of data.
+
+dbCopyCellViewHier( t_sourceLibName t_sourceCellName t_sourceViewName
+t_destLibName t_destCellName g_hierCopy g_sourceLibOnly g_overwrite
+s_listOfViews) => t/nil 
+
+Hierarchically copies a cellview from a source library to a
+destination library.
+
+dbCopyCellView( d_srcCVId t_libName t_cellName t_viewName t_version
+g_contextId b_overwrite) => t/nil 
+
+Copies a cellview to a destination cellview.
+
+dbMoveLayer( d_dstLayerId d_srcLayerId x_before ) => t / nil
+
+Changes the sequence of layers in the layer table.
+
+dbSetAutoSave( g_isAutoSaveSet [x_saveInterval] ) => t / nil
+
+Enables or disables the automatic save feature.
+
+dbOpenAutoSaveCellView( t_libName t_cellName lt_viewName [t_version] )
+=> d_cellView / nil 
+
+Reads an auto-saved file.
+
+dbCreateLine( d_cellView (tx_layer [t_purpose] ) l_points ) =>
+d_line/nil 
+
+Creates a line.
+
+dbCreatePath( d_cellView (tx_layer [t_purpose] ) l_points x_width
+[t_pathStyle] ) => d_path/nil 
+
+Creates a path.
+
+dbCreatePolygon( d_cellView (tx_layer [t_purpose] ) l_points ) =>
+
+d_polygon/nil 
+Creates a polygon.
+
+dbCreateRect( d_cellView (tx_layer [t_purpose] ) l_bBox ) =>
+d_rect/nil
+
+Creates a rectangle.
+
+dbCreateEllipse( d_cellView (tx_layer [t_purpose] ) l_bBox ) =>
+d_ellipse/nil 
+
+Creates an ellipse.
+
+dbCreateArc( d_cellView (tx_layer [t_purpose] ) l_ellipse_bBox
+l_arc_bBox ) => d_arc/nil 
+
+Creates an arc.
+
+dbCreateDonut( d_cellView (tx_layer [t_purpose] ) l_point x_outR
+x_holeR ) => d_donut/nil 
+
+Creates a donut (two concentric circles).
+
+dbCreateDot( d_cellView (tx_layer [t_purpose] ) l_point ) => d_dot/nil
+
+Creates a dot.
+
+dbCreateLabel( d_cellview (tx_layer [t_purpose] ) l_point t_label
+t_just t_orient t_font x_height ) => d_label/nil 
+
+Creates a graphic text-string label.
+
+dbCreateTextDisplay( d_associateId d_ownerId (tx_layer [t_purpose] )
+l_displayFlags l_point t_just t_orient t_font x_height [g_isDrafted
+[g_isOverbar [g_isVisable [g_isNameVisible [g_isValueVisible
+[t_attrOrParamName [g_isParamAssoc]]]]]]] ) => d_textDisplay/nil
+
+Creates a text display object.
+
+dbGetAssociateTextDisplay( d_associateId d_ownerId ) =>
+d_textDisplay/nil
+
+Checks if a text display object exists for a given associate and
+owner.
+
+dbMoveShape
+Replaced by dbMoveFig.
+
+dbCopyShape
+Replaced by dbCopyFig.
+
+dbConvertArcToLine( d_arc x_nSides ) => d_line/nil 
+
+Converts an arc to a line. A line is defined as a number of connecting
+segments.
+
+dbConvertDonutToPolygon( d_donut x_nSides ) => d_polygon/nil 
+
+Converts a donut to a polygon.
+
+dbConvertEllipseToPolygon( d_ellipse x_nSides ) => d_polygon/nil
+
+Converts an ellipse to a polygon.
+
+dbConvertPathToPolygon( d_path ) => d_polygon/nil 
+
+Converts a path to a polygon with the same number of points as the
+path.
+
+dbConvertLineToPath( d_line x_width [t_pathStyle] ) => d_path/nil 
+
+Converts a line to a path.
+
+dbCreateInst( d_cellView d_master t_name/nil l_point t_orient
+[x_numInst] ) => d_inst/nil 
+
+Creates an instance (of cellview d_master) in the cellview d_cellView
+with an origin and orientation specified by l_point and t_orient.
+
+dbCreateParamInst( d_cellView d_master t_name/nil l_point t_orient
+[x_numInst [l_paramList]] ) => d_inst/nil 
+
+Creates a parameterized cell instance (of cellview d_master) in the
+cellview d_cellView with an origin and orientation specified by
+l_point and t_orient.
+
+dbFindAnyInstByName( d_cellView t_name ) => d_inst/nil 
+
+Retrieves an instance or mosaic.
+
+dbFindMemInstByName( d_cellView t_name ) => (d_inst x_index)/nil 
+
+Retrieves an instance or mosaic and returns its member index.
+
+dbGetInstNameNumInst( t_name ) => x_numInst/nil 
+
+Retrieves the number of instances of an instance or mosaic.
+
+dbIsSameMaster( d_anyInst1 d_anyInst2 ) => t/nil 
+
+Determines if two instances or mosaics are instantiated from the same
+cellview master.
+
+dbCreateSimpleMosaic( d_cellView d_masterCellView t_name/nil l_point
+t_orient x_rows x_cols x_rowSpacing x_colSpacing ) => d_mosaic/nil
+
+Creates a simple mosaic in the cellview d_cellView from the master
+d_masterCellView.
+
+dbCopyFig( d_fig d_cellView/nil [l_transform] ) => d_fig/nil
+
+Copies and transforms a figure and places it in a cellview.
+
+dbMoveFig( d_fig d_cellView/nil [l_transform] ) => d_fig/nil _cellView
+
+Moves and transforms a figure and places it in a cellview.
+
+dbGetTrueOverlaps( d_cellView l_bBox [tx_layer [tx_purpose
+[lx_level]]] ) => ld_fig/nil 
+
+Returns a list of all objects in a cellview that overlap the area
+specified by l_bBox.
+
+dbGetOverlaps( d_cellView l_bBox [xt_layer [xt_purpose]] [lx_level] )
+=> ld_fig 
+
+Returns a list of all objects in a cellview that have bounding boxes
+overlapping the area specified by l_bBox.
+
+dbGetNeighbor( d_cvId l_bBox t_direction [t_layer [t_purpose]]
+[x_depth] ) => d_figId/nil 
+
+Returns the closest neighboring object in the specified direction of
+the given layer/purpose.
+
+dbGetNeighborList( d_cellView l_area t_direction [t_layer] [lx_depth]
+) => (l_instlist) dbGetNeighborList( d_cellView l_area t_direction
+
+[(t_layer [t_purpose])] [lx_depth] ) => (l_instlist) 
+
+Lists neighboring objects in the specified direction of the given
+layer-purpose pair.
+
+dbProduceOverlap( d_cellView l_bBox [lx_level [tx_layer [t_purpose]]]
+) => ld_shape/nil 
+
+Returns a list of all the shapes in a cellview whose bounding boxes
+are enclosed in or overlap the area specified by l_bBox.
+
+dbProduceOverlapInst( d_cellView l_bBox [lx_level] ) => ld_inst/nil 
+
+Returns a list of all the instances in a cellview that overlap the
+area specified by l_bBox.
+
+dbCreateProp( d_object t_name t_propType g_value ) => d_prop/nil 
+
+Creates a scalar property for an object d_object.
+
+dbCreateRangeProp( d_object t_name t_propType g_value g_lBound
+g_uBound ) => d_prop/nil 
+
+Creates a range property for an object d_object.
+
+dbCreateEnumProp( d_object t_name t_value l_string ) => d_prop/nil 
+
+Creates an enumerated property for an object.
+
+dbCreateHierProp( d_object t_name ) => d_prop/nil 
+
+Creates a hierarchical property for an object.
+
+dbReplaceProp( d_object t_name t_propType g_value ) => d_prop/nil 
+
+Creates a scalar property for an object.
+
+dbReplaceRangeProp( d_object t_name t_propType g_value g_lBound
+g_uBound ) => d_prop/nil 
+
+Creates a range property for an object.
+
+dbReplaceEnumProp( d_object t_name t_value l_string ) => d_prop/nil 
+
+Creates an enumerated property for an object.
+
+dbReplaceHierProp( d_object t_name ) => d_prop/nil 
+
+Creates a hierarchical property for an object.
+
+dbCopyProp( d_object1 d_object2 ) => t/nil 
+
+Copies all the properties of one database object to another database
+object.
+
+dbDeletePropByName( d_object t_name ) => t/nil 
+
+Deletes a property from an object.
+
+dbGetTwoLayerPropOrder( d_lib l_lpps1 l_lpps2 t_propName) => t/nil
+
+Determines if a two-layer property is ordered.
+
+dbCopySingleProp( d_srcPropId d_dstObjId ) => d_dstPropId
+
+Copies a single property to a destination object.
+
+dbMergeSingleProp( d_srcPropId d_dstObjId ) => d_dstPropId
+
+Merges a property with a destination object without overwriting the
+property if it already exists.
+
+dbCompressPointArray( l_pointArray x_isClosed [f_DBUPerUU] ) =>
+
+l_newPointArray 
+Compresses colinear points in a list of points.
+
+dbCreateGroup( d_cellView t_name l_groupType ) => d_group/nil 
+
+Creates a group in a cellview.
+
+dbAddObjectToGroup( d_group d_object ) => d_groupMem/nil 
+
+Adds a database object to a group.
+
+dbMoveGroupMember( d_groupMem1 [d_groupMem2/nil] ) => t/nil 
+
+Moves group member d_groupMem1 immediately after group member
+d_groupMem2.
+
+dbDeleteObjectFromGroup( d_group d_object ) => t/nil 
+
+Deletes an object from a group.
+
+dbDeleteGroupByName( d_cellView t_name ) => t/nil 
+
+Deletes a group and its members from a cellview.
+
+dbCreateNet( d_cellView t_name/nil d_parentNet ) => d_net/nil
+
+Creates a new net in a cellview. If the net already exists, returns
+nil.
+
+dbMakeNet( d_cellView t_name/nil d_parentNet ) => d_net/nil
+
+Creates a new net in a cellview. If the net already exists, returns
+the dbObject of the net.
+
+dbCreateUniqueNamedNet( d_cellview t_prefix x_numBits ) => d_net/nil
+
+Creates a net in a cellview.
+
+dbDeleteAllNet( d_cellView ) => t/nil 
+
+Deletes all nets from a cellview.
+
+dbCreateTerm( d_net t_name/nil t_direction ) => d_term/nil
+
+Creates a terminal for a net.
+
+dbCreateInstTerm( d_net/nil d_inst d_term ) => d_instTerm/nil
+
+Creates an instance terminal on the instance d_inst for the master
+terminal d_term.
+
+dbCreatePin( d_net d_fig [t_name/nil] ) => d_pin/nil
+
+Creates a pin for the net d_net with a figure d_fig.
+
+dbCreateInstPin( d_net/nil d_instTerm d_pin ) => d_instPin/nil
+
+Creates an instance pin for the instance terminal d_instTerm and the
+master pin d_pin.
+
+dbCreateInstPinByName( d_net/nil d_instTerm t_name ) => d_instPin/nil
+
+Similar to dbCreateInstPin but the master pin is defined by its name
+instead of the dbObject of the pin.
+
+dbCreateConn( d_net d_inst d_term ) => d_instTerm/nil
+
+Identical to dbCreateInstTerm except that the net d_net defines a
+valid net that is to be connected to the instance terminal of a master
+terminal d_term.
+
+dbCreateConnByName( d_net d_inst t_name ) => d_instTerm/nil
+
+Similar to dbCreateConn except that the master terminal is defined by
+t_name instead of being specified by the master terminal's dbObject.
+
+dbCreateConnByNewName( d_net d_inst t_name ) => d_instTerm/nil
+
+Similar to dbCreateConnByName except that t_name can be a reference to
+a master terminal yet to be created in the master cellview of instance
+d_inst.
+
+dbAddFigToNet
+The dbSetq equivalent of figure~>net = d_net.
+
+
+dbSubFigFromNet
+The dbSetq equivalent of figure~>net = nil.
+
+
+dbDeleteObject( d_object ) => t/nil 
+
+Deletes an object.
+
+dbTransformPoint( l_point l_list) => l_point/nil
+
+Transforms a coordinate pair.
+
+dbTransformBBox( l_point l_list) => l_bBox_new
+
+Transforms a bounding box.
+
+dbConcatTransform (l_list1 l_list2) => l_list_new
+
+Merges two transformations into a new transformation.
+
+dbFindNetByName( d_cellView t_name ) => d_net/nil
+
+Retrieves a net in a cellview.
+
+dbFindTermByName( d_cellView t_name ) => d_term/nil 
+
+Finds a terminal in a cellview.
+
+dbFindSigByName( d_cellView t_name ) => d_sig/nil
+
+Finds a signal in a cellview.
+
+dbFindSigByAlias( d_cellView t_name ) => d_sig/nil
+
+Finds a signal in a cellview by an alias.
+
+dbGetMemNetSig( d_net x_index ) => d_sig/nil
+
+Retrieves the signal carried by bit number x_index of net d_net.
+
+dbGetMemNetSigName( d_net x_index ) => t_name/nil
+
+Similar to dbGetMemNetSig except that it returns the name of the
+signal instead of the signal object.
+
+dbGetSigNameMemNets( d_cellView t_sigName ) => ( (t_netName x_index)
+
+...)/nil 
+Lists the member nets within the cellview d_cellView that contain the
+signal t_sigName.
+
+dbIsSigNameGlobal( d_cellView t_name ) => t/nil
+
+Tests if the signal t_name is a global signal.
+
+dbGetMemName( t_name x_index ) => t_memName
+
+Retrieves the name of the x_index member from t_name.
+
+dbExpandToMemNameExpr( t_bundleName ) => l_memNameExpr
+
+Expands a bundle name to a list of member-name-expression strings.
+
+dbGetNameNumBit( t_name ) => x_numBit
+
+Parses a string and returns the number of bits in the net, terminal,
+or instance named.
+
+dbGetq( d_object St_AttrOrPropName ) => g_value
+
+Retrieves the value of an attribute or a property associated with a
+database object.
+
+dbSetq( d_object g_value St_AttrOrPropName ) => g_value
+
+Modifies the value of an attribute or a property associated with a
+database object.
+
+dmMapFilePath( t_libraryName t_libraryRootPath t_cellName n_cellIndex
+t_viewName n_viewIndex n_primaryIndex n_secondaryIndex
+n_deltaPrimaryIndex n_deltaSecondaryIndex t_userId n_mappingType) =>
+
+t_path 
+Maps the logical name of a cellview version to a path indicating the
+physical location of a data file.
+
+dmMapAttachFilePath( t_libraryName t_libraryRootPath t_objectName
+n_objectIndex t_fileName n_objectType ) => t_path/nil 
+
+Maps the logical name of an attached file to a path indicating the
+physical location of the file.
+
+dmCheck( [d_libraryId] ) => t/nil 
+
+Checks the integrity of a library's metadata and file system.
+
+dmFix( d_libraryId) => t/nil
+
+Fixes corruption of library metadata.
+
+dmGetCheckLevel( ) => x_level
+
+Returns the library check level used to trigger the start of
+dmLibCheck.
+
+dmLibCheck( d_libraryId) => t/nil
+
+Checks the integrity of library metadata.
+
+dmSetCheckLevel( x_level) => t/nil
+
+Specifies the checks to be run by dmLibCheck.
+
+libMonGetCheckTimePeriod( ) => x_interval
+
+Returns the library monitor check period.
+
+libMonSetCheckTimePeriod( x_interval) => t
+
+Sets the library monitor check period.
+
+libMonSetHoldWriteLock( t_flag) => t
+
+Sets the library lock holding flag.
+
+startLibMonitor( ) => t
+
+Starts libMonitor, the library integrity monitoring process.
+
+dmAddCellToCategory( d_categoryId l_cellList ) => t/nil
+
+Adds one or more cells to a cell category.
+
+dmAddRefLib( d_libraryId t_refLibraryName ) => t/nil 
+
+Adds a reference library to the beginning of a design library's
+reference library list.
+
+dmAppendLib( t_sourceLibraryName t_destLibraryName ) => t/nil
+
+Appends the contents of the source library to the destination library.
+
+dmAttachFile( d_libraryId d_id t_fileName t_path t_attachType ) =>
+t/nil 
+
+Attaches a file to an object.
+
+dmChangeOwner( d_libraryId t_oldOwnerName t_newOwnerName ) => t/nil
+
+Changes the owner of every object in the library owned by
+t_oldOwnerName to t_newOwnerName.
+
+dmCheckin( d_libraryId t_cellName t_viewName t_inVersionNumber/nil
+t_path/nil s_advancePIndexFlag/nil t_logMessage/nil ) =>
+
+t_outVersionNumber/nil 
+Checks in the new version of the checked-out and modified cellview
+data file.
+
+dmCheckout( d_libraryId t_cellName t_viewName t_versionNumber/nil
+t_intention/nil t_path_in/nil ) => t_path_out/nil 
+
+Checks out a version of the cellview file and stores it in the
+specified location.
+
+dmCloseCellView( d_libraryId d_versionId ) => t/nil 
+
+Closes the cellview version file.
+
+dmCloseLib( d_libraryId) => t/nil
+
+Decrements the open library counter and purges the library from memory
+when the count reaches 0.
+
+dmCopyCell( t_sourceLibName t_sourceCellName t_destLibName
+t_destCellName s_hierCopy s_sourceLibOnly) => t/nil 
+
+Copies a cell identified by sourceLibName and sourceCellName to the
+destination cell identified by destLibName and destCellName.
+
+dmCopyCellView( t_sourceLibName t_sourceCellName t_viewName
+t_sourceVersionNumber t_destLibName/nil t_destCellName/nil ) => t/nil
+
+Copies a cellview version from a source library to a destination
+library.
+
+dmCreateCell( d_libraryId t_cellName t_workingGroup/nil
+t_userGroup/nil ) => d_cellId/nil 
+
+Creates a cell.
+
+dmCreateCellCategory( d_LibraryOrCellCatId t_categoryName l_cellList)
+=> d_categoryId/nil 
+
+Creates a cell category and places all specified cells within that
+category.
+
+dmCreateCellView( d_libraryId t_cellName t_viewName t_workingGroup/nil
+t_userGroup/nil ) => d_cellviewId/nil 
+
+Creates a cellview.
+
+dmCreateLib( t_libraryName [t_path/nil] [t_workingGroup/nil]
+[t_userGroup] ) => d_libraryId/nil 
+
+Creates a library and opens it for editing.
+
+dmCreateView( d_libraryId t_viewName t_viewType/nil t_workingGroup/nil
+t_userGroup/nil ) => d_viewId/nil 
+
+Creates a view.
+
+dmDeleteCell( d_libraryId t_cellName ) => t/nil
+
+Deletes a cell from a library.
+
+dmDeleteCellView( d_libraryId t_cellName t_viewName ) => t/nil
+
+Deletes a cellview from a library.
+
+dmDeleteLib( t_libraryName [t_path] ) => t/nil 
+
+Deletes a library from disk.
+
+dmDeleteRefLib( d_libraryId t_refLibraryName ) => t/nil
+
+Deletes a reference library from the reference library list of a
+design library. The reference library itself is not deleted.
+
+dmDeleteVersion( d_libraryId t_cellName t_viewName t_versionNumber )
+=> t/nil 
+
+Deletes a version of a cellview.
+
+dmDeleteView( d_libraryId t_viewName ) => t/nil
+
+Deletes a view from the library.
+
+dmDetachFile( d_libraryId d_id t_fileName ) => t/nil 
+
+Disassociates an attached file from an object. Does not delete the
+file.
+
+dmExtract( d_libraryId t_cellName t_viewName t_versionNumber
+t_path_in/nil ) => t_path_out/nil 
+
+Retrieves a data file for viewing or copying, without requiring a
+later checkin.
+
+dmFindCell( d_libraryId t_cellName ) => d_cellId/nil
+
+Finds the identifier of a cell.
+
+dmFindCellView( d_libraryId t_cellName t_viewName ) =>
+d_cellviewId/nil
+
+Finds the identifier of a cellview.
+
+dmFindLib( t_libraryName ) => d_libraryId/nil
+
+Finds the identifier of the library, if the library is open.
+
+dmFindView( d_libraryId t_viewName ) => d_viewId/nil
+
+Finds the identifier of a view.
+
+dmFindVersion( d_libraryId t_cellName t_viewName t_versionNumber ) =>
+
+d_versionId/nil 
+Finds the identifier for a cellview version.
+
+dmGenLibPathLibName( ) => l_libNamePath/nil
+
+Generates a list of the library name and directory path of each
+library that can be located using the library search path.
+
+dmGenOpenCellView( ) => l_versions/nil
+
+Generates a list of the open cellview versions in the open libraries.
+
+dmGenOpenLibPathName( ) => l_libNamePath/nil
+
+Generates a list of the open library name and its directory path for
+each library that is open.
+
+dmGetAttachedFile( d_libraryId d_id t_fileName ) => t_path/nil
+
+Gets the path of a file attached to an object.
+
+dmGetCellViewPath( d_libraryId t_cellName t_viewName
+t_versionNumber/nil ) => t_path/nil 
+
+Returns the file path of a version of a cellview, if it is open.
+
+dmGetDefaultAccess( ) => l_defaultAccess
+
+Returns the owner, working group, user group, and public default
+access values for libraries, cells, views, and cellviews.
+
+dmGetEditExportList( ) => t_export/nil
+
+Lists all the user login names and group names in the edit export
+list.
+
+dmGetImportList( ) => t_import/nil
+
+Lists all the user login names and group names in the import list.
+
+dmGetLibPath( ) => t_pathList 
+
+Returns the library search path.
+
+dmGetReadExportList( ) => t_export/nil
+
+Lists all user login names and group names in the read export list.
+
+dmGetRefreshTimePeriod( ) => x_timeoutValue
+
+Gets the library refresh timeout value.
+
+dmInstallCellView( d_libraryId t_cellName t_viewName t_path
+t_logMessage/nil ) => t/nil 
+
+Installs the data for the first version of a cellview.
+
+dmLockFile( t_fileName ) => x_lockId/nil 
+
+Locks a file.
+
+dmMakeViewClone( t_libraryName/nil t_viewName d_viewId_in ) =>
+
+d_viewId_out/nil 
+Creates a view object t_viewName in a library and then copies all the
+properties of the view d_viewId_in to it.
+
+dmOpenCellView( d_libraryId t_cellName t_viewName t_versionNumber/nil
+t_mode t_path/nil ) => d_versionId/nil 
+
+Opens a cellview for editing or reading.
+
+dmOpenLib( t_libraryName [t_path/nil [t_unused/nil [t_mode/nil] ] ] )
+=> d_libraryId/nil 
+
+Opens a design library.
+
+dmOpenRefLib( t_refLibraryName d_designLibraryId ) => d_libraryId/nil 
+
+Opens a reference library.
+
+dmPurgeLib( d_libraryId ) => t/nil 
+
+Closes the library for all applications and removes the library from
+virtual memory.
+
+dmPurgeVersions( d_libraryId t_cellNamePattern t_viewNamePattern
+t_versionNamePattern t_testExpression) => t/nil 
+
+Deletes all matching versions of a cellview. If all versions match,
+deletes the cellview as well.
+
+dmRegMapAttachFile( d_libraryId t_path ) => t/nil
+
+Registers a file-mapping function for files attached to a library,
+cell, or view.
+
+dmRegMapFile( d_libraryId t_path ) => t/nil
+
+Registers a file-mapping function for versions of cellview files.
+
+dmRegTrigger( s_functionName s_triggeringEvent ) => t/nil
+
+Registers a function to be called when a triggering event occurs.
+
+dmRemoveCellCategory( d_categoryId ) => t/nil
+
+Removes a cell category from a library or from a parent cell category.
+
+dmRemoveCellFromCategory( d_categoryId l_cellList ) => t/nil
+
+Removes one or more cells from a cell category.
+
+dmRenameLib( t_origLibraryName t_newLibraryName ) => t/nil
+
+Renames a library. The library remains in the same directory.
+
+dmRenameRefLib( t_designLibName t_origRefLibName t_newRefLibName ) =>
+t/nil
+
+Changes the reference library t_origRefLibName of library
+t_designLibName to t_newRefLibName. The instance masters placed inside
+cellviews of the library that refer to the original reference library
+are also changed to refer to the new reference library.
+
+dmReOpenCellView( d_versionId t_mode ) => t_path/nil 
+
+Changes the access mode of an open cellview.
+
+dmRestoreOwnerAccess( t_libName [t_libPath] ) => t/nil 
+
+Restores the library owner's read, write, and delete privileges for a
+library. Only the library owner can execute this function.
+
+dmRestoreVersionBackup( d_libraryId t_cellName t_viewName
+t_versionNumber ) => t/nil 
+
+Replaces the file containing the checked-out version of a cellview
+with its backup file, if there is one.
+
+dmSetDefaultAccess( l_defaultOwnerAccess l_defaultWorkingGroupAccess
+l_defaultUserGroupAccess l_defaultPublicAccess) => t/nil 
+
+Sets the default access values for the owner, working group, user
+group, and public.
+
+dmSetEditExportList( t_export/nil ) => t/nil
+
+Sets the user login names and group names in the edit export list.
+
+dmSaveCellView( d_versionId ) => versionId/nil
+
+Informs data management that cellview data has been saved. Does not
+actually save the data.
+
+dmSetImportList( t_import/nil ) => t/nil
+
+Sets the user login names and group names in the import list.
+
+dmSetLibPath( t_pathList ) => t
+
+Sets the library search path.
+
+dmSetReadExportList( t_export/nil ) => t/nil
+
+Sets the user login names and group names in the read export list.
+
+dmSetRefreshTimePeriod( x_timeoutValue) => t/nil
+
+Sets the library read update timeout checking value.
+
+dmUncheckout( d_libraryId t_cellName t_viewName t_versionNumber ) =>
+t/nil
+
+Cancels the checkout of the designated version.
+
+dmUnlockFile( x_lockId ) => t/nil 
+
+Releases a file lock set by dmLockFile.
+
+dmUnRegMapAttachFile( d_libraryId ) => t/nil
+
+Cancels registration of a user-defined file-mapping function for files
+attached to a library, cell, or view object.
+
+dmUnRegMapFile( d_libraryId ) => t/nil
+
+Cancels registration of a user-defined file-mapping function for
+versions of cellview files.
+
+dmUnregTrigger( s_functionName s_triggeringEvent ) => t/nil
+
+Unregisters a function, so it is no longer called when the triggering
+event occurs.
+
+dmbLibBrowserFormDone( s_formtype ) => t 
+
+Defines whether the Library Browser window remains open, becomes an
+icon, or closes when you close a form.
+
+dmbSetBrowserInteractions([ ?openDesignOption sl_openDesignOption ] [
+?openPlaceInstanceOption sl_openPlaceInstanceOption ] [
+?openOthersOption sl_openOthersOption ][ ?closeDesignOption
+t_closeDesignOption ][ ?closePlaceInstanceOption
+t_closePlaceInstanceOption ] [ ?closeOthersOption t_closeOthersOption
+] ) => t/nil 
+
+Determines how the opening or closing of forms affects the Library
+Browser.
+
+dmbSyncWithForm( s_form s_synctype s_libraryName s_cellName s_viewName
+[s_versionNumber] ) => t dmbSyncWithCellForm( s_form s_synctype
+
+s_libraryName s_cellName [s_viewName] [s_versionNumber] ) => t
+
+Synchronizes a form with the Library Browser.
+
+dmbUpdateBrowser( ) => t 
+
+Ensures that information typed in the library, cell, view, and version
+fields of a form causes a corresponding selection in the Library
+Browser, and ensures that selections made in the Library Browser are
+entered in the form.
+
+deRegApp( ?viewType t_viewType ?parentType t_parentType ?appName
+t_appName ?help t_help ?dataTrigger s_dataTrigger ?appTrigger
+s_appTrigger ?enableTrigger s_enableTrigger ?menuTrigger s_menuTrigger
+?postInstallTrigger s_postInstallTrigger ?widgetType t_widgetType
+?noCadenceMenu g_noCadenceMenu ?appTitle t_appTitle ) => t/nil
+
+Registers the characteristics and entry points of an application so it
+can be installed in a window.
+
+deUnRegApp( t_viewType ) => t/nil
+
+Unregisters an application.
+
+deRegUserTriggers( t_viewType [s_appTrigger [s_menuTrigger
+[s_postInstallTrigger]]] ) => t/nil 
+
+Registers user application triggers, menu triggers, and postinstall
+triggers.
+
+deUnRegUserTriggers( t_viewType ) => t/nil
+
+Removes user triggers associated with a view type.
+
+deInheritEnabling( t_viewType ) => t/nil
+
+Enables a view type if its parent is enabled, or unenables a view type
+if its parent is unenabled.
+
+deUnInheritEnabling( t_viewType ) => t/nil
+
+Removes the inheritance of enabling for a view type.
+
+deInheritMenus( t_viewType ) => t/nil
+
+Causes a view type to inherit the menus defined by its parent class.
+
+deUnInheritMenus( t_viewType) => t/nil
+
+Removes the inheritance of menus for a view type.
+
+deRegProbeTrigger( s_probeTrigger ) => t/nil
+
+Registers a probe trigger.
+
+deUnRegProbeTrigger( ) => t/nil
+
+Removes the current probe trigger.
+
+deGetProbeTrigger( ) => s_probeTrigger/nil
+
+Returns the current probe trigger.
+
+deGetAppInfo( t_viewType ) => l_appInfo/nil
+
+Returns the application registration information associated with a
+view type.
+
+deOpen( [l_fileSpec [g_winSpec [t_accessMode [t_appName]]]] ) =>
+w_window/nil
+
+Installs a design in a window.
+
+dePush([ l_fileSpec [g_winSpec [t_accessMode [t_appName]]]] ) =>
+w_window/nil
+
+Same as deOpen, except that if the window already exists, the contents
+are not removed. Instead the new design is pushed on top of the
+existing one.
+
+deSwap( [ l_fileSpec [g_winSpec [t_accessMode [t_appName]]]] ) =>
+w_window/nil
+
+Same as deOpen, except that if the window already exists, the contents
+are not removed. Instead the current stack item is replaced with the
+new design.
+
+deEditInPlace( w_window [ l_fileSpec [t_accessMode [t_appName]]] ) =>
+
+w_window/nil 
+Same as dePush, but sets the editInPlace flag.
+
+deReturn( [w_window [x_level]] ) => x_level_new/nil
+
+Returns to the previous level or the given level.
+
+deCopy( [w_window [g_winSpec]] ) => w_windowCopy/nil
+
+Makes a copy of a window, including its stack and context data.
+
+dataTrigger( l_args ) => g_handle/nil
+
+Opens a design and returns an identifier for the open file.
+
+appTrigger( l_args ) => g_context/nil
+
+Sets up the banner (except for menus), installs the window pop-up
+menu, initializes the application in other ways, and manages the
+application context.
+
+userAppTrigger( l_args ) => t/nil
+
+Allows clients to subclass application triggers and thus add a context
+to the one already managed by the application.
+
+enableTrigger( [l_args] ) => t/nil
+
+Checks to see if an application is allowed to run.
+
+menuTrigger( l_args ) => l_menuList/nil
+
+Returns a list of menus to install.
+
+userMenuTrigger( l_args ) => l_menuList/nil
+
+Allows the user to attach menus to an application.
+
+postInstallTrigger( l_args ) => t/nil
+
+Enables applications to do processing that cannot be done until last,
+such as adding items to menus. Called after all other processing is
+done.
+
+userPostInstallTrigger( l_args ) => t/nil
+
+Serves the same function as postInstallTrigger, but is intended for
+use only by the customer. Called immediately after the
+postInstallTrigger.
+
+probeTrigger( w_window s_action [w_source] ) => t/nil
+
+Keeps the probing mechanism's data structures consistent without
+requiring each application to call the probing mechanism separately.
+
+deGetCellView( [w_window [x_level]] ) => d_cellview/nil
+
+Returns the cellview for the item on the window stack corresponding to
+x_level.
+
+deGetEditCellView( [w_window] ) => d_cellview/nil
+
+Returns the cellview for the item on the window stack corresponding to
+the current edit level.
+
+deSetCellView( [w_window [d_cellview [x_level]]] ) => t/nil
+
+Replaces the cellview for the current item on the window stack.
+
+deGetViewType( w_window [x_level] ) => t_viewType/nil
+
+Returns the view type of the item at x_level in a window.
+
+deGetEditViewType( w_window ) => t_viewType/nil
+
+Returns the view type of the item at the current edit level in a
+window.
+
+deGetRootType( [w_window [x_level]] ) => t_viewType/nil
+
+Returns the root class view type of the item at x_level in a window.
+
+deGetEditRootType( [w_window] ) => t_viewType/nil
+
+Returns the root class view type of the item at the current edit level
+in a window.
+
+deGetContext( [w_window [x_level]] ) => g_context/nil
+
+Returns the context for the item on the window stack corresponding to
+x_level.
+
+deGetEditContext( [w_window] ) => g_context/nil
+
+Returns the context for the item on the window stack corresponding to
+the current edit level.
+
+deSetContext( [w_window [g_context [x_level]]] ) => t/nil
+
+Replaces the context for the item at the specified level on the window
+stack.
+
+deGetEIP( [w_window [x_level]] ) => t/nil
+
+Returns the edit-in-place state for the item on the window stack
+corresponding to x_level.
+
+deGetPushed( [w_window [x_level]] ) => t/nil
+
+Returns the pushed state for the item on the window stack
+corresponding to x_level.
+
+deGetProbeContext( [w_window] ) => g_probeContext/nil
+
+Returns the probe context for the window.
+
+deSetProbeContext( [w_window [g_probeContext]] ) => t/nil
+
+Sets the probe context for the window.
+
+deGetEditLevel( [w_window] ) => x_level/nil
+
+Returns the edit level of a window.
+
+deGetMaxEditLevel( [w_window] ) => x_level/nil
+
+Returns the highest edit level of a window. If the stack is empty,
+then the routine returns -1.
+
+deIsCDBA( d_cellview ) => t/nil
+
+Returns t if d_cellview refers to C-level Database Access (CDBA) data,
+nil if non-CDBA data.
+
+deEnableApp( w_window t_appName ) => t/nil
+
+Enables an application in a window.
+
+deDisableApp( w_window t_appName ) => t/nil
+
+Disables an application in a specified window.
+
+deInstallApp( w_window t_appName ) => t/nil
+
+Switches the application in a window to another application specified
+by t_appName.
+
+deGetAllViewTypes( ) => l_viewTypes/nil
+
+Returns a list of all fully registered view types and subview types.
+
+deGetAllRootTypes( ) => l_rootTypes/nil
+
+Returns a list of all registered root view types.
+
+deViewTypeIsRegistered( t_viewType ) => t/nil
+
+Returns t if a view type is fully registered-that is, all parents up
+to and including the root type are currently registered.
+
+tcLoadTechFile( d_libraryId t_sourceFile ) => nil/t
+
+Loads an ASCII source file into a library, compiling it into the
+library's technology data.
+
+tcDumpTechFile( t_libraryName t_fileName [t_mode] ) => nil/t
+
+Dumps the technology data for a library into an ASCII file.
+
+tcCreateDeviceClass( t_viewName t_className [((S_classParameter
+g_cpValue)...)] [((S_formalParameter g_fpValue)...)] SKILL code)
+Defines a class of devices.
+
+tcCreateDisplay( t_displayName l_tableSizes ) => nil/displayId 
+
+Defines a system display device for design output. The display is
+created in the active library.
+
+tcCreateLayer( l_layerPurpose t_layerName ) => nil/d_layerId
+
+Creates a layer name to use in the open library.
+
+tcDeclareDevice( t_viewName t_className t_deviceName
+[((S_classParameter g_cpValue)...)] [((S_formalParameter
+g_fpValue)...)] )  
+Creates a device in an existing device class.
+
+tcDeclareWire( t_wireName ltx_wireLayer g_defaultWidth g_minWidth
+g_maxWidth l_encLayerPair ) => t/nil 
+
+Declares a wire.
+
+tcDeleteLayer( d_layerId )=> nil/t
+
+Deletes a layer.
+
+tcDeleteLayerProp( ltx_layerPurpose t_name )=> nil/t
+
+Deletes a layer property.
+
+tcDeleteLibProp( t_name ) => nil/t
+
+Deletes a library property.
+
+tcDeleteTwoLayerProp( ltx_layerPurpose1 ltx_layerPurpose2 t_name ) =>
+nil/t
+
+Deletes a two-layer property.
+
+tcDeleteViewProp( t_view t_name ) => nil/t
+
+Deletes a view property.
+
+tcGetColor( d_displayId g_color ) => nil/l_value
+
+Returns the red, green, and blue (RGB) components for a color and
+display ID.
+
+tcGetDeviceCellView( t_viewName t_deviceName [d_libraryId] ) =>
+d_cellViewId 
+
+Returns a dbObject ID corresponding to the supermaster cellview
+created for a device specified. Also opens the cellview.
+
+tcGetDeviceClass( t_viewName [t_deviceName] [d_libraryId] ) => (
+
+t_class1 t_class2 ... ) / t_class 
+Returns the names of all device classes defined with the specified
+view name.
+
+tcGetDeviceClassProp( t_viewName t_deviceClassName t_propName
+[d_libraryId] ) => g_value/nil 
+
+Retrieves a device class technology property from the device class
+with the specified view name.
+
+tcGetDeviceCParam( t_ViewName t_deviceName[d_libraryId] ) =>
+
+((t_paramName g_paramValue)...) / nil 
+Returns the names and default values of the class parameters defined
+for a device.
+
+tcGetDeviceFParam( t_viewName t_deviceName [d_libraryId] ) =>
+
+((t_paramName g_defaultValue) ... ) / nil 
+Returns the formal parameter names and their default values for a
+device.
+
+tcGetDeviceInClass( t_viewName t_className [d_libraryId] ) =>
+
+(t_device1 t_device2 ... ) 
+Returns the names of all devices in a class and view that are declared
+in the current technology file.
+
+tcGetDeviceProp( t_viewName t_deviceName t_propName [d_libraryId] ) =>
+
+g_value/nil 
+Retrieves a device technology property from a device.
+
+tcGetDisplay( t_displayName [d_libraryId] ) => nil/displayId
+
+Returns the display ID of a display device.
+
+tcGetLayer( ltx_layerPurpose [d_libraryId] ) => nil/d_layerId
+
+Returns the layer ID of a layer.
+
+tcGetLayerAttr( d_layerId ) => nil/l_value
+
+Returns the layer attributes for a layer.
+
+tcGetLayerDisplay( d_layerId d_displayId ) => nil/l_value
+
+Returns layer display parameters as a list of indices.
+
+tcGetLayerDisplayName( d_layerId d_displayId ) => nil/l_value
+
+Returns layer display parameters as a list of names.
+
+tcGetLayerName( x_layerNumber d_libraryId ) => nil/t
+
+Returns a layer name.
+
+tcGetLayerNum( t_layerName [d_libraryId] ) => nil/t
+
+Returns a layer number.
+
+tcGetLayerProp( ltx_layerPurpose t_name [d_libraryId] ) => value
+
+Retrieves a layer technology property.
+
+tcGetLibId( ) => nil/d_libraryId
+
+Returns the ID of the active library.
+
+tcGetLibProp( t_name [d_libraryId] ) => value
+
+Retrieves a library technology property.
+
+tcGetLineStyle( d_displayId tx_lineStyle ) => nil/l_value
+
+Returns the line style width and pattern as a list for the specified
+line style and display ID.
+
+tcGetPurposeName( x_purposeNumber [d_libId] ) => nil/t_purposeName
+
+Returns the purpose name for the purpose number you specify.
+
+tcGetPurposeNum( t_purposeName [d_libId] ) => nil/x_purposeNumber
+
+Returns the purpose number for the purpose name you specify.
+
+tcGetStipple( d_displayId xt_stipple ) => nil/l_value
+
+Returns the stipple pattern for a stipple and display ID.
+
+tcGetTimeStamp( [d_libraryId] ) => nil/x_timeStamp
+
+Returns the time stamp as an integer of seconds elapsed since 00:00:00
+GMT, January 1, 1990.
+
+tcGetTwoLayerProp( ltx_layerPurpose1 ltx_layerPurpose2 t_name
+[d_libraryId] ) => value 
+
+Retrieves the double-layer technology properties for a layer pair.
+
+tcGetViewProp( t_view t_name [d_libraryId] ) => value/nil
+
+Retrieves a view technology property.
+
+tcGetWire( g_wireName [d_libraryId] )=> ( l_layerPurpose
+
+g_defaultWidth g_minWidth g_maxWidth g_encLayer) / l_wireNames / nil
+Returns wire information. If a wire name is specified, returns the
+layer purpose, minimum, maximum, default width, and enclosure layer
+(if any) for that wire. If nil is specified, displays a list of all
+wire names defined for a library.
+
+tcGetWireProp( t_wireName t_propName[d_libraryId] ) => g_propValue /
+nil
+
+Returns the value of a property for the specified wire.
+
+tcIsDevice( d_cellViewId ) => t/nil 
+
+Returns t if the cellview ID is a device, nil otherwise.
+
+tcMakeColor( d_displayId t_colorName l_colorAttributes x_colorIndex )
+=> nil/t 
+
+Adds a new color to the color table of a display.
+
+tcMakeLineStyle( d_displayId t_lineStyleName l_lineStyleAttributes
+x_lineStyleIndex ) => nil/t 
+
+Adds a line style to the line style table of a display.
+
+tcMakeStipple( d_displayId t_stippleName l_stipplePattern
+x_stippleIndex ) => nil/t 
+
+Adds a new stipple to the stipple table of a display.
+
+tcRegPostDumpTrigger( s_function [x_priority] ) => nil/t
+
+Registers a trigger function that the system calls after dumping a
+technology file.
+
+tcRegPostLoadTrigger( s_function [x_priority] )=> nil/t
+
+Registers a trigger function that the system calls after loading a
+technology file.
+
+tcRegPreDumpTrigger( s_function[ x_priority] ) => nil/t
+
+Registers a trigger function that the system calls before dumping a
+technology file.
+
+tcRegPreLoadTrigger( s_function [x_priority] ) => nil/t
+
+Registers a trigger function that the system calls before loading a
+technology file.
+
+tcSaveTech( d_libraryId ) => nil/t
+
+Saves the technology file to disk.
+
+tcSetDeviceClassProp( t_viewName t_deviceClassName l_propertyValue )
+=> t/nil 
+
+Creates a device class technology property or resets its value.
+
+tcSetDeviceProp( t_viewName t_deviceName l_propertyValue ) => t/nil
+
+Creates a device technology property or resets its value.
+
+tcSetLayerAttr( d_layerId l_layerAttributes ) => nil/t
+
+Sets the layer attributes for a layer.
+
+tcSetLayerDisplay( d_layerId d_displayId l_displayAttributes ) =>
+nil/t
+
+Sets the layer display attributes for a layer and display device.
+
+tcSetLayerProp( ltx_layerPurpose l_propertyValue ) => t/nil 
+
+Creates a new layer property or resets the value of an existing layer
+property.
+
+tcSetLibProp( t_name g_expression ) => nil/t
+
+Creates a library technology property or resets its value to the value
+of the expression.
+
+tcSetPurposeName( x_purposeNumber t_purposeName ) => nil/t
+
+Assigns a new name to a purpose or changes a name.
+
+tcSetTwoLayerProp( ltx_layerPurpose1 ltx_layerPurpose2 l_propertyValue
+) => t/nil 
+
+Creates a new two-layer property or changes the value of an existing
+two-layer property.
+
+tcSetUserDisplayPref( t_techfile t_libName [g_libPath] ) => t/nil
+
+Sets the colors, line styles, and stipple patterns of the layers that
+you see when you open cellviews belonging to a library.
+
+tcSetViewProp( t_view l_propertyValue ) => t/nil
+
+Creates a view technology property or resets its value.
+
+tcUnregPostDumpTrigger( s_function ) => nil/t
+
+Unregisters a trigger function that the system calls after dumping a
+technology file so that the function is no longer called.
+
+tcUnregPostLoadTrigger( s_function ) => nil/t
+
+Unregisters a trigger function that the system calls after loading a
+technology file so that the function is no longer called.
+
+tcUnregPreDumpTrigger( s_function ) => nil/t
+
+Unregisters a trigger function that the system calls before dumping a
+technology file so that the function is no longer called.
+
+tcUnregPreLoadTrigger( s_function ) => nil/t
+
+Unregisters a trigger function that the system calls before loading a
+technology file so that the function is no longer called.
+
+tfcDefineColor( (S_displayName S_colorName x_index x_red x_green x_blue )) 
+Creates or modifies a color for a display device.
+
+tfcDefineDeviceClassProp( (S_viewName S_className S_propName ntbl_propValue ))
+Defines a property for a device class.
+
+tfcDefineDeviceProp( (S_viewName S_deviceName S_propName ntbl_propValue ))
+Defines a property for a device.
+
+tfcDefineDisplay( (S_displayName x_#colors x_#stipples x_#lineStyles )) 
+Defines information about the graphic display device, such as a
+plotter or display monitor.
+
+tfcDefineLayer( (S_layerName xS_purpose x_layer# S_fillStyle
+x_priority b_visible b_select b_blink [b_lsw] )) 
+Creates a new layer or modifies an existing layer-purpose pair.
+
+tfcDefineLayerDisplayInfo( (S_layerName xS_purpose S_displayName
+S_stipple S_lineStyle S_fill S_outline )) 
+Modifies the display attributes of an existing layer.
+
+tfcDefineLayerProp( (S_layerName xS_purpose S_propName ntbl_propValue )) 
+Creates or modifies a property for a layer-purpose pair.
+
+tfcDefineLibProp( (S_propName ntbl_propValue )) 
+Creates or modifies a property for a library.
+
+tfcDefineLineStyle( (S_displayName S_lineStyleName x_index x_size l_pattern )) 
+Creates or modifies a line style for the display device.
+
+tfcDefinePurpose( (S_purposeName x_purposeNumber )) 
+Creates a new layer purpose.
+
+tfcDefineStipple( (S_displayName S_stippleName x_index l_bitmap )) 
+Creates or modifies a stipple for the listed display device.
+
+tfcDefineSymContactDevice( (S_name S_viaLayer xS_viaPurpose S_layer1
+xS_purpose1 [(S_impLayer1 xS_impPurpose1 n_impSpacing1)] S_layer2
+xS_purpose2 [(S_impLayer2 xS_impPurpose2 n_impSpacing2)] n_width
+n_length [(x_row x_column n_xPitch n_yPitch S_xBias S_yBias)]
+n_encByLayer1 n_encByLayer2 (S_legalRegion S_regionLayer xS_regPurpose
+))) 
+Defines a contact in the default syContact device class.
+
+tfcDefineSymDepletionDevice( (S_name S_sdLayer xS_sdPurpose
+[(S_impLayer xS_impPurpose n_impSpacing)] S_gateLayer xS_gatePurpose
+S_deplLayer xS_deplPurpose n_width n_length n_sdExt n_gateExt
+n_deplEncSDDir n_deplEncGateDir (S_legalRegion S_regionLayer
+xS_regPurpose ))) 
+Defines a device in the default syDepletion device class.
+
+tfcDefineSymEnhancementDevice( (S_name S_sdLayer xS_sdPurpose
+[(S_impLayer xS_impPurpose n_impSpacing)] S_gateLayer xS_gatePurpose
+n_width n_length n_sdExt n_gateExt (S_legalRegion S_regionLayer
+xS_regPurpose ))) 
+Defines a device in the default syEnhancement device class.
+
+tfcDefineSymPinDevice( (S_name b_maskable S_layer1 xS_purpose1
+[(S_impLayer1 xS_impPurpose1 n_impSpacing1)] n_width1 S_layer2
+xS_purpose2 n_width2 [(S_impLayer2 xS_impPurpose2 n_impSpacing2)]
+(S_legalRegion S_regionLayer xS_regPurpose ))) 
+Defines a pin in the default syPin device class.
+
+tfcDefineSymRectPinDevice( (S_name b_maskable S_layer1 xS_purpose1
+[(S_impLayer1 S_impPurpose1 S_impEncl1)] n_width n_length
+(S_legalRegion S_regionLayer xS_regPurpose))) 
+Defines a pin in the default syRectPin device class, also called the
+Geometry pin class.
+
+tfcDefineSymWire( (S_name S_layer xS_purpose [(S_impLayer
+xS_impPurpose n_spacing)] n_defaultWidth n_minWidth n_maxWidth
+(S_legalRegion S_regionLayer xS_regPurpose ))) 
+Defines a symbolic wire.
+
+tfcDefineSymWireProp( (S_wireName S_propName ntbl_propValue ))
+Defines a property for a symbolic wire.
+
+tfcDefineTwoLayerProp( (S_layer1Name xS_purpose1 S_layer2Name
+xS_purpose2 b_order S_propName ntbl_propValue )) 
+Creates or modifies a property for two layer-purpose pairs.
+
+tfcDefineView( (S_viewName S_viewType )) 
+Creates a new view in the library.
+
+tfcDefineViewProp( (S_viewName S_propName ntbl_propValue )) 
+Creates or modifies a view property.
+
+tfcDefineViewPropByViewType( (S_viewType S_propName ntbl_propValue )) 
+Creates or modifies a property for all views of a view type.
+
+tfcDeleteDeviceClassProp( (S_viewName S_className S_propName ntbl_propValue ))
+Deletes a property for a device class.
+
+tfcDeleteDeviceProp( (S_viewName S_deviceName S_propName ntbl_propValue ))
+Deletes a property for a device.
+
+tfcDeleteLayer( (S_layerName xS_purpose x_layer# S_fillStyle
+x_priority b_visible b_select b_blink b_lsw )) 
+Deletes a layer-purpose pair.
+
+tfcDeleteLayerDisplayInfo( (S_layerName xS_purpose S_displayName
+S_stipple S_lineStyle S_fill S_outline )) 
+Deletes the display attributes of a layer. If the layer is still
+defined in the library, the default attribute values are used.
+
+tfcDeleteLayerProp( (S_layerName xS_purpose S_propName ntbl_propValue )) 
+Deletes a property for a layer-purpose pair.
+
+tfcDeleteLibProp( (S_propName ntbl_propValue )) 
+Deletes a property for a library.
+
+tfcDeleteSymContactDevice( (S_name S_viaLayer xS_viaPurpose S_layer1
+xS_purpose1 [(S_impLayer1 xS_impPurpose1 n_impSpacing1 )] S_layer2
+xS_purpose2 [(S_impLayer2 xS_impPurpose2 n_impSpacing2 )] n_width
+n_length [(x_row x_column n_xPitch n_yPitch S_xBias S_yBias)]
+n_encByLayer1 n_encByLayer2 (S_legalRegion S_regionLayer xS_regPurpose
+))) 
+Deletes a contact in the default syContact device class.
+
+tfcDeleteSymDepletionDevice( (S_name S_sdLayer xS_sdPurpose
+[(S_impLayer xS_impPurpose n_impSpacing )] S_gateLayer xS_gatePurpose
+S_deplLayer xS_deplPurpose n_width n_length n_sdExt n_gateExt
+n_deplEncSDDir n_deplEncGateDir (S_legalRegion S_regionLayer
+xS_regPurpose ))) 
+Deletes a device in the default syDepletion device class.
+
+tfcDeleteSymEnhancementDevice( (S_name S_sdLayer xS_sdPurpose
+[(S_impLayer xS_impPurpose n_impSpacing )] S_gateLayer xS_gatePurpose
+n_width n_length n_sdExt n_gateExt (S_legalRegion S_regionLayer
+xS_regPurpose ))) 
+Deletes a device in the default syEnhancement device class.
+
+tfcDeleteSymPinDevice( (S_name b_maskable S_layer1 xS_purpose1
+[(S_impLayer1 xS_impPurpose1 n_impSpacing1 )] n_width1 S_layer2
+xS_purpose2 n_width2 [(S_impLayer2 xS_impPurpose2 n_impSpacing2)]
+(S_legalRegion S_regionLayer xS_regPurpose ))) 
+Deletes a pin in the default syPin device class.
+
+tfcDeleteSymRectPinDevice( (S_name b_maskable S_layer1 xS_purpose1
+[(S_impLayer1 S_impPurpose1 S_impEncl1 )] n_width n_length
+(S_legalRegion S_regionLayer xS_regPurpose ))) 
+Deletes a pin in the default syRectPin device class, also called the
+Geometry pin class.
+
+tfcDeleteSymWire( (S_name S_layer xS_purpose [(S_impLayer
+xS_impPurpose n_spacing )] n_defaultWidth n_minWidth n_maxWidth
+(S_legalRegion S_regionLayer xS_regPurpose ))) 
+Deletes a symbolic wire.
+
+tfcDeleteSymWireProp( (S_wireName S_propName ntbl_propValue ))
+Deletes a property for a symbolic wire.
+
+tfcDeleteTwoLayerProp( (S_layer1Name xS_purpose1 S_layer2Name
+xS_purpose2 b_order S_propName ntbl_propValue )) 
+Deletes a property for two layer-purpose pairs.
+
+tfcDeleteView( (S_viewName S_viewType )) 
+Deletes a view in the library.
+
+tfcDeleteViewProp( (S_viewName S_propName ntbl_propValue )) 
+Deletes a view property.
+
+tfcDeleteViewPropByViewType( (S_viewType S_propName ntbl_propValue )) 
+Deletes a property for all views of a view type.
+
+hiHelp( t_objType [t_objName] [t_objDetail] ) => t/nil 
+
+Constructs a help symbol from the arguments, extracts a help response
+from the help response file, and evaluates the help response. hiHelp
+is the main service routine for the online help system.
+
+hiMakerHelp( t_docName t_tagName [quiet] ) => t/nil
+
+Opens a FrameMaker document to the page containing a hypertext tag
+name.
+
+hiModalDBoxHelp( t_helpString [t_dboxName] ) => t/nil
+
+Displays a message in a modal dialog box.
+
+hihelpInit( )
+Sets global SKILL variables for the help directory and backup help
+directory.
+
+fmCheckFrameVars( g_startframe [t_callBackProc] [t_callBackArg] ) =>
+t/nil
+
+Initializes the Design Framework II-FrameMaker environment by setting
+the default Frame editor, the default Frame path, and the Frame
+options.
+
+fmCheckFrameRPC( ) => 1/-1
+
+Checks if a Frame editor can respond to a remote procedure call
+request.
+
+fmStartFrame( t_product [t_file] [t_callBackProc] t_callBackArg] ) =>
+1/-1
+
+Starts a Frame editor.
+
+fmCheckAndRestartFrameEditor( [t_callBackProc][t_callBackArg] ) =>
+t/nil
+
+Checks if a Frame editor is currently running and, if not, starts the
+default Frame editor.
+
+fmOpenDoc( t_docName ) => -1 / docHandle
+
+Displays the first page of a FrameMaker document.
+
+fmLinkDoc( t_docName t_hypertextTagName ) => 1 / -1
+
+Displays the FrameMaker document page containing the given hypertext
+tag.
+
+fmCreateTemplate( t_name ) => t/nil
+
+Initializes the environment for FrameMaker template creation.
+
+fmApply( ) => t/nil
+
+Creates the template defined by the report generation calls that
+followed the fmCreateTemplate procedure call.
+
+fmDrawBox( t_boxName t_box x_pageNumber) => t/nil
+
+Draws a text rectangle.
+
+fmSetPropDefault( t_propName g_propValue [t_propName g_propValue ...]
+) => t/nil 
+
+Sets default properties for all text rectangles created by subsequent
+fmDrawBox calls.
+
+fmAddBoxProp( t_boxName t_propName g_propValue [ t_propName
+g_propValue ...] ) => t/nil 
+
+Sets default properties for a given text rectangle.
+
+fmAddTabStop( t_boxName t_tabType g_tabPosition [t_leader [t_decimal]]
+) => t/nil Defines tab stops on a text rectangle.
+
+
+fmConnectFlow( t_box1Name t_box2Name) => t/nil
+
+Connects the text flow from one text rectangle to another.
+
+fmCreateReport( t_templateName t_reportName ) => t/nil
+
+Initializes the environment for FrameMaker report creation.
+
+fmApply( ) => t/nil
+
+Creates a report defined by the report generation calls following the
+fmCreateReport procedure call.
+
+fmPlaceText( t_boxName t_text ) => t/nil
+
+Places a text string in a text rectangle.
+
+fmPlaceFile( t_boxName t_fileName ) => t/nil
+
+Places the contents of an ASCII file into a text rectangle.
+
+fmPlaceImage( t_boxName t_fileName ) => t/nil
+
+Places the graphical image from a file into a text rectangle. The
+image can be in any of the formats recognized by FrameMaker:
+Rasterfile format, PostScript, Encapsulated PostScript, or XWD format.
+
+fmPlaceMIF( t_boxName t_fileName ) => t/nil
+
+Places the Maker Interchange Format (MIF) commands from a file into a
+text rectangle.
+
+fmPlaceHP( t_boxName t_fileName x_scale ) => t/nil
+
+Places the HP-GL (Hewlett-Packard Graphics Language) image from a file
+into a text rectangle.
+
+fmRemoveBoxName( t_boxName ) => t/nil
+
+Removes a text rectangle tag.
+
+getMIFFile( t_fileName ) => l_groupOfStatements/nil
+
+Opens a MIF file for input and reads the file.
+
+putMIFFile( l_groupOfStatements t_fileName ) => x_numStatements
+
+Opens a file for output and writes out MIF statements whose SMIFT
+equivalents are in the given list.
+
+openMIFin( t_fileName ) => t/nil
+
+Opens a MIF file for input.
+
+readMIF( ) => l_statement/nil
+
+Reads the next MIF statement from the open MIF file.
+
+closeMIFin( ) => t/nil
+
+Closes the MIF input file opened by openMIFin.
+
+openMIFout( t_fileName ) => t/nil
+
+Opens a MIF file for output.
+
+printMIF( l_statement1 l_statement2 ... l_statementN) =>
+x_statementsWritten
+
+Writes MIF statements, represented in their internal SMIFT list form,
+to the open output file.
+
+commentMIF( t_comment1 t_comment2 ... t_commentN) =>
+x_statementsWritten
+
+Writes a series of one-line MIF comments to the current MIF output
+file.
+
+closeMIFout( ) => t/nil
+
+Closes the MIF output file opened by openMIFout.
+
+MIFFile( f_version [t_comment] ) => l_statement
+
+Generates the SMIFT representation of the MIF MIFFile statement.
+
+mifComment( g_comment1 g_comment2 ... g_commentN ) => l_statement
+
+Generates the SMIFT representation of the MIF Comment statement.
+
+mifUnits( s_defaultUnits ) => l_statement
+
+Generates the SMIFT representation of the MIF Units statement.
+
+mifVerbose( s_ Yes | No ) => l_statement
+
+Generates the SMIFT representation of the MIF Verbose statement.
+
+mifPgfCatalog( [l_pgfCatalogSubstmt1 ... l_pgfCatalogSubstmtN] ) =>
+l_statement
+
+Generates the SMIFT representation of the MIF PgfCatalog statement.
+
+mifPgf( [l_pgfSubstatement1 ... l_pgfSubstatementN]) => l_statement
+
+Generates the SMIFT representation of the MIF Pgf statement.
+
+mifFontCatalog( [l_fntCatalogSubstmt1 ... l_fntCatalogSubstmtN] ) =>
+
+l_statement 
+Generates the SMIFT representation of the MIF FontCatalog statement.
+
+mifPgfFont( [l_substatement1 ... l_substatementN] ) => l_statement
+
+Generates the SMIFT representation of the MIF PgfFont statement.
+
+mifFont( [l_substatement1 ... l_substatementN] ) => l_statement
+
+Generates the SMIFT representation of the MIF Font statement.
+
+mifVariableFormats( [l_formatSubstatement1 ... l_formatSubstatementN]
+) => l_statement 
+
+Generates the SMIFT representation of the MIF VariableFormats
+statement.
+
+mifXRefFormats( [l_formatSubstatement1 ... l_formatSubstatementN] ) =>
+
+l_statement 
+Generates the SMIFT representation of the MIF XRefFormats statement.
+
+mifDocument( [l_documentSubstatement1 ... l_documentSubstatementN] )
+=> l_statement 
+
+Generates the SMIFT representation of the MIF Document statement.
+
+mifAFrames( [l_frameSubstatement1 ... l_frameSubstatementN] ) =>
+l_statement
+
+Generates the SMIFT representation of the MIF AFrames statement.
+
+mifPage( [l_pageSubstatement1 ... l_pageSubstatementN] ) =>
+l_statement
+
+Generates the SMIFT representation of the MIF Page statement.
+
+mifArrowStyle( [l_substatement1 ... l_substatementN] ) => l_statement
+
+Generates the SMIFT representation of the MIF ArrowStyle statement.
+
+mifArc( [l_substatement1 ... l_substatementN] ) => l_statement
+
+Generates the SMIFT representation of the MIF Arc statement.
+
+mifEllipse( [l_substatement1 ... l_substatementN] ) => l_statement
+
+Generates the SMIFT representation of the MIF Ellipse statement.
+
+mifFrame( [l_substatement1 ... l_substatementN] ) => l_statement
+
+Generates the SMIFT representation of the MIF Frame statement.
+
+mifGroup( [l_substatement1 ... l_substatementN] ) => l_statement
+
+Generates the SMIFT representation of the MIF Group statement.
+
+mifImportObject( [l_substatement1 ... l_substatementN] ) =>
+l_statement
+
+Generates the SMIFT representation of the MIF ImportObject statement.
+
+mifPolygon( [l_substatement1 ... l_substatementN] ) => l_statement
+
+Generates the SMIFT representation of the MIF Polygon statement.
+
+mifPolyLine( [l_substatement1 ... l_substatementN] ) => l_statement
+
+Generates the SMIFT representation of the MIF PolyLine statement.
+
+mifRectangle( [l_substatement1 ... l_substatementN]) => l_statement
+
+Generates the SMIFT representation of the MIF Rectangle statement.
+
+mifRoundRect( [l_substatement1 ... l_substatementN] ) => l_statement
+
+Generates the SMIFT representation of the MIF RoundRect statement.
+
+mifTextLine( [l_substatement1 ... l_substatementN] ) => l_statement
+
+Generates the SMIFT representation of the MIF TextLine statement.
+
+mifTextRect( [l_substatement1 ... l_substatementN] ) => l_statement
+
+Generates the SMIFT representation of the MIF TextRect statement.
+
+mifTextFlow( [l_substatement1 ... l_substatementN] ) => l_statement
+
+Generates the SMIFT representation of the MIF TextFlow statement.
+
+mifNotes( [l_FNoteStatement1 ... l_FNoteStatementN] ) => l_statement
+
+Generates the SMIFT representation of the MIF Notes statement.
+
+mifPara( [l_substatement1 ... l_substatementN] ) => l_statement
+
+Generates the SMIFT representation of the MIF Para statement.
+
+mifParaLine( [l_substatement1 ... l_substatementN] ) => l_statement
+
+Generates the SMIFT representation of the MIF ParaLine statement.
+
+mifChar( s_characterName ) => l_statement
+
+Generates the SMIFT representation of the MIF Char statement.
+
+mifMarker( mifMType( x_markerTypeID) mifMText (t_markerTextString) )
+=> l_statement 
+
+Generates the SMIFT representation of the MIF Marker statement.
+
+mifKeyPgf( [ ?key argument ] ) => l_statement
+
+Generates the SMIFT representation of the MIF Pgf
+statement. Equivalent to mifPgf.
+
+mifKeyFont( [?key argument] ) => l_statement
+
+Generates the SMIFT representation of the MIF Font
+statement. Equivalent to mifFont.
+
+mifKeyPage( [ ?key argument] ) => l_statement
+
+Generates the SMIFT representation of the MIF Page
+statement. Equivalent to mifPage.
+
+mifAppend1( l_compoundStmt l_substmt ) => l_compoundStmt 
+
+Creates a new compound statement by concatenating a new single
+statement onto the end of a group of statements embedded within the
+compound statement.
+
+mifAppendN( l_compoundStmt l_groupOfSubstmts ) => l_compoundStmt 
+
+Creates a new compound statement by concatenating a group of
+statements onto the end of another group of statements embedded within
+a compound statement.
+
+mifConc1( l_compoundStmt l_substmt ) => l_compoundStmt 
+
+Concatenates a single statement onto the end of a group of statements
+embedded within a compound statement.
+
+mifConcN( l_compoundStmt l_groupOfSubstmts ) => l_compoundStmt 
+
+Concatenates a group of statements onto the end of another group of
+statements embedded within a compound statement.
+
+mifPush1( l_substmt l_compoundStmt ) => l_compoundStmt 
+
+Concatenates a single substatement to the head of a group of
+substatements embedded within a compound statement.
+
+mifPushN( l_groupOfSubstmts l_compoundStmt ) => l_compoundStmt 
+
+Concatenates a group of substatements to the head of another group of
+substatements embedded within a compound statement.
+
+dfEncapsulate( ?name t_name [?useForm t/nil] [?inputFiles
+l_inputFiles] [?outputFiles l_outputFiles] [?requiredInfo
+l_requiredInfo] [?formInfo l_formInfo] [?exportInfo l_exportInfo]
+[?importInfo l_importInfo] [?description t_description] [?help t_help]
+[?function s_function] [?preFunc s_preFunc] [?postFunc s_postFunc]
+[?autoRunPostFunc t/nil] [?triggerFunc s_triggerFunc] [?errorFunc
+s_errorFunc] [?resetFunc s_resetFunc] [?highlightFunc s_highlightFunc]
+[?unhighlightFunc s_unhighlightFunc] [?okToRunFunc s_okToRunFunc]
+[?displayList w_displayList] [?skillObject t_skillObject]
+[?subflowchartName t_subflowchartName] [?subflowchartLibName
+t_subflowchartLibName] [?switchBox t/nil] [?disableSwitchBoxFormField
+t/nil] ) => g_step 
+
+Defines a new design step. Each of the optional parameters represents
+a property associated with the design step.
+
+dfViewProps( [?step g_step] [?stepInst g_stepInst] ) => t/nil
+
+Opens a view file window with a list of the properties attached to a
+step or step instance.
+
+dfGetStepList( ) => l_stepList
+
+Returns a list of all design steps created in the current design
+session.
+
+dfGetStepInstList( g_step [g_flowchartInst] ) => l_stepInstList
+
+Returns a list of design step instances instantiated from the step
+g_step.
+
+dfGetCurrentStep( ) => g_step
+
+Returns the current design step.
+
+dfGetCurrentStepInst( ) => g_stepInst
+
+Returns the active design step instance.
+
+dfRefreshStepInst( ?stepInst g_stepInst ) => t
+
+Refreshes a step instance.
+
+dfRunStepInst( [?stepInst g_stepInst] ) => g_result
+
+Invokes and controls a design step instance and provides the mechanism
+to run a design step.
+
+dfRunPostFunc( ?stepInst g_stepInst ) => t/nil
+
+Evaluates stepInst->step->postFunc if it is defined.
+
+dfCreateFlowchart( ?name t_name ?libName t_libName [?size l_size]
+[?lowerLeft l_lowerLeft] [?arcPen x_arcPen] ) => g_flowchart 
+
+Creates an empty flowchart.
+
+dfAddStepToFlowchart( ?flowchart g_flowchart ?flowchartName
+t_flowchartName ?flowchartLibName t_flowchartLibName ?step g_step
+?stepName t_stepName [?nameExt t_nameExt] ?xy l_point ) => w_dagNode
+
+Adds a step to a flowchart.
+
+dfLinkFlowchartSteps( ?flowchart g_flowchart ?parent g_parentStep
+?parentName t_parentName [?parentNameExt t_parentNameExt] ?child
+g_childStep ?childName t_childName [?childNameExt t_childNameExt]
+[?cycleEntry t/nil] [?pointList l_pointList] [?arcPen x_arcPen] ) =>
+
+w_dagArc 
+Establishes a parent-child relationship between two design steps on a
+flowchart.
+
+dfDeleteStepFromFlowchart( ?flowchart g_flowchart ?flowchartName
+t_flowchartName ?flowchartLibName t_flowchartLibName ?step g_step
+?stepName t_stepName [?nameExt t_nameExt] ) => t 
+
+Deletes a step from a flowchart.
+
+dfDisplayFlowchart( ?flowchartInst g_flowchartInst ?libName t_libName
+?cellName t_cellName ?flowchart g_flowchart ?flowchartName
+t_flowchartName ?flowchartLibName t_flowchartLibName [?size l_size]
+[?lowerLeft l_lowerLeft] [?dagTool w_dagTool] ) => g_flowchartInst
+
+Creates a new window and displays a flowchart instance in it.
+
+dfViewProps( [?flowchart g_flowchart] [?flowchartInst g_flowchartInst]
+) => t/nil 
+
+Opens a window with a list of the properties that are attached to a
+flowchart or flowchart instance.
+
+dfGetFlowchartList( ) => l_flowchartList
+
+Returns a list of all flowcharts created in the current design
+session.
+
+dfGetFlowchartInstList( g_flowchart ) => l_flowchartInstList
+
+Returns a list of flowchart instances instantiated from a flowchart.
+
+dfGetCurrentFlowchart( ) => g_flowchart
+
+Returns the active flowchart.
+
+dfGetCurrentFlowchartInst( ) => g_flowchartInst
+
+Returns the flowchart instance in the active dag tool.
+
+dfRefreshFlowchartInst( g_flowchartInst ) => t/nil
+
+Redisplays a flowchart instance.
+
+dfSaveFlowchart( ?flowchart g_flowchart ?logMessage t_logMessage ) =>
+t/nil
+
+Saves a flowchart.
+
+dfSaveFlowchartInst( ?flowchartInst g_flowchartInst ?logMessage
+t_logMessage ) => t/nil 
+
+Saves a flowchart instance.
+
+dfOpenFlowchart( ?libName t_libName ?name t_name ) => g_flowchart
+
+Opens a flowchart.
+
+dfOpenFlowchartInst( ?libName t_libName ?cellName t_cellName
+?flowchart g_flowchart ?flowchartName t_flowchartName
+?flowchartLibName t_flowchartLibName ) => g_flowchartInst 
+
+Opens a flowchart instance.
+
+dfCloseFlowchart( ?flowchart g_flowchart ?libName t_libName ?name
+t_name ) => t
+
+Closes a flowchart and all flowchart instances instantiated from it.
+
+dfCloseFlowchartInst( ?flowchartInst g_flowchartInst ?libName
+t_libName ?cellName t_cellName ?flowchart g_flowchart ?flowchartName
+t_flowchartName ?flowchartLibName t_flowchartLibName ) => t 
+
+Closes a flowchart instance.
+
+dfDisplaySubflowchart( ?stepInst g_stepInst ) => g_subflowchartInst
+
+Displays the subflowchart attached to a step instance.
+
+dfSetCycleEntryParent( ?step g_step [?nameExt t_nameExt] ?parent
+g_parent [?parentNameExt g_parentNameExt] ?flowchart g_flowchart ) =>
+
+l_cycleParents 
+Designates the cycle entry point (step) and its parent (parent).
+
+dfGetCycleEntryParents( ?stepInst g_stepInst ) => l_cycleParents
+
+Returns the parents of a cycle entry point.
+
+dfIsSwitchBox( ?stepInst g_stepInst ) => t/nil
+
+Tells you whether the designated instance is a switch box.
+
+dfSetSwitchBox( ?step g_step [?displayList g_displayList]
+[?skillObject t_skillObject] [?function s_function] ) => t/nil 
+
+Makes a design step a switch box.
+
+dfSelectSwitch( ?stepInst g_stepInst ?switchStepInst g_switchStepInst
+?switchName t_switchName [?switchNameExt t_switchNameExt] ) => t
+
+Enables a switch choice.
+
+dfGetSwitchStepInst( ?stepInst g_stepInst ) => g_switchStepInst
+
+Returns the step instance for the switch box to switch to.
+
+dfGetFlowchart( ?libName t_libName ?name t_name ) => g_flowchart
+
+Returns a flowchart.
+
+dfGetFlowchartInst( ?flowchart g_flowchart ?flowchartName
+t_flowchartName ?flowchartLibName t_flowchartLibName ?libName
+t_libName ?cellName t_cellName ) => g_flowchartInst 
+
+Returns a flowchart instance.
+
+dfGetStep( ?name t_name ) => g_step
+
+Returns a design step.
+
+dfGetStepInst( ?step g_step ?stepName t_stepName ?flowchartInst
+g_flowchartInst ?cellName t_cellName ?libName t_libName ?flowchart
+g_flowchart ?flowchartName t_flowchartName ?flowchartLibName
+t_flowchartLibName [?nameExt t_nameExt] ) => g_stepInst 
+
+Returns a design step instance.
+
+dfGetParentSteps( ?step g_step ?stepName t_stepName ?flowchart
+g_flowchart [?nameExt t_nameExt] ) => l_parentList 
+
+Returns a list of steps that are the parents of step on flowchart.
+
+dfGetChildSteps( ?step g_step ?stepName t_stepName ?flowchart
+g_flowchart [?nameExt t_nameExt] ) => l_childList 
+
+Returns a list of steps that are the children of step on flowchart.
+
+dfGetParentStepInsts( ?stepInst g_stepInst ) => l_parentList
+
+Returns a list of step instances that are the parents of stepInst.
+
+dfGetChildStepInsts( ?stepInst g_stepInst ) => l_parentList
+
+Returns a list of step instances that are the children of stepInst.
+
+dfGetFinishedParents( ?stepInst g_stepInst ) => l_parentList
+
+Returns a list of the step instances that are the parents of stepInst
+and have been finished successfully.
+
+dfGetUnfinishedParents( ?stepInst g_stepInst ) => l_parentList
+
+Returns a list of the step instances that are the parents of stepInst
+and have not been finished yet.
+
+dfSetDependency( ?step g_step ?flowchart g_flowchart ?dependency
+s_dependency [?nameExt t_nameExt] ) => t 
+
+Assigns a dependency to a step on a flowchart.
+
+dfGetDependency( ?stepInst g_stepInst ?step g_step ?flowchart
+g_flowchart [?nameExt t_nameExt] ) => s_dependency 
+
+Returns the dependency in a step instance or step on a flowchart.
+
+dfResetRunTimeProps( ?stepInst g_stepInst ) => t
+
+Resets all run-time properties (running, finished, failMsg, stage, and
+result) in a step instance to nil.
+
+dfResetStepInst( ?stepInst g_stepInst ) => t/nil
+
+Calls dfResetRunTimeProps, then refreshes either the step instance or
+the flowchart instance it is in.
+
+dfCheckProperties( ?step g_step ?stepInst g_stepInst ?flowchart
+g_flowchart ?flowchartInst g_flowchartInst ) => t 
+
+Checks the validity of the properties on a Design Flow object (design
+step, step instance, flowchart, or flowchart instance).
+
+dfGetStepInstListOnFlowchartInst( g_flowchartInst ) => l_stepInstList
+
+Returns a list of all step instances on a flowchart instance.
+
+dfLockProp( g_object sl_prop ) => t/nil
+
+Locks a property assigned to any Design Flow object (design step, step
+instance, flowchart, or flowchart instance).
+
+dfIsPropLocked( g_object s_prop ) => t/nil
+
+Finds out if a property is locked.
+
+dfGetLockedPropList( g_object ) => l_propList
+
+Returns a list of locked properties on a Design Flow object.
+
+dfSetPens( g_libId ) => t
+
+Links Design Flow layers to the pen table of the default display list
+defined in the technology file.
+
+dfGetStepNodeList( g_step g_flowchart ) => l_nodeList
+
+Returns a list of dag nodes created from a step on a flowchart.
+
+dfGetStepNode( ?step g_step [?nameExt t_nameExt] ?flowchart
+g_flowchart ) => g_node 
+
+Returns the node identified by a design step, its extension, and the
+flowchart to which it is added.
+
+dagAddActionToObject( l_actionList g_dagObject) => t_actionName
+
+Lets you invoke your own function from a pop-up menu.
+
+dmCustomizeImport( cvSpecs ?file t_fileName [?cell t_cellName] [?view
+t_viewName] [?fileType g_dmFileType] ) => l_cvSpecs1 
+
+Associates a cell name, view name, and/or file type with a file name
+that is under design manager control.
+
+dmImport( ?library t_libraryName [?config t_configName] [?configType
+t_configType] [?cleanup t/nil] [?customImport l_cvSpecs]
+[l_subConfigSpecs] ) => t/nil 
+
+Brings non-Cadence data under the control of the design data
+management system.
+
+dmExport( ?library t_libraryName ?config t_configName [?dest
+t_location] [?foreign t/nil] [?overwrite t/nil] [?cleanup t/nil]
+[?customExport l_cvSpecs] ) => t/nil 
+
+Opens a configuration (if foreign is nil) or copies data from a
+library to a directory (if foreign is t).
+
+dmClearCustomization( l_cvSpecs ) => t/nil
+
+Resets custom import or export information to nil.
+
+dmGetImportPath( t_library t_config ) => t_importPath
+
+Returns the directory from which the non-Cadence data was imported.
+
+enterArc( [?prompts l_promptList] [?points l_pointList] [?form s_form]
+[?addPointProc t_addProcName] [?delPointProc t_delProcName] [?initProc
+t_initProcName] [?doneProc t_doneProcName] [?formProc t_formProcName]
+[?dontDraw g_dontDraw] [?alwaysMap g_alwaysMap] [?acceptString
+g_acceptString] [?acceptNumber g_acceptNumber] [?noInfix g_noInfix] )
+=> l_point_list/nil 
+
+Enters an arc in the current window.
+
+enterBox( [?prompts l_promptList] [?points l_pointList] [?form s_form]
+[?addPointProc t_addProcName] [?delPointProc t_delProcName] [?initProc
+t_initProcName] [?doneProc t_doneProcName] [?formProc t_formProcName]
+[?dontDraw g_dontDraw] [?alwaysMap g_alwaysMap] [?acceptString
+g_acceptString] [?acceptNumber g_acceptNumber] [?noInfix g_noInfix] )
+=> l_bBox/nil 
+
+Enters a box in the current window.
+
+enterCircle( [?prompts l_promptList] [?points l_pointList] [?form
+s_form] [?addPointProc t_addProcName] [?delPointProc t_delProcName]
+[?initProc t_initProcName] [?doneProc t_doneProcName] [?formProc
+t_formProcName] [?dontDraw g_dontDraw] [?alwaysMap g_alwaysMap]
+[?acceptString g_acceptString] [?acceptNumber g_acceptNumber]
+[?noInfix g_noInfix] ) => l_bBox/nil 
+
+Enters a circle in the current window.
+
+enterDonut( [?prompts l_promptList] [?points l_pointList] [?form
+s_form] [?addPointProc t_addProcName] [?delPointProc t_delProcName]
+[?initProc t_initProcName] [?doneProc t_doneProcName] [?formProc
+t_formProcName] [?dontDraw g_dontDraw] [?alwaysMap g_alwaysMap]
+[?acceptString g_acceptString] [?acceptNumber g_acceptNumber]
+[?noInfix g_noInfix] ) => l_point_list/nil 
+
+Enters a donut in the current window.
+
+enterEllipse( [?prompts l_promptList] [?points l_pointList] [?form
+s_form] [?addPointProc t_addProcName] [?delPointProc t_delProcName]
+[?initProc t_initProcName] [?doneProc t_doneProcName] [?formProc
+t_formProcName] [?dontDraw g_dontDraw] [?alwaysMap g_alwaysMap]
+[?acceptString g_acceptString] [?acceptNumber g_acceptNumber]
+[?noInfix g_noInfix] ) => l_bBox 
+
+Enters an ellipse in the current window.
+
+enterLine( [?prompts l_promptList] [?points l_pointList] [?wantPoints
+x_pointLimit] [?form s_form] [?addPointProc t_addProcName]
+[?delPointProc t_delProcName] [?initProc t_initProcName] [?doneProc
+t_doneProcName] [?formProc t_formProcName] [?dontDraw g_dontDraw]
+[?alwaysMap g_alwaysMap] [?acceptString g_acceptString] [?acceptNumber
+g_acceptNumber] [?noInfix g_noInfix] ) => l_point_list/nil 
+
+Enters a multi-segment line in the current window.
+
+enterNumber( [?prompts l_promptList] [?form s_form] [?initProc
+t_initProcName] [?doneProc t_doneProcName] [?formProc t_formProcName]
+[?alwaysMap g_alwaysMap] ) => f_number 
+
+Prompts you to enter a number.
+
+enterPath( [?prompts l_promptList] [?points l_pointList] [?wantPoints
+x_pointLimit] [?form s_form] [?addPointProc t_addProcName]
+[?delPointProc t_delProcName] [?initProc t_initProcName] [?doneProc
+t_doneProcName] [?formProc t_formProcName] [?pathStyle t_pathStyle]
+[?pathWidth f_pathWidth] [?beginExtent f_beginExtent] [?endExtent
+f_endExtent] [?dontDraw g_dontDraw] [?alwaysMap g_alwaysMap]
+[?acceptString g_acceptString] [?acceptNumber g_acceptNumber]
+[?noInfix g_noInfix] ) => l_point_list 
+
+Enters a path in the current window.
+
+enterPoint( [?prompts l_promptList] [?points l_pointList] [?form
+s_form] [?addPointProc t_addProcName] [?delPointProc t_delProcName]
+[?initProc t_initProcName] [?doneProc t_doneProcName] [?formProc
+t_formProcName] [?alwaysMap g_alwaysMap] [?acceptString
+g_acceptString] [?acceptNumber g_acceptNumber] [?noInfix g_noInfix] )
+=> l_coord_pair 
+
+Prompts you to enter a single point.
+
+enterPoints( [?prompts l_promptList] [?points l_pointList] [?form
+s_form] [?addPointProc t_addProcName] [?delPointProc t_delProcName]
+[?initProc t_initProcName] [?doneProc t_doneProcName] [?formProc
+t_formProcName] [?wantPoints x_pointLimit] [?alwaysMap g_alwaysMap]
+[?acceptString g_acceptString] [?acceptNumber g_acceptNumber]
+[?noInfix g_noInfix] ) => l_coord_pair 
+
+Prompts you to enter a list of points.
+
+enterPolygon( [?prompts l_promptList] [?points l_pointList]
+[?wantPoints x_pointLimit] [?form s_form] [?addPointProc
+t_addProcName] [?delPointProc t_delProcName] [?initProc
+t_initProcName] [?doneProc t_doneProcName] [?formProc t_formProcName]
+[?dontDraw g_dontDraw] [?alwaysMap g_alwaysMap] [?acceptString
+g_acceptString] [?acceptNumber g_acceptNumber] [?noInfix g_noInfix] )
+=> l_point_list 
+
+Digitizes a polygon in the current window.
+
+enterScreenBox( ) => l_bBox 
+
+Lets you enter a box in screen coordinates.
+
+enterSegment( [?prompts l_promptList] [?points l_pointList] [?form
+s_form] [?addPointProc t_addProcName] [?delPointProc t_delProcName]
+[?initProc t_initProcName] [?doneProc t_doneProcName] [?formProc
+t_formProcName] [?dontDraw g_dontDraw] [?alwaysMap g_alwaysMap]
+[?acceptString g_acceptString] [?acceptNumber g_acceptNumber]
+[?noInfix g_noInfix] ) => l_point_list 
+
+Lets you enter a segment in the current window.
+
+enterMultiRep( [?prompts l_promptList] [?points l_pointList] [?form
+s_form] [?addPointProc t_addProcName] [?delPointProc t_delProcName]
+[?initProc t_initProcName] [?doneProc t_doneProcName] [?formProc
+t_formProcName] [?dontDraw g_dontDraw] [?alwaysMap g_alwaysMap]
+[?acceptString g_acceptString] [?acceptNumber g_acceptNumber]
+[?noInfix g_noInfix] ) => l_point_list 
+
+Identical to enterSegment except that the two points can be in windows
+viewing different cellviews.
+
+enterString( [?prompts l_promptList] [?form s_form] [?initProc
+t_initProcName] [?doneProc t_doneProcName] [?formProc t_formProcName]
+[?alwaysMap g_alwaysMap] ) => t_string 
+
+Prompts you to enter a string.
+
+addPoint( l_point ) => t/nil 
+
+Adds a point to the enterfunction in the current window.
+
+deletePoint( ) => t/nil 
+
+Deletes a point from the enterfunction in the current window.
+
+cancelEnterFun( [g_form] ) => t/nil 
+
+Cancels the enterfunction in the current window.
+
+finishEnterFun( [g_form] ) => t/nil 
+
+Completes an enterfunction if possible. (Some commands cannot be
+finished until you enter all the required points.)
+
+applyEnterFun( ) => t/nil 
+
+Calls doneProc, passes it the points you entered, resets the
+enterfunction, and calls initProc.
+
+changeEnterFun( s_enterFun [?prompts l_promptList] [?points
+l_pointList] [?wantPoints x_pointLimit] [?form s_form] [?addPointProc
+t_addProcName] [?delPointProc t_delProcName] [?initProc
+t_initProcName] [?doneProc t_doneProcName] [?formProc t_formProcName]
+[?pathStyle t_pathStyle] [?pathWidth f_pathWidth] [?beginExtent
+f_beginExtent] [?endExtent f_endExtent] [?dontDraw g_dontDraw]
+[?alwaysMap g_alwaysMap] [?acceptString g_acceptString] [?acceptNumber
+g_acceptNumber] [?noInfix g_noInfix] ) => t/nil 
+
+Changes the current enterfunction to another one.
+
+hiToggleEnterForm( [g_form] ) => t/nil 
+
+Displays or removes the options form of the enterfunction in the
+current window.
+
+undrawEnterFun( ) => t/nil 
+
+Undraws any rubberbanding shapes. Called when an enterfunction is
+active. If you enter data in the window, rubberbanding resumes.
+
+drawEnterFun( ) => t/nil 
+
+Redraws rubberbanding shapes. Called when an enterfunction is active.
+
+dlMakeDisplayList( ) => w_displayList/nil 
+
+Creates an empty display list that you can add objects to.
+
+dlAddArc( w_dlist x_penNumber l_point1 l_point2 n_startAngle
+n_sweepAngle [s_tagSymbol] ) => t/nil 
+
+Adds an arc to a display list.
+
+dlAddBox( w_dlist x_penNumber l_point1 l_point2 [s_tagSymbol] ) =>
+t/nil 
+
+Adds a box to a display list.
+
+dlAddCircle( w_dlist x_penNumber l_point x_radius [s_tagSymbol] ) =>
+t/nil 
+
+Adds a circle to a display list.
+
+dlAddDonut( w_dlist x_penNumber l_point x_innerRadius x_outerRadius
+[s_tagSymbol] ) => t/nil 
+
+Adds a donut (two concentric circles) to a display list.
+
+dlAddEventObject( w_dlist l_point1 l_point2 t_procName t_procArgs
+[t_highlightMode] [g_doesGraphics] [s_tagSymbol] ) => t/nil 
+
+Adds an event object to a display list. An event object is a SKILL
+procedure called whenever the user presses a mouse button or a
+keyboard key.
+
+dlAddPath( w_dlist x_penNumber x_pathWidth t_pathEndType l_pointsList
+[s_tagSymbol] ) => t/nil 
+
+Adds a path to a display list.
+
+dlAddPoint( w_dlist x_penNumber l_point [s_tagSymbol] ) => t/nil 
+
+Adds a point to a display list.
+
+dlAddPolygon( w_dlist x_penNumber l_pointsList [s_tagSymbol] ) =>
+t/nil 
+
+Adds a polygon to a display list.
+
+dlAddRasterText( w_dlist x_penNumber l_point t_text t_fontName
+[t_verticalJustify] [t_horizontalJustify] [s_tagSymbol] ) => t/nil
+
+Adds a text string to a display list.
+
+dlAddSegment( w_dlist x_penNumber l_point1 l_point2 [s_tagSymbol] ) =>
+t/nil 
+
+Adds a line segment to a display list.
+
+dlAddSkillObject( w_dlist x_penNumber l_point1 l_point2 t_procName
+t_procArgs [s_tagSymbol] ) => t/nil 
+
+Adds a SKILL object to a display list. A SKILL object is a SKILL
+procedure called whenever the object is drawn.
+
+dlAddStrokeText( w_dlist x_penNumber l_point t_text t_justification
+t_fontName x_height [t_orientation] [g_drafting] [s_tagSymbol] ) =>
+
+t/nil 
+Adds a stroke text string to a display list.
+
+dlDrawArc( l_point1 l_point2 f_startAngle f_sweepAngle ) => t/nil 
+
+Draws an arc to the screen from within a SkillObject procedure.
+
+dlDrawBox( l_point1 l_point2 ) => t/nil 
+
+Draws a box to the screen from within a SkillObject procedure.
+
+dlDrawCircle( l_point x_radius ) => t/nil 
+
+Draws a circle to the screen from within a SkillObject procedure.
+
+dlDrawDonut( l_point x_innerRadius x_outerRadius ) => t/nil 
+
+Draws a donut to the screen from within a SkillObject procedure.
+
+dlDrawPath( x_pathWidth t_pathEndType l_pointsList ) => t/nil 
+
+Draws a path to the screen from within a SkillObject procedure.
+
+dlDrawPoint( l_point ) => t/nil 
+
+Draws a point to the screen from within a SkillObject procedure.
+
+dlDrawPolygon( l_pointsList ) => t/nil 
+
+Draws a polygon to the screen from within a SkillObject procedure.
+
+dlDrawRasterText( l_point t_text t_fontName [t_verticalJustify]
+[t_horizontalJustify] ) => t/nil 
+
+Draws a text string to the screen from within a SkillObject procedure.
+
+dlDrawSegment( l_point1 l_point2 ) => t/nil 
+
+Draws a line segment to the screen from within a SkillObject procedure.
+
+dlDrawStrokeText( l_point t_text t_justification t_fontName x_height
+t_orientation ) => t/nil 
+
+Draws a stroke text string to the screen from within a SkillObject
+procedure.
+
+dlMakePenTable( [x_maxPens] ) => w_penTable/nil 
+
+Creates a pen table that a display list can use.
+
+dlMakeStipple( t_StippleString ) => x_stippleId/nil 
+
+Creates a stipple pattern from a string.
+
+dlSetCurrentPen( x_penNumber ) => t/nil 
+
+Sets the specified pen number to the current pen.
+
+dlSetPenColor( x_penNumber x_colorIndex [w_penTable] ) => t/nil 
+
+Changes a pen to the specified color index from the pen table.
+
+dlSetPenFillStyle( x_penNumber t_fillStyle [w_penTable] ) => t/nil 
+
+Sets the fill style of a pen.
+
+dlSetPenStipple( x_penNumber x_stippleId [w_penTable] ) => t/nil 
+
+Sets the stipple pattern for a pen.
+
+dlSetPenTable( w_displayList w_penTableOrDisplayList ) => t/nil 
+
+Sets the pen table for a display list.
+
+dlAttachDlistToWidget( w_displayList x_widgetId ) => x_widgetId/nil 
+
+Attaches a display list to a widget.
+
+dlAttachDlistToWindow( w_displayList w_windowId ) => t/nil 
+
+Attaches a display list to a window.
+
+dlClearDisplayList( w_displayList ) => t/nil 
+
+Removes all the objects from a display list.
+
+dlCloseWidget( x_widgetId ) => t/nil 
+
+Closes (destroys) a widget.
+
+dlConfigureButton( x_button x_xPosition x_yPosition x_width x_height )
+=> t/nil 
+
+Moves a button.
+
+dlDetachDlistFromWidget( w_displayList x_widgetId ) => t/nil 
+
+Detaches a display list from a widget.
+
+dlDetachDlistFromWindow( w_displayList w_windowId ) => t/nil 
+
+Detaches a display list from a window.
+
+dlDisplay( w_displayList ) => t/nil 
+
+Redraws the display list in all the windows and buttons it is
+currently attached to.
+
+dlDlistToIcon( w_displayList x_width x_height [x_backColorIndex] ) =>
+
+l_iconId/nil 
+Converts a display list to an icon.
+
+dlEnableItem( w_dlist x_penNumber s_symbolTag g_enableOrDisable ) =>
+t/nil 
+
+Allows you to turn on or off shapes within a display list that match a symbol.
+
+dlFitDlistOnDraw( w_displayList x_widgetId g_doFit) => t/nil 
+
+Specifies whether a display list should automatically fit within a widget.
+
+dlMakeDlistButton( x_parentWidgetId x_xPosition x_yPosition x_width
+x_height w_displayList t_pressCallback [x_backgroundColor] ) => t/nil
+
+Creates a button to show a display list in.
+
+dlMakeWidget( [x_backgroundColor] [l_point1] [l_point2] ) =>
+x_widgetId/nil 
+
+Creates a general purpose window (or widget).
+
+dlMapWidget( x_widgetId ) => t/nil 
+
+Puts a widget back on the screen after a call to dlUnMapWidget(). 
+This function also applies to buttons.
+
+dlMoveButton( x_button x_xPosition x_yPosition ) => t/nil 
+
+Moves a button.
+
+dlResizeButton( x_button x_width x_height ) => t/nil 
+
+Resizes a button.
+
+dlSaveDlist( w_displayList t_fileName t_dlistName ) => t/nil 
+
+Saves the display list.
+
+dlSetDlistPosition( w_displayList x_widgetId x_xOffset x_yOffset ) =>
+t/nil 
+
+Specifies the offsets to map from display list coordinates to screen
+coordinates.
+
+dlSetDlistScale( w_displayList x_widgetId f_scale ) => t/nil 
+
+Specifies the scale factor to map from display list coordinates to
+screen coordinates.
+
+dlSetWidgetName( x_widgetId t_name ) => t/nil 
+
+Sets the text displayed in the window manager banner.
+
+dlUnMapWidget( x_widgetId ) => t/nil 
+
+Removes a widget from the screen, but does not destroy it. This
+function also applies to buttons.
+
+cdfCreateBaseLibCDF( d_libId [?doneProc t_doneProc t_formInitProc] )
+=> cdfDataId/nil 
+
+Creates a base-level CDF for a library.
+
+cdfCreateUserLibCDF( d_libId [?doneProc t_doneProc t_formInitProc] )
+=> cdfDataId/nil 
+
+Creates a user-level CDF for a library.
+
+cdfCreateBaseCellCDF( d_cellId [?doneProc t_doneProc t_formInitProc] )
+=> cdfDataId/nil 
+
+Creates a base-level CDF for a cell.
+
+cdfCreateUserCellCDF( d_cellId [?doneProc t_doneProc t_formInitProc] )
+=> cdfDataId/nil 
+
+Creates a user-level CDF for a cell.
+
+cdfCreateParam( g_cdfDataId ?name t_name ?type t_type [?defValue
+g_defValue] [?units t_units] [?parseAsNumber t_parseAsNumber]
+[?choices t_choices] [?prompt t_prompt] [?use t_use] [?display
+t_display] [?editable t_editable] [?dontSave t_dontSave] [?callback
+t_callback] [?storeDefault t_storeDefault] [?parseAsCEL t_parseAsCEL]
+) => cdfDataId/nil 
+
+Creates a parameter on the specified cdfDataId with the specified
+attributes.
+
+cdfGetBaseLibCDF( d_libId ) => cdfDataId/nil
+
+Returns the base-level CDF attached to a library.
+
+cdfGetUserLibCDF( d_libId ) => cdfDataId/nil
+
+Returns the user-level CDF attached to a library.
+
+cdfGetLibCDF( d_libId ) => cdfDataId/nil
+
+Returns the effective CDF attached to a library.
+
+cdfGetBaseCellCDF( d_cellId ) => cdfDataId/nil
+
+Returns the base-level CDF attached to a cell.
+
+cdfGetUserCellCDF( d_cellId ) => cdfDataId/nil
+
+Returns the user-level CDF attached to a cell.
+
+cdfGetCellCDF( d_lcellId ) => cdfDataId/nil
+
+Returns the effective CDF attached to a cell.
+
+cdfGetInstCDF( d_instId ) => cdfDataId/nil
+
+Returns the effective CDF associated with an instance.
+
+cdfSaveCDF( g_cdfDataId ) => t/nil
+
+Saves a CDF description to disk.
+
+cdfDeleteCDF( g_cdfDataId ) => t/nil
+
+Deletes a CDF description, including all attached parameters.
+
+cdfDeleteParam( g_cdfParamId ) => t/nil
+
+Deletes a CDF parameter.
+
+cdfCopyCDF( d_id t_dataType g_dataId ) => g_dataId/nil
+
+Copies CDF data onto the specified id, creating a new dataId of the
+specified type.
+
+cdfCopyParam( g_dataId g_paramId ) => g_paramId/nil
+
+Copies a parameter, adding it to the dataId.
+
+dagAddActionToObject( l_action w_object ) => t_actionName/nil
+
+Adds an action to a specified dag (directed acyclic graph) node or class.
+
+dagCreateClass( t_className ) => w_class/nil
+
+Creates a dag class and returns it.
+
+dagCreateNode( t_nodeName w_class ) => w_node/nil
+
+Creates a dag node and returns it.
+
+dagDeleteActionFromObject( t_actionName w_object ) => t/nil 
+
+Deletes an action from a dag class or node.
+
+dagDestroyNode( w_node ) => t/nil
+
+Destroys a dag node. Also destroys all descendant nodes and arcs of
+this node, as well as the arcs linking this node to its parent(s).
+
+dagDisplayTool( [w_dagTool] [g_runPlacer] ) => t/nil 
+
+Redisplays a dag tool.
+
+dagGetCurrentObject( ) => w_object/nil
+
+Returns the current dag node.
+
+dagGetCurrentTool( ) => w_dagTool/nil
+
+Returns the current dag tool.
+
+dagLinkParentToChild( w_parent w_child ) => w_arc/nil
+
+Creates a dag arc that links a parent node to a child node.
+
+dagNumToTool( x_toolNumber ) => w_dagTool/nil
+
+Returns the dag tool that matches the window number specified by x_toolNumber.
+
+dagOpenTool( x_backGroundColor l_bBox w_startingObject t_name t_help )
+=> w_dagTool/nil 
+
+Creates a dag tool object and opens a window in which to display the
+graph.
+
+dagPopTool( w_dagTool ) => t/nil
+
+Pops a tool stack.
+
+dagPushTool( w_dagTool w_newStartingNode ) => t/nil 
+
+Pushes a new starting object onto the tool stack.
+
+dagRefreshObject( w_dagNode ) => t/nil 
+
+Redraws a node in all the tools it is currently displayed in.
+
+dagSetActionStatus( t_actionName w_dagObject g_status ) => t/nil
+
+Sets the status of an action in the action list of a dag class or node.
+
+dagSetCurrentTool( w_dagTool ) => t/nil
+
+Sets the current dag tool.
+
+dagSetExpandedActionStatus( t_actionName w_dagObject g_status ) =>
+t/nil 
+
+Sets the status of an action in the expanded action list of a node.
+
+dagSetFont( t_XFontName ) => t/nil
+
+Modifies the font used in text mode in any dag tool.
+
+dagUnlinkParentFromChild( w_arc ) => t/nil
+
+Removes the link between a parent node and a child node.
+

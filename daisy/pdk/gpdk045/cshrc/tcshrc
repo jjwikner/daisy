@@ -1,0 +1,7 @@
+setenv MGC_CALIBRE_DRC_RUNSET_FILE $WORKAREA/daisy/pdkSpecific/$CDSPROCESSNAME/verification/drcRunset
+setenv MGC_CALIBRE_DFM_RUNSET_FILE $WORKAREA/daisy/pdkSpecific/$CDSPROCESSNAME/verification/drcDfmRunset
+setenv MGC_CALIBRE_N80_RUNSET_FILE $WORKAREA/daisy/pdkSpecific/$CDSPROCESSNAME/verification/drcN80Runset
+setenv MGC_CALIBRE_ANT_RUNSET_FILE $WORKAREA/daisy/pdkSpecific/$CDSPROCESSNAME/verification/antRunset
+setenv MGC_CALIBRE_LVS_RUNSET_FILE $WORKAREA/daisy/pdkSpecific/$CDSPROCESSNAME/verification/lvsRunset
+setenv MGC_CALIBRE_PEX_RUNSET_FILE $WORKAREA/daisy/pdkSpecific/$CDSPROCESSNAME/verification/xrcRunset
+setenv PATH ${PATH}:$WORKAREA/daisy/pdkSpecific/$CDSPROCESSNAME/bin

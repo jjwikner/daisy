@@ -1,0 +1,18 @@
+**************************************************************
+*   Generic PDK Bipolar models                        05/17/01
+*                                                  PDK Factory
+**************************************************************
+
+*
+model ndio diode level=1 is=8.4e-6 n=1.3 bv=10.7 ibv=1e-3
++ ns=1.32 nz=1.32 imax=1e40 minr=1e-10 allow_scaling=yes
++ isw=1.24e-11 cj=1.0003e-3 vj=0.69 mj=0.36 cjsw=2.04e-10
++ vjsw=0.69 mjsw=0.20 tlev=1 eg=1.17 xti=3 tbv1=-9.3e-4 tlevc=1
++ cta=1.04e-3 ctp=6.45e-4 pta=1.55e-3 ptp=1.55e-3 tnom=25 fc=0
+*
+model pdio diode level=1 is=4.92e-6 n=1.25 bv=10.2 ibv=1e-3
++ ns=1.25 nz=1.25 imax=1e40 minr=1e-10 allow_scaling=yes
++ isw=1.02e-11 cj=1.12e-3 vj=0.90 mj=0.45 cjsw=2.48e-10
++ vjsw=0.90 mjsw=0.37 tlev=1 eg=1.17 xti=3 tbv1=-8.8e-4 tlevc=1
++ cta=9.74e-4 ctp=4.13e-4 pta=1.57e-3 ptp=1.57e-3 tnom=25 fc=0
+*

@@ -1,0 +1,14 @@
+#
+analogLib cap symbol
+Cload
+#
+analogLib res symbol
+Rright
+Rleft
+#ISCELL
+basic iopin symbolr
+PIN0
+PIN2
+#ISCELL
+daisy daisySheet symbol
+I0

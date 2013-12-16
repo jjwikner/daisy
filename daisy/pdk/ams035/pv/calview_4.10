@@ -1,0 +1,559 @@
+mgc_layer_map(list(
+                list("ndiff" `(ndiff net))
+                list("pdiff" `(pdiff net))
+                list("diffcon" '(CONT net))
+                list("ndiffcon" '(CONT net))
+                list("pdiffcon" '(CONT net))
+                list("routingpoly" '(POLY1 net))
+                list("poly1con" '(CONT net))
+                list("routingpoly2" '(POLY2 net))
+                list("poly2con" '(CONT net))
+                list("routingmet1" '(MET1 net))
+                list("routingvia" '(VIA1 net))
+                list("routingmet2" '(MET2 net))
+                list("routingvia2" '(VIA2 net))
+                list("routingmet3" '(MET3 net))
+                list("routingvia3" '(VIA3 net))
+                list("routingmet4" '(MET4 net))
+              )
+)
+
+(pmos4 (PRIMLIB pmos4 symbol)
+  (
+    (g G)
+    (s S)
+    (d D)
+    (b B)
+  )
+  (
+    (nil ng 1)
+  )
+)
+
+(pmosm4 (PRIMLIB pmosm4 symbol)
+  (
+    (g G)
+    (s S)
+    (d D)
+    (b B)
+  )
+  (
+    (nil ng 1)
+  )
+)
+
+(pmosrf (PRIMLIBRF pmosrf symbol)
+  (
+    (g G)
+    (s S)
+    (d D)
+    (b B)
+  )
+)
+
+(pmosl4 (PRIMLIB pmosl4 symbol)
+  (
+    (g G)
+    (s S)
+    (d D)
+    (b B)
+  )
+  (
+    (nil ng 1)
+  )
+)
+
+(pmosml4 (PRIMLIB pmosml4 symbol)
+  (
+    (g G)
+    (s S)
+    (d D)
+    (b B)
+  )
+  (
+    (nil ng 1)
+  )
+)
+
+(nmos4 (PRIMLIB nmos4 symbol)
+  (
+    (g G)
+    (s S)
+    (d D)
+    (b B)
+  )
+  (
+    (nil ng 1)
+  )
+)
+
+(nmosm4 (PRIMLIB nmosm4 symbol)
+  (
+    (g G)
+    (s S)
+    (d D)
+    (b B)
+  )  (
+    (nil ng 1)
+  )
+
+)
+
+(nmosrf (PRIMLIBRF nmosrf symbol)
+  (
+    (g G)
+    (s S)
+    (d D)
+    (b B)
+  )
+)
+
+(nmosl4 (PRIMLIB nmosl4 symbol)
+  (
+    (g G)
+    (s S)
+    (d D)
+    (b B)
+  )
+  (
+    (nil ng 1)
+  )
+)
+
+(nmosml4 (PRIMLIB nmosml4 symbol)
+  (
+    (g G)
+    (s S)
+    (d D)
+    (b B)
+  )
+  (
+    (nil ng 1)
+  )
+)
+
+(nmosh (PRIMLIB nmosh4 symbol)
+  (
+    (g G)
+    (s S)
+    (d D)
+    (b B)
+  )
+  (
+    (nil m 1)
+  )
+)
+
+(nmosmh (PRIMLIB nmosmh4 symbol)
+  (
+    (g G)
+    (s S)
+    (d D)
+    (b B)
+  )
+  (
+    (nil m 1)
+  )
+)
+
+(nmoshl4 (PRIMLIB nmoshl4 symbol)
+  (
+    (g G)
+    (s S)
+    (d D)
+    (b B)
+  )
+  (
+    (nil m 1)
+  )
+)
+
+(nmosmhl4 (PRIMLIB nmosmhl4 symbol)
+  (
+    (g G)
+    (s S)
+    (d D)
+    (b B)
+  )
+  (
+    (nil m 1)
+  )
+)
+
+(nmos18t (PRIMLIB nmos18t symbol)
+  (
+    (g G)
+    (s S)
+    (d D)
+    (b B)
+  )
+  (
+    (nil mult 1) (nil m 1)
+  )
+)
+
+(nmos30m (PRIMLIB nmos30m symbol)
+  (
+    (g G)
+    (s S)
+    (d D)
+    (b B)
+  )
+  (
+    (nil mult 1) (nil m 1)
+  )
+)
+
+(pnpvert10 (PRIMLIB vert10_4 symbol)
+  (
+    (c C)
+    (b B)
+    (e E)
+    (nil SUB (C))
+  )
+  (
+    (area m (area*1e12))
+  )
+)
+
+(pnplat (PRIMLIB lat2 symbol)
+  (
+    (c C)
+    (b B)
+    (e E)
+    (s SUB)
+    (g G)
+  )
+  (
+    (area m (area*1e12))
+  )
+)
+
+(rpoly1 (PRIMLIB rpoly1 symbol)
+  (
+    (pos PLUS)
+    (neg MINUS)
+  )
+)
+
+(rpoly2 (PRIMLIB rpoly2 symbol)
+  (
+    (pos PLUS)
+    (neg MINUS)
+  )
+)
+
+(rpoly2p (PRIMLIB rpoly2p symbol)
+  (
+    (pos PLUS)
+    (neg MINUS)
+  )
+)
+
+(rpoly2ph (PRIMLIB rpoly2ph symbol)
+  (
+    (pos PLUS)
+    (neg MINUS)
+  )
+)
+
+(rpoly2rf (PRIMLIBRF rpoly2rf symbol)
+  (
+    (pos PLUS)
+    (neg MINUS)
+    (sub REF)
+  )
+  (
+    (bends Bends)
+  )
+)
+
+(rpolyh (PRIMLIB rpolyh symbol)
+  (
+    (pos PLUS)
+    (neg MINUS)
+  )
+)
+
+(rpolyhrf (PRIMLIBRF rpolyhrf symbol)
+  (
+    (pos PLUS)
+    (neg MINUS)
+    (sub REF)
+  )
+  (
+    (bends Bends)
+  )
+)
+
+(rpolyz (PRIMLIB rpolyz symbol)
+  (
+    (pos PLUS)
+    (neg MINUS)
+  )
+)
+
+(rdiffp3 (PRIMLIB rdiffp3 symbol)
+  (
+    (pos PLUS)
+    (neg MINUS)
+    (sub B)
+  )
+)
+
+(rdiffn3 (PRIMLIB rdiffn3 symbol)
+  (
+    (pos PLUS)
+    (neg MINUS)
+    (sub B)
+  )
+)
+
+(rnwell (PRIMLIB rnwell symbol)
+  (
+    (pos PLUS)
+    (neg MINUS)
+    (sub B)
+  )
+)
+
+(cpolya (PRIMLIB cpoly symbol)
+  (
+    (pos MINUS)
+    (neg PLUS)
+  )
+  (
+    (a area (a*1e-12))
+    (p perimeter (p*1e-6))
+  )
+)
+
+(cpolyrf (PRIMLIBRF cpolyrf symbol)
+  (
+    (pos PLUS)
+    (neg MINUS)
+    (sub REF)
+  )
+)
+
+(cmim (PRIMLIB cmim symbol)
+  (
+    (pos PLUS)
+    (neg MINUS)
+  )
+)
+
+(cvar (PRIMLIB cvar symbol)
+  (
+    (g G)
+    (s B)
+    (d nil)
+    (b S)
+  )
+)
+
+(nd (PRIMLIB subdiode symbol)
+  (
+    (pos PLUS)
+    (neg MINUS)
+  )
+  (
+    (area area (area*1e-12))
+    (pj perimeter (pj*1e-6))
+  )
+)
+
+(pd (PRIMLIB welldiode symbol)
+  (
+    (pos PLUS)
+    (neg MINUS)
+  )
+  (
+    (area area (area*1e-12))
+    (pj perimeter (pj*1e-6))
+  )
+)
+
+(nwd (PRIMLIB nwd symbol)
+  (
+    (pos PLUS)
+    (neg MINUS)
+  )
+  (
+    (area area (area*1e-12))
+    (pj perimeter (pj*1e-6))
+  )
+)
+
+(p_nd (PRIMLIB nfetdiode symbol)
+  (
+    (pos PLUS)
+    (neg MINUS)
+  )
+  (
+    (area ad (area*1e-12))
+    (pj pd (pj*1e-6))
+  )
+)
+
+(p_pd (PRIMLIB pfetdiode symbol)
+  (
+    (pos PLUS)
+    (neg MINUS)
+  )
+  (
+    (area ad (area*1e-12))
+    (pj pd (pj*1e-6))
+  )
+)
+
+(p_nwd (PRIMLIB pnwd symbol)
+  (
+    (pos PLUS)
+    (neg MINUS)
+  )
+  (
+    (area area (area*1e-12))
+    (pj perimeter (pj*1e-6))
+  )
+)
+
+(sbd5 (PRIMLIB sbd5 symbol)
+  (
+    (a A)
+    (c C)
+    (sub SUB)
+  )
+  (
+    (nil m 1)
+  )
+)
+
+(phdnwa850 (PRIMLIB phdnwa850 symbol)
+  (
+    (pos PLUS)
+    (neg MINUS)
+    (p P)
+  )
+  (
+    (nil m 1)
+  )
+)
+
+(zd2sm24 (PRIMLIB zd2sm24 symbol)
+  (
+    (pos A)
+    (neg C)
+    (sub S)
+  )
+)
+
+(pfuse (PRIMLIB pfuse symbol)
+  (
+    (neg MINUS)
+    (pos PLUS)
+  )
+)
+
+(short (PRIMLIB short symbol)
+  (
+    (pos PLUS)
+    (neg MINUS)
+  )
+)
+
+(esdfdn5 (ESDLIB esdfdn5 symbol)
+  (
+    (a A)
+    (c C)
+  )
+  (
+    (nil m 1)
+  )
+)
+
+(esdfdp5 (ESDLIB esdfdp5 symbol)
+  (
+    (a A)
+    (c C)
+    (sub SUB)
+  )
+  (
+    (nil m 1)
+  )
+)
+
+(esdgcn5 (ESDLIB esdgcn5 symbol)
+  (
+    (a A)
+    (c C)
+  )
+  (
+    (nil m 1)
+  )
+)
+
+(esdgcp5 (ESDLIB esdgcp5 symbol)
+  (
+    (a A)
+    (c C)
+    (sub SUB)
+  )
+  (
+    (nil m 1)
+  )
+)
+
+(esdpd18 (ESDLIB esdpd18 symbol)
+  (
+    (a A)
+    (c C)
+  )
+  (
+    (nil m 1)
+  )
+)
+
+(esdpd26 (ESDLIB esdpd26 symbol)
+  (
+    (a A)
+    (c C)
+  )
+  (
+    (nil m 1)
+  )
+)
+
+(esdpd30 (ESDLIB esdpd30 symbol)
+  (
+    (a A)
+    (c C)
+  )
+  (
+    (nil m 1)
+  )
+)
+
+(SP026S200D (SPIRALS_4M SP026S200D symbol)
+  (
+    (pos P1)
+    (neg P2)
+    (sub SUB)
+  )
+)
+
+
+
+((p cap c) (PRIMLIB pcapacitor symbol)
+  (
+    (PLUS)
+    (MINUS)
+  )
+)
+
+((p res r) (PRIMLIB presistor symbol)
+  (
+    (PLUS)
+    (MINUS)
+  )
+)

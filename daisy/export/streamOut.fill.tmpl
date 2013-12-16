@@ -1,0 +1,52 @@
+(setq streamFile (strcat streamCell ".gds2.gz"))
+(setq streamViewName   "layout")
+
+(setq streamOutKeys 
+      (list nil
+	    'runDir		(getShellEnvVar "STREAMPATH")
+	    'libName		streamLib
+	    'primaryCell	streamCell
+	    'viewName		streamViewName
+	    'outFile		(strcat (getShellEnvVar "STREAMPATH") "/" streamFile) 
+	    'errFile		(sprintf nil "%s/streamOut.%s.log" (getShellEnvVar "STREAMPATH") streamCell)
+	    'scale		0.001000
+	    'units			"micron"
+	    'compression		"gzip"
+	    'hierDepth		32
+	    'convertToGeo		nil
+	    'maxVertices		200
+	    'refLib			nil
+	    'libVersion		"5.0"
+	    'checkPolygon		nil
+	    'snapToGrid		nil
+	    'simMosaicToArray	nil
+	    'caseSensitivity	"preserve"
+	    'textCaseSensitivity	"preserve"
+	    'lineToZeroPath		"path"
+	    'convertDot	"ignore"
+	    'rectToBox		nil
+	    'convertPathToPoly	nil
+	    'keepPcell	nil
+	    'replaceBusBitChar	nil
+	    'useParentXYforText	nil
+	    'reportPrecision	nil
+	    'runQuiet		nil
+	    'comprehensiveLog		t
+	    'ignorePcellEvalFail		nil
+	    'NOUnmappingLayerWarning		nil
+	    'techFileChoice		nil
+	    'pcellSuffix		"DbId"
+	    'respectGDSIILimits		nil
+	    'dumpPcellInfo		t
+	    'genListHier		t
+	    'cellMapTable		""
+	    'layerTable		""
+	    'textFontTable		""
+	    'convertPin		"geometry"
+	    'pinInfo		0
+	    'pinTextMapTable	""
+	    'propMapTable		""
+	    'propSeparator		","
+	    'userSkillFile		""
+	    'rodDir			""
+	    'refLibList		""))

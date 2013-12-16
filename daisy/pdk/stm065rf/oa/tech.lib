@@ -1,0 +1,3 @@
+# This line shouldn't be here in this kit, something must
+# be messed up in the local users' setup.
+SOFTINCLUDE $UCDPRJDIR/.ukcds5/${UK_CDS_PREFIX}cds.lib 

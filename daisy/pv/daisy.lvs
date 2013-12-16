@@ -1,0 +1,10 @@
+// Daisy add ons to Mentor
+// JJ Wikner
+#DEFINE filterAnalogLib 
+
+#IFDEF filterAnalogLib
+LVS FILTER L(LP) SOURCE SHORT
+LVS FILTER C(CP) SOURCE OPEN
+LVS FILTER R(RP) SOURCE SHORT
+#ENDIF
+

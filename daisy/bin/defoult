@@ -1,0 +1,72 @@
+#!/bin/sh
+
+# Comments, etc., updated 2008-01-18 by 
+# J Jacob Wikner (JJW) jacob.wikner@siconsemi.com
+
+# defoult script to generate the DEF file for pnr.
+
+#
+# Example 
+# 
+# defoult DDC LIBNAME CELLNAME VIEWNAME
+#
+# DDC is e.g. daisyTop, the unix path
+# LIBNAME is the cadence lib name 
+# CELLNAME is the cadence cell name 
+# VIEWNAME is the cadence view name 
+#
+
+# Jump to work area to pick up the cds.lib file.
+cd $WORKAREA
+
+if [ ! $# = 4 ] 
+    then
+    echo "Hmmm ..."
+    echo "#" 
+    echo "# Example "
+    echo "# "
+    echo "# defoult DDC LIBNAME CELLNAME VIEWNAME"
+    echo "# "
+    echo "# DDC is e.g. daisyTop, the unix path "
+    echo "# LIBNAME is the cadence lib name  "
+    echo "# CELLNAME is the cadence cell name  "
+    echo "# VIEWNAME is the cadence view name  "
+    echo "#" 
+    
+else
+    
+    VIEWNAME=$4
+    CELLNAME=$3
+    LIBNAME=$2
+    DDCNAME=$1
+    
+    TRGTLIB=$WORKAREA/$DDCNAME/pnr/def/$CELLNAME/
+    
+    if [ ! -d $TRGTLIB ]		
+	then
+	echo "Creating target directory"
+	mkdir -p $TRGTLIB
+    fi
+    
+    FILENAME=$LIBNAME.$CELLNAME.$VIEWNAME.def
+
+    echo "Starting the defout process ..."
+
+    if [ $HOST = berg ] 
+	then
+	defout -def $TRGTLIB/$FILENAME -lib $LIBNAME -cell $CELLNAME -view $VIEWNAME -overwrite -busBitChar [] -dividerChar / -ver 5.5 -vxldef -breakPath > $WORKAREA/log/$FILENAME.log
+    else
+	defout -def $TRGTLIB/$FILENAME -lib $LIBNAME -cell $CELLNAME -view $VIEWNAME -overwrite -busBitChar [] -dividerChar / -ver 5.5 -vxldef > $WORKAREA/log/$FILENAME.log
+    fi
+    echo "... Finished the defout process."
+    echo "Check the log file for more info:"
+    echo " emacs $WORKAREA/log/$FILENAME.log &"
+    echo "Looking for errors ==>"
+    grep -n $WORKAREA/log/$FILENAME.log -i -e "error"
+    echo "Looking for warnings ==>"
+    grep -n $WORKAREA/log/$FILENAME.log -i -e "error"
+    echo ""
+    echo "Inspect the DEF file for more info if you like:"
+    echo " emacs $TRGTLIB/$FILENAME &"
+
+fi

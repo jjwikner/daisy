@@ -1,0 +1,38 @@
+function result = cinputdialogs(DlgName, DlgTxt, DlgDef, DlgMode)
+
+global contloop OKCallback dumresult;
+
+if DlgMode == 0
+  OKCallback = 'cinputdialogs(''DlgName'', ''DlgTxt'',''DlgMode'', 1);';
+  fig = inputdlg(DlgTxt,DlgName, [OKCallback],DlgDef);
+  contloop = 1;
+  canceled = 0;
+  cinputdialogs(DlgName, DlgTxt, DlgDef, 2);
+
+elseif DlgMode == 1
+  contloop = 0;
+  dumresult = get(findobj(gcf, 'Style', 'edit'), 'String');
+  result = dumresult;
+'hej'
+  delete(gcf);	
+  cinputdialogs(DlgName, DlgTxt, DlgDef, 4);
+elseif DlgMode == 2
+  pause(0.1);
+  contloop = (get(gcf,'Name') == DlgName); % checks if the window still is active.
+  if contloop
+     cinputdialogs(DlgName, DlgTxt, DlgDef, 2);
+  else
+    cinputdialogs(DlgName, DlgTxt, DlgDef, 4);
+  end;
+
+elseif DlgMode == 4
+
+clear global dumresult contloop OKCallback;
+
+end;
+  
+
+
+
+
+

@@ -1,0 +1,16 @@
+#
+analogLib idc symbol
+Isource
+#
+analogLib cap symbol
+Cout
+#
+analogLib res symbol
+Rout
+#ISCELL
+basic iopin symbolr
+PIN1
+PIN0
+#ISCELL
+daisy daisySheet symbol
+I1

@@ -1,0 +1,604 @@
+////////////////////////////////////////////////////
+// Owner: austriamicrosystems AG                  //
+//        CONCERTO! Business Unit Silicon Foundry //
+//================================================//
+//        HIT-Kit: Digital                        //
+////////////////////////////////////////////////////
+//
+// ATTENTION : flag for definition of processes
+//
+// use c35b4 4 metal process
+//--------------------------
+//
+#DEFINE fourmetal
+//
+// use c35b3 3 metal process
+//--------------------------
+//
+//#UNDEFINE fourmetal
+//
+//############################################################################
+//
+//                      c a a n t e n n a _ c 3 5 . m 4
+//
+//############################################################################
+//
+//            CALIBRE technology file for oxide protection rules 
+//                             antenna check                     
+//
+//############################################################################
+//  Valid for all c35 3/4 metal processes
+//############################################################################
+// techfile compiled with process : _PROCESS()
+//############################################################################
+// some important hints for antenna checks :
+//                     - NAR and NARAC output layers reverse order
+//                       NAR a OVER b > 100  ... ouputs a
+//                       NARAC a OVER b > 100 ... outputs b
+//                     - it is necessary to ORNET the NARAC to get
+//                       x/y of all gate/cap locations
+//                       (NARAC a OVER b c > 100 ... outputs b only)
+//                     - remove poly2 cont over poly1 to avoid short over cap !!
+//############################################################################
+//
+// reported errors :
+//--------------------
+//  poly1 antennas connected to all gates
+//  met1 antennas on nets not touching diff connected to gates      
+//  met2 antennas on nets not touching diff connected to gates      
+//  met3 antennas on nets not touching diff connected to gates      
+//  met4 antennas on nets not touching diff connected to gates      
+//
+//############################################################################
+//=====================================================================
+//   Version          Date          by       Description
+//---------------------------------------------------------------------
+//   1.0           12-Apr-2002     aob     First version created
+//                                         RDB disabled
+//                                         RDB without gates_all
+//                 28-Jul-2003     aob     poly1 thickness changed
+//                 28-Mar-2006     aob     checks for large gates 2 vias added
+//                  6-Apr-2006     aob     only one rdb
+//                  5-May-2006     aob     by layer removed for 2 vias
+//---------------------------------------------------------------------
+//
+///////////////////////////////////////////////////////////////////////
+//
+//   C A L I B R E  R U L E   F I L E  S T A N D A R D   H E A D E R
+//
+///////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////
+//
+// Define options for stand alone environment 
+//
+////////////////////////////////////////////////////////////////////////////////////
+//
+//  layout
+//--------------
+//
+   LAYOUT SYSTEM GDSII
+   LAYOUT PATH  "_GDSFILE()"
+   LAYOUT PRIMARY "_TOPCELL()" 
+// EXCLUDE CELL name1 name2 name3
+//
+//  drc
+//--------------
+//
+   DRC SUMMARY REPORT "_TOPCELL()_antenna.rpt" REPLACE
+   DRC RESULTS DATABASE "_TOPCELL()_antenna.asc" ASCII
+// DRC TOLERANCE FACTOR .01
+// gds allows 200 vertices
+// DRC MAXIMUM VERTEX 199
+   DRC MAXIMUM VERTEX 20
+   DRC MAXIMUM RESULTS ALL  
+   DRC KEEP EMPTY NO
+// DRC CHECK MAP width_diffusion 30                 
+// DRC CHECK MAP spacing_diffusion 30                 
+// FLAG ACUTE YES
+// FLAG SKEW YES
+// FLAG OFFGRID YES
+//
+////////////////////////////////////////////////////////////////////////////////////
+//
+//   I n p u t     l a y e r   d e f i n i t i o n   s t a n d  a l o n e 
+//
+////////////////////////////////////////////////////////////////////////////////////
+//
+// following layers are defined :
+// These names are reserved names and cannot be changed !!
+//
+// NTUB    ....    ntub mask (nwell)
+// DIFF    ....    field mask (diffusion)
+// POLY1   ....    gate mask (poly1)
+// NPLUS   ....    arsen mask
+// PPLUS   ....    boron mask
+// POLY2   ....    poly2 mask
+// CONT    ....    contact mask
+// MET1    ....    metal1 mask
+// VIA     ....    via mask
+// MET2    ....    metal2 mask
+// VIA2    ....    via2 mask
+// MET3    ....    metal3 mask
+// PAD     ....    nitride mask (pad)
+// HRES    ....    high res mask
+// VIA3    ....    via3 mask
+// MET4    ....    metal4 mask
+//
+// definition layer
+//
+// PO1CUT   ...  cut layer poly1 
+// PO2CUT   ...  cut layer poly2
+// DIFCUT   ...  cut layer diffusion
+// RESDEF   ...  poly1/2, n/p diff resistor definition
+// RESTRM   ...  resistor terminal for poly1/2, n/p diff resistors
+// ZENER    ...  zener zap diode
+// DIODE    ...  parasitic diode
+// 
+///////////////////////////////////////////////////////////////////////
+//
+//                 end of standard header   
+//
+///////////////////////////////////////////////////////////////////////
+//############################################################################
+//#
+//#  i n p u t   l a y e r   s e c t i o n
+//#
+//############################################################################
+//
+      LAYER DIFF 10
+// POLY1 ... poly1 mask
+      LAYER POLY1 20
+// NPLUS ... n+ implant mask
+//   LAYER NPLUS 23
+// PPLUS ... p+ implant mask
+//   LAYER PPLUS 24
+// HRES ... high resistive mask
+//   LAYER HRES 29
+// POLY2 ... poly2 mask
+      LAYER POLY2 30
+// CONT ... contact mask
+      LAYER CONT 34
+// MET1 ... metal1 mask
+      LAYER MET1 35
+// VIA ... via mask
+      LAYER VIA 36
+// MET2 ... metal2 mask
+      LAYER MET2 37
+// VIA2 ... via2 mask
+      LAYER VIA2 38
+// MET3 ... metal3 mask
+      LAYER MET3 39
+// PAD ... pad mask
+
+#IFDEF fourmetal
+   LAYER VIA3 41
+   LAYER MET4 42
+#ENDIF
+//
+// diffusion cut
+   LAYER MAP 62 DATATYPE 30  730
+   LAYER DIFCUT  730
+// poly1 cut
+   LAYER MAP 62 DATATYPE 31  731
+   LAYER PO1CUT  731
+// poly2 cut
+   LAYER MAP 62 DATATYPE 32  732
+   LAYER PO2CUT  732
+//
+//############################################################################
+
+   PRECISION 1000
+   UNIT LENGTH U
+   RESOLUTION 10
+
+// Material Thickness
+//----------------------
+//
+// poly thickmness changed from 0.275 to 0.282
+// met1 thickness changed from 0.670 to 0.665
+   VARIABLE PO_T  (0.282 * 1000)  //PO thickness is 2820 Angstroms
+   VARIABLE M1_T  (0.665 * 1000)  //M1 thickness is 6650 Angstroms
+   VARIABLE M2_T  (0.640 * 1000)  //M2 thickness is 6400 Angstroms
+   VARIABLE M3_T  (0.640 * 1000)  //M3 thickness is 6400 Angstroms
+// attention : met3 thickness differs for top or no top
+   VARIABLE M3TOP_T  (0.925 * 1000)  //M3 thickness is 9250 Angstroms
+   VARIABLE M4_T  (0.925 * 1000)  //M4 thickness is 9250 Angstroms
+//
+   DRC INCREMENTAL CONNECT YES
+//
+   diff_cut  = DIFF NOT DIFCUT
+   poly1_cut = POLY1 NOT PO1CUT
+   poly2_cut = POLY2 NOT PO2CUT
+//
+// get all gates
+//
+   gates_all = poly1_cut AND diff_cut
+//
+// gate antennas
+//----------------
+//
+   CONNECT poly1_cut gates_all
+//
+// ANT_POL_GATE_AR1 { @(Poly perim*thickness / gate area) > 200
+   ANT_POL_GATE_AR1 { @ AR1 Maximum ratio of floating POLY1 edge to gate area >  200
+      NET AREA RATIO
+      poly1_cut PERIMETER ONLY SCALE BY PO_T
+      OVER gates_all > 200 
+      //
+      RDB "antenna.rdb" poly1_cut BY LAYER
+      // RDB "antenna.rdb" gates_all poly1_cut BY LAYER
+      // print antenna values
+      xx = NET AREA RATIO poly1_cut PERIMETER ONLY SCALE BY PO_T gates_all > 200 ACCUMULATE
+      NET AREA RATIO PRINT xx 'ratio_poly1_gate.rpt'
+   }
+
+//
+// gate met1 antennas without any diode on net
+//---------------------------------------------
+//
+// any met1/diff contact (= diode) 
+      sdcont =  MET1 AND (CONT AND diff_cut)
+// poly1/poly2 conts
+      cont_p1 = CONT NOT poly2_cut
+      cont_p2 = CONT AND poly2_cut
+//
+// create connectivity
+//
+      CONNECT poly1_cut MET1 BY cont_p1
+      CONNECT sdcont MET1 
+
+// (M1 perim*thickness / gate area) > 400
+//
+   ANT_MET1_GATE_AR2 {@ AR2 Maximum ratio of floating MET1 edge to connected GATE area > 400
+      // get nets with no diffcon
+      met1x = NET AREA RATIO MET1 sdcont == 0
+      // check antennas
+      NET AREA RATIO met1x PERIMETER ONLY SCALE BY M1_T OVER gates_all > 400
+      RDB "antenna.rdb"  met1x BY LAYER
+      // RDB "antenna.rdb" gates_all met1x BY LAYER
+      // create report
+      xx = NET AREA RATIO met1x PERIMETER ONLY SCALE BY M1_T OVER gates_all > 400 ACCUMULATE
+      NET AREA RATIO PRINT xx 'ratio_met1_gate.rpt'
+   }
+//
+// gate met2 antennas without any diode on net
+//----------------------------------------------
+//
+// add connectivity
+//
+   CONNECT MET1 MET2 BY VIA
+   ANT_MET2_GATE_AR2 {@ AR2 Maximum ratio of floating MET2 edge to connected GATE area > 400
+      // get nets with no diffcon
+      met2x = NET AREA RATIO MET2 sdcont == 0
+      // check antennas
+      NET AREA RATIO met2x PERIMETER ONLY SCALE BY M2_T OVER gates_all > 400
+      RDB "antenna.rdb"  met2x BY LAYER
+      // RDB "antenna.rdb" gates_all met2x BY LAYER
+      // create report
+      xx = NET AREA RATIO met2x PERIMETER ONLY SCALE BY M2_T OVER gates_all > 400 ACCUMULATE
+      NET AREA RATIO PRINT xx 'ratio_met2_gate.rpt'
+   }
+//
+// gate met3 antennas without any diode on net
+//----------------------------------------------
+//
+// add connectivity
+//
+   CONNECT MET3 MET2 BY VIA2
+//
+// Attention : different antenna checks for met3 due to different thickness
+//
+#IFDEF fourmetal
+// met3 is not top metal
+   ANT_MET3_GATE_AR3 {@ AR3 Maximum ratio of floating MET3 edge to connected GATE area > 400
+      // get nets with no diffcon
+      met3x = NET AREA RATIO MET3 sdcont == 0
+      // check antennas
+      NET AREA RATIO met3x PERIMETER ONLY SCALE BY M3_T OVER gates_all > 400
+      RDB "antenna.rdb" met3x BY LAYER
+      // RDB "antenna.rdb" gates_all met3x BY LAYER
+      // create report
+      xx = NET AREA RATIO met3x PERIMETER ONLY SCALE BY M3_T OVER gates_all > 400 ACCUMULATE
+      NET AREA RATIO PRINT xx 'ratio_met3_gate.rpt'
+   }
+#ELSE
+// met3 is top metal
+   ANT_MET3_GATE_AR3 {@ AR3 Maximum ratio of floating TOP MET3 edge to connected GATE area > 400
+      // get nets with no diffcon
+      met3x = NET AREA RATIO MET3 sdcont == 0
+      // check antennas
+      NET AREA RATIO met3x PERIMETER ONLY SCALE BY M3TOP_T OVER gates_all > 400
+      RDB "antenna.rdb"  met3x BY LAYER
+      // RDB "antenna.rdb" gates_all met3x BY LAYER
+      // create report
+      xx = NET AREA RATIO met3x PERIMETER ONLY SCALE BY M3TOP_T OVER gates_all > 400 ACCUMULATE
+      NET AREA RATIO PRINT xx 'ratio_met3_gate.rpt'
+   }
+#ENDIF
+//
+// gate met4 antennas without any diode on net
+//----------------------------------------------
+//
+// add connectivity
+//
+#IFDEF fourmetal
+   CONNECT MET4 MET3 BY VIA3
+   ANT_MET4_GATE_AR4 {@ AR4 Maximum ratio of floating TOP MET4 edge to connected GATE area > 400
+      // get nets with no diffcon
+      met4x = NET AREA RATIO MET4 sdcont == 0
+      // check antennas
+      NET AREA RATIO met4x PERIMETER ONLY SCALE BY M4_T OVER gates_all > 400
+      RDB "antenna.rdb" met4x BY LAYER
+      // RDB "antenna.rdb" gates_all met4x BY LAYER
+      // create report
+      xx = NET AREA RATIO met4x PERIMETER ONLY SCALE BY M4_T OVER gates_all > 400 ACCUMULATE
+      NET AREA RATIO PRINT xx 'ratio_met4_gate.rpt'
+   }
+#ENDIF
+//############################################################################
+//############################################################################
+//############################################################################
+//
+// following checks are only for information and not part of standrad DRC
+//
+//############################################################################
+//          check for min 2 vias on large gate area > 5000
+//############################################################################
+//
+   //// >>>diff_cut  = DIFF NOT DIFCUT
+   //// >>>poly1_cut = POLY1 NOT PO1CUT
+   //// >>>poly2_cut = POLY2 NOT PO2CUT
+//
+// any met1/diff contact (= diode)
+// sdcont =  MET1 AND (CONT AND diff_cut)
+// poly1/poly2 conts
+// cont_p1 = CONT NOT poly2_cut
+// cont_p2 = CONT AND poly2_cut
+//
+   trans            = DIFF AND POLY1
+   poly1_n_poly2    = POLY1 NOT POLY2
+   poly1con         = CONT AND poly1_n_poly2
+   con_n_p1         = CONT NOT poly1con
+   poly2con         = CONT AND POLY2
+//
+// trace from gate
+//
+   gate_poly1 = poly1 INTERACT trans
+   gate_pc    = poly1con INSIDE gate_poly1
+   gate_met1  = MET1 ENCLOSE gate_pc
+   gate_met1_via_1_x = VIA INSIDE gate_met1
+//
+   met1_all  = COPY MET1
+   via_all   = COPY VIA
+   met2_all  = COPY MET2
+   via2_all  = COPY VIA2
+   met3_all  = COPY MET3
+#IFDEF fourmetal
+   via3_all  = COPY VIA3
+   met4_all  = COPY MET4
+#ENDIF
+   //// >>>gates_all = COPY trans
+//
+   //gate_met1 { COPY gate_met1 }
+//
+//xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+//
+// connect gates split in areas again and count vias
+// do this in 5000 U steps
+// rdb output only first check, can be extended
+//
+
+// antennas without any diode on net
+// any met1/diff contact (= diode)
+//
+   // >>>sdcont =  MET1 AND (CONT AND DIFF)
+//
+// create connectivity
+//
+// check for number of vias on gate area, count vias
+// 5000 - 10000 must have 2 ore more
+// gt 100000  22
+//
+   DISCONNECT
+//
+//
+// get gates connected with met1 and check for area
+//---------------------------------------------------
+//
+// do not use met2 in net, only via !!!!!!!!
+//
+// connect gates with met1( no met2) and get gate area
+//
+//
+   CONNECT gate_poly1 gate_met1 BY gate_pc
+   CONNECT gate_met1 gate_met1_via_1_x
+   CONNECT gates_all gate_poly1
+//
+//gates_great_5000  = NET AREA gates_all >  5000.0 <= 10000.0
+//
+   VARIABLE  gate_area 5000.0
+   gates_great_5000  = NET AREA gates_all >  gate_area
+//
+//xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+// via1
+//xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+//
+// change it :
+// does not find split up of vias in differnet tees of net
+// there may be 5 tees with one via only ... is not ok, but no error
+//
+// find ovlp with higher layer and select only these nets with < 2 vias  in one ovlp
+// area, this selects also 1 via in ovlp if more on other locations of same net
+// if more ovlp with 1 see  COUNT in RDB
+// for finding ovlp areas do extra connectivity set including layer connected by via
+// for antenna check this layer is NOT included
+//
+   DISCONNECT
+//
+// get ovlp met1/met2
+//--------------------
+// do this by connectivity
+//
+   CONNECT MET1 MET2 BY VIA
+//
+//M1 and M2, same net, common area
+// mg10279, mg30607
+//
+   m1m2_common_edge1_a = EXTERNAL MET2 [MET1] < 0.002 INSIDE ALSO CONNECTED
+   m1m2_common_edge2_a = EXTERNAL MET1 [MET2] < 0.002 INSIDE ALSO CONNECTED
+   m1m2_common_m1_a    = (MET1 and MET2) WITH EDGE m1m2_common_edge1_a
+   m1m2_common_m2_a    = (MET1 and MET2) WITH EDGE m1m2_common_edge2_a
+   m1m2_common         = m1m2_common_m1_a OR m1m2_common_m2_a
+//
+// without connect
+//
+// m1m2_common = (MET1 AND MET2) NOT OUTSIDE VIA1
+//
+// find if not at least 2 vias
+//
+   m1m2_via_ovlp_common    = VIA INSIDE (m1m2_common ENCLOSE VIA < 2)
+   //m1m2_via_ovlp_common { COPY  m1m2_via_ovlp_common }
+   //m1m2_common { COPY  m1m2_common }
+//
+// ovlp area has 1 via
+//
+   gate_met1_via_1 = gate_met1_via_1_x AND m1m2_via_ovlp_common
+//
+   DISCONNECT
+   CONNECT gate_poly1 gate_met1 BY gate_pc
+   CONNECT gate_met1 gate_met1_via_1
+   CONNECT gates_great_5000 gate_poly1
+   CONNECT gate_met1 sdcont
+//
+// COUNT is any large number, not used
+//
+   INFO_GATE_GT5000_ONE_VIA { @ gate gt 5000 connected with 1 via 
+        gates_great_5000_nosd = NET AREA RATIO gates_great_5000 sdcont == 0
+        x = NET AREA RATIO gates_great_5000_nosd gate_met1_via_1 < 1000  [ COUNT(gate_met1_via_1)]
+        via_count = NET AREA RATIO gate_met1_via_1 x > 0
+        via_count_net = STAMP via_count BY gate_met1_via_1
+        xx = NET AREA RATIO x                     via_count_net   < 1000  [ COUNT(via_count_net  )] ACCUMULATE
+        NET AREA RATIO PRINT xx 'gates_great_5000_via1_count.txt'
+        gate_poly1_2  =  NET AREA RATIO gate_poly1 gate_met1 via_count_net > 0
+        gate_met1_2   =  NET AREA RATIO gate_met1 gate_poly1 via_count_net > 0
+        ORNET gate_poly1_2 gate_met1_2
+        // for testing
+        NET AREA RATIO gate_met1_2 gate_poly1_2 via_count_net > 0
+                 [COUNT(via_count_net) + AREA(gate_poly1_2) + AREA(gate_met1_2)]
+        RDB ONLY 'antenna.rdb' gate_met1_2 gate_poly1_2 via_count_net         
+   }
+//
+//xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+// via2
+//xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+//
+   DISCONNECT
+//
+// get ovlp met1/met2
+//--------------------
+//
+   CONNECT MET2 MET3 via2_all
+//
+//M2 and M3, same net, common area
+//
+   m2m3_common_edge1_a = EXTERNAL MET3 [MET2] < 0.002 INSIDE ALSO CONNECTED
+   m2m3_common_edge2_a = EXTERNAL MET2 [MET3] < 0.002 INSIDE ALSO CONNECTED
+   m2m3_common_m1_a    = (MET2 and MET3) WITH EDGE m2m3_common_edge1_a
+   m2m3_common_m2_a    = (MET2 and MET3) WITH EDGE m2m3_common_edge2_a
+   m2m3_common         = m2m3_common_m1_a OR m2m3_common_m2_a
+   m2m3_via_ovlp_common    = VIA2 INSIDE (m2m3_common ENCLOSE VIA2 < 2)
+   //m2m3_via_ovlp_common { COPY  m2m3_via_ovlp_common }
+   //m2m3_common { COPY  m2m3_common }
+//
+// ovlp area has 1 via
+//
+   gate_met2_via2_1 = VIA2 AND m2m3_via_ovlp_common
+//
+// connect
+//
+   DISCONNECT
+   CONNECT gates_great_5000 gate_poly1
+   CONNECT gate_poly1 met1_all      BY gate_pc
+   CONNECT met1_all   sdcont
+   CONNECT met2_all   met1_all      BY via_all
+   CONNECT met2_all   gate_met2_via2_1
+   INFO_GATE_GT5000_ONE_VIA2 { @ gate gt 5000 connected with 1 via2 
+        gates_great_5000_nosd = NET AREA RATIO gates_great_5000 sdcont == 0
+        x = NET AREA RATIO gates_great_5000_nosd gate_met2_via2_1  < 1000  [ COUNT(gate_met2_via2_1 )]
+        via_count = NET AREA RATIO gate_met2_via2_1  x > 0
+        via_count_net = STAMP via_count BY gate_met2_via2_1
+        xx = NET AREA RATIO x                     via_count_net   < 1000  [ COUNT(via_count_net  )] ACCUMULATE
+        NET AREA RATIO PRINT xx 'gates_great_5000_via2_count.txt'
+        gate_poly1_2  =  NET AREA RATIO gate_poly1 met1_all met2_all via_count_net > 0
+        gate_met1_2   =  NET AREA RATIO met1_all gate_poly1 met2_all via_count_net > 0
+        gate_met2_2   =  NET AREA RATIO met2_all met1_all gate_poly1 via_count_net > 0
+        (ORNET gate_poly1_2 gate_met1_2) ORNET gate_met2_2
+        // for testing
+        NET AREA RATIO gate_met2_2 gate_met1_2 gate_poly1_2 via_count_net > 0
+              [COUNT(via_count_net) + AREA(gate_poly1_2) + AREA(gate_met1_2)+ AREA(gate_met2_2)]
+        RDB ONLY 'antenna.rdb' gate_met2_2 gate_met1_2 gate_poly1_2 via_count_net         
+   }
+//xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+// via3
+//xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+#IFDEF fourmetal
+//
+   DISCONNECT
+//
+// get ovlp met3/met4 connected to large gate
+//--------------------------------------------
+//
+   CONNECT MET3 MET4 VIA3
+//
+//M3 and M4, same net, common area
+//
+   m3m4_common_edge1_a = EXTERNAL MET3 [MET4] < 0.002 INSIDE ALSO CONNECTED
+   m3m4_common_edge2_a = EXTERNAL MET4 [MET3] < 0.002 INSIDE ALSO CONNECTED
+   m3m4_common_m1_a    = (MET3 AND MET4) WITH EDGE m3m4_common_edge1_a
+   m3m4_common_m2_a    = (MET3 AND MET4) WITH EDGE m3m4_common_edge2_a
+   m3m4_common         = m3m4_common_m1_a OR m3m4_common_m2_a
+   m3m4_via_ovlp_common    = VIA3 INSIDE (m3m4_common ENCLOSE VIA3 < 2)
+   //m3m4_via_ovlp_common { COPY  m3m4_via_ovlp_common }
+   //m3m4_common { COPY  m3m4_common }
+//
+// ovlp area has 1 via
+//
+   gate_met3_via3_1 = VIA3 AND m3m4_via_ovlp_common
+//
+   DISCONNECT
+//
+// do NOT connect met4, only via3
+//
+   CONNECT gates_great_5000 gate_poly1
+   CONNECT gate_poly1 met1_all BY gate_pc
+   CONNECT met1_all  sdcont
+   CONNECT met2_all  met1_all  BY via_all
+   CONNECT met3_all  met2_all  BY via2_all
+   CONNECT met3_all  gate_met3_via3_1
+//
+   INFO_GATE_GT5000_ONE_VIA3 { @ gate gt 5000 connected with 1 via3 
+        // only net without diff
+        gates_great_5000_nosd = NET AREA RATIO gates_great_5000 sdcont == 0
+        // get via3 on net ( can be count)
+        x = NET AREA RATIO gates_great_5000_nosd gate_met3_via3_1  < 1000  [ COUNT(gate_met3_via3_1 )]
+        via_count = NET AREA RATIO gate_met3_via3_1  x > 0
+        // connect again ??
+        via_count_net = STAMP via_count BY gate_met3_via3_1
+        // print via locations
+        xx = NET AREA RATIO x                     via_count_net   < 1000  [ COUNT(via_count_net  )] ACCUMULATE
+        NET AREA RATIO PRINT xx 'gates_great_5000_via3_count.txt'
+        // get grafical output of net
+        gate_poly1_2  =  NET AREA RATIO gate_poly1 met1_all met2_all met3_all via_count_net > 0
+        gate_met1_2   =  NET AREA RATIO met1_all gate_poly1 met2_all met3_all via_count_net > 0
+        gate_met2_2   =  NET AREA RATIO met2_all met1_all gate_poly1 met3_all via_count_net > 0
+        gate_met3_2   =  NET AREA RATIO met3_all gate_poly1 met1_all met2_all via_count_net > 0
+        ((ORNET gate_poly1_2 gate_met1_2) ORNET gate_met2_2) ORNET  gate_met3_2
+        // get rdb
+        NET AREA RATIO gate_met3_2 gate_met2_2 gate_met1_2 gate_poly1_2 via_count_net > 0
+                 [COUNT(via_count_net) + AREA(gate_poly1_2) + AREA(gate_met1_2)+ AREA(gate_met2_2) + AREA(gate_met3_2)]
+        RDB ONLY 'antenna.rdb' gate_met3_2 gate_met2_2 gate_met1_2 gate_poly1_2 via_count_net         
+   }
+#ENDIF
+//XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+//XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+//XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX

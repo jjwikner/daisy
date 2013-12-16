@@ -1,0 +1,114 @@
+// VerilogA for tste16Lab1, daisyFileReader, veriloga
+
+`include "constants.vams"
+`include "disciplines.vams"
+
+module daisyFileReader(DATA, CLK);
+
+output [13:0] DATA;
+electrical [13:0] DATA;
+
+input CLK;
+electrical CLK;
+
+parameter string fileName = "/tmp/simin.dat" ;
+parameter integer noSamples = 1024 from [0:inf);
+parameter real vLow = 0 from [0:inf);
+parameter real vHigh = 3.3 from [0:inf);
+parameter real tRiseFall = 1n from [0:inf);
+parameter real clkThreshold = 1.65 from [0:inf);
+
+integer bitno;
+integer datatmp;
+integer dataIn[0:noSamples-1];
+integer fileInd;
+integer cnt;
+
+
+real dataOut[13:0];
+integer fid;
+
+analog begin
+
+// assign start values
+fileInd = 1;
+
+
+
+@(initial_step) begin
+  // Open file
+  fid = $fopen(fileName, "r");
+  
+  // read noSamples from file
+  
+  cnt = 0;
+  while (cnt<noSamples && fileInd==1 ) begin
+    // fileInd = $fscanf(fid, " %f:\n", dataIn[cnt]);
+    fileInd = $fscanf(fid, "%d", dataIn[cnt]);
+  
+
+    //$strobe("=================== Read in value from file %d\n", dataIn[cnt]);
+
+    cnt = cnt + 1;
+  end //while
+ 
+  cnt = 0; 
+
+  $fclose(fid);
+
+
+end // inital_step
+
+
+
+// Output data on falling edges
+@(cross(V(CLK) - clkThreshold,-1))
+begin		      
+  if (cnt<noSamples) 
+  begin
+    // convert from integer to binary
+    
+    // datatmp=8192+dataIn[cnt];
+    datatmp=dataIn[cnt];
+   
+    
+    for (bitno=13; bitno >= 0; bitno=bitno-1) 
+    begin
+     if (datatmp > pow (2,bitno)) 
+      begin
+       
+       dataOut[bitno] = vHigh;
+       datatmp=datatmp-pow(2,bitno);
+      end 
+     else 
+      dataOut[bitno]=vLow;
+    end // FOR 
+    cnt = cnt + 1;
+   end // IF
+end // CROSS
+
+  V(DATA[0])  <+ transition( dataOut[0],0,tRiseFall,tRiseFall);  
+  V(DATA[1])  <+ transition( dataOut[1],0,tRiseFall,tRiseFall);  
+  V(DATA[2])  <+ transition( dataOut[2],0,tRiseFall,tRiseFall);  
+  V(DATA[3])  <+ transition( dataOut[3],0,tRiseFall,tRiseFall);  
+  V(DATA[4])  <+ transition( dataOut[4],0,tRiseFall,tRiseFall);  
+  V(DATA[5])  <+ transition( dataOut[5],0,tRiseFall,tRiseFall);  
+  V(DATA[6])  <+ transition( dataOut[6],0,tRiseFall,tRiseFall);  
+  V(DATA[7])  <+ transition( dataOut[7],0,tRiseFall,tRiseFall);  
+  V(DATA[8])  <+ transition( dataOut[8],0,tRiseFall,tRiseFall);  
+  V(DATA[9])  <+ transition( dataOut[9],0,tRiseFall,tRiseFall);  
+  V(DATA[10]) <+ transition(dataOut[10],0,tRiseFall,tRiseFall);  
+  V(DATA[11]) <+ transition(dataOut[11],0,tRiseFall,tRiseFall);
+  V(DATA[12]) <+ transition(dataOut[12],0,tRiseFall,tRiseFall);  
+  V(DATA[13]) <+ transition(dataOut[13],0,tRiseFall,tRiseFall);
+
+  //$strobe("== CNT =  %d\n", cnt);
+ 
+ end // ANALOG
+  
+// close file
+
+
+
+
+endmodule

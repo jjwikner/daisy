@@ -1,0 +1,31 @@
+#!/bin/sh 
+
+# Quick parser through the file hierarchy
+# for the ISY cad flow (daisy)
+#
+# J Jacob Wikner, Jacob.Wikner@isy.liu.se
+#
+    
+cd $WORKAREA
+
+if [ $# != 0 ]
+    then
+    MAINARG=$1
+    # echo "$MAINARG"
+    case $MAINARG in
+	"pv")  cd $WORKAREA/work_$USER/pv/ ;;
+        "s")   cd $WORKAREA/work_$USER/sim/ ;;
+	"wa")  cd $WORKAREA;;
+	*)     echo "DAISY:: Unrecognized argument";;
+    esac
+    shift ;
+    while [ $# != 0 ]; do
+	flag="$1"
+	# cd *$flag*
+	# echo $PWD >> $HOME/log2.txt
+	cd `find . -follow -maxdepth 1 -type d | grep -i $flag | sort | head -n 1`
+	shift
+    done        
+fi
+
+pwd

@@ -1,0 +1,55 @@
+// Data Register file for adding mozilla and pdf views
+
+DataFormat openoffice {
+  Pattern = document;
+  Default_Editor = openoffice;
+  dfII_ViewType = doc;
+  Co_Managed=document.ooo master.tag ;
+}
+
+DataFormat acro {
+  Pattern = document.pdf;
+  Default_Editor = acroread;
+  dfII_ViewType = pdf;
+  Co_Managed=document.pdf master.tag ;
+}
+
+DataFormat mozilla {
+  Pattern = url.html;
+  Default_Editor = mozilla;
+  dfII_ViewType = url;
+  Co_Managed = url.html master.tag prop.xx;
+
+}
+
+DataFormat skill {
+  Pattern = skill.il;
+  Default_Editor = emacs;
+  dfII_ViewType = il;
+  Co_Managed = skill.il master.tag prop.xx;
+}
+
+DataFormat png {
+  Pattern = graph.png;
+  Default_Editor = gimp;
+  dfII_ViewType = png;
+  Co_Managed = graph.png master.tag prop.xx;
+}
+
+ViewAlias {
+  url=mozilla;
+  pdf=acro;
+  doc=openoffice;
+  xls=spreadsheet;
+  il=skill;
+  png=gimp;
+}
+
+Tool openoffice {}
+Tool mozilla {}
+Tool acroread {}
+Tool emacs {}
+Tool gimp {}
+
+
+

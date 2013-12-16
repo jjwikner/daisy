@@ -1,0 +1,11 @@
+Known Bugs in 3.1
+
+Typing "(eval " using lisp syntax frequently doesn't give any arg-help.
+
+Quote match doesnt work on exprs like "sdflkj\"" with two adjacent
+quotes.
+
+Completion of local vars slower if done from inside an argument list
+when writing a function call.  Due to temporarily unbalanced
+parentheses which makes var scanning harder.
+

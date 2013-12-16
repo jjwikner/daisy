@@ -1,0 +1,80 @@
+`include "constants.vams"
+`include "disciplines.vams"
+
+module daisySimAdcTherm(DATA, vin, vclk);
+   output [7:0] DATA;
+   electrical[7:0]  DATA;
+   input 	vin;
+   electrical vin;
+   input 	vclk;
+   electrical vclk;
+   parameter 	real tRiseFallDel = 0 from [0:inf);
+   parameter 	real vLogicHigh   = 3.3;
+
+`define NUM_ADC_BITS	8
+   real 	unconverted;
+   real 	halfref;
+   real         vLogicLow, vtrans_clk, vref;   
+   real 	vd[0:`NUM_ADC_BITS-1];
+   integer 	i;
+   
+   analog begin
+
+      vtrans_clk = vLogicHigh/2.0;
+      vLogicLow = 0.0;
+      vref = 1;      
+      halfref = vref/2;
+
+         
+     //@ ( initial_step ) begin
+           unconverted = V(vin);
+           for (i = (`NUM_ADC_BITS-1); i >= 0 ; i = i - 1) begin
+              vd[i] = 0;
+              if ( unconverted > (i+1) )  begin
+                 vd[i] = vLogicHigh; 
+              end else begin
+                 vd[i] = vLogicLow;
+              end
+           end	 
+      //end
+      
+      @ (cross(V(vclk) - vtrans_clk, 1)) begin
+         unconverted = V(vin);
+         for (i = (`NUM_ADC_BITS-1); i >= 0 ; i = i - 1) begin
+            vd[i] = 0;
+            if (unconverted > (i+1) )  begin
+               vd[i] = vLogicHigh; 
+	    end else begin
+               vd[i] = vLogicLow;
+	    end
+         end
+     end
+      
+      //
+      // assign the outputs
+      //
+//        V(DATA[7]) <+ transition( vd[7], tRiseFallDel, tRiseFallDel, tRiseFallDel );
+//        V(DATA[6]) <+ transition( vd[6], tRiseFallDel, tRiseFallDel, tRiseFallDel );
+//        V(DATA[5]) <+ transition( vd[5], tRiseFallDel, tRiseFallDel, tRiseFallDel );
+//        V(DATA[4]) <+ transition( vd[4], tRiseFallDel, tRiseFallDel, tRiseFallDel );
+//        V(DATA[3]) <+ transition( vd[3], tRiseFallDel, tRiseFallDel, tRiseFallDel );
+//        V(DATA[2]) <+ transition( vd[2], tRiseFallDel, tRiseFallDel, tRiseFallDel );
+//        V(DATA[1]) <+ transition( vd[1], tRiseFallDel, tRiseFallDel, tRiseFallDel );
+//        V(DATA[0]) <+ transition( vd[0], tRiseFallDel, tRiseFallDel, tRiseFallDel );
+
+        V(DATA[7]) <+  vd[7];
+        V(DATA[6]) <+  vd[6];
+        V(DATA[5]) <+  vd[5];
+        V(DATA[4]) <+  vd[4];
+        V(DATA[3]) <+  vd[3];
+        V(DATA[2]) <+  vd[2];
+        V(DATA[1]) <+  vd[1];
+        V(DATA[0]) <+  vd[0];
+
+      
+      
+`undef NUM_ADC_BITS
+   end
+
+
+endmodule

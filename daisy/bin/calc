@@ -1,0 +1,6 @@
+#!/bin/sh
+
+PRECISION="8.4k "
+PRINTIT=" p"
+
+dc -e  "$PRECISION $1 $PRINTIT"

@@ -1,0 +1,177 @@
+;; Simulation Script Template
+
+;; Use awd waveform viewer (older) since new one has a few bugs.
+(ocnWaveformTool 'awd )
+
+;; Default simulator is spectre.
+(simulator 'spectre )
+
+;; Set up testbench. 
+(setq desLib  "daisyTest")
+(setq desCell "daisyTop_T")
+(setq desView "schematic")
+(setq simTag  "startup")
+
+(design 
+ ?lib desLib
+ ?cell desCell
+ ?view desView)
+
+;; Why doesn't this work? Do I have to open the cells first?
+(createNetlist) ; ?recreateAll t )
+
+;; Set up paths -- no need to change unless wanted or other simulator...
+(setq simPath     (strcat (getShellEnvVar "CDSSIMPATH") "/"))
+(setq designPath  (strcat desCell "/" "spectre/" desView))
+(setq resultsPath (strcat simPath designPath))
+(design	    (strcat simPath designPath "/netlist/netlist"))
+(resultsDir resultsPath)
+
+;; Already set up in the cdsinit -- but repeated for convenience. 
+;; Required for running 80 nm.
+(envSetVal "spectre.opts"      "scale"      'string   "0.9")
+(envSetVal "spectre.opts"      "firstRun"   'boolean   nil)
+(envSetVal "spectre.opts"      "temp"       'string   "70")
+(envSetVal "spectre.opts"      "gmin"       'string   "1e-15")
+
+;; 
+(setq modelsPath (strcat (getShellEnvVar "WORKAREA") "/pdk/models/1d0_3d3/"))
+(setq modelsFile "cln80gc_3d3_lk_v1d0.scs")
+(setq modelsPtr  (strcat modelsPath modelsFile))
+
+;; Simulator and save statement
+(analysis 'dc 
+	  ?saveOppoint t )
+
+(setq stopTime "20u")
+
+(analysis 'tran 
+	  ?stop      stopTime
+	  ?errpreset "conservative"  )
+
+(saveOption ?saveahdlvars "all" )
+(saveOption 'useprobes    "yes" )
+(saveOption 'currents     "all" )
+(saveOption 'pwr          "all" )
+(saveOption 'save         "all" )
+
+;; Invoke the project corners from the daisy area
+
+(setq cornerList 
+      (traverseCornersFile 
+       (strcat (getShellEnvVar "WORKAREA") 
+	       "/daisy/simulation/corners/daisyCorners_p1a.csv")))
+
+;; Select some of the corners
+(setq cornerNoList nil) 
+(for cornerNo 0 (plus -1 (length cornerList)) 
+     (setq cornerNoList (append cornerNoList (list cornerNo))))
+
+;; Generate a proper corner end analysis.
+(setq overShootList (list))
+(setq endValueList (list))
+
+(setq origWinId (newWindow))
+
+;;(setq oport (outfile (setq tmpFileName (makeTempFileName "/tmp/cornerRun"))))
+
+(setq fileName (strcat (getShellEnvVar "CDSSIMPATH") 
+		       "/results/" desLib "_" desCell "_" simTag ))
+(if (isFile (strcat fileName ".csv"))
+    (setq fileName (strcat (makeTempFileName fileName) ".csv"))
+  (setq fileName (strcat fileName ".csv")))
+
+(setq csvPort (outfile fileName))
+
+(if (boundp 'csvPort)
+    (if csvPort
+	(fprintf csvPort 
+		 (csvList (append (list "No" )
+				  (append (returnCornerHeader cornerList)			  
+					  (list "overshoot" "endvalue")))))))
+
+;;(if oport (fprintf oport "Corner Sweep Progress \n"))
+;;(if oport (view tmpFileName nil "Corner Sweep Progress" t))
+
+(foreach cornerNo cornerNoList 
+	 	 
+	 (desVar  "vccr33" (float (evalstring (returnCorner cornerNo "vpwr33" cornerList))))
+	 (temp             (float (evalstring (returnCorner cornerNo "temp" cornerList))))
+	 (option 'temp     (float (evalstring (returnCorner cornerNo "temp" cornerList))))
+	 
+	 ;; Can be done in a more neat way?
+	 (modelFile
+	  (list  modelsPtr  (returnTSMCCorner cornerList  cornerNo "std"        ))
+	  (list  modelsPtr  (returnTSMCCorner cornerList  cornerNo "bip"        ))
+	  (list  modelsPtr  (returnTSMCCorner cornerList  cornerNo "dio"        ))
+	  (list  modelsPtr  (returnTSMCCorner cornerList  cornerNo "dio_lvt"    ))
+	  (list  modelsPtr  (returnTSMCCorner cornerList  cornerNo "dio_33"     ))
+	  (list  modelsPtr  (returnTSMCCorner cornerList  cornerNo "dio_dnw"    ))
+	  (list  modelsPtr  (returnTSMCCorner cornerList  cornerNo "dio_na"     ))
+	  (list  modelsPtr  (returnTSMCCorner cornerList  cornerNo "dio_hvt"    ))
+	  (list  modelsPtr  (returnTSMCCorner cornerList  cornerNo "dio_na33"   ))
+	  (list  modelsPtr  (returnTSMCCorner cornerList  cornerNo "bip_npn"    ))
+	  (list  modelsPtr  (returnTSMCCorner cornerList  cornerNo "mos_cap"    ))
+	  (list  modelsPtr  (returnTSMCCorner cornerList  cornerNo "mos_cap_33" ))
+	  (list  modelsPtr  (returnTSMCCorner cornerList  cornerNo "res"        ))
+	  (list  modelsPtr  (returnTSMCCorner cornerList  cornerNo "33"         ))
+	  (list  modelsPtr  (returnTSMCCorner cornerList  cornerNo "na"         ))
+	  (list  modelsPtr  (returnTSMCCorner cornerList  cornerNo "hvt"        ))
+	  (list  modelsPtr  (returnTSMCCorner cornerList  cornerNo "na33"       ))
+	  (list  modelsPtr  (returnTSMCCorner cornerList  cornerNo "lvt"        )) )
+
+	 ;;(if oport (fprintf oport "Corner %d of %d is running. \n" cornerNo (length cornerNoList)))
+
+	 (run)
+	 
+	 ;; Statements from the calculator
+	 refOutput    = (VT "/vRef" resultsPath)
+	 refOverShoot = (overshoot (VT "/vRef" resultsPath) 0 t (evalstring stopTime) t nil nil)	 
+	 refEndValue  = (value (VT "/vRef" resultsPath) (evalstring stopTime))
+	 supplyVolt   = (value (VT "/vpwr33a" resultsPath) (evalstring stopTime))
+	 ;; Save information for presenting corner results
+	 (setq overShootList (append overShootList (list refOverShoot)))
+	 (setq endValueList  (append endValueList  (list refEndValue)))
+
+	 (if (boundp 'csvPort)
+	     (if csvPort
+		 (fprintf csvPort 
+			  (csvList 
+			   (append (list (sprintf nil "%d" cornerNo ) ) 
+				   (append (returnCornerState cornerNo cornerList)			  
+					   (list (sprintf nil "%5.5f" refOverShoot)
+						 (sprintf nil "%5.5f" refEndValue))))))))
+
+
+	 ;; Plot intermediate results
+	 (hiSetCurrentWindow origWinId)
+	 (plot refOutput
+	       ?expr (list (sprintf nil "Output Ref (V) -- cor%d " cornerNo)))
+	 (simMail (sprintf nil "Corner %d of %d finished. Overshoot = %1.2f and end value = %1.3f. Supply = %1.2f and Temp = %2.0f \n" 
+			   cornerNo (length cornerNoList)
+			   refOverShoot refEndValue
+			   supplyVolt (float (evalstring (returnCorner cornerNo "temp" cornerList)))))
+	 )
+(if (boundp 'oport) 
+    (if oport (close oport)))
+(if (boundp 'csvPort) 
+    (if csvPort 
+	(progn
+	  (fprintf csvPort "\nLib Name:,%s,Cell Name:,%s,Tag:,%s\n"
+		   desLib desCell simTag)
+	  (close csvPort) )))
+
+;; Present the end results in a new graph
+
+(setq winId (newWindow))
+(addTitle "Corner Sweep Results")
+;;(setq subWinId (addSubwindow))
+(addSubwindowTitle "Overshoot")
+(setq overShootWave (abMakeWaveform cornerNoList overShootList))
+(plot overShootWave
+      ?expr (list "Overshoot of reference over corner in per cent"))
+(setq subWinId (addSubwindow))
+(addSubwindowTitle "End Value")
+(setq endValueList (abMakeWaveform cornerNoList endValueList))
+(plot endValueList 
+      ?expr (list "End value of reference voltage over corner (V)"))

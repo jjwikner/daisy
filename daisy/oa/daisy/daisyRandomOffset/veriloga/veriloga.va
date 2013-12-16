@@ -1,0 +1,22 @@
+`include "constants.vams"
+`include "disciplines.vams"
+
+module daisyNoise(PLUS, MINUS);
+inout PLUS;
+inout MINUS;
+electrical PLUS, MINUS;
+parameter real sigma = 0 from [0:inf);
+real voffset; 
+integer seed;
+
+analog begin
+
+   @(initial_step) begin
+      // seed = 564; // <-- change and pick a number from the time
+      voffset = sigma*$random(seed)/2147483648;
+   end
+
+      V(PLUS, MINUS) <+ voffset;
+   end
+
+endmodule

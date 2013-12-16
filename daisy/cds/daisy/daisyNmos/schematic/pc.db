@@ -1,0 +1,12 @@
+#
+analogLib vccs symbol
+E1
+E0
+#ISCELL
+daisy daisySheet symbol
+I0
+#ISCELL
+basic iopin symbolr
+PIN1
+PIN2
+PIN0

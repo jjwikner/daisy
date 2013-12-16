@@ -1,0 +1,40 @@
+`include "constants.vams"
+`include "disciplines.vams"
+
+module daisySimSignalLim(sigOutP, sigOutN, sigIn, vgnd, vpwr);
+
+output sigOutP;
+electrical sigOutP;
+
+inout sigOutN;
+electrical sigOutN;
+
+input sigIn;
+electrical sigIn;
+
+input vgnd;
+electrical vgnd;
+
+input vpwr;
+electrical vpwr;
+
+   real   sigOutVal;
+   real   supplyVal;
+   
+   analog begin
+      sigOutVal = V(sigIn, vgnd);
+      supplyVal = V(vpwr, vgnd);
+      
+      if (sigOutVal > supplyVal) 
+      begin
+	 sigOutVal = supplyVal;
+      end
+      
+      if (sigOutVal < 0) 
+      begin
+	 sigOutVal = 0;
+      end
+      
+      V(sigOutP, sigOutN) <+ sigOutVal;
+   end
+endmodule

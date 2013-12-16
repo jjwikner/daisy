@@ -1,0 +1,16 @@
+--
+--
+SOFTINCLUDE $UCDPRJDIR/.ukcds5/${UK_CDS_PREFIX}cds.lib 
+
+#DEFINE analogLib $CDS_INST_DIR/tools/dfII/etc/cdslib/artist/analogLib
+#DEFINE functional $CDS_INST_DIR/tools/dfII/etc/cdslib/artist/functional
+#DEFINE basic $CDS_INST_DIR/tools/dfII/etc/cdslib/basic
+#DEFINE US_8ths $CDS_INST_DIR/tools/dfII/etc/cdslib/sheets/US_8ths
+
+
+## Technology files that should be in tech.lib instead.
+
+DEFINE STlib $DKITROOT/LIB/CADENCE_OA/STlib
+
+DEFINE cmos045 $DKITROOT/LIB/CADENCE_OA/cmos045
+DEFINE cmos045_tech $DKITROOT/LIB/CADENCE_OA/cmos045_tech

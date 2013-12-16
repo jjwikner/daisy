@@ -1,0 +1,62 @@
+(lxTemplatefileHeader
+ (version 1.2)
+ (creator "`jawi' - using Template File Writer") 
+ (design "cell" "cell" "layout" )
+ (timeGenerated "Dec 29 12:33:27 2006")
+ )
+boundary_section(	
+		 (boundary		
+		  (layer ("prBoundary" "drawing"))
+		  (utilization 0.500)  
+		  (shape (rectangle aspect_ratio  1.000000 height 156.500000 lowerLeft (0.000000 0.000000)))
+		  )
+		 )
+
+IO_section(
+	   (type "geometric")
+	   (layer ("M1" "pin"))
+	   (shape (rectangle width 0.120000 height 0.120000))
+	   (multiplicity 1)
+	   (pin "A"
+		(net "A")
+		(layer ("M1" "pin"))
+		(shape (rectangle width 0.120000 height 0.120000))
+		(position (any) (order -1))
+		)
+	   (pin "B"
+		(net "B")
+		(layer ("M1" "pin"))
+		(shape (rectangle width 0.120000 height 0.120000))
+		(position (any) (order -1))
+		)
+	   (pin "Z"
+		(net "Z")
+		(layer ("M1" "pin"))
+		(shape (rectangle width 0.120000 height 0.120000))
+		(position (any) (order -1))
+		)
+	   (pin "vpwrGuard"
+		(net "vpwrGuard")
+		(layer ("M2" "pin"))
+		(shape (rectangle width 0.140000 height 0.140000))
+		(position (any) (order -1))
+		)
+	   (pin "vgndGuard"
+		(net "vgndGuard")
+		(layer ("M2" "pin"))
+		(shape (rectangle width 0.140000 height 0.140000))
+		(position (any) (order -1))
+		)
+	   (pin "vgnd"
+		(net "vgnd")
+		(layer ("M2" "pin"))
+		(shape (rectangle width 0.140000 height 0.140000))
+		(position (any) (order -1))
+		)
+	   (pin "vpwr"
+		(net "vpwr")
+		(layer ("M2" "pin"))
+		(shape (rectangle width 0.140000 height 0.140000))
+		(position (any) (order -1))
+		)
+	   )

@@ -1,0 +1,15 @@
+#///////////////////////////////////////////////////////////////////////////////////////
+#/ $RCSfile: calibreGuirunsetdrc.rca $ $Revision: 1.1 $ $Date: Tue Feb  1 15:57:59 2005 $ $Author: ucddevmo $ $Locker: $
+#///////////////////////////////////////////////////////////////////////////////////////
+*drcRunDir: drcRunDir
+*drcRulesFile: $U2DK_CALIBRE_DRC_DECK
+*drcLayoutPaths: cell_name.gds
+*drcLayoutPrimary: cell_name
+*drcLayoutGetFromViewer: 0
+*drcResultsFile: drc_results.db
+*drcSummaryFile: drc_summary
+*cmnDRCMaxVertexCount: 199
+*cmnVConnectNames: "vdd;" "gnd;" VDD GND vdd gnd "vdd!" "gnd!" "vdds;" "gnds;" VDDS GNDS vdds gnds "vdds!" "gnds!"
+*cmnRunRemote: 0
+*cmnRunRemoteOn: Cluster
+*cmnRemoteQueueCmd: bsub -q <queue_name> %C

@@ -1,0 +1,20 @@
+Starting Monte Carlo Sampling...
+
+Current time: Tue Oct 15 16:21:41 2013 
+Best design point: 1
+Design specs: 
+	daisyDemo:daisyAmpOffset_T:1	corner	Default - 
+Design parameters: 
+	Acomp		1k
+	fClk		1M
+	vccr		1
+	vCom		1
+	vDiff		0
+	tStop		13u
+	NOC		13
+
+MonteCarlo.0
+Number of points completed: 200
+Number of simulation errors: 0
+MonteCarlo.0 completed. 
+Current time: Tue Oct 15 16:22:32 2013 

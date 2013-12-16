@@ -1,0 +1,74 @@
+// Spectre AHDL for daisy, daisyFileWriter, ahdl
+//
+// Block that takes a binary-weighted input (8 bits), converts the data to integers,
+// and writes these integers to a file.
+//
+// Created by Ola Andersson, ES/ISY, Linkoping University, 2004-01-20
+//
+// Modified some parameters. JJW 2009-09-04
+//
+// ========================================
+
+module daisyFileWriter ( clk, in0, in1, in2, in3, in4, in5, in6, in7) (vThreshold, filename)
+    node [V,I] clk;
+    node [V,I] in0;
+    node [V,I] in1;
+    node [V,I] in2;
+    node [V,I] in3;
+    node [V,I] in4;
+    node [V,I] in5;
+    node [V,I] in6;
+    node [V,I] in7;
+//Parameters
+ parameter real vThreshold=1.65 from (0:inf);
+ parameter string filename="/tmp/simout.dat";
+{
+//Local variables
+ integer outdata=0;
+ stream outfile;
+
+//Open file
+ initial {
+  outfile = $fopen(filename,"w");
+ }
+
+//Read data, convert to integer, and write to file
+ analog {
+  //detect falling clock edge
+  if ($threshold(V(clk)-vThreshold, -1)) {
+   //Calculate integer valued output
+   outdata=0;
+   if (V(in0) > vThreshold) {
+    outdata=outdata+pow(2,0);
+   }
+   if (V(in1) > vThreshold) {
+    outdata=outdata+pow(2,1);
+   }
+   if (V(in2) > vThreshold) {
+    outdata=outdata+pow(2,2);
+   }
+   if (V(in3) > vThreshold) {
+    outdata=outdata+pow(2,3);
+   }
+   if (V(in4) > vThreshold) {
+    outdata=outdata+pow(2,4);
+   }
+   if (V(in5) > vThreshold) {
+    outdata=outdata+pow(2,5);
+   }
+   if (V(in6) > vThreshold) {
+    outdata=outdata+pow(2,6);
+   }
+   if (V(in7) > vThreshold) {
+    outdata=outdata+pow(2,7);
+   }
+   //Write data to file
+   $fstrobe(outfile, "%d\n", outdata);
+  }
+ }
+
+//Close file
+ final {
+  $fclose(outfile);
+ }
+}

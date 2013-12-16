@@ -1,0 +1,65 @@
+// VerilogA for daisy, daisySarDac, veriloga
+
+`include "constants.vams"
+`include "disciplines.vams"
+
+module daisySarDac(RESET, CLK, DATA, vOut);
+
+       input RESET, CLK, DATA;
+       output vOut;
+       electrical RESET, CLK, DATA, vOut;
+
+       integer count;
+
+       parameter real vMin = -1 from (-inf:inf);
+       parameter real vMax =  1 from (-inf:inf);
+       parameter real vccr =  1 from (0:inf);
+
+       real vRef;
+       real vLo;
+       
+analog  begin
+	// Start by initializing all the parameters
+
+    @ ( initial_step ) 
+      begin
+	 count = 1;
+	 vLo   = vMin;
+	 vRef  = vLo + (vMax - vMin)/pow(2, count);
+      end
+
+	// Same should be done during the reset...
+
+    @ ( cross(V(RESET) - vccr/2.0, 1, 1.0, RESET.potential.abstol)) 
+      begin
+	 count = 1;
+	 vLo   = vMin;
+	 vRef  = vLo + (vMax - vMin)/pow(2,count);
+      end
+
+      // Every time the clock is rising high, value of data 
+      // should be taken into account.
+
+    @ (cross(V(CLK) - vccr/2.0, 1, 1.0, CLK.potential.abstol)) 
+      begin
+	 if (V(DATA) > vccr/2.0)
+	  begin
+	      vLo = vRef;
+	  end;
+	  
+	 count = count + 1;
+
+	 // Assume a maximum of 32-bit resolution/accuracy
+	 if (count > 32)
+	 begin
+	   count = 32;
+	 end;
+
+	 vRef = vLo + (vMax - vMin)/pow(2,count);
+
+     end
+
+     V(vOut) <+ transition(vRef);
+ end
+
+endmodule

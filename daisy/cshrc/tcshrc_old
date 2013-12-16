@@ -1,0 +1,200 @@
+#################################################
+#################################################
+## Global site tcshrc for projects             ##
+## J Jacob Wikner (jacob.wikner@liu.se)        ##
+#################################################
+#################################################
+
+##
+## Clean this up to adjust to later align with the modules
+###########################################
+
+# setenv LD_ASSUME_KERNEL 2.4.1
+# not needed
+# setenv LM_LICENSE_FILE 1706@license.isy.liu.se
+
+if ( ! ($?CDSDATABASE) ) then
+   echo "DAISY:: Going for cadence CDBA format (old cadence format"
+   echo "DAISY:: probably you forgot to load module ..."
+   setenv CDSDATABASE "cds"	
+endif
+
+setenv CADAREA /sw/cadence/
+setenv DAISYAREA /site/edu/es/DAISY/daisy/
+
+setenv USERAREA $WORKAREA/work_$USER/
+setenv CDS_LOG_DIRECTORY $USERAREA/log
+setenv CDS_LOG_PATH $USERAREA/log
+setenv CDSSIMPATH $USERAREA/sim
+
+setenv CDS_LOAD_ENV CWD  # Use only the project-specific cdsenv
+
+## Assuming that the module has been loaded -- check this...
+## If not loaded there will be a (natural) error and abortion
+setenv CDSDIR       $CDS_HOME  ## redefinition from module 
+setenv DFII_PATH    $CDSDIR
+setenv CDSHOME      $CDSDIR   ## redefinition from module 
+setenv CDS_HOME     $CDSHOME  ## redefinition from module 
+setenv CDS_INST_DIR $CDSHOME
+
+# setenv LD_LIBRARY_PATH $CDSDIR/tools/lib:$CDSHOME/tools/dfII/verilogIn/lib:$LD_LIBRARY_PATH
+setenv VERAREA $USERAREA/pv
+
+   if ($CDSDATABASE == "cds") then
+#         setenv LD_LIBRARY_PATH $CDSDIR/tools/lib:$CDSHOME/tools/dfII/verilogIn/lib:$LD_LIBRARY_PATH
+   else   
+   setenv CDSBIT 64bit
+     #setenv OA_HOME         ${CDS_HOME}/oa_v22.04.068
+#     setenv LD_LIBRARY_PATH $CDSDIR/tools/inca/lib/64bit/
+#     setenv LD_LIBRARY_PATH ${LD_LIBRARY_PATH}:${CDS_HOME}/tools.lnx86/lib/${CDSBIT}/
+#     setenv LD_LIBRARY_PATH ${LD_LIBRARY_PATH}:${CDS_HOME}/tools.lnx86/inca/lib/${CDSBIT}/
+#     setenv LD_LIBRARY_PATH ${LD_LIBRARY_PATH}:${CDS_HOME}/tools.lnx86/Qt/${CDSBIT}/lib/
+#     setenv LD_LIBRARY_PATH ${LD_LIBRARY_PATH}:${CDS_HOME}/tools.lnx86/sev/lib/${CDSBIT}/
+
+   endif
+
+#####################################
+### Cadence setup                  ##
+### Not required if we use modules ## 
+#####################################
+
+
+#   setenv CDSHOME $CADAREA/cadence/cadence5141_latest/
+#   setenv SPECTREHOME $CADAREA/cadence/cadence_MMSIM_latest/
+#   setenv IUSINSTDIR $CADAREA/cadence/cadence_IUS58/
+#   setenv AMSHOME $IUSINSTDIR
+#   setenv LD_LIBRARY_PATH $CDSHOME/tools/dfII/verilogIn/lib
+#   setenv CDS_WAVESCAN_MAXHEAP 164M
+#   setenv IMPORT_HDL_ALL_SEG_LABEL "ON"
+#   setenv ENCOUNTER $CADAREA/cadence/cadence_SOC_latest
+#   setenv QRC       $CADAREA/cadence/cadence_EXT_latest
+#   setenv ETS       $CADAREA/cadence/cadence_ETS_latest
+
+   
+setenv PATH ${PATH}:${DAISYAREA}/bin/
+
+#####################################
+### Mentor setup                   ##
+### Not required if we use modules ## 
+#####################################
+
+#   setenv MGC_HOME $CADAREA/mentor/calibre_latest/
+#   setenv MGC_HOME $CADAREA/mentor/calibre_v2008.3_16.12/ixl_cal_2008.3_16.12   
+#   setenv PATH ${PATH}:$MGC_HOME/bin
+
+   setenv MGC_CALIBRE_SAVE_ALL_RUNSET_VALUES 1
+   
+# Daisy variables for Mentor settings, e.g. E-mail notification
+# on success off runs, etc.
+
+   setenv EMAIL_TRIGGER "ON"
+
+   # Display
+   # setenv DISPLAY `echo $REMOTEHOST`:0.0
+
+###########
+# Daisy aliases
+# Move to separate file!
+########### 
+
+   alias  cdwa  'cd $WORKAREA'
+   alias  cdw   'cd $WORKAREA'
+
+   alias  cds   'cd $CDSSIMPATH'
+   alias  cdo   'cd $CDSSIMPATH/ocean'
+   alias  cdr   'cd $CDSSIMPATH/results'
+   alias  cdp   'cd $PROJAREA'
+   alias  cde   'cd `cdp wa \!*`'
+   alias  cdv   'cd `cdp pv \!*`'
+   alias  cds   'cd `cdp s \!*`'
+   
+   if ($CDSDATABASE == "cds") then
+      alias  cad   'cdwa; icfb -log $CDS_LOG_PATH/CDS.$USER.`date '+20%y%m%d'`.$HOST.log&'
+   else   
+     alias  cad   'cdwa; virtuoso -log $CDS_LOG_PATH/CDS.$USER.`date '+20%y%m%d'`.$HOST.log&'
+   endif
+
+   alias  emacs 'emacs -l $DAISYAREA/emacs/dotemacs -fg black \!* &'
+   alias  sim   'cdwa; ocean < $CDSSIMPATH/ocean/\!*'
+   alias  oo    '/usr/bin/openoffice.org3 \!* &'
+   alias  o     'xterm -e osean \!* & '
+   alias  ol    'xterm -e osean  `ls -t | head -n 1` & '
+   alias src    'source ~/.tcshrc'
+
+   alias hitta  'find . -follow -iname \!*'
+   alias proc   'ps -ef | grep $USER'
+   alias ool    'oo `ls -t | head -n 1`'
+   alias gret   'grep -Hi $1 $2'
+   alias help   'man  \!* '
+   alias a      'acroread \!* &'
+
+   #alias cvsuc  'cvs -qn update | grep "^?" | tr -d "^?" | tr -d "[:space:]"'
+
+   alias rm 'rm -i'
+   alias cp 'cp -i'
+   alias mv 'mv -i'
+   alias vd 'ls -Fla'
+   alias po 'popd'
+   alias pd 'pushd'
+   alias cd 'cd \!*;echo "["$cwd"]"'
+   alias las 'ls -las'
+   alias lats 'ls -t | head -n 1'
+
+
+##############################
+## RUN PROJECT SPECIFIC TCSHRC
+##############################
+
+source $PROJAREA/daisyProjSetup/cshrc/tcshrc
+
+#############################################
+## RUN PROCESS SPECIFIC TCSHRC 
+## (EVENTUALLY MOVE TO PROJECT SETUP!!!)
+#############################################
+
+## RUN PROCESS SPECIFIC TCSHRC
+
+setenv PDK_HOME $DAISYAREA/pdkSpecific/$CDSPROCESSNAME/
+source $PDK_HOME/cshrc/tcshrc
+setenv MODELPATH $PDK_HOME/models/
+
+#############################################
+## Setup for latex
+echo "Setting up latex template paths"
+setenv TEXINPUTS .:$DAISYAREA/doc/templates/springer/:$DAISYAREA/doc/templates/ieee/:$DAISYAREA/doc/templates/icecs/:
+
+## This is a temporary fix.
+
+## Setup for python      
+echo "Setting up python module path"
+if ( ! ($?PYTHONPATH) ) then
+   setenv PYTHONPATH ${DAISYAREA}/doc/python/:/opt/openoffice.org/basis3.1/program/
+else	  
+   setenv PYTHONPATH ${PYTHONPATH}:${DAISYAREA}/doc/python/:/opt/openoffice.org/basis3.1/program/
+endif
+
+
+##############################
+# Adding all the project paths
+setenv PATH ${PATH}:`cat $PROJAREA/daisyProjSetup/info/daisyPaths.txt`
+
+##############################
+# Making sure that group permissions are maintained
+umask 002
+
+##############################
+# For bounces and others
+setenv EMAIL $USER@student.liu.se
+
+
+##############################
+## RUN USER SPECIFIC TCSHRC
+##############################
+
+   if (-e  $USERAREA/cshrc/tcshrc ) then
+      source $USERAREA/cshrc/tcshrc
+      # And here you could overwrite that EMAIL
+      endif  
+
+##endif
+

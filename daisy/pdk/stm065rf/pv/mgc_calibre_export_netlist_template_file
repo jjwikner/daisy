@@ -1,0 +1,26 @@
+cdlOutKeys = list(nil
+	'simLibName		"tste16DacTest"
+	'simCellName		"tste16DacTop_Tclk"
+	'simViewName		"schematic veriloga"
+	'cdlSimViewList		"auCdl schematic veriloga"
+	'cdlSimStopList		"auCdl veriloga"
+	'hnlNetlistFileName	"netlist"
+	'simRunDir		"/edu/jacwi50/tste16_1/"
+	'runInBackground	t
+	'cdsNetlistingMode	"Analog"
+	'reNetlist		nil
+	'shortRES		2000.000000
+	'resistorModel		""
+	'setEQUIV		""
+	'incFILE		""
+	'globalPowerSig		""
+	'globalGndSig		""
+	'resistorCheck		"value"
+	'capacitorCheck		"value"
+	'pinMAP			nil
+	'shrinkFACTOR		0.000000
+	'diodeCheck		'"both"
+	'checkScale		"meter"
+	'displayPININFO		t
+	'checkLDD		nil
+)

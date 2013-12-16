@@ -1,0 +1,45 @@
+(setq streamInKeys
+      (list nil
+	    'inFile			streamFile
+	    'libName			streamLib
+	    'attachTechfileOfLib	streamTechLib
+	    'refLibOrder		streamRefLibs
+	    'layerTable			streamMap
+	    'runDir			streamRunDir ;; (strcat (getShellEnvVar "WORKAREA") "/log/")
+	    'errFile		        streamErrFile ;; (strcat (getShellEnvVar "WORKAREA") "/log/streamIn.pipo.in.err.log")
+	    'techfileName		""
+    	    'primaryCell		""
+	    'scale			0.001000
+	    'units			"micron"
+	    'refLib			t
+  	    'hierDepth     		32
+	    'maxVertices		1024
+	    'checkPolygon		nil
+	    'snapToGrid			nil
+	    'arrayToSimMosaic		nil
+	    'caseSensitivity		"preserve"
+	    'textCaseSensitivity	"preserve"
+	    'zeroPathToLine		"lines"
+	    'convertNode		"ignore"
+	    'keepPcell			nil
+	    'replaceBusBitChar		t
+	    'skipUndefinedLPP		nil
+	    'ignoreBox			nil
+	    'mergeUndefPurposToDrawing	nil
+	    'reportPrecision		nil
+	    'keepStreamCells		t
+	    'runQuiet			nil
+	    'noWriteExistCell		nil
+	    'NOUnmappingLayerWarning	nil
+	    'comprehensiveLog		nil
+	    'ignorePcellEvalFail	nil
+	    'appendDB			nil
+	    'genListHier		t
+	    'cellMapTable		""
+	    'textFontTable		""
+	    'restorePin			0
+	    'propMapTable		""
+	    'propSeparator		","
+	    'userSkillFile		""
+	    'rodDir			""
+ ))

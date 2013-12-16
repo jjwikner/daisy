@@ -1,0 +1,4064 @@
+///////////////////////////////////////////////////////////////////////
+// ATTENTION : TEST VERSION 31-Jul-06
+///////////////////////////////////////////////////////////////////////
+//
+//
+////////////////////////////////////////////////////
+// Owner: austriamicrosystems AG                  //
+//        Business Unit Silicon Foundry           //
+//================================================//
+//        HIT-Kit: Digital                        //
+////////////////////////////////////////////////////
+// 25-Jul-2005 Prepared for CALIBRE Release 2006.2
+///////////////////////////////////////////////////////////////////////
+//
+// DRC/LVS/PEX header for process c35b4/c35b3
+TITLE "DFM DRC for current mirrors 0.35 U CMOS C35B4/C35B3 polycide 3V/5V (last modified 31-Jul-06)"
+//
+///////////////////////////////////////////////////////////////////////
+//=====================================================================
+//   Version          Datum          by       Description
+//---------------------------------------------------------------------
+//   1.0           24-Aug-2005       aob      Created
+//                 27-Jul-2006       aob      some rework
+//                                            err cell names changed due to DFM doc
+//                                            deactivate some output with groups (current direct error)
+//                                            only good cm are checked for w/l
+//                                            remove double recognition
+//                                            includes not modified
+//                 31-Jul-2006       aob      simplified version 
+//                  3-Aug-2006       aob      add antenna checks too toofar checks
+//
+///////////////////////////////////////////////////////////////////////
+//
+//  30-Aug-05 : add square in center of curr mir and flatten to count total stages
+//              check for dummy trans missing 
+//  31-Aug-05 : improve group info check
+//
+//---------------------------------------------------------------------------------------
+///////////////////////////////////////////////////////////////////////
+//
+   DRC INCREMENTAL CONNECT YES
+//
+///////////////////////////////////////////////////////////////////////
+//
+//  do l w check for groups ( long compile time )
+//  check distance 
+//
+//#DEFINE L_W_CHECK
+#UNDEFINE L_W_CHECK
+//
+//
+// get info of size of current mirror ( layout)
+//
+//#DEFINE SIZE_CHECK
+#UNDEFINE SIZE_CHECK
+//
+// DRC UNSELECT CHECK  INFO
+   GROUP INFO ?_INFO
+//
+   DRC UNSELECT CHECK  TRANS_INFO    
+   GROUP TRANS_INFO   ?BIAS_TRANS_? ?MIRR_TRANS_?
+//
+// we do not check current flow direction
+//
+////   DRC UNSELECT CHECK  CM_DIRECT_ERR
+//
+// only for debug, too much info
+//
+////   GROUP CM_DIRECT_ERR ?DIRECT_ERR
+////                       ?BIAS_TRANS_? 
+////                       ?MIRR_TRANS_?
+//
+// 
+#UNDEFINE DEBUG
+//
+// ATTENTION : flag for definition of processes
+//
+// use c35b4 4 metal process
+//--------------------------
+//
+#DEFINE fourmetal // global switch
+// 
+// use c35b3 3 metal process
+//--------------------------
+//
+//#UNDEFINE fourmetal
+//
+///////////////////////////////////////////////////////////////////////
+//
+//            detailed process definition( module check)
+//
+///////////////////////////////////////////////////////////////////////
+//
+// this section allows to select a  more detailed processe( with/without
+// poly2, hres, midox ..). See DRC document for definitions 
+//
+// If "process_switch" is not used, all modules are checked, only met3/met4
+// is can be selected by "fourmetal" switch 
+//
+// module check flags unsupported layers as DRC errors
+// module check disables unsupported devices in LVS
+//
+// select one process
+//---------------------
+//
+//#DEFINE process_C35B3L3 // core, poly2, midox, hres , lvtdef
+//#DEFINE process_C35B3C0 // core, poly2
+//#DEFINE process_C35B3C1 // core, poly2, midox
+//#DEFINE process_C35B4C3 // core, poly2, midox, hres, met4
+//#DEFINE process_C35B3C3 // core, poly2, midox, hres
+//
+// thick top metal not implemented yet
+//#DEFINE process_C35B4M3
+//
+// dummy square for process DRC output 
+//
+   bound_cent = EXTENTS  substrate_all CENTERS 1.0
+//
+// default setting is check for all layers
+//-----------------------------------------
+//
+#DEFINE layer_lvtdef
+#DEFINE layer_poly2
+#DEFINE layer_midox
+#DEFINE layer_hres
+// set flag for default checks
+#UNDEFINE process_found_flag
+//
+// set layers for processes
+//-------------------------
+//
+// c35b4c3
+//
+#IFDEF process_C35B4C3
+  #UNDEFINE layer_lvtdef
+  #DEFINE layer_poly2
+  #DEFINE layer_midox
+  #DEFINE layer_hres
+  #DEFINE fourmetal
+  #DEFINE process_found_flag
+  INFO_PROCESS_C35B4C3 { @ INFO : DRC checked with c35b4c3
+       FLATTEN bound_cent
+  }
+#ENDIF
+//
+// c35b3c3 (preliminary)
+//
+#IFDEF process_C35B3C3
+  #UNDEFINE layer_lvtdef
+  #DEFINE layer_poly2
+  #DEFINE layer_midox
+  #DEFINE layer_hres
+  #UNDEFINE fourmetal
+  #DEFINE process_found_flag
+  INFO_PROCESS_C35B3C3 { @ INFO : DRC checked with c35b3c3
+       FLATTEN bound_cent
+  }
+#ENDIF
+//
+// c35b4m3
+//
+// not implemented yet, add later
+//
+//#IFDEF process_C35B4M3
+//  #DEFINE layer_poly2
+//  #DEFINE layer_midox
+//  #DEFINE layer_hres
+//  #UNDEFINE fourmetal
+//  // not available yet
+//  #DEFINE fourmetal_thick
+//  #DEFINE process_found_flag
+//  INFO_PROCESS_C35B4M3 { @ INFO : DRC checked with c35b4m3
+//       FLATTEN bound_cent
+//  }
+//#ENDIF
+//
+// c35b3c0
+//
+#IFDEF process_C35B3C0
+  #UNDEFINE layer_lvtdef
+  #DEFINE layer_poly2
+  #UNDEFINE layer_midox
+  #UNDEFINE layer_hres
+  #UNDEFINE fourmetal
+  #DEFINE process_found_flag
+  INFO_PROCESS_C35B3C0 { @ INFO : DRC checked with c35b3c0
+       FLATTEN bound_cent
+  }
+#ENDIF
+//
+// c35b3c1
+//
+#IFDEF process_C35B3C1
+  #UNDEFINE layer_lvtdef
+  #DEFINE layer_poly2
+  #DEFINE layer_midox
+  #UNDEFINE layer_hres
+  #UNDEFINE fourmetal
+  #DEFINE process_found_flag
+  INFO_PROCESS_C35B3C1 { @ INFO : DRC checked with c35b3c1
+       FLATTEN bound_cent
+  }
+#ENDIF
+//
+// c35b3l3
+//
+#IFDEF process_C35B3L3
+  #DEFINE layer_lvtdef  
+  #DEFINE layer_poly2
+  #DEFINE layer_midox
+  #DEFINE layer_hres
+  #UNDEFINE fourmetal
+  #DEFINE process_found_flag
+  INFO_PROCESS_C35B3L3 { @ INFO : DRC checked with c35b3l3
+       FLATTEN bound_cent
+  }
+#ENDIF
+//
+// do standard met3/met4 check if not set
+//-----------------------------------------
+//
+#IFNDEF process_found_flag
+#IFDEF fourmetal
+  INFO_PROCESS_C35B4 { @ INFO : DRC checked with c35b4 ( 4 metal all modules)
+       FLATTEN bound_cent
+  }
+#ELSE
+  INFO_PROCESS_C35B3 { @ INFO : DRC checked with c35b3 ( 3 metal all modules)
+       FLATTEN bound_cent
+  }
+#ENDIF
+#ENDIF
+//
+// output of unsupported layer for modules
+//-------------------------------------------
+//
+#IFNDEF layer_hres
+  ILL_HRES_UNAVAILABLE { @ Process Modules : HRES not available
+         COPY HRES
+  }
+#ENDIF
+#IFNDEF layer_poly2
+  ILL_POLY2_UNAVAILABLE { @ Process Modules : POLY2 not available
+         COPY POLY2
+  }
+#ENDIF
+#IFNDEF layer_midox
+  ILL_MIDOX_UNAVAILABLE { @ Process Modules : MIDOX not available
+         COPY MIDOX
+  }
+#ENDIF
+#IFNDEF layer_lvtdef
+  ILL_LVTDEF_UNAVAILABLE { @ Process Modules : LVTDEF not available
+         COPY LVTDEF
+  }
+#ENDIF
+#IFNDEF fourmetal
+  ILL_MET4_UNAVAILABLE { @ Process Modules : MET4 not available
+         COPY MET4
+  }
+  ILL_VIA3_UNAVAILABLE { @ Process Modules : VIA3 not available
+         COPY VIA3
+  }
+#ENDIF
+//
+//XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+///////////////////////////////////////////////////////////////////////
+//
+//   C A L I B R E  R U L E   F I L E  S T A N D A R D   H E A D E R
+//
+///////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////
+//
+//               Define options for stand alone environment 
+//
+////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////
+//
+//               I n p u t   d a t a   d e f i n i t i o n s
+//
+////////////////////////////////////////////////////////////////////////////////////
+//
+//  layout
+//--------------
+//
+   LAYOUT PRIMARY "_TOPCELL()"
+   LAYOUT PATH  "_GDSFILE()"
+   DRC SUMMARY REPORT "_TOPCELL()_currmirr.rpt" REPLACE HIER
+   DRC RESULTS DATABASE "_TOPCELL()_currmirr.asc" ASCII"
+//
+   LAYOUT SYSTEM GDSII
+   //LAYOUT PATH  "../AS1907_ALL.gds"
+   //LAYOUT PRIMARY "AS1907_TOP" 
+   LAYOUT DEPTH ALL // PRIMARY
+//
+//
+   MASK SVDB DIRECTORY "svdb" XRC
+// MASK SVDB DIRECTORY "svdb" QUERY
+//
+// check GDSII and terminate
+   LAYOUT ERROR ON INPUT YES  // no
+// only for SPICE netlist : node , subckt, model
+// default is no
+// LAYOUT CASE NO // YES 
+// LAYOUT INJECTION FACTOR 4
+// cut all outside
+// LAYOUT WINDEL xlow ylow xhigh yhigh LAYOUT WINDOW CLIP YES
+// get all inside
+// LAYOUT WINDOW xlow ylow xhigh yhigh LAYOUT WINDOW CLIP YES
+//
+// EXCLUDE CELL name1 name2 name3
+// LAYOUT SYSTEM CNET 
+// LAYOUT PATH  "./cnet.l"
+//
+//  drc
+//--------------
+//
+   // DRC SUMMARY REPORT AS1907_TOP_drc.rpt REPLACE HIER
+   // DRC RESULTS DATABASE AS1907_TOP_drc.asc ASCII
+// DRC TOLERANCE FACTOR .01
+// gds allows 200 vertices
+// DRC MAXIMUM VERTEX 199
+   DRC MAXIMUM VERTEX 20
+//   DRC MAXIMUM RESULTS 10000
+   DRC MAXIMUM RESULTS ALL   
+   DRC KEEP EMPTY NO
+// DRC CHECK MAP width_diffusion 30                 
+// DRC CHECK MAP spacing_diffusion 30                 
+// FLAG ACUTE YES
+// FLAG SKEW YES
+// FLAG OFFGRID YES
+//
+// netlist for lvs
+//-------------------
+//
+// SOURCE CASE NO // YES
+//
+// SOURCE PATH "netlist.hspi"
+// SOURCE PRIMARY "netlist_top"
+// SOURCE SYSTEM SPICE
+//
+////////////////////////////////////////////////////////////////////////////////////
+//
+//   L V S   o p t i o n s                
+//
+////////////////////////////////////////////////////////////////////////////////////
+//
+// substrate and bulk pins have little importance for comparison
+// soft does not mean "soft connected"
+// creates extra report section
+   LVS SOFT SUBSTRATE PINS YES // NO
+// 
+// write netlist from layout and source before gate building with
+// device and net coordinates
+//
+// LVS WRITE LAYOUT NETLIST "layout.spi"
+// LVS WRITE SOURCE NETLIST "source.spi"
+//
+// LVS ISOLATE SHORTS YES BY LAYER     
+// for hierarchical lvs use cell and name option :
+//
+// shorts in top level cell between all names OR between
+// the specified names in all cells
+// LVS ISOLATE SHORTS YES CELL PRIMARY || NAME "VCC?" "VSS?"
+//
+// shorts in all cells only between spicified names
+// LVS ISOLATE SHORTS YES CELL ALL && NAME "VCC?" "VSS?"
+//
+// primary only between all names (default)
+// LVS ISOLATE SHORTS YES CELL PRIMARY
+//
+// all shorts in all cells
+// LVS ISOLATE SHORTS YES CELL ALL    
+//
+// rename layout text on GDSII with regex 
+// LAYOUT RENAME TEXT #VDD_BANG#VDD#g
+// LAYOUT RENAME TEXT #gnd_bang#VSS#g
+//
+   LVS REPORT AS1907_TOP_lvs.rpt
+// report all
+   LVS REPORT MAXIMUM ALL
+// reduce info generally, LVS tries to report the most informative discrepancies first 
+// LVS REPORT MAXIMUM 50
+// options may cause large output
+// options : A .... detailed instance connections on incorrect nets (no shorts and opens)
+//           B .... detailed instance connections on short and opens
+//           C .... detailed instance connections on missing net and no similar net
+//           D .... detailed instance connections on missing instance and missing gate
+//           E .... ignore missing properties
+//           F .... disable missing smashed mosfet
+//           G .....report detailed instance connections
+//           H .....disable cell correspondence names
+//           I .....disable isolated nets warning
+//           N .....report layout names missing in source
+//           V .....report virtuell connect
+//
+//  LVS REPORT OPTION A B C D
+//
+// LVS COMPARE CASE NO // default, all comparisons are case INsensitive
+// LVS COMPARE CASE YES // all comparison are case sensitive
+// LVS COMPARE CASE NAMES  // net instance and port names
+// LVS COMPARE CASE TYPES // component type comparison is case sensitive
+// LVS COMPARE CASE SUBTYPES // component subtype comparisons are case sensitive
+//
+// remove empty cell from SPICE and/or layout
+// LVS BOX SOURCE calla cellb cellc
+// LVS BOX cella cellb cellc
+//
+   LVS IGNORE PORTS YES //NO
+   LVS REDUCE SERIES RESISTORS no
+   LVS REDUCE PARALLEL RESISTORS no
+   LVS ISOLATE SHORTS YES BY LAYER
+// LVS ISOLATE SHORTS YES
+// MASK RESULTS DATABASE "maskdb"
+   MASK RESULTS DATABASE NONE
+//
+// LVS FILTER D OPEN  // remove diodes from check
+// LVS FILTER mp  w > 3 < 5 OPEN LAYOUT
+// LVS FILTER C OPEN  // remove C from check
+// LVS FILTER r(x) instapr(r) ==0 SHORT SOURCE // short all 0 res in SPICE
+//
+// LVS FILTER UNUSED MOS NO
+// LVS FILTER UNUSED DIODES NO
+// LVS FILTER UNUSED CAPACITORS NO
+// LVS FILTER UNUSED BIPOLAR YES
+// LVS FILTER UNUSED OPTION AB AC AD AE B C D ZD 
+// 20 options, see manual
+//  ab ... filter mos devices with source,drain,and gate pims tied together
+//  ac ... filter mos devices with floating gate pin and source,drain pins tied to power
+//
+// LVS FILTER NAND3 OPEN SOURCE LAYOUT
+//
+// How to short 2 nets in netlist :
+// add line in netlist : R net1 net2 $.MODEL=rshort $w=1 $l=1
+//
+   LVS FILTER R(RP) SHORT
+   LVS FILTER R(RESISTOR) SHORT
+   LVS FILTER C(CP) OPEN
+   LVS FILTER C(CAPACITOR) OPEN
+//
+// abort if any problem with power/ground
+// LVS ABORT ON SUPPLY ERROR YES
+// for logic gate recognition, filtering
+// attention : if set, gate building is CMOS, this may be an advantage for digital circuits
+//             names must match on layout and source sides
+//
+   LVS POWER NAME "?VCC?" "?VDD?"
+   LVS GROUND NAME "?VSS?" "?GND?"
+//
+// drop mismatch in pin count
+   LVS DISCARD PINS BY DEVICE YES
+//
+//
+// LVS ALL CAPACITOR PINS SWAPPABLE YES/NO
+// LVS REDUCE PARALLEL MOS YES/NO  // default YES
+//
+// we do not allow any different L !!!
+//
+   //LVS REDUCE PARALLEL MOS YES [TOLERANCE L 0]  // default YES
+//
+// LVS REDUCE SPLIT GATES YES/NO
+// LVS REDUCE SPLIT GATES SEMI ALSO
+// LVS REDUCE PARALLEL BIPOLAR YES/NO  // default YES
+// LVS REDUCE SERIES CAPACITORS YES/NO // default YES
+// LVS REDUCE PARALLEL CAPACITORS YES/NO // default YES
+// LVS REDUCE SERIES RESISTORS YES/NO // defaul YES
+// LVS REDUCE PARALLEL RESISTORS YES/NO  // default YES
+// LVS REDUCE PARALLEL DIODES YES/NO // default YES
+//
+// creates AOI and OAI and seriell/parallel SPxxx structures
+// ALL    : lvs_recognice_gates = TRUE
+//          lvs_recognice_simple_gates = FALSE
+// SIMPLE : lvs_recognice_gates = TRUE
+//          lvs_recognice_simple_gates = TRUE
+// NONE   : lvs_recognice_gates = FALSE
+//          lvs_recognice_simple_gates = FALSE
+// 
+// LVS RECOGNIZE GATES ALL/SIMPLE/NONE  // default is all
+// build gates with different model names 
+// LVS RECOGNIZE GATES ALL/SIMPLE/NONE MIX SUBTYPES // default is all
+//
+// LVS COMPONENT TYPE PROPERTY lvs_device spicemodel
+// LVS COMPONENT SUBTYPE PROPERTY mdl_prim
+// LVS PIN NAME PROPERTY phy_pin
+// LVS HEAP DIRECTORY /scratch/tmp   // limit is 2 Gb
+// LVS PROPERTY RESOLUTION MAXIMUM 200 // max size of ambiguity groups
+// LVS PROPERTY RESOLUTION MAXIMUM ALL // max size of ambiguity groups
+// for LVS neighborhood
+// LVS SIGNATURE MAXIMUM 10 // see doc
+// LVS SIGNATURE MAXIMUM ALL
+// LVS SPLIT GATE RATIO MP W 10   // see doc
+// LVS REVERSE WL YES // see doc
+//
+// connect nets by colon :
+//  only nets with colon are connected
+//  text after colon is stripped off
+//  bar: bar:x bar:abc are connected  to bar
+//  xyz and zyz: are not connected
+//  vdd: and vdd: are connected
+//  xyz: in layout and zyz in schem are initial correspondence points
+// VIRTUAL CONNECT COLON YES
+//
+// example : 4 nets :  vss vss vss: vss:x 
+// VIRTUAL CONNECT COLON NO  
+// VIRTUAL CONNECT NAME "VSS"  // vss: and vss:x stay
+// VIRTUAL CONNECT COLON YES 
+// VIRTUAL CONNECT NAME "VSS"  // 4 nets connected
+// VIRTUAL CONNECT NAME "VSS" "VDD" "VSSA" "VDDA" "vdd_bang" "gnd_bang"
+//
+// connect all equal names and report 
+   VIRTUAL CONNECT NAME '?'
+   VIRTUAL CONNECT REPORT YES
+// 
+// lvs device parameters
+//-----------------------
+//
+// check for 1 %
+
+// syntax : trace Property type(model) source_prop layout_prop tolerance
+//
+// mos
+//
+//   TRACE PROPERTY mn(nmosrf) W W 1
+//   TRACE PROPERTY mn(nmosrf) L L 1
+//   TRACE PROPERTY mn(nmosrf) NG NG 1
+//   TRACE PROPERTY mp(pmosrf) W W 1
+//   TRACE PROPERTY mp(pmosrf) L L 1
+//   TRACE PROPERTY mp(pmosrf) NG NG 1
+//
+//   TRACE PROPERTY mn W W 1
+//   TRACE PROPERTY mp W W 1
+//   TRACE PROPERTY mn L L 1
+//   TRACE PROPERTY mp L L 1
+//
+//   TRACE PROPERTY m(cvar) W W 1 // IC-Station
+//   TRACE PROPERTY m(cvar) L L 1 // IC-Station
+//
+//   TRACE PROPERTY lddn W W 1
+//   TRACE PROPERTY lddn L L 1
+// TRACE PROPERTY lddp W W 1
+// TRACE PROPERTY lddp L L 1
+//
+// resistors
+//   TRACE PROPERTY r  W W 1
+//   TRACE PROPERTY r  L L 1
+
+// bipolar
+// IC_Station :TRACE PROPERTY Q(pnplat2) a a 1  
+//   TRACE PROPERTY Q(pnplat) a a 1  
+//   TRACE PROPERTY Q(pnpvert10) a a 1  
+
+// jfet
+// TRACE PROPERTY J(njfet4) w w 1  
+// TRACE PROPERTY J(njfet4) l l 1  
+
+// cap
+//
+//   TRACE PROPERTY C(cpolyrf) w w 1
+//   TRACE PROPERTY C(cpolyrf) l l 1
+//
+//   TRACE PROPERTY C a a  1  
+//   TRACE PROPERTY C p p  1  
+//
+//   TRACE PROPERTY D a a 1
+//
+////////////////////////////////////////////////////////////////////////////////////
+//
+//   N e t l i s t   e x t r a c t i o n
+//
+////////////////////////////////////////////////////////////////////////////////////
+//
+// Attention : Usage of these options corresponds to switches of
+// phdb/pdb/fmt options
+//
+// netlist and parasitic extraction for CALIBRE-XRC
+//-------------------------------------------------
+// attention : exclude supply nets, use correct supply nets
+//
+// reduce geometries of nearbody caps to speed up run and reduce disk space
+//  PEX LAYER routingpoly WINDOW 2.0 
+//  PEX LAYER routingmet1 WINDOW 2.0 
+//  PEX LAYER routingmet2 WINDOW 2.0 
+//  PEX LAYER routingmet3 WINDOW 2.0 
+//
+// extract simple netlist 
+//------------------------
+//      output : SPICE LSIM
+// PEX NETLIST SIMPLE AS1907_TOP_netout.spi SPICE LAYOUT
+// PEX NETLIST SIMPLE "netout.spi" HSPICE LAYOUT
+// PEX NETLIST SIMPLE "netout.spi" HSPICE SOURCE LOCATION SEPARATOR "_" MAXLENGTH 20
+//
+// PEX BACKANNOTATION SIMPLE "ascii.ba" ASCII
+   PEX BACKANNOTATION SIMPLE NONE
+   PEX BACKANNOTATION LUMPED NONE
+   PEX BACKANNOTATION DISTRIBUTED NONE
+//
+// extract lumped netlist :
+//--------------------------
+//   PEX NETLIST LUMPED "netout_lumped.spi" HSPICE LAYOUT MASK
+//     extract lumped netlist with source names :
+//     ground vss : ground node, if not given :0 
+//     location : device loc as comment
+//     separator : net name hierarchy, default is / 
+//     output format : SPICE , LSIM
+//     maxlength : MAXLENGTH number : replace long names
+// PEX NETLIST LUMPED "netout_lumped.spi" SPICE SOURCE GROUND VSS SEPARATOR "_" LOCATION MASK
+// PEX NETLIST LUMPED "netout_lumped.spi" SPECTRE LAYOUT GROUND VSS SEPARATOR "_" LOCATION MASK
+ PEX NETLIST LUMPED "netout_lumped.spi" HSPICE LAYOUT GROUND VSS SEPARATOR "_" LOCATION MASK
+//     lump all caps (crossover, nearbody) to ground
+// PEX REDUCE LUMPED C < 100000
+// PEX REPORT LUMPED "pexrep_lumped.spi" LAYOUT 
+   PEX REPORT LUMPED NONE
+//     only for this nets, must be layout names
+//   PEX INCLUDE LUMPED net1 net2 net3 
+//     remove nets
+   PEX EXCLUDE LUMPED VDD VSS        
+//
+// extract distributed rc or rcc netlist :
+//-----------------------------------------
+//     location : rlocation = res loc 
+//     loop : do not suppress parallel branches
+//     source : LAYOUT SOURCE  output format : HSPICE SPF SPEF LSIM
+// PEX NETLIST DISTRIBUTED "netout_distr.spi" HSPICE LAYOUT MASK
+// PEX NETLIST DISTRIBUTED "netout_distr.spi" HSPICE SOURCE GROUND VSS LOOP LOCATION RLOCATION    SEPARATOR "/"   MASK
+// PEX NETLIST DISTRIBUTED "netout_distr.spi" SPECTRE LAYOUT GROUND GND0 LOOP LOCATION RLOCATION RWIDTH RLAYER SEPARATOR "_" MASK
+ PEX NETLIST DISTRIBUTED "netout_distr.spi" HSPICE LAYOUT GROUND GND0 LOOP LOCATION RLOCATION RWIDTH RLAYER SEPARATOR "_" MASK
+//
+   PEX REPORT DISTRIBUTED NONE
+//     remove res < value (ohm)
+// PEX REDUCE DISTRIBUTED R 5 BRANCH
+//    R, D, C  : res, delay, cap : set thresholds constrains on RC - nets
+// PEX THRESHOLD R < 10 C < 10
+//     pex report distributed is very large : source = LAYOUT SOURCE type = ASII LSIM SDF 
+// PEX REPORT DISTRIBUTED "pexrep_distr.spi" ASCII LAYOUT 
+// PEX REPORT DISTRIBUTED "pexrep_distr.spi" ASCII SOURCE 
+// PEX REPORT DISTRIBUTED "pexrep_distr.spi" SDF SOURCE    
+//     only for this nets, must be layout names
+//   PEX INCLUDE DISTRIBUTED net1 net2 net3 
+//     select nets ( needs -select option)
+//   PEX INCLUDE DISTRIBUTED "mynet"        
+//     remove nets
+   PEX EXCLUDE DISTRIBUTED VDD VSS        
+// PEX EXCLUDE DISTRIBUTED "VDD?" "VSS?" "VD33?"
+//
+// TICER reduction algorithmus ( see MENTOR Doc)
+//
+   // PEX REDUCE DISTRIBUTED TICER 40e9
+   // PEX REDUCE DISTRIBUTED TICER 20e9
+//
+// PEX COUPLED DISTRIBUTED YES/NO
+// PEX DELAY PENFIELD 0.7
+// PEX DELAY ELMORE 0.7
+// PEX DELAY NONE        
+//
+////////////////////////////////////////////////////////////////////////////////////
+//
+//   T e x t   d e f i n i t i o n
+//
+////////////////////////////////////////////////////////////////////////////////////
+//
+// define free floating text used from gds2 database
+// attention : for soft checking you have to use the same layer number
+// for EXPAND TEXT !!!!
+//
+//  TEXT LAYER 59          
+//  text_vdd = (EXPAND TEXT ?VDD? 59 BY 0.1) OR (EXPAND TEXT ?VCC? 59 BY 0.1)
+//  text_vss = (EXPAND TEXT ?VSS? 59 BY 0.1) OR (EXPAND TEXT ?GND? 59 BY 0.1)
+//  LABEL ORDER MET3 MET2 MET1
+//
+// ATTACH 59 MET1 MASK
+// ATTACH 59 MET2 MASK
+// ATTACH 59 MET3 MASK
+// 
+// define text directly in rule file :
+//
+//      name                       x (u)        y(U)     layer number (35=met1,37=met2)
+//
+// text A1                        137.000      121.400   35                    
+// text AA                         75.800       67.600   35                    
+// text VDDA                       51.200       95.400   35                    
+// text VDDA                      100.000      220.800   35                    
+// text VDDA                      141.200      306.600   35                    
+// text VDDH                      180.800      381.200   35                    
+// text VSS                        98.200      309.200   35                    
+// text VSS                       166.600       -7.800   35                    
+// text VSS                       180.600      390.800   35                    
+// text VSS                       293.200      131.400   35                    
+//
+// include path
+// INCLUDE "textfile"
+//
+// read text from ports
+//
+// cell number 3 name : BU4
+//
+//   LAYOUT TEXT A 1.15 16.95 137  BU4
+//   LAYOUT TEXT Q 5.75 20.45 137  BU4
+//
+// cell number 4 name : IN4
+//
+//   LAYOUT TEXT Q 1.15 16.75 137  IN4
+//   LAYOUT TEXT A 5.75 16.75 137  IN4
+//
+// cell number 5 name : NO2
+//
+//   LAYOUT TEXT A 1.15 16.55 137  NO2
+//   LAYOUT TEXT Q 5.75 16.55 137  NO2
+//   LAYOUT TEXT B 3.45 17.65 137  NO2
+//
+// PORT LAYER TEXT 137
+// TEXT LAYER 137
+// ATTACH 137 MET2     
+// 
+///////////////////////////////////////////////////////////////////////
+//
+//                 end of standard header   
+//
+///////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////
+// Owner: austriamicrosystems AG                  //
+//        CONCERTO! Business Unit Silicon Foundry //
+//================================================//
+//        HIT-Kit: Digital                        //
+////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////
+//
+// CALIBRE  R U L E S   F I L E   F O R   P R O C E S S   C 3 5 
+//
+//       _rules_title (standalone options)
+//
+//       Document: ENG-183                      Revision: 5.0
+//
+//       Created with ams_tech on by 
+//
+//=====================================================================
+//   Version          Datum          by       Description
+//---------------------------------------------------------------------
+//   1.0           14-Jan-2002       aob      Created
+//                                            new layer table with
+//                                            datatypes/texttypes
+//                  6-Feb-2002       aob      bipolar added
+//                 22-Feb-2002       aob      port layer text for padpin added
+//                  5-Apr-2002       aob      layer definition extend
+//                 10-Apr-2002       aob      routingmetal added
+//                  2-May-2002       aob      mxnet layer number fixed
+//                 12-Jun-2002       aob      layer definition for generated 
+//                                            layers extended
+//                  5-Jul-2002       aob      text_vdd/vss for ERC modified
+//                  2-Aug-2002       aob      layer mapping changed due to
+//                                            IC station numbers
+//                                            61 = 600, 62 = 700, 63 = 800
+//                 20-Aug-2002       aob      primary only for EXPAND txt for ERC
+//                 22-Aug-2002       aob      layout:reduced needs text type map
+//                                            resdef_text added
+//                 27-Sep-2002       aob      inddef_text added
+//                 18-Nov-2002       aob      m1pinshape added to mask out floating net
+//                  6-Mar-2003       aob      attach met1 routingmet1 ...added
+//                 12-Mar-2003       aob      direct connects added
+//                 19-May-2003       aob      layer map inddef text to 722
+//                 14-Jan-2003       aob      add vbat and vsub to supply text
+//                 13-Jul-2004       aob      poly1 pins added
+//                 21-Jul-2005       aob      lvt layers added
+//                 
+///////////////////////////////////////////////////////////////////////
+
+// List of layers that are defined for the c35 process:
+// These layers are original layers with reserved names that can't be
+// changed !
+// Use the layer number definition for rule file use in standalone mode
+//
+// Trench isolation layer
+   LAYER TRENCH 3
+//
+// NTUB ... ntub mask (nwell)
+   LAYER NTUB 5
+// PTUB ... ptub in ntub mask (pwell)
+   LAYER PTUB 7
+// DIFF ... field mask (diffusion)
+   LAYER DIFF 10
+// MIDOX 
+   LAYER MIDOX 14
+// POLY1 ... poly1 mask
+   LAYER POLY1 20
+// NPLUS ... n+ implant mask
+   LAYER NPLUS 23
+// PPLUS ... p+ implant mask
+   LAYER PPLUS 24
+// HRES ... high resistive mask
+   LAYER HRES 29
+// POLY2 ... poly2 mask
+   LAYER POLY2 30
+// CONT ... contact mask
+   LAYER CONT 34
+// MET1 ... metal1 mask
+   LAYER MET1 35
+// VIA ... via mask
+   LAYER VIA 36
+// MET2 ... metal2 mask
+   LAYER MET2 37
+// VIA2 ... via2 mask
+   LAYER VIA2 38
+// MET3 ... metal3 mask
+   LAYER MET3 39
+// PAD ... pad mask
+   LAYER PAD 40
+//===============================
+//
+   LAYER ESD  31
+   LAYER SALEX 32
+//
+// met4
+//-------
+   LAYER VIA3 41
+//#IFDEF fourmetal
+   LAYER MET4 42
+//#ENDIF
+//
+// generated layers
+//
+// FIMP ... field implant mask
+   LAYER FIMP 8
+// standard nldd implant
+   LAYER NLDD 21
+// 5 Volt nldd implant
+   LAYER NLDD50 53
+//
+   LAYER MAP 35 DATATYPE 1 201
+   LAYER M1HOLE 201 
+//
+   LAYER MAP 37 DATATYPE 1 202
+   LAYER M2HOLE 202 
+//
+   LAYER MAP 39 DATATYPE 1 203
+   LAYER M3HOLE 203 
+//
+#IFDEF fourmetal
+   LAYER MAP 42 DATATYPE 1 204
+   LAYER M4HOLE 204 
+#ENDIF
+//
+// bipolar layers
+//-------------------
+//
+// n+ buried layer
+   LAYER NBUR 1
+// p+ buried layer
+   LAYER PBUDEF  2
+// bipolar ntub
+   LAYER BNTUB 15
+// p+ base poly layer
+   LAYER BPOLY 28
+// emitter layer
+   LAYER EMITT 26
+// collector layer
+   LAYER COLL  11  
+// bipolar hbt open mask
+   LAYER HBT 25
+// capacitor layer
+   LAYER CAPLAY 27
+// emitter poly
+   LAYER EPOLY 33
+// metal cap definition
+   LAYER METCAP	55
+//
+// LVT layers
+//-------------
+//
+   LAYER MAP 62 DATATYPE 28  2801
+   LAYER LVTDEF  2801
+//
+// LVTA
+   LAYER MAP 46 DATATYPE 0  2802
+   LAYER LVTA  2802
+//
+// LVPTUB
+   LAYER MAP 47 DATATYPE 0  2803
+   LAYER LVPTUB  2803
+//
+// 
+// definition layers
+//--------------------
+//
+// cell box outline
+   LAYER MAP 62 DATATYPE 1  701
+   LAYER CELBOX  701 
+// standard family cell definition
+   LAYER MAP 62 DATATYPE 2  702
+   LAYER SFCDEF  702 
+// GND substrate definition layer
+   LAYER MAP 62 DATATYPE 3  703
+   LAYER SUBDEF  703
+// hottub definition layer
+   LAYER MAP 62 DATATYPE 4  704
+   LAYER HOTTUB  704
+// nofill with fill pattern
+   LAYER MAP 62 DATATYPE 5  705
+   LAYER NOFILL  705
+//
+//
+// zener diode
+   LAYER MAP 62 DATATYPE 10  710
+   LAYER ZENER  710
+// diode
+   LAYER MAP 62 DATATYPE 11  711
+   LAYER DIODE  711
+// ntub resistor definition
+   LAYER MAP 62 DATATYPE 12  712
+   LAYER TUBDEF  712
+// resistor definition
+   LAYER MAP 62 DATATYPE 13  713
+   LAYER RESDEF  713
+// resistor terminal
+   LAYER MAP 62 DATATYPE 14  714
+   LAYER RESTRM  714
+// sandwich cap definition
+   LAYER MAP 62 DATATYPE 20  720
+   LAYER CAPDEF  720
+// varactor definition layer
+   LAYER MAP 62 DATATYPE 21  721
+   LAYER VARDUM  721
+// Inductor definition layer
+   LAYER MAP 62 DATATYPE 22  722
+   LAYER INDDEF  722
+// hall definition layer
+   LAYER MAP 62 DATATYPE 24  724
+   LAYER HALLDEF  724
+// diffusion cut
+   LAYER MAP 62 DATATYPE 30  730
+   LAYER DIFCUT  730
+// poly1 cut
+   LAYER MAP 62 DATATYPE 31  731
+   LAYER PO1CUT  731
+// poly2 cut
+   LAYER MAP 62 DATATYPE 32  732
+   LAYER PO2CUT  732
+// base poly cut
+   LAYER MAP 62 DATATYPE 33  733
+   LAYER BPCUT  733
+// tub cut
+   LAYER MAP 62 DATATYPE 34  734
+   LAYER TUBCUT  734
+// RF definition layer
+   LAYER MAP 62 DATATYPE 26  726
+   LAYER RFDEF  726
+// probe pad definition
+   LAYER MAP 62 DATATYPE 27  727
+   LAYER PROBE  727
+//
+// text layer       
+//-------------
+//
+   LAYER MAP 61 TEXTTYPE 1  601
+   LAYER P1PIN  601
+   TEXT LAYER P1PIN
+   PORT LAYER TEXT P1PIN
+   ATTACH P1PIN routingpoly MASK
+//
+// GDT debug
+   // LAYER MAP 60 TEXTTYPE 0  602
+   LAYER MAP 61 TEXTTYPE 2  602
+   LAYER M1PIN  602
+   TEXT LAYER M1PIN
+   PORT LAYER TEXT M1PIN
+   ATTACH M1PIN routingmet1 MASK
+   ATTACH M1PIN MET1 DIRECT
+//
+   LAYER MAP 61 TEXTTYPE 3  603
+   LAYER M2PIN  603
+   TEXT LAYER M2PIN
+   PORT LAYER TEXT M2PIN
+   ATTACH M2PIN routingmet2 MASK
+   ATTACH M2PIN MET2 DIRECT     
+//
+   LAYER MAP 61 TEXTTYPE 4  604
+   LAYER M3PIN  604
+   TEXT LAYER M3PIN
+   PORT LAYER TEXT M3PIN
+   ATTACH M3PIN routingmet3 MASK
+   ATTACH M3PIN MET3 DIRECT
+//
+   LAYER MAP 61 TEXTTYPE 10  610
+   LAYER PADPIN  610
+   PORT LAYER TEXT PADPIN
+   TEXT LAYER PADPIN
+//
+#IFDEF fourmetal
+// 4 metal attach to met4
+   LAYER MAP 61 TEXTTYPE 5  605
+   LAYER M4PIN  605
+   TEXT LAYER M4PIN
+   PORT LAYER TEXT M4PIN
+   ATTACH M4PIN routingmet4 MASK
+   ATTACH PADPIN routingmet4 MASK
+   ATTACH M4PIN MET4 DIRECT     
+   ATTACH PADPIN MET4 DIRECT     
+#ELSE
+// 3 metal attach to met3
+   ATTACH PADPIN routingmet3 MASK
+   ATTACH PADPIN MET3 DIRECT      
+#ENDIF
+//
+// this is used for soft checks ERC
+// make sure only text on top cell is used to avoid any problems with text in cell
+//
+// VDD net (vdd,vcc,vbat)
+//
+   text_vdd_a = (EXPAND TEXT "?VDD?" M1PIN  BY 0.1 PRIMARY ONLY) OR
+                ((EXPAND TEXT "?VCC?" M1PIN  BY 0.1 PRIMARY ONLY) OR
+                (EXPAND TEXT "?VBAT?" M1PIN  BY 0.1 PRIMARY ONLY))
+   text_vdd_b = (EXPAND TEXT "?VDD?" M2PIN  BY 0.1 PRIMARY ONLY) OR
+                ((EXPAND TEXT "?VCC?" M2PIN  BY 0.1 PRIMARY ONLY) OR
+                (EXPAND TEXT "?VBAT?" M2PIN  BY 0.1 PRIMARY ONLY))
+   text_vdd_c = (EXPAND TEXT "?VDD?" M3PIN  BY 0.1 PRIMARY ONLY) OR
+                ((EXPAND TEXT "?VCC?" M3PIN  BY 0.1 PRIMARY ONLY) OR
+                (EXPAND TEXT "?VBAT?" M3PIN  BY 0.1 PRIMARY ONLY))
+   text_vdd = ( text_vdd_a OR text_vdd_b ) OR text_vdd_c
+//
+// VSS (vss,gnd,vee,vsub, no agnd)
+//
+   text_vss_a = (EXPAND TEXT "?VSS?" M1PIN  BY 0.1 PRIMARY ONLY) OR
+                ((EXPAND TEXT "?GND?" M1PIN  BY 0.1 PRIMARY ONLY) OR
+                ((EXPAND TEXT "?VEE?" M1PIN  BY 0.1 PRIMARY ONLY) OR
+                (EXPAND TEXT "?VSUB?" M1PIN  BY 0.1 PRIMARY ONLY)))
+   text_vss_b = (EXPAND TEXT "?VSS?" M2PIN  BY 0.1 PRIMARY ONLY) OR
+                ((EXPAND TEXT "?GND?" M2PIN  BY 0.1 PRIMARY ONLY) OR
+                ((EXPAND TEXT "?VEE?" M2PIN  BY 0.1 PRIMARY ONLY) OR
+                (EXPAND TEXT "?VSUB?" M2PIN  BY 0.1 PRIMARY ONLY)))
+   text_vss_c = (EXPAND TEXT "?VSS?" M3PIN  BY 0.1 PRIMARY ONLY) OR
+                ((EXPAND TEXT "?GND?" M3PIN  BY 0.1 PRIMARY ONLY) OR
+                ((EXPAND TEXT "?VEE?" M3PIN  BY 0.1 PRIMARY ONLY) OR
+                (EXPAND TEXT "?VSUB?" M3PIN  BY 0.1 PRIMARY ONLY)))
+// remove agnd
+   text_agnd = (EXPAND TEXT "AGND" M1PIN BY 0.1 PRIMARY ONLY) OR
+               ((EXPAND TEXT "AGND" M2PIN BY 0.1 PRIMARY ONLY) OR
+               (EXPAND TEXT "AGND" M3PIN BY 0.1 PRIMARY ONLY))
+   text_vss = (( text_vss_a OR text_vss_b ) OR text_vss_c) NOT text_agnd
+//
+   LAYER MAP 61 TEXTTYPE 21  621
+   LAYER P1NET  621
+//
+   LAYER MAP 61 TEXTTYPE 22  622
+   LAYER M1NET  622
+   TEXT LAYER M1NET
+   ATTACH M1NET routingmet1 MASK
+   ATTACH M1NET MET1 DIRECT     
+//
+   LAYER MAP 61 TEXTTYPE 23  623
+   LAYER M2NET  623
+   TEXT LAYER M2NET
+   ATTACH M2NET routingmet2 MASK
+   ATTACH M2NET MET2 DIRECT      
+//
+   LAYER MAP 61 TEXTTYPE 24  624
+   LAYER M3NET  624
+   TEXT LAYER M3NET
+   ATTACH M3NET routingmet3 MASK
+   ATTACH M3NET MET3 DIRECT      
+//
+#IFDEF fourmetal
+   LAYER MAP 61 TEXTTYPE 25  625
+   LAYER M4NET  625
+   TEXT LAYER M4NET
+   ATTACH M4NET routingmet4 MASK
+   ATTACH M4NET MET4 DIRECT     
+#ENDIF
+//
+   LAYER MAP 61 TEXTTYPE 30  630
+   LAYER PADNET  630
+   LAYER MAP 61 TEXTTYPE 31  631
+   LAYER COMMEN  631
+//
+   LAYER MAP 63 TEXTTYPE 1  801
+   LAYER CESIG1  801
+   LAYER MAP 63 TEXTTYPE 2  802
+   LAYER CESIG2  802
+   LAYER MAP 63 TEXTTYPE 3  803
+   LAYER CESIG3  803
+   LAYER MAP 63 TEXTTYPE 4  804
+   LAYER CESIG4  804
+//
+   LAYER MAP 63 TEXTTYPE 21  821
+   LAYER CEPWR1  821
+   LAYER MAP 63 TEXTTYPE 22  822
+   LAYER CEPWR2  822
+   LAYER MAP 63 TEXTTYPE 23  823
+   LAYER CEPWR3  823
+   LAYER MAP 63 TEXTTYPE 24  824
+   LAYER CEPWR4  824
+//
+   LAYER MAP 62 TEXTTYPE 13  913
+   LAYER RESDEF_TEXT  913
+//
+// for spiral recognition
+// Inductor definition layer
+//
+   LAYER MAP 62 TEXTTYPE 22  722
+   LAYER INDDEF_TEXT  722
+//
+// for hall definition
+   LAYER MAP 62 TEXTTYPE 24  724
+   LAYER HALLDEF_TEXT  724
+//
+// for rfpad recognition
+   LAYER MAP 62 TEXTTYPE 26  726
+   LAYER RFDEF_TEXT  726
+//
+// mask out floating met1 
+   LAYER MAP 61 DATATYPE 2  923
+   LAYER M1PINSHAPE 923
+//
+//
+   ATTACH MET1 routingmet1 MASK //ghe
+   ATTACH MET2 routingmet2 MASK //ghe
+   ATTACH MET3 routingmet3 MASK //ghe
+#IFDEF fourmetal
+   ATTACH MET4 routingmet4 MASK //ghe
+#ENDIF
+//
+// for text debugging use following DRC :
+//
+// check if any text is on mapped textype
+//
+// M1PIN_TEXT  { EXPAND TEXT "?" M1PIN BY 0.1  }
+// M2PIN_TEXT  { EXPAND TEXT "?" M2PIN BY 0.1  }
+// M3PIN_TEXT  { EXPAND TEXT "?" M3PIN BY 0.1  }
+// PADPIN_TEXT { EXPAND TEXT "?" PADPIN BY 0.1 }
+//
+// M3PIN_VDD { EXPAND TEXT "VDD" M3PIN BY 0.1 }
+// NWELL_VDD { NET routingnwell "VDD" }
+// M3PINP_VDD { routingmet3 WITH TEXT "VDD" M3PIN }
+//
+///////////////////////////////////////////////////////////////////////
+////////////////////////////////////
+// Owner: Austria Mikro Systeme   //
+// HIT-Kit: Digital               //
+////////////////////////////////////
+///////////////////////////////////////////////////////////////////////
+//
+//   CALIBRE  R U L E S  F I L E  F O R  P R O C E S S  C 3 5
+//
+//       _rules_title
+//
+//       Document: ENG-183                      Revision: 5.0
+//
+//       Created with ams_tech on by 
+//
+//=====================================================================
+//   Version          Datum          by       Description
+//---------------------------------------------------------------------
+///////////////////////////////////////////////////////////////////////
+//                 17-Jan-2002       aob      used for c35b4        
+//                 28-Jan-2002       aob      rpolyhcon is poly2con
+//                                            met4 connectivity added
+//                  7-Feb-2002       aob      rpolyh added
+//                 19-Feb-2002       aob      cvar added
+//                 26-Mar-2002       aob      slot checks added
+//                 10-Apr-2002       aob      spirals added
+//                                            routingmetal added, 
+//                                            connectivity changed
+//                 16-Apr-2002       aob      unused parts removed
+//                 25-Apr-2002       aob      rpolyh without resdef 
+//                                            vert15 removed
+//                                            nwd = AND
+//                 13-Mai-2002       aob      ndiode/pdiode not s/d diff
+//                 21-May-2002       aob      slot check modified for AMC2
+//                 24-May-2002       aob      rec017 added
+//                                            only slots < 4 U width checked
+//                 13-Jun-2002       aob      cvar extract changed
+//                 22-Jul-2002       aob      ndiffcon/pdiffcon used   
+//                 27-Sep-2002       aob      spirals met3/met4 added
+//                 30-Sep-2002       aob      do not allow layer under spiral 
+//                 17-Oct-2002       aob      pnpvert10 sizing reduced
+//                 13-Jan-2003       aob      aux layer DIFF nmos4/pmos4 changed
+//                  6-Mar-2003       aob      nwdiode shield added
+//                 11-Mar-2003       aob      trans_shield added
+//                 14-May-2003       aob      isolated layout nets LVS spirals
+//                                            terminals fixed
+//                 16-Jun-2003       aob      hall element added
+//                 17-Jun-2003       aob      z diode with 0.2 U impl ovlp only
+//                 15-Jul-2003       aob      element rules added, pnplat2 changed
+//                                            devswitch added
+//                 21-Aug-2003       aob      allow rpoly2 over rnwell
+//
+//                 12-May-2004  aob   RFDEF added,cpolyrf,nmosrf,pmosrf,rpoly2rf
+//                                    Attention : device layer is RFDEF
+//                                    enclosing device ( for XRC )
+//                                    property split up, m Factor for mos
+//                                    Important : cap/rpoly2 rules must be
+//                                    checked for rf also..
+//                                    Element rules added
+//                                    rfpad, probepad added
+//                   ATTENTION : rf pad is extracted, but DRC error give, not supported yet
+//                                    cvar must have RFDEF layer (DRC error)
+//
+//                 16-Jul-2004  aob   70 x 70 U is bond pad
+//                 22-Jul-2004  aob   non standard cvar is extracted as single
+//                                    device with w/l and DRC Warning
+//                 15-Jun-2005  aob   rpolyhrf added
+//                 20-Jul-2005  aob   rblocking for pex rf devices added 
+//                                    c35b3l3 lvt devcices added
+//                  9-Aug-2005  aob   nmoshl4, nmosmhl4 added
+//                 
+//
+///////////////////////////////////////////////////////////////////////
+//
+//   Structure of this technology file:
+//---------------------------------------------------------------------
+//
+//   1.) Header and version control
+//   2.) ICverify options
+//   3.) Boolean operations and derived layers
+//   4.) Interconnect section
+//     
+//       Including files for:
+//
+//   5.) Device recognition
+//   6.) Design rules
+//   7.) Parasitic extraction
+//   8.) Standalone options
+//
+///////////////////////////////////////////////////////////////////////
+
+
+///////////////////////////////////////////////////////////////////////
+//
+//   Derived Layers are defined to find the following devices
+//---------------------------------------------------------------------
+//
+//   EX 1 - rpoly2, rpoly2rf, rpolyh, rpolyhrf, rdiffn, rdiffp, rnwell
+//   EX 2 - pnpvert, pnplat2
+//   EX 3 - nmosh, nmos4, pmos4
+//   EX 4 - cpoly, cpolyrf, cvar
+//   EX 5 - nd, pd, nwd, zdiode
+//          spirals
+//          rf devices
+//          lvt devices ( 6 )
+//
+///////////////////////////////////////////////////////////////////////
+
+
+
+
+///////////////////////////////////////////////////////////////////////
+//                         ICVERIFY OPTIONS                          //
+///////////////////////////////////////////////////////////////////////
+
+
+   PRECISION 1000
+   RESOLUTION 50
+
+   UNIT RESISTANCE ohm
+   UNIT CAPACITANCE ff
+
+   DRC TOLERANCE FACTOR 0.005
+
+//=====================================================================
+
+///////////////////////////////////////////////////////////////////////
+//                       DEFINE BOOLEAN LAYERS                       //
+///////////////////////////////////////////////////////////////////////
+//
+// write device seed layer to DRC output for debugging
+//
+//#DEFINE DEVSWITCH
+#UNDEFINE DEVSWITCH
+
+#IFDEF fourmetal
+   LAYOUT TOP LAYER MET4 VIA3 MET3 VIA2 MET2 VIA MET1
+#ELSE
+   LAYOUT TOP LAYER MET3 VIA2 MET2 VIA MET1
+#ENDIF
+
+//=====================================================================
+// create layers to find substrate
+
+// for test purposes
+// POLYGON -10.0 -10.0 221.0 240.0 SUBDEF
+// cut nwell if subdef edge cuts ntub, but do
+// not cut substrate below ntub
+// create a small area of subdef
+
+   subdef_ring    = SUBDEF NOT (SIZE SUBDEF BY -0.05)
+   substrate_all  = EXTENT
+
+   ntub_subdefcut = NTUB NOT subdef_ring
+   substrate      = (substrate_all NOT subdef_ring) OR (subdef_ring AND NTUB)
+
+   psub           = substrate NOT NTUB
+
+//=====================================================================
+// remove cut layer areas
+
+   diff_cut         = DIFF NOT DIFCUT
+   poly1_cut        = POLY1 NOT PO1CUT
+   poly2_cut        = POLY2 NOT PO2CUT
+
+
+//=====================================================================
+// get contacts
+
+// poly1 and poly2 contacts
+
+   poly1_n_poly2    = poly1_cut NOT poly2_cut
+   poly1con_all     = CONT AND poly1_n_poly2
+   con_n_p1         = CONT NOT poly1con_all
+   poly2con_all     = CONT AND poly2_cut   
+
+// other contacts
+// rpolyh is poly2
+//
+   rpolyhcon        = poly2con_all AND HRES
+   diffcon_all      = CONT AND diff_cut
+//
+// for ERC
+//
+   via_cont         = VIA OR CONT
+   via2_via         = VIA2 OR VIA
+#IFDEF fourmetal
+   via3_via2        = VIA3 OR VIA2
+#ELSE
+   via3_via2        = COPY VIA2
+#ENDIF
+
+
+//=====================================================================
+// create layers to find ndiff and pdiff structures
+
+   ndiff_1          = diff_cut AND NPLUS
+   pdiff_1          = diff_cut AND PPLUS
+
+
+//=====================================================================
+// EX 1  EX 1  EX 1  EX 1  EX 1  EX 1  EX 1  EX 1  EX 1  EX 1  EX 1  
+//=====================================================================
+// create layers to find poly2, polyh, ndiff, pdiff and nwell resistors
+
+   poly1_poly2      = POLY1 AND POLY2
+
+// poly2 resistor
+
+   pres_1           = (poly2_cut AND RESDEF) NOT HRES
+   pres_2           = pres_1 NOT poly1_poly2
+   pres             = pres_2 NOT RESTRM
+
+// rf device
+   pres_rf_device   = RFDEF ENCLOSE pres
+//
+   pres_norf        = pres   NOT RFDEF
+
+// hrespoly resistor with resdef, no restrm
+
+   presh_1          = poly2_cut AND HRES
+// presh            = (presh_1 NOT PPLUS) AND RESDEF
+   presh            = presh_1 NOT PPLUS
+   preshterm        = presh_1 AND PPLUS
+//
+   presh_norf       = presh NOT RFDEF
+   presh_rf_device  = RFDEF ENCLOSE presh
+
+// pdiff resistor
+ 
+   pdres_1          = pdiff_1 AND RESDEF
+   pdres_2          = pdres_1 NOT INTERACT pres
+   pdres            = pdres_2 NOT RESTRM
+
+// ndiff resistor
+
+   ndres_1          = ndiff_1 AND RESDEF
+   ndres_2          = ndres_1 NOT INTERACT pres
+   ndres            = ndres_2 NOT RESTRM
+
+// nwell resistor
+
+   nwres_1          = NTUB AND TUBDEF
+   nwres_2          = nwres_1 NOT INTERACT pdres
+   nwres_3          = nwres_2 NOT INTERACT ndres
+   nwres            = nwres_3 NOT RESTRM
+
+#IFDEF DEVSWITCH
+  xrpoly2   { COPY pres_norf }
+  xrpoly2rf { COPY pres_rf_device }
+  xrpolyh { COPY presh_norf }
+  xrpolyhrf  { COPY presh_rf_device }
+  xrdiffp { COPY pdres }
+  xrdiffn { COPY ndres }
+  xrnwell { COPY nwres }
+#ENDIF
+
+//=====================================================================
+// create layers to find poly1, poly2 and nwell structures not belonging
+// to a resistor
+
+   routingpoly_all  = COPY poly1_cut
+   routingpoly2_1   = poly2_cut NOT pres
+   routingpoly2_all = routingpoly2_1 NOT presh
+//
+// cut ntub if subdef crosses ntub
+// remove isolated ntub stripes in spirals 
+// and cut nwell in hall element
+//
+   halldef_cut    = SIZE HALLDEF BY -12.0
+   routingnwell  = ((ntub_subdefcut NOT nwres) NOT INDDEF) NOT halldef_cut
+
+//=====================================================================
+// create layers to find ndiff and pdiff structures not belonging
+// to a resistor or any gate structure
+
+   ndiff_2          = ndiff_1 NOT routingpoly_all
+   ndiff            = ndiff_2 NOT ndres
+
+   pdiff_2          = pdiff_1 NOT routingpoly_all
+   pdiff            = pdiff_2 NOT pdres
+
+
+//=====================================================================
+// create layers to find gate structures of n- and p- low voltage 
+// devices and nmosh (NTUB version)
+
+   trans            = diff_cut AND routingpoly_all
+// for XCALI 
+   trans_shield     = SIZE trans BY 0.01
+   ngate            = trans NOT NTUB
+   pgate            = trans AND NTUB
+   gate             = ngate OR pgate
+   ndev             = ngate AND NPLUS
+   pdev             = pgate AND PPLUS
+
+
+//=====================================================================
+// EX 2  EX 2  EX 2  EX 2  EX 2  EX 2  EX 2  EX 2  EX 2  EX 2  EX 2  
+//=====================================================================
+// create layers to find pnpvert and pnplat2 bipolar transistors
+
+// pnpvert (vert10 - pnp vertical bipolar transistor - 10um * 10um)
+
+   pnpvert_1        = HOLES pdiff < 1000.0
+// filter too large holes
+   pnpvert_2        = NTUB INSIDE pnpvert_1
+   pnpvert_3        = ndiff AND pnpvert_2
+   pnpvert_4        = HOLES pnpvert_3
+   pnpvert_5        = pdiff INSIDE pnpvert_4
+   pnpvert10_e      = PERIMETER pnpvert_5 >39.9 < 40.1
+   pnpvert10        = SIZE pnpvert10_e BY 2.0
+
+// pnplat2 (pnp lateral bipolar transistors)
+// lat2 has emitter area 2*2
+ 
+   pnplat           = HOLES pdev < 10.0
+//
+// pnplat2_e        = PERIMETER pnplat >7.95 <8.05
+//
+// allow poly1 biasing
+   pnplat2_e        = PERIMETER pnplat >7.5 <8.05
+   pnplat2_c        = (pdiff TOUCH pnplat2_g) NOT pnplat2_e
+   pnplat2_g        = pdev TOUCH pnplat2_e
+
+#IFDEF DEVSWITCH
+   xpnplat    { COPY pnplat2_e }
+   xpnpvert10 { COPY pnpvert10 }
+#ENDIF
+//=====================================================================
+// create layers to find nwells belonging to illegal hv transistors
+// illegal is : ntub touches exactly trans
+//              ntub ovlp != 1.6
+
+   nwell_ill        = NTUB TOUCH trans 
+   nwell_hv_trans   = NTUB CUT trans
+   nwell_hvmos_good = INT nwell_hv_trans trans == 1.6 OPPOSITE PARA ONLY REGION
+   ill_hvmos_nwell  = nwell_ill OR (nwell_hv_trans NOT INTERACT nwell_hvmos_good)
+   nwell_n_hvmos    = NTUB NOT INTERACT nwell_hvmos_good
+
+//=====================================================================
+// EX 3  EX 3  EX 3  EX 3  EX 3  EX 3  EX 3  EX 3  EX 3  EX 3  EX 3  
+//=====================================================================
+// create layers to find mos transistors (pmos, nmos, nmosh)
+// midox and lvt devices
+
+   routp_n_trans    = routingpoly_all NOT trans
+
+// pmos transistors
+ 
+   pmos_1           = pdev NOT pnplat2_g
+   pmos_2           = pmos_1 TOUCH routp_n_trans
+   pmos_3           = pmos_2 TOUCH pdiff == 2
+//
+   pmos_4           = (pmos_3 NOT MIDOX) NOT LVTDEF
+   pmos_midox       = (pmos_3 AND MIDOX) NOT LVTDEF
+//
+//
+   pmos_lvt         = (pmos_3 NOT MIDOX) AND LVTDEF
+   pmos_mlvt        = (pmos_3 AND MIDOX) AND LVTDEF
+//
+   pmos             = pmos_4 NOT RFDEF
+   pmosrf_trans     = pmos_4 AND RFDEF
+   pmosrf_device_layer = RFDEF ENCLOSE pmosrf_trans
+//
+// nmosh transistors
+// check for touching or ovlp of ntub
+//
+   nmosh_1          = (trans TOUCH NTUB) OR (trans CUT NTUB)
+   nmosh            = nmosh_1 INTERACT ndev
+// 
+// avoid false extract   
+   nmoshall         = nmosh_1 AND (trans AND NPLUS)
+   nmosh_d          = ndiff AND (NTUB INTERACT nmoshall)
+   nmosh_d_fill     = EXT nmosh_d nmosh < 6.00 OPPOSITE PARA ONLY
+                      REGION
+   nmosh_d_term_1   = nmosh_d OR nmosh_d_fill
+   nmosh_d_term     = nmosh_d_term_1 TOUCH nmosh
+
+   // nmosmh { COPY nmosmh }
+   // nmosh { COPY nmosh_nomidox }
+//
+   nmosh_nomidox    = (nmosh NOT INTERACT MIDOX) NOT LVTDEF
+   nmosmh           = (nmosh INTERACT MIDOX) NOT LVTDEF
+//
+   nmosh_nomidox_lvt  = (nmosh NOT INTERACT MIDOX) AND LVTDEF
+   nmosmh_lvt         = (nmosh INTERACT MIDOX) AND LVTDEF
+//
+
+// nmos transistors with and without midox
+
+   nmos_1           = ndev NOT nmosh
+   nmos_2           = nmos_1 NOT INTERACT ill_hvmos_nwell
+   nmos_3           = nmos_2 TOUCH routp_n_trans
+   nmos_4           = nmos_3 TOUCH ndiff == 2
+//
+   nmos_5           = (nmos_4 NOT MIDOX) NOT LVTDEF
+   nmos_midox       = (nmos_4 AND MIDOX) NOT LVTDEF
+//
+   nmos_lvt         = (nmos_4 NOT MIDOX) AND LVTDEF
+   nmos_mlvt        = (nmos_4 AND MIDOX) AND LVTDEF
+//
+   nmos             = nmos_5 NOT RFDEF
+   nmosrf_trans     = nmos_5 AND RFDEF
+   nmosrf_device_layer = RFDEF ENCLOSE nmosrf_trans
+//
+#IFDEF DEVSWITCH
+   xnmosh { COPY nmosh_nomidox }
+   xnmosmh { COPY nmosmh }
+//
+   xnmoshl4 { COPY nmosh_nomidox_lvt }
+   xnmosmhl4 { COPY nmosmh_lvt }
+//
+   xnmos { COPY nmos }
+   xnmosm { COPY nmos_midox }
+   xpmos { COPY pmos }
+   xpmosm { COPY pmos_midox }
+//
+   xnmosrf { COPY nmosrf_device_layer }
+   xpmosrf { COPY pmosrf_device_layer }
+//
+   xnmosl4 { COPY nmos_lvt }
+   xnmosml4 { COPY nmos_mlvt   }
+   xpmosl4 { COPY pmos_lvt }
+   xpmosml4 { COPY pmos_mlvt }
+//
+#ENDIF
+
+//=====================================================================
+// EX 4  EX 4  EX 4  EX 4  EX 4  EX 4  EX 4  EX 4  EX 4  EX 4  EX 4  
+//=====================================================================
+// create layers to find capacitors (poly1-poly2 and cvar)
+
+// poly1-poly2 (cpoly) capacitor
+
+   cpoly_1          = routingpoly_all NOT HRES
+   cpoly            = cpoly_1 AND poly2_cut
+//
+   cpoly_rf_device = RFDEF ENCLOSE cpoly
+   cpoly_norf      = cpoly NOT RFDEF
+//
+#IFDEF DEVSWITCH
+  xcpolyrf { COPY cpoly_rf_device }
+  xcpoly   { COPY cpoly_norf }
+#ENDIF
+//
+// cvar device is nmos transistor in nwell arranged in 2 dimensional array
+// all diff and poly is connected by metal
+//
+// one device should be : w = 6.6 l = 0.65  col spacing 1.0 row spacing 1.6
+//
+// get device element
+//
+   cvar_ele_0 = (pgate AND NPLUS) NOT INTERACT nmosh 
+//
+// only small trans is ok, exact value is checked in element part
+//
+   cvar_ele   = INT cvar_ele_0 < 3 REGION
+//
+// this is unsupported device
+//
+   cvar_unsupp_device = cvar_ele_0 NOT cvar_ele
+//
+   CVAR_CAP_UNSUPPORTED_ELE { @ Device Warning : This ngate in nwell is extracted as single gate cap
+                              @ Device Warning : unsupported device, no standard size
+        COPY cvar_unsupp_device
+   }
+//
+// get diff polygon and close gaps
+   cvar_ndiff = ndiff_1 ENCLOSE cvar_ele
+   cvar_ndiff_gap = EXT cvar_ndiff < 1.8 OPPOSITE PARA ONLY REGION
+   cvar_ndiff_closed = cvar_ndiff OR cvar_ndiff_gap
+// get poly/ndiff intersections
+   cvar_ndiff_cross1 = INSIDE EDGE cvar_ndiff_closed (routingpoly_all INTERACT cvar_ele)
+   cvar_ndiff_cross = EXPAND EDGE cvar_ndiff_cross1  INSIDE BY 0.1
+// cvar_ndiff_cross { COPY cvar_ndiff_cross }
+
+   cvar_device_layer = COPY cvar_ndiff_closed
+//
+// cvar must have RFDEF for assura RCX
+// ok for CALIBRE LVS
+//
+   CVAR_OLD_VERSION_NO_RFDEF_ELE { @ Device Warning : old version of CVAR
+                                   @ new version of CVAR must have RFDEF
+                                   @ for correct parasitic extraction
+     cvar_device_layer NOT RFDEF
+   }
+//
+#IFDEF DEVSWITCH
+   xcvar { COPY cvar_device_layer }
+#ENDIF
+//=====================================================================
+// EX 5  EX 5  EX 5  EX 5  EX 5  EX 5  EX 5  EX 5  EX 5  EX 5  EX 5  
+//=====================================================================
+// create layers to find diodes
+// attention : all diodes are created by AND !!!
+
+// nd (ndiff over substrate, no sd of device)
+
+   ndiode_1       = (ndiff NOT NTUB) NOT INTERACT trans
+   ndiode         = ndiode_1 AND DIODE
+//   ndiode       = ndiode_2 ENCLOSE ndiode_1
+
+// pd (pdiff over nwell, no sd of device)
+
+   pdiode_1       = (pdiff AND NTUB) NOT INTERACT trans
+   pdiode         = pdiode_1 AND DIODE
+//   pdiode       = pdiode_2 ENCLOSE pdiode_1
+
+// nwd (nwell over substrate)
+
+   nwdiode        = NTUB AND DIODE
+//   nwdiode      = nwdiode_1 ENCLOSE NTUB
+   nwdiode_shield   = SIZE nwdiode BY 0.1 //ghe
+//
+///////////////////////////////////////////////////////////////////////
+
+// zdiode (ndiff interact pdiff not belonging to the same net)
+
+   zdiode_1       = pdiff COINCIDENT OUTSIDE EDGE ndiff
+   zdiode_2       = zdiode_1 EXPAND EDGE OUTSIDE BY 0.1
+   zdiode_3       = pdiff AND ndiff
+   zdiode_4       = zdiode_2 OR zdiode_3
+   zdiode_5       = pdiff INTERACT zdiode_4
+   zdiode_6       = ndiff INTERACT zdiode_4
+   zdiode_7       = zdiode_5 OR zdiode_6
+   zdiode_8       = zdiode_7 AND ZENER
+   zdiode_9       = zdiode_8 ENCLOSE zdiode_7
+   zdiode_all     = zdiode_4 AND zdiode_9
+
+// this are all possibe z diodes, but we allow only 0.2 U ovlp
+//
+   zdiode_02_1 = INT zdiode_all == 0.2 OPPOSITE PARA ONLY REGION
+   zdiode_02   = zdiode_all INTERACT zdiode_02_1
+   zdiode = COPY zdiode_02_1
+//
+   ILL_ZDIODE_UNDEFINED { @ Zener diode must have 0.2 implant ovlp
+            zdiode_all NOT zdiode_02 
+   }
+//
+#IFDEF DEVSWITCH
+   xndiode  { COPY ndiode }
+   xpdiode  { COPY pdiode }
+   xnwdiode { COPY nwdiode }
+   xzdiode  { COPY zdiode }
+#ENDIF
+//
+//=====================================================================
+// create layers to separate n- and p-diffusion contacts
+
+   ndiffcon       = ndiff_1 AND CONT
+   pdiffcon       = pdiff_1 AND CONT
+
+//=====================================================================
+// create layers to seperate zdiode nplus and pplus areas from other
+// nplus and pplus areas
+
+   nplus_n_zener    = NPLUS NOT ZENER
+   pplus_n_zener    = PPLUS NOT ZENER
+
+
+//=====================================================================
+// create layers to find diffusion outside zdiodes and illegal zdiodes
+
+   diff_n_zener     = DIFF NOT ZENER
+   ndiff_n_zener    = ndiff NOT ZENER
+   pdiff_n_zener    = pdiff NOT ZENER
+
+
+//=====================================================================
+// create layers to find gate structures not belonging to a device
+
+   ncap             = ngate NOT ndev
+   pcap             = pgate NOT pdev
+
+//=====================================================================
+// create layers to separate test and probe pads (smaller 70*70 U)
+// from bond pads - needed for drc
+// 70 x 70 is still bondpad
+//
+   te_pro_pad       = PAD AREA < 4761
+   bondpad          = PAD NOT te_pro_pad
+   m1_not_bondpad   = met1 NOT ENCLOSE bondpad
+   m2_not_bondpad   = met2 NOT ENCLOSE bondpad
+   m3_not_bondpad   = met3 NOT ENCLOSE bondpad
+#IFDEF fourmeta
+   m4_not_bondpad   = met4 NOT ENCLOSE bondpad
+#ENDIF
+   p1_not_bondpad   = POLY1 NOT ENCLOSE bondpad
+
+//=====================================================================
+
+
+//=====================================================================
+// create layers to separate resistors with 45 and 90 degree corners
+
+// poly2 resistors
+
+   pres45_1         = ANGLE pres == 45
+   pres45           = pres45_1 EXPAND EDGE INSIDE BY 0.1
+
+// hrespoly resistors
+
+   presh45_1        = ANGLE presh == 45
+   presh45          = presh45_1 EXPAND EDGE INSIDE BY 0.1
+
+// ndiff resistors
+
+   ndres45_1        = ANGLE ndres == 45
+   ndres45          = ndres45_1 EXPAND EDGE INSIDE BY 0.1
+
+// pdiff resistors
+
+   pdres45_1        = ANGLE pdres == 45
+   pdres45          = pdres45_1 EXPAND EDGE INSIDE BY 0.1
+
+// nwell resistors
+
+   nwres45_1         = ANGLE nwres == 45
+   nwres45           = nwres45_1 EXPAND EDGE INSIDE BY 0.1
+
+
+//=====================================================================
+// create layers for single layer space notch checks
+
+   poly2check      = POLY2 NOT COINCIDENT EDGE pres45
+   poly2hcheck     = presh_1 NOT COINCIDENT EDGE presh45
+
+   diffcheck_1      = DIFF INTERACT RESDEF
+   diffcheck_2      = diffcheck_1 NOT RESDEF
+   diffcheck_3      = DIFF NOT diffcheck_2
+   diffcheck_4      = diffcheck_3 NOT COINCIDENT EDGE ndres45
+   diffcheck        = diffcheck_4 NOT COINCIDENT EDGE pdres45
+
+   ntubcheck        = NTUB NOT COINCIDENT EDGE nwres45
+
+//=====================================================================
+// create layers for ndiff - nwell checks
+
+   ndiff_n_nmosh    = ndiff_1 NOT INTERACT nmosh
+
+//=====================================================================
+// create layers for slot rule checks
+
+   met1_withslots  = MET1 NOT M1HOLE
+   met2_withslots  = MET2 NOT M2HOLE
+   met3_withslots  = MET3 NOT M3HOLE
+#IFDEF fourmetal
+   met4_withslots  = MET4 NOT M4HOLE
+#ENDIF
+ 
+
+//=====================================================================
+// create other layers needed for drc and connectivity
+
+// for erc
+
+   p1_or_p2         = POLY1 OR POLY2
+   diff_or_poly     = DIFF OR p1_or_p2
+   implant          = NPLUS OR PPLUS
+
+// substrate taps
+
+   welltap          = ndiff AND routingnwell
+   subtap           = pdiff NOT routingnwell
+
+//=====================================================================
+//                            RFPAD
+//=====================================================================
+//
+// ATTENTION : NOT SUPPORTED FOR C35 YET
+//
+// rf pad has 8 verices and  2 diodes left and right, all is covered by rfdef layer
+// left is vdd connection, right is vss connection
+// text on layer RFDEF
+// following model names are availible, but only 2 pad are
+// extracted : vddpad and vsspad
+//
+// RF13_GND_P         RFPADS_4M / padvss als device extrahieren
+// RF13_VDD_P         RFPADS_4M / padvdd
+// RF26_GND_P
+// RF26_VDD_P
+// RF40_GND_P
+// RF40_VDD_P
+// RF52_GND_P
+// RF52_VDD_P
+// RF13_GND_P_3B      RFPADS_3B_4M / padvss als device extrahieren
+// RF13_VDD_P_3B      RFPADS_3B_4M / padvdd
+// RF26_GND_P_3B
+// RF26_VDD_P_3B
+// RF40_GND_P_3B
+// RF40_VDD_P_3B
+// RF52_GND_P_3B
+// RF52_VDD_P_3B
+// RF13_GND_C_3B      RFPADSC_3B_4M / padvss als device extrahieren
+// RF13_VDD_C_3B      RFPADSC_3B_4M / padvdd
+// RF26_GND_C_3B
+// RF26_VDD_C_3B
+// RF40_GND_C_3B
+// RF40_VDD_C_3B
+// RF52_GND_C_3B
+// RF52_VDD_C_3B
+//
+   bondpad8 = NOT DONUT( VERTEX bondpad == 8 )
+//
+   rfpad_good = bondpad8 INSIDE RFDEF
+//
+// ATTENTION : NOT SUPPORTED FOR C35 YET
+//
+   ILL_RFPAD_UNSUPPORTED { @ Device Error : RF PAD is not supported yet for this process 
+        COPY rfpad_good
+   }
+//
+// old or test rf pad
+//
+   rfpad_bad = bondpad8 NOT INSIDE RFDEF
+//
+// use RFDEF layer to get device
+   rfpad_device = RFDEF ENCLOSE rfpad_good
+//
+   rfpad_gnd = rfpad_device INTERACT ( EXPAND TEXT "?_GND_?" RFDEF_TEXT BY 2)
+   rfpad_vdd = rfpad_device INTERACT ( EXPAND TEXT "?_VDD_?" RFDEF_TEXT BY 2)
+//
+//  rfpad_gnd { COPY rfpad_gnd }
+//  rfpad_vdd { COPY rfpad_vdd }
+//
+   rfpad_ndiff = ndiff INSIDE rfpad_device
+   rfpad_pdiff = pdiff INSIDE rfpad_device
+//
+// ndiff and pdiff is connected to pad window
+//
+   rfpad_vdd_term_1 = NET AREA RATIO rfpad_pdiff PAD > 0
+   rfpad_vss_term_1 = NET AREA RATIO rfpad_ndiff PAD > 0
+//
+//  rfpad_vdd_term { COPY rfpad_vdd_term }
+//  rfpad_vss_term { COPY rfpad_vss_term }
+//
+// get ndiff/pdiff connected to node outside rfdef
+// vdd term is connected with ndiff, vss term with pdiff
+// this should have node info
+//
+// ndiff/pdiff spacing
+   rfpad_vdd_term_spac = EXT rfpad_vdd_term_1 ndiff < 1.0 PARALLEL OPPOSITE REGION
+   rfpad_vdd_term = ndiff INTERACT (rfpad_vdd_term_spac SIZE BY 0.1)
+//
+   rfpad_vss_term_spac = EXT rfpad_vss_term_1 pdiff < 1.0 PARALLEL OPPOSITE REGION
+   rfpad_vss_term = pdiff INTERACT (rfpad_vss_term_spac SIZE BY 0.1)
+//
+   //rfpad_vdd_term_spac { COPY rfpad_vdd_term_spac }
+   //rfpad_vss_term_spac { COPY rfpad_vss_term_spac }
+//
+#IFDEF DEVSWITCH
+   xrfpad_vdd { COPY rfpad_vdd }
+   xrfpad_vss { COPY rfpad_gnd }
+#ENDIF
+
+//=====================================================================
+//                             SPIRALS 
+//=====================================================================
+//
+// Definition : consist of met2/met3/met4 parts, connected by via2/via3
+//              INDDEF layer encloses whole spiral
+//              model name is text on INDDEF layer
+//              RESTRM layer defines connection, must have text P1/P2 !!!
+//              if no name is found, but spiral definition is ok, then
+//              model name is unknown
+//              there are some checks, if spiral is shorted or bad (open)
+//              by external metal
+// text convention : text is on m3pin for 3 met spirals, on met4 on 4 met spirals
+//                   text is placed in restrm rectangle
+//
+// ATTENTION : 3 met spirals are not allowed in 4 met process
+//             met3/met2 is used in c35b3
+//             met4/met3 is used in c35b4
+//
+//  check text on restrms
+//
+#IFDEF fourmetal
+// for text on met4
+   spiral_term11 = RESTRM INTERACT (EXPAND TEXT "P1" M4PIN BY 2)
+   spiral_term22 = RESTRM INTERACT (EXPAND TEXT "P2" M4PIN BY 2)
+#ELSE
+// text p1/p2 in m3pin 
+   spiral_term11 = RESTRM INTERACT (EXPAND TEXT "P1" M3PIN BY 2)
+   spiral_term22 = RESTRM INTERACT (EXPAND TEXT "P2" M3PIN BY 2)
+#ENDIF
+//
+// get spiral terms
+//
+// metal inside spiral may be met2/3/4
+#IFDEF fourmetal
+   spiral_met_all = ((MET2 AND INDDEF) OR (MET3 AND INDDEF)) OR (MET4 AND INDDEF)
+#ELSE
+   spiral_met_all = (MET2 AND INDDEF) OR (MET3 AND INDDEF)
+#ENDIF
+//
+// metal for terminal only met2/3
+   spiral_term = ((spiral_term11 OR spiral_term22) AND INDDEF) INTERACT spiral_met_all  
+// spiral_inddef
+   spiral_inddef = INDDEF INTERACT spiral_term == 2
+   spiral_body = spiral_inddef AND spiral_met_all
+// spiral_body { COPY spiral_body }
+//
+   spiral_met3 = spiral_body AND MET3
+   spiral_met2 = spiral_body AND MET2
+   spiral_via2 = spiral_body AND VIA2
+   CONNECT spiral_met3 spiral_met2 BY spiral_via2
+#IFDEF fourmetal
+   spiral_met4 = spiral_body AND MET4
+   spiral_via3 = spiral_body AND VIA3
+   CONNECT spiral_met4 spiral_met3 BY spiral_via3
+#ENDIF
+//
+// check connectivity from term1 to term2
+// terminal connected to met3 for c35b3 and met4 for c35b4
+//
+//   BAD_SPIRAL_OPEN_M2 {@ Warning : spiral met2 terminals not connected
+//                    spiral_term11s = STAMP spiral_term11 BY spiral_met2
+//                    spiral_term22s = STAMP spiral_term22 BY spiral_met2
+//                    NET AREA RATIO spiral_term11s spiral_term22s == 0
+//                   }
+#IFDEF fourmetal
+   BAD_SPIRAL_OPEN_M4 {@ Warning : spiral met4 terminals not connected
+                    spiral_term11s = STAMP spiral_term11 BY spiral_met4
+                    spiral_term22s = STAMP spiral_term22 BY spiral_met4
+                    NET AREA RATIO spiral_term11s spiral_term22s == 0
+                   }
+#ELSE
+   BAD_SPIRAL_OPEN_M3 {@ Warning : spiral met3 terminals not connected
+                    spiral_term11s = STAMP spiral_term11 BY spiral_met3
+                    spiral_term22s = STAMP spiral_term22 BY spiral_met3
+                    NET AREA RATIO spiral_term11s spiral_term22s == 0
+                   }
+#ENDIF
+//
+// check if any metal creates internal shorts
+// which are not found by DRC
+//
+   BAD_SPIRAL_MET3_INTSHORT {@ ERC Warning : internal spiral met3 short
+              HOLES spiral_met3
+              }
+   BAD_SPIRAL_MET2_INTSHORT {@ ERC Warning : internal spiral met2 short
+              HOLES spiral_met2
+              }
+#IFDEF fourmetal
+   BAD_SPIRAL_MET4_INTSHORT {@ ERC Warning : internal spiral met4 short
+              HOLES spiral_met4
+              }
+#ENDIF
+//
+// any met2/3/ routing metal crosses definition layer ( not on terminal)
+//
+   BAD_SPIRAL_MET2SHORT {@ ERC Warning : spiral may be shorted to external met2
+                   drcerr = EXT spiral_met2 routingmet2 < 0.1 REGION ABUT == 0
+                   drcerr NOT INTERACT spiral_term
+                   }
+   BAD_SPIRAL_MET3SHORT {@ ERC Warning : spiral may be shorted to external met3
+                   drcerr = EXT spiral_met3 routingmet3 < 0.1 REGION ABUT == 0
+                   drcerr NOT INTERACT spiral_term
+                   }
+#IFDEF fourmetal
+   BAD_SPIRAL_MET4SHORT {@ ERC Warning : spiral may be shorted to external met4
+                   drcerr = EXT spiral_met4 routingmet4 < 0.1 REGION ABUT == 0
+                   drcerr NOT INTERACT spiral_term
+                   }
+#ENDIF
+//
+// check for illegal layer under spiral
+// only nwell allowed
+//  
+   bad_spirlay_1 = INDDEF AND POLY1 
+   bad_spirlay_2 = INDDEF AND POLY2 
+   bad_spirlay_3 = INDDEF AND DIFF  
+   bad_spirlay_4 = INDDEF AND implant
+   bad_spirlay_5 = INDDEF AND MET1
+   bad_spirlay_6 = INDDEF AND via_cont
+   bad_spirlay_all = bad_spirlay_1 OR (bad_spirlay_2 OR (bad_spirlay_3 OR (bad_spirlay_4 OR
+                     (bad_spirlay_5 OR bad_spirlay_6))))
+#IFDEF fourmetal
+   BAD_SPIRAL_ILLEGAL_LAYER {@ ERC Warning : illegal layer below spiral
+                             COPY bad_spirlay_all
+                             INDDEF AND MET2
+                            }
+#ELSE
+   BAD_SPIRAL_ILLEGAL_LAYER {@ ERC Warning : illegal layer below spiral
+                             COPY bad_spirlay_all
+                            }
+#ENDIF
+//
+// split different types
+//
+#IFDEF fourmetal
+//
+// list of 29 metal4 spirals 
+//
+   spiral_body_SP014S300D = spiral_body AND ( spiral_inddef INTERACT (EXPAND TEXT "SP014S300D" INDDEF_TEXT BY 2))
+   spiral_body_SP018S300D = spiral_body AND ( spiral_inddef INTERACT (EXPAND TEXT "SP018S300D" INDDEF_TEXT BY 2))
+   spiral_body_SP020S180D = spiral_body AND ( spiral_inddef INTERACT (EXPAND TEXT "SP020S180D" INDDEF_TEXT BY 2))
+   spiral_body_SP023S200D = spiral_body AND ( spiral_inddef INTERACT (EXPAND TEXT "SP023S200D" INDDEF_TEXT BY 2))
+   spiral_body_SP025C200D = spiral_body AND ( spiral_inddef INTERACT (EXPAND TEXT "SP025C200D" INDDEF_TEXT BY 2))
+   spiral_body_SP026S200D = spiral_body AND ( spiral_inddef INTERACT (EXPAND TEXT "SP026S200D" INDDEF_TEXT BY 2))
+   spiral_body_SP028S300D = spiral_body AND ( spiral_inddef INTERACT (EXPAND TEXT "SP028S300D" INDDEF_TEXT BY 2))
+   spiral_body_SP028C200D = spiral_body AND ( spiral_inddef INTERACT (EXPAND TEXT "SP028C200D" INDDEF_TEXT BY 2))
+   spiral_body_SP030C200D = spiral_body AND ( spiral_inddef INTERACT (EXPAND TEXT "SP030C200D" INDDEF_TEXT BY 2))
+   spiral_body_SP037S180D = spiral_body AND ( spiral_inddef INTERACT (EXPAND TEXT "SP037S180D" INDDEF_TEXT BY 2))
+   spiral_body_SP038S300D = spiral_body AND ( spiral_inddef INTERACT (EXPAND TEXT "SP038S300D" INDDEF_TEXT BY 2))
+   spiral_body_SP040C200D = spiral_body AND ( spiral_inddef INTERACT (EXPAND TEXT "SP040C200D" INDDEF_TEXT BY 2))
+   spiral_body_SP040C300D = spiral_body AND ( spiral_inddef INTERACT (EXPAND TEXT "SP040C300D" INDDEF_TEXT BY 2))
+   spiral_body_SP045C200D = spiral_body AND ( spiral_inddef INTERACT (EXPAND TEXT "SP045C200D" INDDEF_TEXT BY 2))
+   spiral_body_SP047S180D = spiral_body AND ( spiral_inddef INTERACT (EXPAND TEXT "SP047S180D" INDDEF_TEXT BY 2))
+   spiral_body_SP050S155D = spiral_body AND ( spiral_inddef INTERACT (EXPAND TEXT "SP050S155D" INDDEF_TEXT BY 2))
+   spiral_body_SP051C300D = spiral_body AND ( spiral_inddef INTERACT (EXPAND TEXT "SP051C300D" INDDEF_TEXT BY 2))
+   spiral_body_SP068C300D = spiral_body AND ( spiral_inddef INTERACT (EXPAND TEXT "SP068C300D" INDDEF_TEXT BY 2))
+   spiral_body_SP090C200D = spiral_body AND ( spiral_inddef INTERACT (EXPAND TEXT "SP090C200D" INDDEF_TEXT BY 2))
+   spiral_body_SP090S155D = spiral_body AND ( spiral_inddef INTERACT (EXPAND TEXT "SP090S155D" INDDEF_TEXT BY 2))
+   spiral_body_SP112C300D = spiral_body AND ( spiral_inddef INTERACT (EXPAND TEXT "SP112C300D" INDDEF_TEXT BY 2))
+   spiral_body_SP140C200D = spiral_body AND ( spiral_inddef INTERACT (EXPAND TEXT "SP140C200D" INDDEF_TEXT BY 2))
+   spiral_body_SP200C200D = spiral_body AND ( spiral_inddef INTERACT (EXPAND TEXT "SP200C200D" INDDEF_TEXT BY 2))
+//
+   spiral_body_SY014C165D = spiral_body AND ( spiral_inddef INTERACT (EXPAND TEXT "SY014C165D" INDDEF_TEXT BY 2))
+   spiral_body_SY015C200D = spiral_body AND ( spiral_inddef INTERACT (EXPAND TEXT "SY015C200D" INDDEF_TEXT BY 2))
+   spiral_body_SY016C180D = spiral_body AND ( spiral_inddef INTERACT (EXPAND TEXT "SY016C180D" INDDEF_TEXT BY 2))
+   spiral_body_SY017C165D = spiral_body AND ( spiral_inddef INTERACT (EXPAND TEXT "SY017C165D" INDDEF_TEXT BY 2))
+   spiral_body_SY019C180D = spiral_body AND ( spiral_inddef INTERACT (EXPAND TEXT "SY019C180D" INDDEF_TEXT BY 2))
+   spiral_body_SY028C160D = spiral_body AND ( spiral_inddef INTERACT (EXPAND TEXT "SY028C160D" INDDEF_TEXT BY 2))
+//
+// get spiral without text
+//
+   spnamed_1 =
+    spiral_body_SY014C165D     
+   OR( spiral_body_SP014S300D    
+   OR( spiral_body_SY015C200D    
+   OR spiral_body_SY016C180D ))
+   spnamed_2 =
+    spiral_body_SY017C165D    
+   OR( spiral_body_SP018S300D    
+   OR( spiral_body_SY019C180D    
+   OR( spiral_body_SP020S180D    
+   OR spiral_body_SP023S200D )))
+   spnamed_3 =
+    spiral_body_SP025C200D    
+   OR( spiral_body_SP026S200D    
+   OR( spiral_body_SY028C160D    
+   OR( spiral_body_SP028C200D    
+   OR spiral_body_SP028S300D )))
+   spnamed_4 =
+    spiral_body_SP030C200D   
+   OR( spiral_body_SP037S180D    
+   OR( spiral_body_SP038S300D    
+   OR( spiral_body_SP040C200D    
+   OR spiral_body_SP040C300D )))
+   spnamed_5 =
+    spiral_body_SP045C200D    
+   OR( spiral_body_SP047S180D    
+   OR( spiral_body_SP050S155D    
+   OR( spiral_body_SP051C300D    
+   OR spiral_body_SP068C300D )))
+   spnamed_6 =
+    spiral_body_SP090C200D    
+   OR( spiral_body_SP090S155D    
+   OR( spiral_body_SP112C300D    
+   OR( spiral_body_SP140C200D    
+   OR spiral_body_SP200C200D )))
+// 
+   spiral_body_named = spnamed_1 OR (spnamed_2 OR (spnamed_3 OR (spnamed_4 OR (spnamed_5 OR spnamed_6))))
+//
+   spiral_body_unknown = spiral_body NOT spiral_body_named
+   INFO_UNKNOWN_SPIRAL_NAME {@ ERC Warning : Name of Spiral not identified
+                             INDDEF INTERACT spiral_body_unknown
+                            }
+
+#ELSE
+//
+// list of 29 metal3 spirals 
+//
+   spiral_body_SP014S300C = spiral_body AND ( spiral_inddef INTERACT (EXPAND TEXT "SP014S300C" INDDEF_TEXT BY 2))
+   spiral_body_SP018S300C = spiral_body AND ( spiral_inddef INTERACT (EXPAND TEXT "SP018S300C" INDDEF_TEXT BY 2))
+   spiral_body_SP020S180C = spiral_body AND ( spiral_inddef INTERACT (EXPAND TEXT "SP020S180C" INDDEF_TEXT BY 2))
+   spiral_body_SP023S200C = spiral_body AND ( spiral_inddef INTERACT (EXPAND TEXT "SP023S200C" INDDEF_TEXT BY 2))
+   spiral_body_SP025C200C = spiral_body AND ( spiral_inddef INTERACT (EXPAND TEXT "SP025C200C" INDDEF_TEXT BY 2))
+   spiral_body_SP026S200C = spiral_body AND ( spiral_inddef INTERACT (EXPAND TEXT "SP026S200C" INDDEF_TEXT BY 2))
+   spiral_body_SP028S300C = spiral_body AND ( spiral_inddef INTERACT (EXPAND TEXT "SP028S300C" INDDEF_TEXT BY 2))
+   spiral_body_SP028C200C = spiral_body AND ( spiral_inddef INTERACT (EXPAND TEXT "SP028C200C" INDDEF_TEXT BY 2))
+   spiral_body_SP030C200C = spiral_body AND ( spiral_inddef INTERACT (EXPAND TEXT "SP030C200C" INDDEF_TEXT BY 2))
+   spiral_body_SP037S180C = spiral_body AND ( spiral_inddef INTERACT (EXPAND TEXT "SP037S180C" INDDEF_TEXT BY 2))
+   spiral_body_SP038S300C = spiral_body AND ( spiral_inddef INTERACT (EXPAND TEXT "SP038S300C" INDDEF_TEXT BY 2))
+   spiral_body_SP040C200C = spiral_body AND ( spiral_inddef INTERACT (EXPAND TEXT "SP040C200C" INDDEF_TEXT BY 2))
+   spiral_body_SP040C300C = spiral_body AND ( spiral_inddef INTERACT (EXPAND TEXT "SP040C300C" INDDEF_TEXT BY 2))
+   spiral_body_SP045C200C = spiral_body AND ( spiral_inddef INTERACT (EXPAND TEXT "SP045C200C" INDDEF_TEXT BY 2))
+   spiral_body_SP047S180C = spiral_body AND ( spiral_inddef INTERACT (EXPAND TEXT "SP047S180C" INDDEF_TEXT BY 2))
+   spiral_body_SP050S155C = spiral_body AND ( spiral_inddef INTERACT (EXPAND TEXT "SP050S155C" INDDEF_TEXT BY 2))
+   spiral_body_SP051C300C = spiral_body AND ( spiral_inddef INTERACT (EXPAND TEXT "SP051C300C" INDDEF_TEXT BY 2))
+   spiral_body_SP068C300C = spiral_body AND ( spiral_inddef INTERACT (EXPAND TEXT "SP068C300C" INDDEF_TEXT BY 2))
+   spiral_body_SP090C200C = spiral_body AND ( spiral_inddef INTERACT (EXPAND TEXT "SP090C200C" INDDEF_TEXT BY 2))
+   spiral_body_SP090S155C = spiral_body AND ( spiral_inddef INTERACT (EXPAND TEXT "SP090S155C" INDDEF_TEXT BY 2))
+   spiral_body_SP112C300C = spiral_body AND ( spiral_inddef INTERACT (EXPAND TEXT "SP112C300C" INDDEF_TEXT BY 2))
+   spiral_body_SP140C200C = spiral_body AND ( spiral_inddef INTERACT (EXPAND TEXT "SP140C200C" INDDEF_TEXT BY 2))
+   spiral_body_SP200C200C = spiral_body AND ( spiral_inddef INTERACT (EXPAND TEXT "SP200C200C" INDDEF_TEXT BY 2))
+//
+   spiral_body_SY014C165C = spiral_body AND ( spiral_inddef INTERACT (EXPAND TEXT "SY014C165C" INDDEF_TEXT BY 2))
+   spiral_body_SY015C200C = spiral_body AND ( spiral_inddef INTERACT (EXPAND TEXT "SY015C200C" INDDEF_TEXT BY 2))
+   spiral_body_SY016C180C = spiral_body AND ( spiral_inddef INTERACT (EXPAND TEXT "SY016C180C" INDDEF_TEXT BY 2))
+   spiral_body_SY017C165C = spiral_body AND ( spiral_inddef INTERACT (EXPAND TEXT "SY017C165C" INDDEF_TEXT BY 2))
+   spiral_body_SY019C180C = spiral_body AND ( spiral_inddef INTERACT (EXPAND TEXT "SY019C180C" INDDEF_TEXT BY 2))
+   spiral_body_SY028C160C = spiral_body AND ( spiral_inddef INTERACT (EXPAND TEXT "SY028C160C" INDDEF_TEXT BY 2))
+//
+// get spiral without text
+//
+   spnamed_1 =
+    spiral_body_SY014C165C     
+   OR( spiral_body_SP014S300C    
+   OR( spiral_body_SY015C200C    
+   OR spiral_body_SY016C180C ))
+   spnamed_2 =
+    spiral_body_SY017C165C    
+   OR( spiral_body_SP018S300C    
+   OR( spiral_body_SY019C180C    
+   OR( spiral_body_SP020S180C    
+   OR spiral_body_SP023S200C )))
+   spnamed_3 =
+    spiral_body_SP025C200C    
+   OR( spiral_body_SP026S200C    
+   OR( spiral_body_SY028C160C    
+   OR( spiral_body_SP028C200C    
+   OR spiral_body_SP028S300C )))
+   spnamed_4 =
+    spiral_body_SP030C200C   
+   OR( spiral_body_SP037S180C    
+   OR( spiral_body_SP038S300C    
+   OR( spiral_body_SP040C200C    
+   OR spiral_body_SP040C300C )))
+   spnamed_5 =
+    spiral_body_SP045C200C    
+   OR( spiral_body_SP047S180C    
+   OR( spiral_body_SP050S155C    
+   OR( spiral_body_SP051C300C    
+   OR spiral_body_SP068C300C )))
+   spnamed_6 =
+    spiral_body_SP090C200C    
+   OR( spiral_body_SP090S155C    
+   OR( spiral_body_SP112C300C    
+   OR( spiral_body_SP140C200C    
+   OR spiral_body_SP200C200C )))
+// 
+   spiral_body_named = spnamed_1 OR (spnamed_2 OR (spnamed_3 OR (spnamed_4 OR (spnamed_5 OR spnamed_6))))
+//
+   spiral_body_unknown = spiral_body NOT spiral_body_named
+   INFO_UNKNOWN_SPIRAL_NAME {@ ERC Warning : Name of Spiral not identified
+                             INDDEF INTERACT spiral_body_unknown
+                            }
+//
+#ENDIF
+//
+// find any inddef not extracting a correct spiral
+// also possible if bad or missing terminal text, wrong process  
+//
+   BAD_SPIRAL_LAYOUT {@ ERC Warning : INDDEF does not define a correct spiral
+                      @               check for name, pin text, process
+                        INDDEF NOT INTERACT spiral_body_named
+                     }
+//
+//
+#IFDEF DEVSWITCH
+//
+#IFDEF fourmetal
+// met4
+//
+   xsp014S300D  { INDDEF INTERACT spiral_body_SP014S300D }   
+   xsp018S300D  { INDDEF INTERACT spiral_body_SP018S300D }   
+   xsp020S180D  { INDDEF INTERACT spiral_body_SP020S180D }   
+   xsp023S200D  { INDDEF INTERACT spiral_body_SP023S200D }
+   xsp025C200D  { INDDEF INTERACT spiral_body_SP025C200D }   
+   xsp026S200D  { INDDEF INTERACT spiral_body_SP026S200D }   
+   xsp028C200D  { INDDEF INTERACT spiral_body_SP028C200D }   
+   xsp028S300D  { INDDEF INTERACT spiral_body_SP028S300D }
+   xsp030C200D  { INDDEF INTERACT spiral_body_SP030C200D }   
+   xsp037S180D  { INDDEF INTERACT spiral_body_SP037S180D }   
+   xsp038S300D  { INDDEF INTERACT spiral_body_SP038S300D }   
+   xsp040C200D  { INDDEF INTERACT spiral_body_SP040C200D }   
+   xsp040C300D  { INDDEF INTERACT spiral_body_SP040C300D }
+   xsp045C200D  { INDDEF INTERACT spiral_body_SP045C200D }   
+   xsp047S180D  { INDDEF INTERACT spiral_body_SP047S180D }   
+   xsp050S155D  { INDDEF INTERACT spiral_body_SP050S155D }   
+   xsp051C300D  { INDDEF INTERACT spiral_body_SP051C300D }   
+   xsp068C300D  { INDDEF INTERACT spiral_body_SP068C300D }
+   xsp090C200D  { INDDEF INTERACT spiral_body_SP090C200D }   
+   xsp090S155D  { INDDEF INTERACT spiral_body_SP090S155D }   
+   xsp112C300D  { INDDEF INTERACT spiral_body_SP112C300D }   
+   xsp140C200D  { INDDEF INTERACT spiral_body_SP140C200D }   
+   xsp200C200D  { INDDEF INTERACT spiral_body_SP200C200D }
+//
+   xsy014C165D  { INDDEF INTERACT spiral_body_SY014C165D }    
+   xsy015C200D  { INDDEF INTERACT spiral_body_SY015C200D }   
+   xsy016C180D  { INDDEF INTERACT spiral_body_SY016C180D }  
+   xsy017C165D  { INDDEF INTERACT spiral_body_SY017C165D }   
+   xsy019C180D  { INDDEF INTERACT spiral_body_SY019C180D }   
+   xsy028C160D  { INDDEF INTERACT spiral_body_SY028C160D }   
+#ELSE
+//
+// met3
+//
+   xsp014S300C  { INDDEF INTERACT spiral_body_SP014S300C }   
+   xsp018S300C  { INDDEF INTERACT spiral_body_SP018S300C }   
+   xsp020S180C  { INDDEF INTERACT spiral_body_SP020S180C }   
+   xsp023S200C  { INDDEF INTERACT spiral_body_SP023S200C }
+   xsp025C200C  { INDDEF INTERACT spiral_body_SP025C200C }   
+   xsp026S200C  { INDDEF INTERACT spiral_body_SP026S200C }   
+   xsp028C200C  { INDDEF INTERACT spiral_body_SP028C200C }   
+   xsp028S300C  { INDDEF INTERACT spiral_body_SP028S300C }
+   xsp030C200C  { INDDEF INTERACT spiral_body_SP030C200C }   
+   xsp037S180C  { INDDEF INTERACT spiral_body_SP037S180C }   
+   xsp038S300C  { INDDEF INTERACT spiral_body_SP038S300C }   
+   xsp040C200C  { INDDEF INTERACT spiral_body_SP040C200C }   
+   xsp040C300C  { INDDEF INTERACT spiral_body_SP040C300C }
+   xsp045C200C  { INDDEF INTERACT spiral_body_SP045C200C }   
+   xsp047S180C  { INDDEF INTERACT spiral_body_SP047S180C }   
+   xsp050S155C  { INDDEF INTERACT spiral_body_SP050S155C }   
+   xsp051C300C  { INDDEF INTERACT spiral_body_SP051C300C }   
+   xsp068C300C  { INDDEF INTERACT spiral_body_SP068C300C }
+   xsp090C200C  { INDDEF INTERACT spiral_body_SP090C200C }   
+   xsp090S155C  { INDDEF INTERACT spiral_body_SP090S155C }   
+   xsp112C300C  { INDDEF INTERACT spiral_body_SP112C300C }   
+   xsp140C200C  { INDDEF INTERACT spiral_body_SP140C200C }   
+   xsp200C200C  { INDDEF INTERACT spiral_body_SP200C200C }
+//
+   xsy014C165C  { INDDEF INTERACT spiral_body_SY014C165C }    
+   xsy015C200C  { INDDEF INTERACT spiral_body_SY015C200C }   
+   xsy016C180C  { INDDEF INTERACT spiral_body_SY016C180C }  
+   xsy017C165C  { INDDEF INTERACT spiral_body_SY017C165C }   
+   xsy019C180C  { INDDEF INTERACT spiral_body_SY019C180C }   
+   xsy028C160C  { INDDEF INTERACT spiral_body_SY028C160C }   
+#ENDIF
+
+#ENDIF
+//
+//
+//=====================================================================
+//                               HALL
+//=====================================================================
+//
+// define a cut layer to open nwell and spiral in hall element
+//
+// best value for hallc35
+   // halldef_cut    = SIZE HALLDEF BY -12.0
+//
+   hall_term_a  = (RESTRM INTERACT (EXPAND TEXT "A" M1PIN BY 2)) INTERACT HALLDEF
+   hall_term_b  = (RESTRM INTERACT (EXPAND TEXT "B" M1PIN BY 2)) INTERACT HALLDEF
+   hall_term_c  = (RESTRM INTERACT (EXPAND TEXT "C" M1PIN BY 2)) INTERACT HALLDEF
+   hall_term_d  = (RESTRM INTERACT (EXPAND TEXT "D" M1PIN BY 2)) INTERACT HALLDEF
+   hall_term_s  = (RESTRM INTERACT (EXPAND TEXT "S" M1PIN BY 2)) INTERACT HALLDEF
+   hall_term_p1 = (RESTRM INTERACT (EXPAND TEXT "P1" M2PIN BY 2)) INTERACT HALLDEF
+   hall_term_p2 = (RESTRM INTERACT (EXPAND TEXT "P2" M2PIN BY 2)) INTERACT HALLDEF
+//
+   hall_body_HALLC35 = HALLDEF INTERACT (EXPAND TEXT "HALLC35" HALLDEF_TEXT BY 2)
+//
+#IFDEF DEVSWITCH
+   xhallc35 { COPY hall_body_HALLC35 }
+#ENDIF
+//
+//=====================================================================
+//                         split layers
+//=====================================================================
+// remove spiral from interconnect
+// normally spiral does not have met1
+// connectivity metal does not have slots !!!
+// remove hall spiral from interconnect
+//
+   routingmet1_all = (met1_withslots NOT spiral_body) NOT halldef_cut
+   routingmet2_all = (met2_withslots NOT spiral_body) NOT halldef_cut
+   routingmet3_all = met3_withslots NOT spiral_body
+   routingvia_all  = (VIA  NOT spiral_body) NOT halldef_cut
+   routingvia2_all = VIA2 NOT spiral_body
+#IFDEF fourmetal
+   routingmet4_all = met4_withslots NOT spiral_body
+   routingvia3_all = VIA3 NOT spiral_body
+#ENDIF
+//
+//
+#IFDEF fourmetal
+//
+// disable rblock for met4/via3
+//
+   routingmet4       = COPY routingmet4_all
+   routingvia3       = COPY routingvia3_all
+//
+#ENDIF
+//
+   routingpoly2 = COPY routingpoly2_all
+   routingpoly  = COPY routingpoly_all
+   poly1con     = COPY poly1con_all
+   poly2con     = COPY poly2con_all
+   routingmet1  = COPY routingmet1_all
+   routingmet2  = COPY routingmet2_all
+   routingmet3  = COPY routingmet3_all
+   routingvia   = COPY routingvia_all
+   routingvia2  = COPY routingvia2_all
+   diffcon      = COPY diffcon_all
+//
+///////////////////////////////////////////////////////////////////////
+//                       CONNECT STATEMENTS                          //
+///////////////////////////////////////////////////////////////////////
+//
+// Create interconnects used in direct mode
+//
+   CONNECT MET3           MET2                       BY VIA2      DIRECT
+   CONNECT MET2           MET1                       BY VIA       DIRECT
+   CONNECT MET1           POLY2 POLY1 DIFF           BY CONT      DIRECT
+
+// Create interconnects used in mask mode
+
+#IFDEF fourmetal
+   CONNECT MET4           MET3                       BY VIA3 DIRECT
+   CONNECT routingmet4    routingmet3                BY routingvia3 MASK   
+#ENDIF
+
+// Create interconnects used in mask mode
+
+   CONNECT routingmet3    routingmet2                BY routingvia2 MASK   
+   CONNECT routingmet2    routingmet1                BY routingvia  MASK   
+   CONNECT routingmet1    routingpoly2               BY poly2con    MASK
+   CONNECT routingmet1    routingpoly                BY poly1con    MASK
+   CONNECT routingmet1    ndiff                      BY ndiffcon    MASK
+   CONNECT routingmet1    pdiff                      BY pdiffcon    MASK
+   CONNECT pdiff          substrate                  BY subtap      MASK
+   CONNECT ndiff          routingnwell               BY welltap     MASK
+   CONNECT routingpoly    trans ncap pcap                           MASK
+   CONNECT routingpoly2   preshterm                                 MASK
+   CONNECT RESTRM         routingpoly2                              MASK
+   CONNECT RESTRM         routingpoly                               MASK
+   CONNECT RESTRM         ndiff                                     MASK
+   CONNECT RESTRM         pdiff                                     MASK
+   CONNECT ndiff          nmosh_d_term                              MASK
+   CONNECT pdiff          pnpvert10_e pnplat2_e pnplat2_c           MASK
+// for XCALI 
+   CONNECT nwdiode_shield routingnwell                              MASK 
+   // CONNECT trans_shield routingpoly                                 MASK
+//
+// add connectivity for unrel met checks
+//
+   CONNECT routingmet3    PAD                                       MASK
+// 
+// connect spirals
+//
+#IFDEF fourmetal
+// spiral connections for 4 met spirals
+   CONNECT spiral_term11 routingmet4   MASK
+   CONNECT spiral_term22 routingmet4   MASK
+#ELSE
+// spiral connections for 3 met spirals
+   CONNECT spiral_term11 routingmet3   MASK
+   CONNECT spiral_term22 routingmet3   MASK
+#ENDIF
+//
+// remove isolated layout nets warning from LVS
+// add connectivity to retrm on spiral terms
+//
+   CONNECT RESTRM spiral_term11 MASK
+   CONNECT RESTRM spiral_term22 MASK
+//
+// connect hall terms
+   CONNECT hall_term_a hall_term_b hall_term_c hall_term_d hall_term_s routingmet1 MASK
+   CONNECT hall_term_p1 hall_term_p2 routingmet2 MASK
+//
+////////////////////////////////////////////////////////////////////////////////////
+//
+//                           end of general part 
+//
+////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////
+//
+//                           CURRENT MIRROR  CHECKS
+//
+////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////
+
+   nmos_short   = nmos TOUCH ndiff == 1 BY NET
+   nmos_noshort = nmos NOT nmos_short
+//
+   nmos_midox_short   = nmos_midox TOUCH ndiff == 1 BY NET
+   nmos_midox_noshort = nmos_midox NOT nmos_midox_short
+//
+   pmos_short   = pmos TOUCH pdiff == 1 BY NET
+   pmos_noshort = pmos NOT pmos_short
+//
+   pmos_midox_short   = pmos_midox TOUCH pdiff == 1 BY NET
+   pmos_midox_noshort = pmos_midox NOT pmos_midox_short
+//
+#IFDEF DEVSWITCH
+   xnmos_short   { COPY nmos_short }                                      
+   //nmos_noshort { COPY nmos_noshort }                                      
+   xnmosm_short   { COPY nmos_midox_short }                                      
+   //nmos_midox_noshort { COPY nmos_midox_noshort }                                      
+   xpmos_short   { COPY pmos_short }                                      
+   //pmos_noshort { COPY pmos_noshort }                                      
+   xpmosm_short   { COPY pmos_midox_short }                                      
+   //pmos_midox_noshort { COPY pmos_midox_noshort }                                      
+#ENDIF
+//
+   ngate_l = ngate NOT COINCIDENT INSIDE EDGE POLY1
+   pgate_l = pgate NOT COINCIDENT INSIDE EDGE POLY1
+   ngate_w = ngate COINCIDENT INSIDE EDGE POLY1
+   pgate_w = pgate COINCIDENT INSIDE EDGE POLY1
+//
+   ngate_noshort = ngate AND ( nmos_noshort OR nmos_midox_noshort)
+   pgate_noshort = pgate AND ( pmos_noshort OR pmos_midox_noshort)
+//
+//////////////////////////////////////////////////////////////////////////////////////////
+//
+//       ngate current mirror checks first part (uses general LVS connectivity) 
+//
+//////////////////////////////////////////////////////////////////////////////////////////
+//
+//XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+//
+// 1.) gates L > 0.35 drain shorted to gate , source connected to vss( subtap)
+//============================================================================
+// 
+  ngate_length_gt_035 = ngate_noshort INTERACT (( PATH LENGTH ngate_l > 0.35 ) EXPAND EDGE OUTSIDE BY 0.1 CORNER FILL )
+  CONNECT ngate_length_gt_035 routingpoly
+  ngate_spac_gate_diff = EXT ngate_length_gt_035 ndiff < 0.01 ABUT == 0 REGION CONNECTED
+//
+  ngate_gate_sd_short = ngate_length_gt_035 INTERACT ngate_spac_gate_diff 
+  ngate_gate_sd_short_ndiff =  (ndiff NOT INTERACT ngate_spac_gate_diff) TOUCH ngate_gate_sd_short
+  ngate_gate_sd_short_ndiff_vss = NET AREA RATIO ngate_gate_sd_short_ndiff subtap > 0 
+  ngate_gate_sd_short_vss = ngate_gate_sd_short TOUCH ngate_gate_sd_short_ndiff_vss
+#IFDEF DEBUG
+  ngate_spac_gate_diff { COPY ngate_spac_gate_diff }
+  ngate_gate_sd_short { COPY ngate_gate_sd_short }
+  ngate_gate_sd_short_vss { COPY ngate_gate_sd_short_vss }
+#ENDIF
+//
+// 2.) nmos conn vss
+//=====================
+//
+  ngate_length_gt_035_1 = ngate_length_gt_035 NOT ngate_gate_sd_short_vss
+//
+// any substrate cont to psub ?
+//
+  ngate_drain_ndiff_vss =  NET AREA RATIO ( ndiff TOUCH ngate_length_gt_035_1) subtap > 0 
+  ngate_drain_vss = ngate_length_gt_035_1 INTERACT ngate_drain_ndiff_vss
+  CONNECT ngate_gate_sd_short_vss routingpoly
+  CONNECT ngate_drain_vss routingpoly
+// get trans
+  ngate_gate_sd_short_mirr_vss = NET AREA RATIO  ngate_gate_sd_short_vss ngate_drain_vss > 0
+  ngate_drain_mirr_vss_1 = NET AREA RATIO  ngate_drain_vss  ngate_gate_sd_short_vss > 0
+#IFDEF DEBUG
+  ngate_gate_sd_short_mirr_vss { COPY  ngate_gate_sd_short_mirr_vss }
+  ngate_drain_mirr_vss_1 { COPY ngate_drain_mirr_vss_1 }
+  ngate_drain_vss { COPY ngate_drain_vss }
+#ENDIF
+//
+// search parallel or not parallel
+//
+// ndiff not vss
+//
+  ngate_source_mirr_ndiff_vss = ( ndiff INTERACT ngate_drain_mirr_vss_1 ) NOT ngate_drain_ndiff_vss 
+//
+// get term
+//
+  ngate_source_mirr_ndiff_w_vss = (ngate_drain_mirr_vss_1 COINCIDENT OUTSIDE EDGE ngate_source_mirr_ndiff_vss) EXPAND EDGE OUTSIDE BY 0.1
+//
+// search shorted terms
+  CONNECT ndiff ngate_source_mirr_ndiff_w_vss  MASK
+// gt 2 
+//
+//
+  ngate_dummy1 =  NET AREA RATIO routingmet1 ngate_source_mirr_ndiff_w_vss >= 1 [ COUNT(ngate_source_mirr_ndiff_w_vss)]
+  ngate_source_mirr_ndiff_w_vss_ge2c = NET AREA RATIO  ngate_source_mirr_ndiff_w_vss ngate_dummy1 > 0
+// == 1
+//
+#IFDEF DEBUG
+  ngate_source_mirr_ndiff_w_vss_eq1c { COPY ngate_source_mirr_ndiff_w_vss_eq1c }
+  ngate_source_mirr_ndiff_vss { COPY ngate_source_mirr_ndiff_vss }
+  ngate_source_mirr_ndiff_w_vss { COPY ngate_source_mirr_ndiff_w_vss } 
+  ngate_source_mirr_ndiff_w_vss_ge2c { COPY ngate_source_mirr_ndiff_w_vss_ge2c }
+#ENDIF
+//
+// get shorted devices belonging to mirror structure
+//--------------------------------------------------------
+//
+  ngate_drain_vss_ge2c = ngate_drain_vss INTERACT ngate_source_mirr_ndiff_w_vss_ge2c
+  //ngate_drain_vss_ge2c { COPY ngate_drain_vss_ge2c }
+//
+//////////////////////////////////////////////////////////////////////////////////////////
+//
+//       pgate current mirror checks first part (uses general LVS connectivity) 
+//
+//////////////////////////////////////////////////////////////////////////////////////////
+//
+// 1.) gates L > 0.35 drain shorted to gate , source connected to vdd ( welltap)
+//==============================================================================
+//
+  pgate_length_gt_035 = pgate_noshort INTERACT (( PATH LENGTH pgate_l > 0.35 ) EXPAND EDGE OUTSIDE BY 0.1 CORNER FILL )
+  CONNECT pgate_length_gt_035 routingpoly
+  pgate_spac_gate_diff = EXT pgate_length_gt_035 pdiff < 0.01 ABUT == 0 REGION CONNECTED
+//
+  pgate_gate_sd_short = pgate_length_gt_035 INTERACT pgate_spac_gate_diff
+  pgate_gate_sd_short_pdiff =  (pdiff NOT INTERACT pgate_spac_gate_diff) TOUCH pgate_gate_sd_short
+  pgate_gate_sd_short_pdiff_vss = NET AREA RATIO pgate_gate_sd_short_pdiff welltap > 0
+  pgate_gate_sd_short_vss = pgate_gate_sd_short TOUCH pgate_gate_sd_short_pdiff_vss
+#IFDEF DEBUG
+  pgate_spac_gate_diff { COPY pgate_spac_gate_diff }
+  pgate_gate_sd_short { COPY pgate_gate_sd_short }
+  pgate_gate_sd_short_vss { COPY pgate_gate_sd_short_vss }
+#ENDIF
+//
+// 2.) pmos conn vdd
+//=====================
+//
+  pgate_length_gt_035_1 = pgate_length_gt_035 NOT pgate_gate_sd_short_vss
+//
+// any substrate cont to psub ?
+//
+  pgate_drain_pdiff_vss =  NET AREA RATIO ( pdiff TOUCH pgate_length_gt_035_1) welltap > 0
+  pgate_drain_vss = pgate_length_gt_035_1 INTERACT pgate_drain_pdiff_vss
+  CONNECT pgate_gate_sd_short_vss routingpoly
+  CONNECT pgate_drain_vss routingpoly
+// get trans
+  pgate_gate_sd_short_mirr_vss = NET AREA RATIO  pgate_gate_sd_short_vss pgate_drain_vss > 0
+  pgate_drain_mirr_vss_1 = NET AREA RATIO  pgate_drain_vss  pgate_gate_sd_short_vss > 0
+#IFDEF DEBUG
+  pgate_gate_sd_short_mirr_vss { COPY  pgate_gate_sd_short_mirr_vss }
+  pgate_drain_mirr_vss_1 { COPY pgate_drain_mirr_vss_1 }
+  pgate_drain_vss { COPY pgate_drain_vss }
+#ENDIF
+//
+// search parallel or not parallel
+//
+// pdiff not vss
+//
+  pgate_source_mirr_pdiff_vss = ( pdiff INTERACT pgate_drain_mirr_vss_1 ) NOT pgate_drain_pdiff_vss
+//
+// get term
+//
+  pgate_source_mirr_pdiff_w_vss = (pgate_drain_mirr_vss_1 COINCIDENT OUTSIDE EDGE pgate_source_mirr_pdiff_vss) EXPAND EDGE OUTSIDE BY 0.1
+//
+// search shorted terms
+  CONNECT pdiff pgate_source_mirr_pdiff_w_vss  MASK
+// gt 2
+  pgate_dummy1 =  NET AREA RATIO routingmet1 pgate_source_mirr_pdiff_w_vss >= 1 [ COUNT(pgate_source_mirr_pdiff_w_vss)]
+  pgate_source_mirr_pdiff_w_vss_ge2c = NET AREA RATIO  pgate_source_mirr_pdiff_w_vss pgate_dummy1 > 0
+// == 1
+#IFDEF DEBUG
+  pgate_source_mirr_pdiff_w_vss_eq1c { COPY pgate_source_mirr_pdiff_w_vss_eq1c }
+  pgate_source_mirr_pdiff_vss { COPY pgate_source_mirr_pdiff_vss }
+  pgate_source_mirr_pdiff_w_vss { COPY pgate_source_mirr_pdiff_w_vss }
+  pgate_source_mirr_pdiff_w_vss_ge2c { COPY pgate_source_mirr_pdiff_w_vss_ge2c }
+#ENDIF
+//
+// get shorted devices belonging to mirror structure
+//--------------------------------------------------------
+//
+  pgate_drain_vss_ge2c = pgate_drain_vss INTERACT pgate_source_mirr_pdiff_w_vss_ge2c
+  //pgate_drain_vss_ge2c { COPY pgate_drain_vss_ge2c }
+//
+//////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////
+//
+//                       ngate current mirror checks
+//
+//////////////////////////////////////////////////////////////////////////////////////////
+//
+//--------------------------
+// do new connect to avoid connectivity problems
+//
+  DISCONNECT
+//
+#IFDEF fourmetal
+   CONNECT routingmet4    routingmet3                BY routingvia3 MASK   
+#ENDIF
+   CONNECT routingmet3    routingmet2                BY routingvia2 MASK   
+   CONNECT routingmet2    routingmet1                BY routingvia  MASK   
+   CONNECT routingmet1    routingpoly2               BY poly2con    MASK
+   CONNECT routingmet1    routingpoly                BY poly1con    MASK
+   CONNECT routingmet1    ndiff                      BY ndiffcon    MASK
+   CONNECT routingmet1    pdiff                      BY pdiffcon    MASK
+   CONNECT pdiff          substrate                  BY subtap      MASK
+   CONNECT ndiff          routingnwell               BY welltap     MASK
+//--------------------------
+// 
+// split midox and no midox
+//
+  nmgate_gate_sd_short_vss = ngate_gate_sd_short_vss AND MIDOX
+  nxgate_gate_sd_short_vss = ngate_gate_sd_short_vss NOT MIDOX
+  nmgate_drain_vss_ge2c = ngate_drain_vss_ge2c AND MIDOX 
+  nxgate_drain_vss_ge2c = ngate_drain_vss_ge2c NOT MIDOX 
+//
+  CONNECT nxgate_gate_sd_short_vss nmgate_gate_sd_short_vss routingpoly
+  CONNECT nxgate_drain_vss_ge2c nmgate_drain_vss_ge2c routingpoly
+//
+//
+// final mirror structures
+//---------------------------
+// L > lmin
+// nmos drain vss
+// gate/source connected
+// conneected to one or more (parallel) devices
+//
+//  1 nmos
+// 
+  nxgate_gate_sd_short_vss_ge2c_f = NET AREA RATIO nxgate_gate_sd_short_vss nxgate_drain_vss_ge2c > 0
+  NMOS2_CM_BIAS_TRANS_INFO { COPY nxgate_gate_sd_short_vss_ge2c_f }
+//
+// bias trans folded ( one mirr trans) ?
+//---------------------------------------
+//
+// bias trans folded ( more mirr trans) ?
+//---------------------------------------
+  nxgate_sdshort_ndiff_novss_ge2c = ( ndiff INTERACT nxgate_gate_sd_short_vss_ge2c_f ) NOT ngate_gate_sd_short_ndiff_vss
+  nxgate_sdshort_ndiff_novss_ge2c_edgeexp = ndiff AND
+            ((nxgate_gate_sd_short_vss_ge2c_f COIN OUTSIDE EDGE nxgate_sdshort_ndiff_novss_ge2c) EXPAND EDGE OUTSIDE BY 0.1)
+  nxgate_dummy4 =  NET AREA RATIO routingmet1 nxgate_sdshort_ndiff_novss_ge2c_edgeexp > 1 [ COUNT(nxgate_sdshort_ndiff_novss_ge2c_edgeexp)]
+  nxgate_sdshort_ndiff_novss_ge2c_edgeexp_1  = NET AREA RATIO  nxgate_sdshort_ndiff_novss_ge2c_edgeexp nxgate_dummy4 > 0
+  nxgate_gate_sd_short_vss_ge2c_f_fold = nxgate_gate_sd_short_vss_ge2c_f INTERACT nxgate_sdshort_ndiff_novss_ge2c_edgeexp_1
+  NMOS2_CM_BIAS_TRANS_FOLDED_INFO { COPY nxgate_gate_sd_short_vss_ge2c_f_fold }
+//
+//  2  nmmos
+//
+  nmgate_gate_sd_short_vss_ge2c_f = NET AREA RATIO nmgate_gate_sd_short_vss nmgate_drain_vss_ge2c > 0
+ //nmgate_gate_sd_short_vss_ge2c_f  { COPY nmgate_gate_sd_short_vss_ge2c_f }
+  NMOSM2_CM_BIAS_TRANS_INFO { COPY nmgate_gate_sd_short_vss_ge2c_f }
+
+// bias trans folded ( one mirr trans) ?
+//---------------------------------------
+//
+// bias trans folded ( more mirr trans) ?
+//---------------------------------------
+  nmgate_sdshort_ndiff_novss_ge2c = ( ndiff INTERACT nmgate_gate_sd_short_vss_ge2c_f ) NOT ngate_gate_sd_short_ndiff_vss
+  nmgate_sdshort_ndiff_novss_ge2c_edgeexp = ndiff AND
+            ((nmgate_gate_sd_short_vss_ge2c_f COIN OUTSIDE EDGE nmgate_sdshort_ndiff_novss_ge2c) EXPAND EDGE OUTSIDE BY 0.1)
+  nmgate_dummy4 =  NET AREA RATIO routingmet1 nmgate_sdshort_ndiff_novss_ge2c_edgeexp > 1 [ COUNT(nmgate_sdshort_ndiff_novss_ge2c_edgeexp)]
+  nmgate_sdshort_ndiff_novss_ge2c_edgeexp_1  = NET AREA RATIO  nmgate_sdshort_ndiff_novss_ge2c_edgeexp nmgate_dummy4 > 0
+  nmgate_gate_sd_short_vss_ge2c_f_fold = nmgate_gate_sd_short_vss_ge2c_f INTERACT nmgate_sdshort_ndiff_novss_ge2c_edgeexp_1
+  NMOSM2_CM_BIAS_TRANS_FOLDED_INFO { COPY nmgate_gate_sd_short_vss_ge2c_f_fold }
+//
+  nxgate_drain_vss_ge2c_f = NET AREA RATIO  nxgate_drain_vss_ge2c nxgate_gate_sd_short_vss_ge2c_f > 0
+  //nxgate_drain_vss_ge2c_f { COPY nxgate_drain_vss_ge2c_f }
+  NMOS2_CM_MIRR_TRANS_INFO { COPY nxgate_drain_vss_ge2c_f }
+//
+  nmgate_drain_vss_ge2c_f = NET AREA RATIO  nmgate_drain_vss_ge2c nmgate_gate_sd_short_vss_ge2c_f > 0
+  //nmgate_drain_vss_ge2c_f { COPY nmgate_drain_vss_ge2c_f }
+  NMOSM2_CM_MIRR_TRANS_INFO { COPY nmgate_drain_vss_ge2c_f }
+//
+// find groups
+//-------------------
+// attention nmos gate/s shorted assumed only 1 device, ??? is not true
+// add parallel for gate/source shorted device later 
+// search 10 U 
+// add folded bias trans also
+//
+   VARIABLE   curr_mirr_trans_spacing 10
+//
+//
+   nxgate_group_ge2c_1 = EXT  nxgate_gate_sd_short_vss_ge2c_f nxgate_drain_vss_ge2c_f  <  curr_mirr_trans_spacing REGION CONNECTED
+   nxgate_group_ge2c_2 = EXT  nxgate_drain_vss_ge2c_f  <  curr_mirr_trans_spacing REGION CONNECTED
+   nxgate_group_ge2c_3 = EXT  nxgate_gate_sd_short_vss_ge2c_f  <  curr_mirr_trans_spacing REGION CONNECTED
+   nxgate_group_ge2c = (nxgate_group_ge2c_1 OR nxgate_group_ge2c_2) OR nxgate_group_ge2c_3
+//  
+//
+   nmgate_group_ge2c_1 = EXT nmgate_gate_sd_short_vss_ge2c_f nmgate_drain_vss_ge2c_f  <  curr_mirr_trans_spacing REGION CONNECTED
+   nmgate_group_ge2c_2 = EXT nmgate_drain_vss_ge2c_f  <  curr_mirr_trans_spacing REGION CONNECTED
+   nmgate_group_ge2c_3 = EXT nmgate_gate_sd_short_vss_ge2c_f  <  curr_mirr_trans_spacing REGION CONNECTED
+   nmgate_group_ge2c = ( nmgate_group_ge2c_1 OR nmgate_group_ge2c_2) OR nmgate_group_ge2c_3
+#IFDEF DEBUG
+   nxgate_group_eq1c { COPY nxgate_group_eq1c }
+   nxgate_group_ge2c { COPY nxgate_group_ge2c }
+   nmgate_group_eq1c { COPY nmgate_group_eq1c }
+   nmgate_group_ge2c { COPY nmgate_group_ge2c }
+#ENDIF
+//
+// find trans belonging to group
+//-------------------------------
+// 
+// 
+//
+// trans and spacings between bias and mirror trans ( also folded)
+// forms a group
+// if too far parts missing
+//
+   nxgate_group_ge2c_trans = (nxgate_gate_sd_short_vss_ge2c_f INTERACT nxgate_group_ge2c) OR ( nxgate_drain_vss_ge2c_f INTERACT nxgate_group_ge2c)
+//
+   //nxgate_group_eq1c_trans { COPY nxgate_group_eq1c_trans }
+   //nxgate_group_ge2c_trans { COPY nxgate_group_ge2c_trans }
+//
+// group area
+// missing bias trans or current mirror trans in group ?
+//
+//
+// create shape with trans and spacings
+// only complete if not too far
+   nxgate_group_ge2c_all1 = (nxgate_group_ge2c_trans INTERACT nxgate_group_ge2c) OR nxgate_group_ge2c
+// must interact all devices on nets
+   nxgate_group_ge2c_bad1 = nxgate_group_ge2c_all1 NOT INTERACT nxgate_drain_vss_ge2c_f
+   nxgate_group_ge2c_bad2 = nxgate_group_ge2c_all1 NOT INTERACT nxgate_gate_sd_short_vss_ge2c_f
+   nxgate_group_ge2c_bad  = nxgate_group_ge2c_bad1 OR nxgate_group_ge2c_bad2
+//
+// trans and spacings ok
+   nxgate_group_ge2c_good = nxgate_group_ge2c_all1 NOT  nxgate_group_ge2c_bad 
+// not ok
+// error flagged, if bias part and mirror part more than 10 U and folded
+   NMOS2_CM_GROUP_TOOFAR_INFO { @ nmos current mirror found with other nmos on circuit
+                                @ bias and mirror too far > 10 U
+        FLATTEN (nxgate_group_ge2c_bad NOT nxgate_group_ge2c)
+        x = nxgate_gate_sd_short_vss_ge2c_f AND nxgate_group_ge2c_bad
+        y = nxgate_drain_vss_ge2c_f         AND nxgate_group_ge2c_bad
+
+        p = NET AREA RATIO routingpoly x > 0
+        m1 = NET AREA RATIO routingmet1 x > 0
+        m2 = NET AREA RATIO routingmet2 x > 0
+        m3 = NET AREA RATIO routingmet3 x > 0
+        ORNET m1 (ORNET m2 (ORNET m3 p))
+
+        am1 = NET AREA RATIO routingmet1 y > 0
+        am2 = NET AREA RATIO routingmet2 y > 0
+        am3 = NET AREA RATIO routingmet3 y > 0
+        ap = NET AREA RATIO routingpoly y > 0
+        ORNET am1 (ORNET am2 (ORNET am3 ap))
+   }
+
+   //nxgate_group_ge2c_good { COPY nxgate_group_ge2c_good }
+//
+// create boundrary 0.4 y and boundrary at trans edge 0.2 U to get
+// overview which trans are belonging to same group
+// create square in center of bias trans
+// create square with hole in center of mirror trans
+// only good groups with bias and current trans
+//
+// ok 
+// ok 
+// use good for definition of a cm
+//
+   NMOS2_CURRENT_MIRROR { @ nmos current mirror found
+                          @ shows outline, square is bias trans , donut is mirror trans
+      y1 = COPY nxgate_group_ge2c_good
+      y2 = HOLES y1 INNER 
+      y3 = nxgate_group_ge2c_trans INTERACT y1
+      y  = y1 OR y2
+      x = SIZE y3 BY -0.2 
+      z = SIZE y BY -0.4
+      u  = EXTENTS ( nxgate_gate_sd_short_vss_ge2c_f INTERACT y1) CENTERS 1 
+      v  = EXTENTS ( nxgate_drain_vss_ge2c_f INTERACT y1) CENTERS 1 
+      v1 = v NOT (SIZE v BY -0.2) 
+      FLATTEN( (y NOT z) OR (( y3 NOT x ) OR (u OR v1) ))
+   }
+//
+// create square in the center
+   NMOS2_CM_COUNT_INFO { @ center of nmos current mirror
+      FLATTEN( EXTENTS( ( nxgate_group_ge2c_trans INTERACT nxgate_group_ge2c) OR nxgate_group_ge2c) CENTERS 2)
+   }
+//
+// ggggggggggggggggggg
+//
+// 
+//
+//
+// check if bias trans is inside of group 
+//-----------------------------------------
+//   nxgate_group_ge2c_trans_mid = WITH NEIGHBOR  nxgate_group_ge2c_trans >= 2 SPACE < 10
+   nxgate_gate_sd_short_vss_ge2c_ff = nxgate_gate_sd_short_vss_ge2c_f INTERACT nxgate_group_ge2c
+//   NMOS2_CM_BIASTRANS_NOTMID_DFM0054 { @ DFM0054 bias trans should be in the middle of mirror trans
+//      nxgate_gate_sd_short_vss_ge2c_ff NOT nxgate_group_ge2c_trans_mid 
+//   }
+//
+// find bias trans not in center
+// difficult, because may be row, column, array
+// bias sees mirr
+// top/bot   left/right
+//  1            1          err  corner
+//  2            1           ok
+//  1            2           ok
+//  1            0          err
+//  0            1          err
+//  2            0           ok
+//  0            2           ok
+// 
+// grow bias left and right, up and down and find good bias
+// filter small currmirr with 2 devices
+//
+   NMOS2_CM_BIASTRANS_NOTMID_DFM0054 { @ DFM0054 bias trans should be in the middle of mirror trans array
+      //mirr { FLATTEN mirr }
+      //bias { FLATTEN bias }
+      bias =  COPY nxgate_gate_sd_short_vss_ge2c_f
+      mirr =  nxgate_group_ge2c_trans NOT nxgate_gate_sd_short_vss_ge2c_f
+      r = GROW bias RIGHT BY 10
+      l = GROW bias LEFT BY 10
+      biasrl = ((r OR ( l OR bias)) NOT mirr) INTERACT bias
+      biasrl_0 = biasrl NOT INTERACT mirr
+      biasrl_1 = biasrl INTERACT mirr == 1
+      biasrl_2 = biasrl INTERACT mirr == 2
+      t = GROW bias TOP BY 10
+      b = GROW bias BOTTOM BY 10
+      biastb = ((t OR ( b OR bias)) NOT mirr) INTERACT bias
+      biastb_0 = biastb NOT INTERACT mirr
+      biastb_1 = biastb INTERACT mirr == 1
+      biastb_2 = biastb INTERACT mirr == 2
+      ok_1 =  (biasrl_2 AND biastb_0) OR ((biasrl_0 AND biastb_2) OR (biasrl_2 AND biastb_2))
+      ok_2 =  (biasrl_2 AND biastb_1) OR (biasrl_1 AND biastb_2)
+      ok_3 =  ok_2 OR ok_1
+      //ok_1 { FLATTEN ok_1 }
+      //ok_2 { FLATTEN ok_2 }
+      //ok_3 { FLATTEN ok_3 }
+      //biasbad { FLATTEN biasbad }
+      biasbad = bias NOT ok_3
+      group_all = (nxgate_group_ge2c_trans INTERACT nxgate_group_ge2c) OR nxgate_group_ge2c
+      group_all_one_mirr =  group_all INTERACT mirr == 1
+      //group_all_one_mirr { FLATTEN group_all_one_mirr }
+      biasbad1 = biasbad NOT INTERACT group_all_one_mirr
+      FLATTEN biasbad1 
+   }
+//
+// electrical connected, but too far away
+//----------------------------------------
+//
+   NMOS2_CM_TRANS_TOOFAR_DFM0053  { @ DFM0053 nmos curr mirr device too far away from group  > 10 U ( 2 or mirr device)
+     x = nxgate_gate_sd_short_vss_ge2c_f NOT INTERACT  nxgate_group_ge2c_trans 
+     y = nxgate_drain_vss_ge2c_f NOT INTERACT nxgate_group_ge2c
+// transitsor too far should stay but draw nets to other devices
+        FLATTEN (x OR y )
+        rpoly =  routingpoly NOT (nxgate_gate_sd_short_vss_ge2c_f OR nxgate_drain_vss_ge2c_f)
+        p = NET AREA RATIO rpoly x > 0
+        m1 = NET AREA RATIO routingmet1 x > 0
+        m2 = NET AREA RATIO routingmet2 x > 0
+        m3 = NET AREA RATIO routingmet3 x > 0
+        ORNET m1 (ORNET m2 (ORNET m3 p))
+
+        am1 = NET AREA RATIO routingmet1 y > 0
+        am2 = NET AREA RATIO routingmet2 y > 0
+        am3 = NET AREA RATIO routingmet3 y > 0
+        ap = NET AREA RATIO rpoly y > 0
+        ORNET am1 (ORNET am2 (ORNET am3 ap))
+
+   }
+// 
+   nmgate_group_ge2c_trans = (nmgate_gate_sd_short_vss_ge2c_f INTERACT nmgate_group_ge2c) OR
+                             ( nmgate_drain_vss_ge2c_f INTERACT nmgate_group_ge2c)
+//
+   // 26-Jul-06 avoid double flagging
+//
+   NMOSM2_CM_GROUP_TOOFAR_INFO { @ nmosm current mirror with other nmos on circuit 
+                                 @ or transistors too far away
+        FLATTEN (nmgate_group_ge2c_bad NOT nmgate_group_ge2c)
+
+        x = nmgate_gate_sd_short_vss_ge2c_f AND nmgate_group_ge2c_bad
+        y = nmgate_drain_vss_ge2c_f         AND nmgate_group_ge2c_bad
+
+        p = NET AREA RATIO routingpoly x > 0
+        m1 = NET AREA RATIO routingmet1 x > 0
+        m2 = NET AREA RATIO routingmet2 x > 0
+        m3 = NET AREA RATIO routingmet3 x > 0
+        ORNET m1 (ORNET m2 (ORNET m3 p))
+
+        am1 = NET AREA RATIO routingmet1 y > 0
+        am2 = NET AREA RATIO routingmet2 y > 0
+        am3 = NET AREA RATIO routingmet3 y > 0
+        ap = NET AREA RATIO routingpoly y > 0
+        ORNET am1 (ORNET am2 (ORNET am3 ap))
+   }
+   nmgate_group_ge2c_all1 = (nmgate_group_ge2c_trans INTERACT nmgate_group_ge2c) OR nmgate_group_ge2c
+   nmgate_group_ge2c_bad1 = nmgate_group_ge2c_all1 NOT INTERACT nmgate_drain_vss_ge2c_f
+   nmgate_group_ge2c_bad2 = nmgate_group_ge2c_all1 NOT INTERACT nmgate_gate_sd_short_vss_ge2c_f
+   nmgate_group_ge2c_bad  = nmgate_group_ge2c_bad1 OR nmgate_group_ge2c_bad2
+   nmgate_group_ge2c_good = nmgate_group_ge2c_all1 NOT  nmgate_group_ge2c_bad 
+   //nmgate_group_ge2c_good { COPY nmgate_group_ge2c_good }
+//
+// create boundrary 0.4 y and boundrary at trans edge 0.2 U to get
+   //
+   //nmgate_group_eq1c_trans { COPY nmgate_group_eq1c_trans }
+   //nmgate_group_ge2c_trans { COPY nmgate_group_ge2c_trans }
+   //NMMOS1_CM_GROUP_INFO { COPY nmgate_group_eq1c_trans }
+   //NMMOS2_CM_GROUP_INFO { COPY nmgate_group_ge2c_trans }
+   //
+// ok 
+// ok 
+   NMOSM2_CURRENT_MIRROR { @ nmosm current mirror found
+                          @ shows outline, square is bias trans , donut is mirror trans
+      y1 = COPY nmgate_group_ge2c_good
+      y2 = HOLES y1 INNER 
+      y3 = nmgate_group_ge2c_trans INTERACT y1
+      y  = y1 OR y2
+      x = SIZE y3 BY -0.2 
+      z = SIZE y BY -0.4
+      u  = EXTENTS ( nmgate_gate_sd_short_vss_ge2c_f INTERACT y1) CENTERS 1 
+      v  = EXTENTS ( nmgate_drain_vss_ge2c_f INTERACT y1) CENTERS 1 
+      v1 = v NOT (SIZE v BY -0.2) 
+      FLATTEN( (y NOT z) OR (( y3 NOT x ) OR (u OR v1) ))
+   }
+//
+// create square in the center
+//
+   NMOSM2_CM_COUNT_INFO { @ nmosm center of current mirror 
+      FLATTEN( EXTENTS( (nmgate_group_ge2c_trans INTERACT nmgate_group_ge2c) OR nmgate_group_ge2c) CENTERS 2)   
+   }
+//
+//
+   NMOSM2_CM_TRANS_TOOFAR_DFM0053 { @ DFM0053 nmos curr mirr device too far away ( 2 or more mirr devices)
+        x = nmgate_gate_sd_short_vss_ge2c_f NOT INTERACT  nmgate_group_ge2c_trans
+        y = nmgate_drain_vss_ge2c_f NOT INTERACT nmgate_group_ge2c
+// transistor too far should stay but draw nets to other devices
+        FLATTEN (x OR y )
+        //x = nmgate_gate_sd_short_vss_ge2c_f AND nmgate_group_ge2c_bad
+        //y = nmgate_drain_vss_ge2c_f         AND nmgate_group_ge2c_bad
+        rpoly =  routingpoly NOT (nmgate_gate_sd_short_vss_ge2c_f OR nmgate_drain_vss_ge2c_f)
+        p = NET AREA RATIO rpoly x > 0
+        m1 = NET AREA RATIO routingmet1 x > 0
+        m2 = NET AREA RATIO routingmet2 x > 0
+        m3 = NET AREA RATIO routingmet3 x > 0
+        ORNET m1 (ORNET m2 (ORNET m3 p))
+
+        am1 = NET AREA RATIO routingmet1 y > 0
+        am2 = NET AREA RATIO routingmet2 y > 0
+        am3 = NET AREA RATIO routingmet3 y > 0
+        ap = NET AREA RATIO rpoly y > 0
+        ORNET am1 (ORNET am2 (ORNET am3 ap))
+   }
+//
+// check if bias trans is inside of group 
+//-----------------------------------------
+//   nmgate_group_ge2c_trans_mid = WITH NEIGHBOR  nmgate_group_ge2c_trans >= 2 SPACE < 10
+   nmgate_gate_sd_short_vss_ge2c_ff = nmgate_gate_sd_short_vss_ge2c_f INTERACT nmgate_group_ge2c
+//   NMMOS2_CM_BIASTRANS_NOTMID_DFM0054 { @ DFM0054 bias trans should be in the middle of mirror trans
+//      nmgate_gate_sd_short_vss_ge2c_ff NOT nmgate_group_ge2c_trans_mid 
+//   }
+//
+   NMOSM2_CM_BIASTRANS_NOTMID_DFM0054 { @ DFM0054 bias trans should be in the middle of mirror trans array
+      bias =  COPY nmgate_gate_sd_short_vss_ge2c_f
+      mirr =  nmgate_group_ge2c_trans NOT nmgate_gate_sd_short_vss_ge2c_f
+      r = GROW bias RIGHT BY 10
+      l = GROW bias LEFT BY 10
+      biasrl = ((r OR ( l OR bias)) NOT mirr) INTERACT bias
+      biasrl_0 = biasrl NOT INTERACT mirr
+      biasrl_1 = biasrl INTERACT mirr == 1
+      biasrl_2 = biasrl INTERACT mirr == 2
+      t = GROW bias TOP BY 10
+      b = GROW bias BOTTOM BY 10
+      biastb = ((t OR ( b OR bias)) NOT mirr) INTERACT bias
+      biastb_0 = biastb NOT INTERACT mirr
+      biastb_1 = biastb INTERACT mirr == 1
+      biastb_2 = biastb INTERACT mirr == 2
+      ok_1 =  (biasrl_2 AND biastb_0) OR ((biasrl_0 AND biastb_2) OR (biasrl_2 AND biastb_2))
+      ok_2 =  (biasrl_2 AND biastb_1) OR (biasrl_1 AND biastb_2)
+      ok_3 =  ok_2 OR ok_1
+      biasbad = bias NOT ok_3
+      group_all = (nmgate_group_ge2c_trans INTERACT nmgate_group_ge2c) OR nmgate_group_ge2c
+      group_all_one_mirr =  group_all INTERACT mirr == 1
+      biasbad1 = biasbad NOT INTERACT group_all_one_mirr
+      FLATTEN biasbad1
+   }
+//
+// xxxxxxxxxxxxx
+//
+// check max distance bias trans to mirr trans
+//----------------------------------------------
+//
+#IFDEF SIZE_CHECK
+//
+   //nxgate_gate_sd_short_vss_eq1c_ff = nxgate_gate_sd_short_vss_eq1c_f INTERACT nxgate_group_eq1c
+   //nmgate_gate_sd_short_vss_eq1c_ff = nmgate_gate_sd_short_vss_eq1c_f INTERACT nmgate_group_eq1c
+//
+   INCLUDE /fsup01/prg/mentor/ams/calibre/dfmcheck/currmirr/includes/ngate2_transdist.run
+   //INCLUDE /fsup01/prg/mentor/ams/calibre/dfmcheck/currmirr/includes/ngate1_transdist.run
+//
+#ENDIF
+//
+// check orientation of devices belonging to one group
+//------------------------------------------------------
+//
+// get w and l 
+   nxgate_group_ge2c_l = nxgate_group_ge2c_trans NOT COINCIDENT INSIDE EDGE POLY1
+   nxgate_group_ge2c_w = nxgate_group_ge2c_trans COINCIDENT INSIDE EDGE POLY1
+//
+   nmgate_group_ge2c_l = nmgate_group_ge2c_trans NOT COINCIDENT INSIDE EDGE POLY1
+   nmgate_group_ge2c_w = nmgate_group_ge2c_trans COINCIDENT INSIDE EDGE POLY1
+//
+// reduce checks for correct l and w
+   ngate_group_ge2c_l = (nxgate_group_ge2c_trans OR nmgate_group_ge2c_trans) NOT COINCIDENT INSIDE EDGE POLY1
+   ngate_group_ge2c_w = (nxgate_group_ge2c_trans OR nmgate_group_ge2c_trans) COINCIDENT INSIDE EDGE POLY1
+//
+// check for orientation by growing 
+//
+   nxgate_group_ge2c_lexp = nxgate_group_ge2c_l EXPAND EDGE OUTSIDE BY 0.1
+   nxgate_group_ge2c_lexp_grow = (GROW nxgate_group_ge2c_lexp RIGHT BY 0.1) NOT nxgate_group_ge2c_lexp
+//
+   nmgate_group_ge2c_lexp = nmgate_group_ge2c_l EXPAND EDGE OUTSIDE BY 0.1
+   nmgate_group_ge2c_lexp_grow = (GROW nmgate_group_ge2c_lexp RIGHT BY 0.1) NOT nmgate_group_ge2c_lexp
+#IFDEF DEBUG
+   nxgate_group_eq1c_lexp_grow { COPY nxgate_group_eq1c_lexp_grow }
+   nxgate_group_ge2c_lexp_grow { COPY nxgate_group_ge2c_lexp_grow }
+   nmgate_group_eq1c_lexp_grow { COPY nmgate_group_eq1c_lexp_grow }
+   nmgate_group_ge2c_lexp_grow { COPY nmgate_group_ge2c_lexp_grow }
+#ENDIF
+
+//
+// get group area as polygon
+// 
+// trans touch spacing area form a group
+//
+   nxgate_group_ge2c_all = (nxgate_group_ge2c_trans INTERACT nxgate_group_ge2c ) OR nxgate_group_ge2c
+//
+   nmgate_group_ge2c_all = (nmgate_group_ge2c_trans INTERACT nmgate_group_ge2c ) OR nmgate_group_ge2c
+#IFDEF DEBUG
+   nxgate_group_ge2c_all { COPY nxgate_group_ge2c_all }
+   nxgate_group_eq1c_all { COPY nxgate_group_eq1c_all }
+   nmgate_group_eq1c_all { COPY nmgate_group_eq1c_all }
+   nmgate_group_ge2c_all { COPY nmgate_group_ge2c_all }
+#ENDIF
+//
+// check ngate for orientation
+// grow expanded edge right by 0.1
+// split squares and long edge
+// group must only enclose one type
+//
+   nxgate_group_ge2c_elong = nxgate_group_ge2c_lexp_grow LENGTH > 0.5 
+//
+// separate squares and rectangles
+   nxgate_group_ge2c_lexp_long = nxgate_group_ge2c_lexp_grow WITH EDGE nxgate_group_ge2c_elong
+//
+   nxgate_group_ge2c_lexp_short = RECTANGLE nxgate_group_ge2c_lexp_grow == 0.1 BY == 0.1
+#IFDEF DEBUG
+   nxgate_group_eq1c_lexp_short { COPY nxgate_group_eq1c_lexp_short }
+   nxgate_group_ge2c_lexp_short { COPY nxgate_group_ge2c_lexp_short }
+   nxgate_group_eq1c_lexp_long { COPY nxgate_group_eq1c_lexp_long }
+   nxgate_group_ge2c_lexp_long { COPY nxgate_group_ge2c_lexp_long }
+#ENDIF
+//
+// size : all must be inside
+   nxgate_group_ge2c_square = (SIZE nxgate_group_ge2c_all BY 0.5) ENCLOSE nxgate_group_ge2c_lexp_short
+   nxgate_group_ge2c_long   = (SIZE nxgate_group_ge2c_all BY 0.5) ENCLOSE nxgate_group_ge2c_lexp_long 
+   nxgate_group_ge2c_bad_orient = nxgate_group_ge2c_square AND nxgate_group_ge2c_long
+   NMOS2_CM_ORIENT_ERR_DFM0056  { @ DFM0056 nmos orientation must be the same for all devices( 2 or more mirr devices )
+      COPY nxgate_group_ge2c_bad_orient 
+   }
+//
+   nmgate_group_ge2c_elong = nmgate_group_ge2c_lexp_grow LENGTH > 0.5 
+//
+// separate squares and rectangles
+   nmgate_group_ge2c_lexp_long = nmgate_group_ge2c_lexp_grow WITH EDGE nmgate_group_ge2c_elong
+//
+   nmgate_group_ge2c_lexp_short = RECTANGLE nmgate_group_ge2c_lexp_grow == 0.1 BY == 0.1
+#IFDEF DEBUG
+   nmgate_group_eq1c_lexp_long { COPY nmgate_group_eq1c_lexp_long }
+   nmgate_group_ge2c_lexp_long { COPY nmgate_group_ge2c_lexp_long }
+   nmgate_group_eq1c_lexp_short { COPY nmgate_group_eq1c_lexp_short }
+   nmgate_group_ge2c_lexp_short { COPY nmgate_group_ge2c_lexp_short }
+#ENDIF
+//
+   nmgate_group_ge2c_square = (SIZE nmgate_group_ge2c_all BY 0.5) ENCLOSE nmgate_group_ge2c_lexp_short
+   nmgate_group_ge2c_long   = (SIZE nmgate_group_ge2c_all BY 0.5) ENCLOSE nmgate_group_ge2c_lexp_long 
+   nmgate_group_ge2c_bad_orient = nmgate_group_ge2c_square AND nmgate_group_ge2c_long
+   NMOSM2_CM_ORIENT_ERR_DFM0056  { @ DFM0056 nmos orientation must be the same for all devices ( 2 or more mirr devices)
+      COPY nmgate_group_ge2c_bad_orient 
+   }
+//
+#UNDEFINE NMOS_CHECKS
+#IFDEF NMOS_CHECKS
+// skipped
+//
+// check current direction
+//-------------------------
+//
+// ngate_group_eq1c_w = (nxgate_group_eq1c_trans OR nmgate_group_eq1c_trans) COINCIDENT INSIDE EDGE POLY1
+// ngate_group_ge2c_w = (nxgate_group_ge2c_trans OR nmgate_group_ge2c_trans) COINCIDENT INSIDE EDGE POLY1
+   //nxgate_group_eq1c_w = nxgate_group_eq1c_trans COINCIDENT INSIDE EDGE POLY1
+   //nxgate_group_ge2c_w = nxgate_group_ge2c_trans COINCIDENT INSIDE EDGE POLY1
+   //nmgate_group_eq1c_w = nmgate_group_eq1c_trans COINCIDENT INSIDE EDGE POLY1
+   //nmgate_group_ge2c_w = nmgate_group_ge2c_trans COINCIDENT INSIDE EDGE POLY1
+   //nxgate_group_eq1c_trans { COPY nxgate_group_eq1c_trans }
+   //nxgate_group_ge2c_trans { COPY nxgate_group_ge2c_trans }
+   //nmgate_group_eq1c_trans { COPY nmgate_group_eq1c_trans }
+   //nmgate_group_ge2c_trans { COPY nmgate_group_ge2c_trans }
+//
+//
+//  nmos 
+//--------
+// check for orientation by growing
+//
+   nxgate_group_eq1c_wexp = (nxgate_group_eq1c_w EXPAND EDGE OUTSIDE BY 0.1) INTERACT nxgate_group_eq1c_trans
+   nxgate_group_ge2c_wexp = (nxgate_group_ge2c_w EXPAND EDGE OUTSIDE BY 0.1) INTERACT nxgate_group_ge2c_trans
+//
+   CONNECT nxgate_group_eq1c_wexp ndiff 
+   CONNECT nxgate_group_ge2c_wexp ndiff 
+   nxgate_group_eq1c_wexp_vss = NET AREA RATIO nxgate_group_eq1c_wexp subtap > 0
+   nxgate_group_ge2c_wexp_vss = NET AREA RATIO nxgate_group_ge2c_wexp subtap > 0
+   //nxgate_group_eq1c_wexp_vss { COPY nxgate_group_eq1c_wexp_vss }
+   //nxgate_group_ge2c_wexp_vss { COPY nxgate_group_ge2c_wexp_vss }
+//
+// grow right left up down
+// creates only shapes if expansion is directed into ndiff, not into gate
+//
+   nxgate_group_eq1c_wexp_grow_r = ndiff AND ((GROW nxgate_group_eq1c_wexp_vss RIGHT BY 0.1) NOT (nxgate_group_eq1c_trans OR nxgate_group_eq1c_wexp_vss))
+   nxgate_group_ge2c_wexp_grow_r = ndiff AND ((GROW nxgate_group_ge2c_wexp_vss RIGHT BY 0.1) NOT (nxgate_group_ge2c_trans OR nxgate_group_ge2c_wexp_vss))
+//
+   nxgate_group_eq1c_wexp_grow_l = ndiff AND ((GROW nxgate_group_eq1c_wexp_vss LEFT BY 0.1) NOT (nxgate_group_eq1c_trans OR nxgate_group_eq1c_wexp_vss))  
+   nxgate_group_ge2c_wexp_grow_l = ndiff AND ((GROW nxgate_group_ge2c_wexp_vss LEFT BY 0.1) NOT (nxgate_group_ge2c_trans OR nxgate_group_ge2c_wexp_vss))
+//
+   nxgate_group_eq1c_wexp_grow_u = ndiff AND ((GROW nxgate_group_eq1c_wexp_vss TOP BY 0.1) NOT (nxgate_group_eq1c_trans  OR nxgate_group_eq1c_wexp_vss)) 
+   nxgate_group_ge2c_wexp_grow_u = ndiff AND ((GROW nxgate_group_ge2c_wexp_vss TOP BY 0.1) NOT (nxgate_group_ge2c_trans  OR nxgate_group_ge2c_wexp_vss))
+//
+nxgate_group_eq1c_wexp_grow_d = ndiff AND ((GROW nxgate_group_eq1c_wexp_vss BOTTOM BY 0.1) NOT (nxgate_group_eq1c_trans OR nxgate_group_eq1c_wexp_vss))  
+nxgate_group_ge2c_wexp_grow_d = ndiff AND ((GROW nxgate_group_ge2c_wexp_vss BOTTOM BY 0.1) NOT (nxgate_group_ge2c_trans OR nxgate_group_ge2c_wexp_vss))
+//
+// a1 { COPY nxgate_group_eq1c_wexp_grow_r }
+// b1 { COPY nxgate_group_eq1c_wexp_grow_l }
+// c1 { COPY nxgate_group_eq1c_wexp_grow_u }
+// d1 { COPY nxgate_group_eq1c_wexp_grow_d }
+// a2 { COPY nxgate_group_ge2c_wexp_grow_r }
+// b2 { COPY nxgate_group_ge2c_wexp_grow_l }
+// c2 { COPY nxgate_group_ge2c_wexp_grow_u }
+// d2 { COPY nxgate_group_ge2c_wexp_grow_d }
+//
+// get groups
+//
+  nxgate_group_eq1c_all_ovs = SIZE nxgate_group_eq1c_all BY 0.5
+  nxgate_group_ge2c_all_ovs = SIZE nxgate_group_ge2c_all BY 0.5
+  nxgate_group_eq1c_orient_r = nxgate_group_eq1c_all_ovs ENCLOSE nxgate_group_eq1c_wexp_grow_r
+  nxgate_group_eq1c_orient_l = nxgate_group_eq1c_all_ovs ENCLOSE nxgate_group_eq1c_wexp_grow_l
+  nxgate_group_eq1c_orient_u = nxgate_group_eq1c_all_ovs ENCLOSE nxgate_group_eq1c_wexp_grow_u
+  nxgate_group_eq1c_orient_d = nxgate_group_eq1c_all_ovs ENCLOSE nxgate_group_eq1c_wexp_grow_d
+//
+  NMOS1_CM_CURRENT_DIRECT_ERR { @ nmos current direction must be the same ( 1 mirr device )
+    nxgate_group_eq1c_orient_r AND nxgate_group_eq1c_orient_l
+    nxgate_group_eq1c_orient_r AND nxgate_group_eq1c_orient_u
+    nxgate_group_eq1c_orient_r AND nxgate_group_eq1c_orient_d
+    nxgate_group_eq1c_orient_l AND nxgate_group_eq1c_orient_u
+    nxgate_group_eq1c_orient_l AND nxgate_group_eq1c_orient_d
+    nxgate_group_eq1c_orient_u AND nxgate_group_eq1c_orient_d
+  }
+//
+   nxgate_group_ge2c_orient_r = nxgate_group_ge2c_all_ovs ENCLOSE nxgate_group_ge2c_wexp_grow_r
+   nxgate_group_ge2c_orient_l = nxgate_group_ge2c_all_ovs ENCLOSE nxgate_group_ge2c_wexp_grow_l
+   nxgate_group_ge2c_orient_u = nxgate_group_ge2c_all_ovs ENCLOSE nxgate_group_ge2c_wexp_grow_u
+   nxgate_group_ge2c_orient_d = nxgate_group_ge2c_all_ovs ENCLOSE nxgate_group_ge2c_wexp_grow_d
+//
+  NMOS2_CM_CURRENT_DIRECT_ERR { @ nmos current direction must be the same ( 2 or more mirr devices )
+    nxgate_group_ge2c_orient_r AND nxgate_group_ge2c_orient_l
+    nxgate_group_ge2c_orient_r AND nxgate_group_ge2c_orient_u
+    nxgate_group_ge2c_orient_r AND nxgate_group_ge2c_orient_d
+    nxgate_group_ge2c_orient_l AND nxgate_group_ge2c_orient_u
+    nxgate_group_ge2c_orient_l AND nxgate_group_ge2c_orient_d
+    nxgate_group_ge2c_orient_u AND nxgate_group_ge2c_orient_d
+  }
+//
+//  nmmos 
+//-----------
+// check for orientation by growing
+//
+   nmgate_group_eq1c_wexp = (nmgate_group_eq1c_w EXPAND EDGE OUTSIDE BY 0.1) INTERACT nmgate_group_eq1c_trans
+   nmgate_group_ge2c_wexp = (nmgate_group_ge2c_w EXPAND EDGE OUTSIDE BY 0.1) INTERACT nmgate_group_ge2c_trans
+//
+   CONNECT nmgate_group_eq1c_wexp ndiff 
+   CONNECT nmgate_group_ge2c_wexp ndiff 
+   nmgate_group_eq1c_wexp_vss = NET AREA RATIO nmgate_group_eq1c_wexp subtap > 0
+   nmgate_group_ge2c_wexp_vss = NET AREA RATIO nmgate_group_ge2c_wexp subtap > 0
+   //nmgate_group_eq1c_wexp_vss { COPY nmgate_group_eq1c_wexp_vss }
+   //nmgate_group_ge2c_wexp_vss { COPY nmgate_group_ge2c_wexp_vss }
+//
+// grow right left up down
+// creates only shapes if expansion is directed into ndiff, not into gate
+//
+   nmgate_group_eq1c_wexp_grow_r = ndiff AND ((GROW nmgate_group_eq1c_wexp_vss RIGHT BY 0.1) NOT (nmgate_group_eq1c_trans OR nmgate_group_eq1c_wexp_vss))
+   nmgate_group_ge2c_wexp_grow_r = ndiff AND ((GROW nmgate_group_ge2c_wexp_vss RIGHT BY 0.1) NOT (nmgate_group_ge2c_trans OR nmgate_group_ge2c_wexp_vss))
+//
+   nmgate_group_eq1c_wexp_grow_l = ndiff AND ((GROW nmgate_group_eq1c_wexp_vss LEFT BY 0.1) NOT (nmgate_group_eq1c_trans OR nmgate_group_eq1c_wexp_vss))  
+   nmgate_group_ge2c_wexp_grow_l = ndiff AND ((GROW nmgate_group_ge2c_wexp_vss LEFT BY 0.1) NOT (nmgate_group_ge2c_trans OR nmgate_group_ge2c_wexp_vss))
+//
+   nmgate_group_eq1c_wexp_grow_u = ndiff AND ((GROW nmgate_group_eq1c_wexp_vss TOP BY 0.1) NOT (nmgate_group_eq1c_trans  OR nmgate_group_eq1c_wexp_vss)) 
+   nmgate_group_ge2c_wexp_grow_u = ndiff AND ((GROW nmgate_group_ge2c_wexp_vss TOP BY 0.1) NOT (nmgate_group_ge2c_trans  OR nmgate_group_ge2c_wexp_vss))
+//
+nmgate_group_eq1c_wexp_grow_d = ndiff AND ((GROW nmgate_group_eq1c_wexp_vss BOTTOM BY 0.1) NOT (nmgate_group_eq1c_trans OR nmgate_group_eq1c_wexp_vss))  
+nmgate_group_ge2c_wexp_grow_d = ndiff AND ((GROW nmgate_group_ge2c_wexp_vss BOTTOM BY 0.1) NOT (nmgate_group_ge2c_trans OR nmgate_group_ge2c_wexp_vss))
+//
+// a1 { COPY nmgate_group_eq1c_wexp_grow_r }
+// b1 { COPY nmgate_group_eq1c_wexp_grow_l }
+// c1 { COPY nmgate_group_eq1c_wexp_grow_u }
+// d1 { COPY nmgate_group_eq1c_wexp_grow_d }
+// a2 { COPY nmgate_group_ge2c_wexp_grow_r }
+// b2 { COPY nmgate_group_ge2c_wexp_grow_l }
+// c2 { COPY nmgate_group_ge2c_wexp_grow_u }
+// d2 { COPY nmgate_group_ge2c_wexp_grow_d }
+//
+// get groups
+//
+  nmgate_group_eq1c_all_ovs = SIZE nmgate_group_eq1c_all BY 0.5
+  nmgate_group_ge2c_all_ovs = SIZE nmgate_group_ge2c_all BY 0.5
+  nmgate_group_eq1c_orient_r = nmgate_group_eq1c_all_ovs ENCLOSE nmgate_group_eq1c_wexp_grow_r
+  nmgate_group_eq1c_orient_l = nmgate_group_eq1c_all_ovs ENCLOSE nmgate_group_eq1c_wexp_grow_l
+  nmgate_group_eq1c_orient_u = nmgate_group_eq1c_all_ovs ENCLOSE nmgate_group_eq1c_wexp_grow_u
+  nmgate_group_eq1c_orient_d = nmgate_group_eq1c_all_ovs ENCLOSE nmgate_group_eq1c_wexp_grow_d
+//
+  NMOSM1_CM_CURRENT_DIRECT_ERR { @ nmmos current direction must be the same ( 1  mirr device )
+    nmgate_group_eq1c_orient_r AND nmgate_group_eq1c_orient_l
+    nmgate_group_eq1c_orient_r AND nmgate_group_eq1c_orient_u
+    nmgate_group_eq1c_orient_r AND nmgate_group_eq1c_orient_d
+    nmgate_group_eq1c_orient_l AND nmgate_group_eq1c_orient_u
+    nmgate_group_eq1c_orient_l AND nmgate_group_eq1c_orient_d
+    nmgate_group_eq1c_orient_u AND nmgate_group_eq1c_orient_d
+  }
+//
+   nmgate_group_ge2c_orient_r = nmgate_group_ge2c_all_ovs ENCLOSE nmgate_group_ge2c_wexp_grow_r
+   nmgate_group_ge2c_orient_l = nmgate_group_ge2c_all_ovs ENCLOSE nmgate_group_ge2c_wexp_grow_l
+   nmgate_group_ge2c_orient_u = nmgate_group_ge2c_all_ovs ENCLOSE nmgate_group_ge2c_wexp_grow_u
+   nmgate_group_ge2c_orient_d = nmgate_group_ge2c_all_ovs ENCLOSE nmgate_group_ge2c_wexp_grow_d
+//
+  NMOSM2_CM_CURRENT_DIRECT_ERR { @ nmmos current direction must be the same ( 2 or more mirr devices )
+    nmgate_group_ge2c_orient_r AND nmgate_group_ge2c_orient_l
+    nmgate_group_ge2c_orient_r AND nmgate_group_ge2c_orient_u
+    nmgate_group_ge2c_orient_r AND nmgate_group_ge2c_orient_d
+    nmgate_group_ge2c_orient_l AND nmgate_group_ge2c_orient_u
+    nmgate_group_ge2c_orient_l AND nmgate_group_ge2c_orient_d
+    nmgate_group_ge2c_orient_u AND nmgate_group_ge2c_orient_d
+  }
+//
+#ENDIF // nmos checks
+//
+// check if different L are in same group
+//------------------------------------------
+//
+// oversize group to make sure that expanded edges are inside
+//
+   //nxgate_group_all_1 = (SIZE nxgate_group_eq1c_all BY 0.5) OR (SIZE nxgate_group_ge2c_all BY 0.5)
+   //nmgate_group_all_1 = (SIZE nmgate_group_eq1c_all BY 0.5) OR (SIZE nmgate_group_ge2c_all BY 0.5)
+//
+// only good groups
+//
+//
+   nxgate_group_all_1 = SIZE nxgate_group_ge2c_good BY 0.5
+   nmgate_group_all_1 = SIZE nmgate_group_ge2c_good BY 0.5
+//
+  ngate_group_all = nxgate_group_all_1 OR nmgate_group_all_1
+//
+#IFDEF L_W_CHECK
+  empty_layer = AREA (EXTENT) == 0 
+  ngate_group_eq1c_l = COPY empty_layer
+  pgate_group_eq1c_l = COPY empty_layer
+  INCLUDE /fsup01/prg/mentor/ams/calibre/dfmcheck/currmirr/prep/ngate_lcheck.run
+#ENDIF
+//
+// check if different W are in same group
+//------------------------------------------
+//
+#IFDEF L_W_CHECK
+  ngate_group_eq1c_w = COPY empty_layer
+  pgate_group_eq1c_w = COPY empty_layer
+  INCLUDE /fsup01/prg/mentor/ams/calibre/dfmcheck/currmirr/prep/ngate_wcheck.run
+#ENDIF
+
+//
+//
+// check metal over trans
+//-------------------------
+   //nxgate_group_eq1c_trans { COPY nxgate_group_eq1c_trans }
+   //nxgate_group_ge2c_trans { COPY nxgate_group_ge2c_trans }
+   //nmgate_group_eq1c_trans { COPY nmgate_group_eq1c_trans }
+   //nmgate_group_ge2c_trans { COPY nmgate_group_ge2c_trans }
+//
+// only over good gate
+//
+   NMOS2_CM_ILL_MET1_DFM0049 { @ DFM0049 illegal metal1 over current mirror circuit
+     ((nxgate_group_ge2c_trans AND nxgate_group_ge2c_good) AND MET1) SIZE BY 0.1 UNDEROVER
+   }
+   NMOS2_CM_ILL_MET2_DFM0050 { @ DFM0050 illegal metal2 over current mirror circuit
+     ((nxgate_group_ge2c_trans AND nxgate_group_ge2c_good) AND MET2) SIZE BY 0.1 UNDEROVER
+   }
+   NMOS2_CM_ILL_MET3_DFM0051 { @ DFM0051 illegal metal3 over current mirror circuit
+     ((nxgate_group_ge2c_trans AND nxgate_group_ge2c_good) AND MET3) SIZE BY 0.1 UNDEROVER
+   }
+#IFDEF fourmetal
+   NMOS2_CM_ILL_MET4_DFM0052 { @ DFM0052 illegal metal4 over current mirror circuit
+     ((nxgate_group_ge2c_trans AND nxgate_group_ge2c_good) AND MET4) SIZE BY 0.1 UNDEROVER
+   }
+#ENDIF
+//
+   NMOSM2_CM_ILL_MET1_DFM0049 { @ DF0049 illegal metal1 over current mirror circuit
+     ((nmgate_group_ge2c_trans AND nmgate_group_ge2c_good) AND MET1) SIZE BY 0.1 UNDEROVER
+   }
+   NMOSM2_CM_ILL_MET2_DFM0050 { @ DF0050 illegal metal2 over current mirror circuit
+     ((nmgate_group_ge2c_trans AND nmgate_group_ge2c_good) AND MET2) SIZE BY 0.1 UNDEROVER
+   }
+   NMOSM2_CM_ILL_MET3_DFM0051 { @ DF0051 illegal metal3 over current mirror circuit
+     ((nmgate_group_ge2c_trans AND nmgate_group_ge2c_good) AND MET3) SIZE BY 0.1 UNDEROVER
+   }
+#IFDEF fourmetal
+   NMOSM2_CM_ILL_MET4_DFM0052 { @ DF0052 illegal metal4 over current mirror circuit
+     ((nmgate_group_ge2c_trans AND nmgate_group_ge2c_good) AND MET4) SIZE BY 0.1 UNDEROVER
+   }
+#ENDIF
+//
+//
+// check min w and min l
+//-----------------------
+//
+// get w and l
+//   nxgate_group_eq1c_l = nxgate_group_eq1c_trans NOT COINCIDENT INSIDE EDGE POLY1
+//   nxgate_group_ge2c_l = nxgate_group_ge2c_trans NOT COINCIDENT INSIDE EDGE POLY1
+//   nxgate_group_eq1c_w = nxgate_group_eq1c_trans COINCIDENT INSIDE EDGE POLY1
+//   nxgate_group_ge2c_w = nxgate_group_ge2c_trans COINCIDENT INSIDE EDGE POLY1
+//
+//   nmgate_group_eq1c_l = nmgate_group_eq1c_trans NOT COINCIDENT INSIDE EDGE POLY1
+//   nmgate_group_ge2c_l = nmgate_group_ge2c_trans NOT COINCIDENT INSIDE EDGE POLY1
+//   nmgate_group_eq1c_w = nmgate_group_eq1c_trans COINCIDENT INSIDE EDGE POLY1
+//   nmgate_group_ge2c_w = nmgate_group_ge2c_trans COINCIDENT INSIDE EDGE POLY1
+//
+// check l
+//
+   NMOS_CM_MIN_L_ERR_DFM0020 { @ DFM0020 nmos current mirror L < 0.7 U
+      LENGTH nxgate_group_ge2c_l < 0.7
+   }
+   NMOSM_CM_MIN_L_ERR_DFM0024 { @ DFM0024 nmmos current mirror L < 1 U
+      LENGTH nmgate_group_ge2c_l < 1.0
+   }
+//
+// check w
+//
+   NMOS_CM_MIN_W_ERR_DFM0021 { @ DFM0021 nmos current mirror W < 0.5 U
+      LENGTH nxgate_group_ge2c_w < 0.5
+   }
+   NMOSM_CM_MIN_W_ERR_DFM0025  { @ DFM0025 nmmos current mirror W < 0.5 U
+      LENGTH nmgate_group_ge2c_w < 0.5
+   }
+//
+//////////////////////////////////////////////////////////////////////////////////////////
+//
+//                       pgate current mirror checks
+//
+//////////////////////////////////////////////////////////////////////////////////////////
+//
+// 1.) gates L > 0.35 drain shorted to gate , source connected to vss
+//=====================================================================
+// already done
+//
+// 2.) pmos conn vdd
+//=====================
+// already done
+//
+// get shorted devices belonging to mirror structure
+//--------------------------------------------------------
+// already done
+//
+// do new connect to avoid connectivity problem 
+//
+  DISCONNECT
+//
+#IFDEF fourmetal
+   CONNECT routingmet4    routingmet3                BY routingvia3 MASK   
+#ENDIF
+   CONNECT routingmet3    routingmet2                BY routingvia2 MASK   
+   CONNECT routingmet2    routingmet1                BY routingvia  MASK   
+   CONNECT routingmet1    routingpoly2               BY poly2con    MASK
+   CONNECT routingmet1    routingpoly                BY poly1con    MASK
+// >>>>>
+   CONNECT routingmet1    ndiff                      BY ndiffcon    MASK
+   CONNECT routingmet1    pdiff                      BY pdiffcon    MASK
+   CONNECT pdiff          substrate                  BY subtap       MASK
+   CONNECT ndiff          routingnwell               BY welltap     MASK
+//--------------------------
+// 
+// split midox and no midox
+//
+  pmgate_gate_sd_short_vss = pgate_gate_sd_short_vss AND MIDOX
+  pxgate_gate_sd_short_vss = pgate_gate_sd_short_vss NOT MIDOX
+  pmgate_drain_vss_ge2c = pgate_drain_vss_ge2c AND MIDOX 
+  pxgate_drain_vss_ge2c = pgate_drain_vss_ge2c NOT MIDOX 
+//
+  CONNECT pxgate_gate_sd_short_vss pmgate_gate_sd_short_vss routingpoly
+  CONNECT pxgate_drain_vss_ge2c pmgate_drain_vss_ge2c routingpoly
+//
+//
+// final mirror structures
+//---------------------------
+// L > lmin
+// nmos drain vss
+// gate/source connected
+// conneected to one or more (parallel) devices
+//
+//  1 nmos
+// 
+  pxgate_gate_sd_short_vss_ge2c_f = NET AREA RATIO pxgate_gate_sd_short_vss pxgate_drain_vss_ge2c > 0
+  PMOS2_CM_BIAS_TRANS_INFO { COPY pxgate_gate_sd_short_vss_ge2c_f }
+//
+// bias trans folded ( one mirr trans) ?
+//---------------------------------------
+//
+// bias trans folded ( more mirr trans) ?
+//---------------------------------------
+  pxgate_sdshort_pdiff_novss_ge2c = ( pdiff INTERACT pxgate_gate_sd_short_vss_ge2c_f ) NOT pgate_gate_sd_short_pdiff_vss
+  pxgate_sdshort_pdiff_novss_ge2c_edgeexp = pdiff AND
+            ((pxgate_gate_sd_short_vss_ge2c_f COIN OUTSIDE EDGE pxgate_sdshort_pdiff_novss_ge2c) EXPAND EDGE OUTSIDE BY 0.1)
+  pxgate_dummy4 =  NET AREA RATIO routingmet1 pxgate_sdshort_pdiff_novss_ge2c_edgeexp > 1 [ COUNT(pxgate_sdshort_pdiff_novss_ge2c_edgeexp)]
+  pxgate_sdshort_pdiff_novss_ge2c_edgeexp_1  = NET AREA RATIO  pxgate_sdshort_pdiff_novss_ge2c_edgeexp pxgate_dummy4 > 0
+  pxgate_gate_sd_short_vss_ge2c_f_fold = pxgate_gate_sd_short_vss_ge2c_f INTERACT pxgate_sdshort_pdiff_novss_ge2c_edgeexp_1
+  PMOS2_CM_BIAS_TRANS_FOLDED_INFO { COPY pxgate_gate_sd_short_vss_ge2c_f_fold }
+//
+//  2  nmmos
+//
+  pmgate_gate_sd_short_vss_ge2c_f = NET AREA RATIO pmgate_gate_sd_short_vss pmgate_drain_vss_ge2c > 0
+  //pmgate_gate_sd_short_vss_ge2c_f  { COPY pmgate_gate_sd_short_vss_ge2c_f }
+  PMOSM2_CM_BIAS_TRANS_INFO { COPY pmgate_gate_sd_short_vss_ge2c_f }
+
+// bias trans folded ( one mirr trans) ?
+//---------------------------------------
+//
+// bias trans folded ( more mirr trans) ?
+//---------------------------------------
+  pmgate_sdshort_pdiff_novss_ge2c = ( pdiff INTERACT pmgate_gate_sd_short_vss_ge2c_f ) NOT pgate_gate_sd_short_pdiff_vss
+  pmgate_sdshort_pdiff_novss_ge2c_edgeexp = pdiff AND
+            ((pmgate_gate_sd_short_vss_ge2c_f COIN OUTSIDE EDGE pmgate_sdshort_pdiff_novss_ge2c) EXPAND EDGE OUTSIDE BY 0.1)
+  pmgate_dummy4 =  NET AREA RATIO routingmet1 pmgate_sdshort_pdiff_novss_ge2c_edgeexp > 1 [ COUNT(pmgate_sdshort_pdiff_novss_ge2c_edgeexp)]
+  pmgate_sdshort_pdiff_novss_ge2c_edgeexp_1  = NET AREA RATIO  pmgate_sdshort_pdiff_novss_ge2c_edgeexp pmgate_dummy4 > 0
+  pmgate_gate_sd_short_vss_ge2c_f_fold = pmgate_gate_sd_short_vss_ge2c_f INTERACT pmgate_sdshort_pdiff_novss_ge2c_edgeexp_1
+  PMOSM2_CM_BIAS_TRANS_FOLDED_INFO { COPY pmgate_gate_sd_short_vss_ge2c_f_fold }
+//
+  pxgate_drain_vss_ge2c_f = NET AREA RATIO  pxgate_drain_vss_ge2c pxgate_gate_sd_short_vss_ge2c_f > 0
+  //pxgate_drain_vss_ge2c_f { COPY pxgate_drain_vss_ge2c_f }
+  PMOS2_CM_MIRR_TRANS_INFO { COPY pxgate_drain_vss_ge2c_f }
+//
+  pmgate_drain_vss_ge2c_f = NET AREA RATIO  pmgate_drain_vss_ge2c pmgate_gate_sd_short_vss_ge2c_f > 0
+  //pmgate_drain_vss_ge2c_f { COPY pmgate_drain_vss_ge2c_f }
+  PMOSM2_CM_MIRR_TRANS_INFO { COPY pmgate_drain_vss_ge2c_f }
+//
+// find groups
+//-------------------
+// attention nmos gate/s shorted assumed only 1 device, ??? is not true
+// add parallel for gate/source shorted device later 
+// search 10 U 
+// add folded bias trans also
+//
+//xxxxxx   VARIABLE   curr_mirr_trans_spacing 10
+//
+//
+   pxgate_group_ge2c_1 = EXT  pxgate_gate_sd_short_vss_ge2c_f pxgate_drain_vss_ge2c_f  <  curr_mirr_trans_spacing REGION CONNECTED
+   pxgate_group_ge2c_2 = EXT  pxgate_drain_vss_ge2c_f  <  curr_mirr_trans_spacing REGION CONNECTED
+   pxgate_group_ge2c_3 = EXT  pxgate_gate_sd_short_vss_ge2c_f  <  curr_mirr_trans_spacing REGION CONNECTED
+   pxgate_group_ge2c = (pxgate_group_ge2c_1 OR pxgate_group_ge2c_2) OR pxgate_group_ge2c_3
+//  
+//
+   pmgate_group_ge2c_1 = EXT pmgate_gate_sd_short_vss_ge2c_f pmgate_drain_vss_ge2c_f  <  curr_mirr_trans_spacing REGION CONNECTED
+   pmgate_group_ge2c_2 = EXT pmgate_drain_vss_ge2c_f  <  curr_mirr_trans_spacing REGION CONNECTED
+   pmgate_group_ge2c_3 = EXT pmgate_gate_sd_short_vss_ge2c_f  <  curr_mirr_trans_spacing REGION CONNECTED
+   pmgate_group_ge2c = ( pmgate_group_ge2c_1 OR pmgate_group_ge2c_2) OR pmgate_group_ge2c_3
+#IFDEF DEBUG
+   pxgate_group_eq1c { COPY pxgate_group_eq1c }
+   pxgate_group_ge2c { COPY pxgate_group_ge2c }
+   pmgate_group_eq1c { COPY pmgate_group_eq1c }
+   pmgate_group_ge2c { COPY pmgate_group_ge2c }
+#ENDIF
+//
+// find trans belonging to group
+//-------------------------------
+// 
+   pxgate_group_ge2c_trans = (pxgate_gate_sd_short_vss_ge2c_f INTERACT pxgate_group_ge2c) OR ( pxgate_drain_vss_ge2c_f INTERACT pxgate_group_ge2c)
+
+// group area
+// missing bias trans or current mirror trans in group ?
+//
+//
+   PMOS2_CM_GROUP_TOOFAR_INFO { @ pmos current mirror found with other pmos on circuit
+                                 @ or transistors too far away
+        FLATTEN ( pxgate_group_ge2c_bad NOT pxgate_group_ge2c)
+        x = pxgate_gate_sd_short_vss_ge2c_f AND pxgate_group_ge2c_bad
+        y = pxgate_drain_vss_ge2c_f         AND pxgate_group_ge2c_bad
+
+        p = NET AREA RATIO routingpoly x > 0
+        m1 = NET AREA RATIO routingmet1 x > 0
+        m2 = NET AREA RATIO routingmet2 x > 0
+        m3 = NET AREA RATIO routingmet3 x > 0
+        ORNET m1 (ORNET m2 (ORNET m3 p))
+
+        am1 = NET AREA RATIO routingmet1 y > 0
+        am2 = NET AREA RATIO routingmet2 y > 0
+        am3 = NET AREA RATIO routingmet3 y > 0
+        ap = NET AREA RATIO routingpoly y > 0
+        ORNET am1 (ORNET am2 (ORNET am3 ap))
+   }
+   pxgate_group_ge2c_all1 = (pxgate_group_ge2c_trans INTERACT pxgate_group_ge2c) OR pxgate_group_ge2c
+   pxgate_group_ge2c_bad1 = pxgate_group_ge2c_all1 NOT INTERACT pxgate_drain_vss_ge2c_f
+   pxgate_group_ge2c_bad2 = pxgate_group_ge2c_all1 NOT INTERACT pxgate_gate_sd_short_vss_ge2c_f
+   pxgate_group_ge2c_bad  = pxgate_group_ge2c_bad1 OR pxgate_group_ge2c_bad2
+   pxgate_group_ge2c_good = pxgate_group_ge2c_all1 NOT  pxgate_group_ge2c_bad 
+   //pxgate_group_ge2c_good { COPY pxgate_group_ge2c_good }
+
+   //pxgate_group_eq1c_trans { COPY pxgate_group_eq1c_trans }
+   //pxgate_group_ge2c_trans { COPY pxgate_group_ge2c_trans }
+
+   //PMOS1_CM_GROUP_INFO { COPY pxgate_group_eq1c_trans }
+   //PMOS2_CM_GROUP_INFO { COPY pxgate_group_ge2c_trans }
+//
+// ok 
+   PMOS2_CURRENT_MIRROR { @ pmos current mirror found
+                          @ shows outline, square is bias trans , donut is mirror trans
+      y1 = COPY pxgate_group_ge2c_good
+      y2 = HOLES y1 INNER 
+      y3 = pxgate_group_ge2c_trans INTERACT y1
+      y  = y1 OR y2
+      x = SIZE y3 BY -0.2 
+      z = SIZE y BY -0.4
+      u  = EXTENTS ( pxgate_gate_sd_short_vss_ge2c_f INTERACT y1) CENTERS 1 
+      v  = EXTENTS ( pxgate_drain_vss_ge2c_f INTERACT y1) CENTERS 1 
+      v1 = v NOT (SIZE v BY -0.2) 
+      FLATTEN( (y NOT z) OR (( y3 NOT x ) OR (u OR v1) ))
+   }
+//
+   PMOS2_CM_COUNT_INFO { @ center of pmos current mirror 
+      FLATTEN( EXTENTS( ( pxgate_group_ge2c_trans INTERACT pxgate_group_ge2c) OR pxgate_group_ge2c) CENTERS 5)
+   }
+//
+// check if bias trans is inside of group 
+//-----------------------------------------
+//   pxgate_group_ge2c_trans_mid = WITH NEIGHBOR  pxgate_group_ge2c_trans >= 2 SPACE < 10
+   pxgate_gate_sd_short_vss_ge2c_ff = pxgate_gate_sd_short_vss_ge2c_f INTERACT pxgate_group_ge2c
+//   PMOS2_CM_BIASTRANS_NOTMID_DFM0062 { @ DFM0062 bias trans should be in the middle of mirror trans
+//      pxgate_gate_sd_short_vss_ge2c_ff NOT pxgate_group_ge2c_trans_mid 
+//   }
+//
+   PMOS2_CM_BIASTRANS_NOTMID_DFM0062 { @ DFM0062 bias trans should be in the middle of mirror trans array
+      bias =  COPY pxgate_gate_sd_short_vss_ge2c_f
+      mirr =  pxgate_group_ge2c_trans NOT pxgate_gate_sd_short_vss_ge2c_f
+      r = GROW bias RIGHT BY 10
+      l = GROW bias LEFT BY 10
+      biasrl = ((r OR ( l OR bias)) NOT mirr) INTERACT bias
+      biasrl_0 = biasrl NOT INTERACT mirr
+      biasrl_1 = biasrl INTERACT mirr == 1
+      biasrl_2 = biasrl INTERACT mirr == 2
+      t = GROW bias TOP BY 10
+      b = GROW bias BOTTOM BY 10
+      biastb = ((t OR ( b OR bias)) NOT mirr) INTERACT bias
+      biastb_0 = biastb NOT INTERACT mirr
+      biastb_1 = biastb INTERACT mirr == 1
+      biastb_2 = biastb INTERACT mirr == 2
+      ok_1 =  (biasrl_2 AND biastb_0) OR ((biasrl_0 AND biastb_2) OR (biasrl_2 AND biastb_2))
+      ok_2 =  (biasrl_2 AND biastb_1) OR (biasrl_1 AND biastb_2)
+      ok_3 =  ok_2 OR ok_1
+      biasbad = bias NOT ok_3
+      group_all = (pxgate_group_ge2c_trans INTERACT pxgate_group_ge2c) OR pxgate_group_ge2c
+      group_all_one_mirr =  group_all INTERACT mirr == 1
+      biasbad1 = biasbad NOT INTERACT group_all_one_mirr
+      FLATTEN biasbad1
+   }
+//
+// electrical connected, but too far away
+//----------------------------------------
+//
+   PMOS2_CM_TRANS_TOOFAR_DFM0061 { @ DFM0061 pmos curr mirr device too far away from group ( 2 or mirr device)
+     x = pxgate_gate_sd_short_vss_ge2c_f NOT INTERACT  pxgate_group_ge2c_trans
+     y = pxgate_drain_vss_ge2c_f NOT INTERACT pxgate_group_ge2c
+        FLATTEN (x OR y )
+        rpoly =  routingpoly NOT (pxgate_gate_sd_short_vss_ge2c_f OR pxgate_drain_vss_ge2c_f)
+        p = NET AREA RATIO rpoly x > 0
+        m1 = NET AREA RATIO routingmet1 x > 0
+        m2 = NET AREA RATIO routingmet2 x > 0
+        m3 = NET AREA RATIO routingmet3 x > 0
+        ORNET m1 (ORNET m2 (ORNET m3 p))
+
+        am1 = NET AREA RATIO routingmet1 y > 0
+        am2 = NET AREA RATIO routingmet2 y > 0
+        am3 = NET AREA RATIO routingmet3 y > 0
+        ap = NET AREA RATIO rpoly y > 0
+        ORNET am1 (ORNET am2 (ORNET am3 ap))
+   }
+// 
+   pmgate_group_ge2c_trans = (pmgate_gate_sd_short_vss_ge2c_f INTERACT pmgate_group_ge2c) OR ( pmgate_drain_vss_ge2c_f INTERACT pmgate_group_ge2c)
+//
+//
+//
+   PMOSM2_CM_GROUP_TOOFAR_INFO { @ pmosm current mirror found with other pmosm on circuit
+                                 @ or transistors too far away
+        FLATTEN ( pmgate_group_ge2c_bad NOT pmgate_group_ge2c)
+
+        x = pmgate_gate_sd_short_vss_ge2c_f AND pmgate_group_ge2c_bad
+        y = pmgate_drain_vss_ge2c_f         AND pmgate_group_ge2c_bad
+
+        p = NET AREA RATIO routingpoly x > 0
+        m1 = NET AREA RATIO routingmet1 x > 0
+        m2 = NET AREA RATIO routingmet2 x > 0
+        m3 = NET AREA RATIO routingmet3 x > 0
+        ORNET m1 (ORNET m2 (ORNET m3 p))
+
+        am1 = NET AREA RATIO routingmet1 y > 0
+        am2 = NET AREA RATIO routingmet2 y > 0
+        am3 = NET AREA RATIO routingmet3 y > 0
+        ap = NET AREA RATIO routingpoly y > 0
+        ORNET am1 (ORNET am2 (ORNET am3 ap))
+   }
+   pmgate_group_ge2c_all1 = (pmgate_group_ge2c_trans INTERACT pmgate_group_ge2c) OR pmgate_group_ge2c
+   pmgate_group_ge2c_bad1 = pmgate_group_ge2c_all1 NOT INTERACT pmgate_drain_vss_ge2c_f
+   pmgate_group_ge2c_bad2 = pmgate_group_ge2c_all1 NOT INTERACT pmgate_gate_sd_short_vss_ge2c_f
+   pmgate_group_ge2c_bad  = pmgate_group_ge2c_bad1 OR pmgate_group_ge2c_bad2
+   pmgate_group_ge2c_good = pmgate_group_ge2c_all1 NOT  pmgate_group_ge2c_bad 
+//
+   //pmgate_group_eq1c_trans { COPY pmgate_group_eq1c_trans }
+   //pmgate_group_ge2c_trans { COPY pmgate_group_ge2c_trans }
+   //PMMOS1_CM_GROUP_INFO { COPY pmgate_group_eq1c_trans }
+   //PMMOS2_CM_GROUP_INFO { COPY pmgate_group_ge2c_trans }
+
+// ok 
+// ok 
+   PMOSM2_CURRENT_MIRROR { @ pmos current mirror found
+                          @ shows outline, square is bias trans , donut is mirror trans
+      y1 = COPY pmgate_group_ge2c_good
+      y2 = HOLES y1 INNER 
+      y3 = pmgate_group_ge2c_trans INTERACT y1
+      y  = y1 OR y2
+      x = SIZE y3 BY -0.2 
+      z = SIZE y BY -0.4
+      u  = EXTENTS ( pmgate_gate_sd_short_vss_ge2c_f INTERACT y1) CENTERS 1 
+      v  = EXTENTS ( pmgate_drain_vss_ge2c_f INTERACT y1) CENTERS 1 
+      v1 = v NOT (SIZE v BY -0.2) 
+      FLATTEN( (y NOT z) OR (( y3 NOT x ) OR (u OR v1) ))
+   }
+//
+// create square in the center
+//
+   PMOSM2_CM_COUNT_INFO { @ pmosm center of current mirror 
+      FLATTEN( EXTENTS( (pmgate_group_ge2c_trans INTERACT pmgate_group_ge2c) OR pmgate_group_ge2c) CENTERS 5)   
+   }
+//
+//
+   PMOSM2_CM_TRANS_TOOFAR_DFM0061 { @ DFM0061 pmos curr mirr device too far away ( 2 or more mirr devices)
+        x = pmgate_gate_sd_short_vss_ge2c_f NOT INTERACT  pmgate_group_ge2c_trans
+        y = pmgate_drain_vss_ge2c_f NOT INTERACT pmgate_group_ge2c
+        FLATTEN (x OR y )
+        rpoly =  routingpoly NOT (pmgate_gate_sd_short_vss_ge2c_f OR pmgate_drain_vss_ge2c_f)
+        p = NET AREA RATIO rpoly x > 0
+        m1 = NET AREA RATIO routingmet1 x > 0
+        m2 = NET AREA RATIO routingmet2 x > 0
+        m3 = NET AREA RATIO routingmet3 x > 0
+        ORNET m1 (ORNET m2 (ORNET m3 p))
+
+        am1 = NET AREA RATIO routingmet1 y > 0
+        am2 = NET AREA RATIO routingmet2 y > 0
+        am3 = NET AREA RATIO routingmet3 y > 0
+        ap = NET AREA RATIO rpoly y > 0
+        ORNET am1 (ORNET am2 (ORNET am3 ap))
+   }
+//
+// check if bias trans is inside of group 
+//-----------------------------------------
+//   pmgate_group_ge2c_trans_mid = WITH NEIGHBOR  pmgate_group_ge2c_trans >= 2 SPACE < 10
+   pmgate_gate_sd_short_vss_ge2c_ff = pmgate_gate_sd_short_vss_ge2c_f INTERACT pmgate_group_ge2c
+//   PMMOS2_CM_BIASTRANS_NOTMID_DFM0062 { @ DFM0062 bias trans should be in the middle of mirror trans
+//      pmgate_gate_sd_short_vss_ge2c_ff NOT pmgate_group_ge2c_trans_mid 
+//   }
+//
+   PMOSM2_CM_BIASTRANS_NOTMID_DFM0064 { @ DFM0064 bias trans should be in the middle of mirror trans array
+      bias =  COPY pmgate_gate_sd_short_vss_ge2c_f
+      mirr =  pmgate_group_ge2c_trans NOT pmgate_gate_sd_short_vss_ge2c_f
+      r = GROW bias RIGHT BY 10
+      l = GROW bias LEFT BY 10
+      biasrl = ((r OR ( l OR bias)) NOT mirr) INTERACT bias
+      biasrl_0 = biasrl NOT INTERACT mirr
+      biasrl_1 = biasrl INTERACT mirr == 1
+      biasrl_2 = biasrl INTERACT mirr == 2
+      t = GROW bias TOP BY 10
+      b = GROW bias BOTTOM BY 10
+      biastb = ((t OR ( b OR bias)) NOT mirr) INTERACT bias
+      biastb_0 = biastb NOT INTERACT mirr
+      biastb_1 = biastb INTERACT mirr == 1
+      biastb_2 = biastb INTERACT mirr == 2
+      ok_1 =  (biasrl_2 AND biastb_0) OR ((biasrl_0 AND biastb_2) OR (biasrl_2 AND biastb_2))
+      ok_2 =  (biasrl_2 AND biastb_1) OR (biasrl_1 AND biastb_2)
+      ok_3 =  ok_2 OR ok_1
+      biasbad = bias NOT ok_3
+      group_all = (pmgate_group_ge2c_trans INTERACT pmgate_group_ge2c) OR pmgate_group_ge2c
+      group_all_one_mirr =  group_all INTERACT mirr == 1
+      biasbad1 = biasbad NOT INTERACT group_all_one_mirr
+      FLATTEN biasbad1
+   }
+//
+// check max distance bias trans to mirr trans
+//----------------------------------------------
+//
+#IFDEF SIZE_CHECK
+//
+   //pxgate_gate_sd_short_vss_eq1c_ff = pxgate_gate_sd_short_vss_eq1c_f INTERACT pxgate_group_eq1c
+   //pmgate_gate_sd_short_vss_eq1c_ff = pmgate_gate_sd_short_vss_eq1c_f INTERACT pmgate_group_eq1c
+//
+   INCLUDE /fsup01/prg/mentor/ams/calibre/dfmcheck/currmirr/includes/pgate2_transdist.run
+   //INCLUDE /fsup01/prg/mentor/ams/calibre/dfmcheck/currmirr/includes/pgate1_transdist.run
+//
+#ENDIF
+//
+// check orientation of devices belonging to one group
+//------------------------------------------------------
+//
+// get w and l 
+   pxgate_group_ge2c_l = pxgate_group_ge2c_trans NOT COINCIDENT INSIDE EDGE POLY1
+   pxgate_group_ge2c_w = pxgate_group_ge2c_trans COINCIDENT INSIDE EDGE POLY1
+//
+   pmgate_group_ge2c_l = pmgate_group_ge2c_trans NOT COINCIDENT INSIDE EDGE POLY1
+   pmgate_group_ge2c_w = pmgate_group_ge2c_trans COINCIDENT INSIDE EDGE POLY1
+//
+// reduce checks for correct l and w
+   pgate_group_ge2c_l = (pxgate_group_ge2c_trans OR pmgate_group_ge2c_trans) NOT COINCIDENT INSIDE EDGE POLY1
+   pgate_group_ge2c_w = (pxgate_group_ge2c_trans OR pmgate_group_ge2c_trans) COINCIDENT INSIDE EDGE POLY1
+//
+// check for orientation by growing 
+//
+   pxgate_group_ge2c_lexp = pxgate_group_ge2c_l EXPAND EDGE OUTSIDE BY 0.1
+   pxgate_group_ge2c_lexp_grow = (GROW pxgate_group_ge2c_lexp RIGHT BY 0.1) NOT pxgate_group_ge2c_lexp
+//
+   pmgate_group_ge2c_lexp = pmgate_group_ge2c_l EXPAND EDGE OUTSIDE BY 0.1
+   pmgate_group_ge2c_lexp_grow = (GROW pmgate_group_ge2c_lexp RIGHT BY 0.1) NOT pmgate_group_ge2c_lexp
+#IFDEF DEBUG
+   pxgate_group_ge2c_lexp_grow { COPY pxgate_group_ge2c_lexp_grow }
+   pmgate_group_ge2c_lexp_grow { COPY pmgate_group_ge2c_lexp_grow }
+#ENDIF
+//
+//
+// get group area as polygon
+// 
+// trans touch spacing area form a group
+//
+   pxgate_group_ge2c_all = (pxgate_group_ge2c_trans INTERACT pxgate_group_ge2c ) OR pxgate_group_ge2c
+//
+   pmgate_group_ge2c_all = (pmgate_group_ge2c_trans INTERACT pmgate_group_ge2c ) OR pmgate_group_ge2c
+#IFDEF DEBUG
+   pxgate_group_ge2c_all { COPY pxgate_group_ge2c_all }
+   pxgate_group_eq1c_all { COPY pxgate_group_eq1c_all }
+   pmgate_group_eq1c_all { COPY pmgate_group_eq1c_all }
+   pmgate_group_ge2c_all { COPY pmgate_group_ge2c_all }
+#ENDIF
+//
+// check pgate for orientation
+// grow expanded edge right by 0.1
+// split squares and long edge
+// group must only enclose one type
+//
+   pxgate_group_ge2c_elong = pxgate_group_ge2c_lexp_grow LENGTH > 0.5 
+//
+// separate squares and rectangles
+   pxgate_group_ge2c_lexp_long = pxgate_group_ge2c_lexp_grow WITH EDGE pxgate_group_ge2c_elong
+//
+   pxgate_group_ge2c_lexp_short = RECTANGLE pxgate_group_ge2c_lexp_grow == 0.1 BY == 0.1
+#IFDEF DEBUG
+   pxgate_group_ge2c_lexp_short { COPY pxgate_group_ge2c_lexp_short }
+   pxgate_group_eq1c_lexp_long { COPY pxgate_group_eq1c_lexp_long }
+   pxgate_group_ge2c_lexp_long { COPY pxgate_group_ge2c_lexp_long }
+#ENDIF
+//
+// size : all must be inside
+   pxgate_group_ge2c_square = (SIZE pxgate_group_ge2c_all BY 0.5) ENCLOSE pxgate_group_ge2c_lexp_short
+   pxgate_group_ge2c_long   = (SIZE pxgate_group_ge2c_all BY 0.5) ENCLOSE pxgate_group_ge2c_lexp_long 
+   pxgate_group_ge2c_bad_orient = pxgate_group_ge2c_square AND pxgate_group_ge2c_long
+   PMOS2_CM_ORIENT_ERR_DFM0064  { @ DFM0064 pmos orientation must be the same for all devices( 2 or more mirr devices )
+      COPY pxgate_group_ge2c_bad_orient 
+   }
+//
+   pmgate_group_ge2c_elong = pmgate_group_ge2c_lexp_grow LENGTH > 0.5 
+//
+// separate squares and rectangles
+   pmgate_group_ge2c_lexp_long = pmgate_group_ge2c_lexp_grow WITH EDGE pmgate_group_ge2c_elong
+//
+   pmgate_group_ge2c_lexp_short = RECTANGLE pmgate_group_ge2c_lexp_grow == 0.1 BY == 0.1
+#IFDEF DEBUG
+   pmgate_group_eq1c_lexp_long { COPY pmgate_group_eq1c_lexp_long }
+   pmgate_group_ge2c_lexp_long { COPY pmgate_group_ge2c_lexp_long }
+   pmgate_group_eq1c_lexp_short { COPY pmgate_group_eq1c_lexp_short }
+   pmgate_group_ge2c_lexp_short { COPY pmgate_group_ge2c_lexp_short }
+#ENDIF
+//
+   pmgate_group_ge2c_square = (SIZE pmgate_group_ge2c_all BY 0.5) ENCLOSE pmgate_group_ge2c_lexp_short
+   pmgate_group_ge2c_long   = (SIZE pmgate_group_ge2c_all BY 0.5) ENCLOSE pmgate_group_ge2c_lexp_long 
+   pmgate_group_ge2c_bad_orient = pmgate_group_ge2c_square AND pmgate_group_ge2c_long
+   PMOSM2_CM_ORIENT_ERR_DFM0064 { @ DFM0064 pmos orientation must be the same for all devices ( 2 or more mirr devices)
+      COPY pmgate_group_ge2c_bad_orient 
+   }
+//
+#UNDEFINE PMOS_CHECKS
+#IFDEF PMOS_CHECKS
+// skipped
+//
+// check current direction
+//-------------------------
+//
+// pgate_group_eq1c_w = (pxgate_group_eq1c_trans OR pmgate_group_eq1c_trans) COINCIDENT INSIDE EDGE POLY1
+// pgate_group_ge2c_w = (pxgate_group_ge2c_trans OR pmgate_group_ge2c_trans) COINCIDENT INSIDE EDGE POLY1
+   //pxgate_group_eq1c_w = pxgate_group_eq1c_trans COINCIDENT INSIDE EDGE POLY1
+   //pxgate_group_ge2c_w = pxgate_group_ge2c_trans COINCIDENT INSIDE EDGE POLY1
+   //pmgate_group_eq1c_w = pmgate_group_eq1c_trans COINCIDENT INSIDE EDGE POLY1
+   //pmgate_group_ge2c_w = pmgate_group_ge2c_trans COINCIDENT INSIDE EDGE POLY1
+   //pxgate_group_eq1c_trans { COPY pxgate_group_eq1c_trans }
+   //pxgate_group_ge2c_trans { COPY pxgate_group_ge2c_trans }
+   //pmgate_group_eq1c_trans { COPY pmgate_group_eq1c_trans }
+   //pmgate_group_ge2c_trans { COPY pmgate_group_ge2c_trans }
+//
+//
+//  nmos 
+//--------
+// check for orientation by growing
+//
+   pxgate_group_eq1c_wexp = (pxgate_group_eq1c_w EXPAND EDGE OUTSIDE BY 0.1) INTERACT pxgate_group_eq1c_trans
+   pxgate_group_ge2c_wexp = (pxgate_group_ge2c_w EXPAND EDGE OUTSIDE BY 0.1) INTERACT pxgate_group_ge2c_trans
+//
+   CONNECT pxgate_group_eq1c_wexp pdiff 
+   CONNECT pxgate_group_ge2c_wexp pdiff 
+   pxgate_group_eq1c_wexp_vss = NET AREA RATIO pxgate_group_eq1c_wexp welltap > 0
+   pxgate_group_ge2c_wexp_vss = NET AREA RATIO pxgate_group_ge2c_wexp welltap > 0
+   //pxgate_group_eq1c_wexp_vss { COPY pxgate_group_eq1c_wexp_vss }
+   //pxgate_group_ge2c_wexp_vss { COPY pxgate_group_ge2c_wexp_vss }
+//
+// grow right left up down
+// creates only shapes if expansion is directed into pdiff, not into gate
+//
+   pxgate_group_eq1c_wexp_grow_r = pdiff AND ((GROW pxgate_group_eq1c_wexp_vss RIGHT BY 0.1) NOT (pxgate_group_eq1c_trans OR pxgate_group_eq1c_wexp_vss))
+   pxgate_group_ge2c_wexp_grow_r = pdiff AND ((GROW pxgate_group_ge2c_wexp_vss RIGHT BY 0.1) NOT (pxgate_group_ge2c_trans OR pxgate_group_ge2c_wexp_vss))
+//
+   pxgate_group_eq1c_wexp_grow_l = pdiff AND ((GROW pxgate_group_eq1c_wexp_vss LEFT BY 0.1) NOT (pxgate_group_eq1c_trans OR pxgate_group_eq1c_wexp_vss))  
+   pxgate_group_ge2c_wexp_grow_l = pdiff AND ((GROW pxgate_group_ge2c_wexp_vss LEFT BY 0.1) NOT (pxgate_group_ge2c_trans OR pxgate_group_ge2c_wexp_vss))
+//
+   pxgate_group_eq1c_wexp_grow_u = pdiff AND ((GROW pxgate_group_eq1c_wexp_vss TOP BY 0.1) NOT (pxgate_group_eq1c_trans  OR pxgate_group_eq1c_wexp_vss)) 
+   pxgate_group_ge2c_wexp_grow_u = pdiff AND ((GROW pxgate_group_ge2c_wexp_vss TOP BY 0.1) NOT (pxgate_group_ge2c_trans  OR pxgate_group_ge2c_wexp_vss))
+//
+pxgate_group_eq1c_wexp_grow_d = pdiff AND ((GROW pxgate_group_eq1c_wexp_vss BOTTOM BY 0.1) NOT (pxgate_group_eq1c_trans OR pxgate_group_eq1c_wexp_vss))  
+pxgate_group_ge2c_wexp_grow_d = pdiff AND ((GROW pxgate_group_ge2c_wexp_vss BOTTOM BY 0.1) NOT (pxgate_group_ge2c_trans OR pxgate_group_ge2c_wexp_vss))
+//
+// a1 { COPY pxgate_group_eq1c_wexp_grow_r }
+// b1 { COPY pxgate_group_eq1c_wexp_grow_l }
+// c1 { COPY pxgate_group_eq1c_wexp_grow_u }
+// d1 { COPY pxgate_group_eq1c_wexp_grow_d }
+// a2 { COPY pxgate_group_ge2c_wexp_grow_r }
+// b2 { COPY pxgate_group_ge2c_wexp_grow_l }
+// c2 { COPY pxgate_group_ge2c_wexp_grow_u }
+// d2 { COPY pxgate_group_ge2c_wexp_grow_d }
+//
+// get groups
+//
+  pxgate_group_eq1c_all_ovs = SIZE pxgate_group_eq1c_all BY 0.5
+  pxgate_group_ge2c_all_ovs = SIZE pxgate_group_ge2c_all BY 0.5
+  pxgate_group_eq1c_orient_r = pxgate_group_eq1c_all_ovs ENCLOSE pxgate_group_eq1c_wexp_grow_r
+  pxgate_group_eq1c_orient_l = pxgate_group_eq1c_all_ovs ENCLOSE pxgate_group_eq1c_wexp_grow_l
+  pxgate_group_eq1c_orient_u = pxgate_group_eq1c_all_ovs ENCLOSE pxgate_group_eq1c_wexp_grow_u
+  pxgate_group_eq1c_orient_d = pxgate_group_eq1c_all_ovs ENCLOSE pxgate_group_eq1c_wexp_grow_d
+//
+  PMOS1_CM_CURRENT_DIRECT_ERR { @ nmos current direction must be the same ( 1 mirr device )
+    pxgate_group_eq1c_orient_r AND pxgate_group_eq1c_orient_l
+    pxgate_group_eq1c_orient_r AND pxgate_group_eq1c_orient_u
+    pxgate_group_eq1c_orient_r AND pxgate_group_eq1c_orient_d
+    pxgate_group_eq1c_orient_l AND pxgate_group_eq1c_orient_u
+    pxgate_group_eq1c_orient_l AND pxgate_group_eq1c_orient_d
+    pxgate_group_eq1c_orient_u AND pxgate_group_eq1c_orient_d
+  }
+//
+   pxgate_group_ge2c_orient_r = pxgate_group_ge2c_all_ovs ENCLOSE pxgate_group_ge2c_wexp_grow_r
+   pxgate_group_ge2c_orient_l = pxgate_group_ge2c_all_ovs ENCLOSE pxgate_group_ge2c_wexp_grow_l
+   pxgate_group_ge2c_orient_u = pxgate_group_ge2c_all_ovs ENCLOSE pxgate_group_ge2c_wexp_grow_u
+   pxgate_group_ge2c_orient_d = pxgate_group_ge2c_all_ovs ENCLOSE pxgate_group_ge2c_wexp_grow_d
+//
+  PMOS2_CM_CURRENT_DIRECT_ERR { @ nmos current direction must be the same ( 2 or more mirr devices )
+    pxgate_group_ge2c_orient_r AND pxgate_group_ge2c_orient_l
+    pxgate_group_ge2c_orient_r AND pxgate_group_ge2c_orient_u
+    pxgate_group_ge2c_orient_r AND pxgate_group_ge2c_orient_d
+    pxgate_group_ge2c_orient_l AND pxgate_group_ge2c_orient_u
+    pxgate_group_ge2c_orient_l AND pxgate_group_ge2c_orient_d
+    pxgate_group_ge2c_orient_u AND pxgate_group_ge2c_orient_d
+  }
+//
+//  nmmos 
+//-----------
+// check for orientation by growing
+//
+   pmgate_group_eq1c_wexp = (pmgate_group_eq1c_w EXPAND EDGE OUTSIDE BY 0.1) INTERACT pmgate_group_eq1c_trans
+   pmgate_group_ge2c_wexp = (pmgate_group_ge2c_w EXPAND EDGE OUTSIDE BY 0.1) INTERACT pmgate_group_ge2c_trans
+//
+   CONNECT pmgate_group_eq1c_wexp pdiff 
+   CONNECT pmgate_group_ge2c_wexp pdiff 
+   pmgate_group_eq1c_wexp_vss = NET AREA RATIO pmgate_group_eq1c_wexp welltap > 0
+   pmgate_group_ge2c_wexp_vss = NET AREA RATIO pmgate_group_ge2c_wexp welltap > 0
+   //pmgate_group_eq1c_wexp_vss { COPY pmgate_group_eq1c_wexp_vss }
+   //pmgate_group_ge2c_wexp_vss { COPY pmgate_group_ge2c_wexp_vss }
+//
+// grow right left up down
+// creates only shapes if expansion is directed into pdiff, not into gate
+//
+   pmgate_group_eq1c_wexp_grow_r = pdiff AND ((GROW pmgate_group_eq1c_wexp_vss RIGHT BY 0.1) NOT (pmgate_group_eq1c_trans OR pmgate_group_eq1c_wexp_vss))
+   pmgate_group_ge2c_wexp_grow_r = pdiff AND ((GROW pmgate_group_ge2c_wexp_vss RIGHT BY 0.1) NOT (pmgate_group_ge2c_trans OR pmgate_group_ge2c_wexp_vss))
+//
+   pmgate_group_eq1c_wexp_grow_l = pdiff AND ((GROW pmgate_group_eq1c_wexp_vss LEFT BY 0.1) NOT (pmgate_group_eq1c_trans OR pmgate_group_eq1c_wexp_vss))  
+   pmgate_group_ge2c_wexp_grow_l = pdiff AND ((GROW pmgate_group_ge2c_wexp_vss LEFT BY 0.1) NOT (pmgate_group_ge2c_trans OR pmgate_group_ge2c_wexp_vss))
+//
+   pmgate_group_eq1c_wexp_grow_u = pdiff AND ((GROW pmgate_group_eq1c_wexp_vss TOP BY 0.1) NOT (pmgate_group_eq1c_trans  OR pmgate_group_eq1c_wexp_vss)) 
+   pmgate_group_ge2c_wexp_grow_u = pdiff AND ((GROW pmgate_group_ge2c_wexp_vss TOP BY 0.1) NOT (pmgate_group_ge2c_trans  OR pmgate_group_ge2c_wexp_vss))
+//
+pmgate_group_eq1c_wexp_grow_d = pdiff AND ((GROW pmgate_group_eq1c_wexp_vss BOTTOM BY 0.1) NOT (pmgate_group_eq1c_trans OR pmgate_group_eq1c_wexp_vss))  
+pmgate_group_ge2c_wexp_grow_d = pdiff AND ((GROW pmgate_group_ge2c_wexp_vss BOTTOM BY 0.1) NOT (pmgate_group_ge2c_trans OR pmgate_group_ge2c_wexp_vss))
+//
+// a1 { COPY pmgate_group_eq1c_wexp_grow_r }
+// b1 { COPY pmgate_group_eq1c_wexp_grow_l }
+// c1 { COPY pmgate_group_eq1c_wexp_grow_u }
+// d1 { COPY pmgate_group_eq1c_wexp_grow_d }
+// a2 { COPY pmgate_group_ge2c_wexp_grow_r }
+// b2 { COPY pmgate_group_ge2c_wexp_grow_l }
+// c2 { COPY pmgate_group_ge2c_wexp_grow_u }
+// d2 { COPY pmgate_group_ge2c_wexp_grow_d }
+//
+// get groups
+//
+  pmgate_group_eq1c_all_ovs = SIZE pmgate_group_eq1c_all BY 0.5
+  pmgate_group_ge2c_all_ovs = SIZE pmgate_group_ge2c_all BY 0.5
+  pmgate_group_eq1c_orient_r = pmgate_group_eq1c_all_ovs ENCLOSE pmgate_group_eq1c_wexp_grow_r
+  pmgate_group_eq1c_orient_l = pmgate_group_eq1c_all_ovs ENCLOSE pmgate_group_eq1c_wexp_grow_l
+  pmgate_group_eq1c_orient_u = pmgate_group_eq1c_all_ovs ENCLOSE pmgate_group_eq1c_wexp_grow_u
+  pmgate_group_eq1c_orient_d = pmgate_group_eq1c_all_ovs ENCLOSE pmgate_group_eq1c_wexp_grow_d
+//
+  PMOSM1_CM_CURRENT_DIRECT_ERR { @ nmmos current direction must be the same ( 1  mirr device )
+    pmgate_group_eq1c_orient_r AND pmgate_group_eq1c_orient_l
+    pmgate_group_eq1c_orient_r AND pmgate_group_eq1c_orient_u
+    pmgate_group_eq1c_orient_r AND pmgate_group_eq1c_orient_d
+    pmgate_group_eq1c_orient_l AND pmgate_group_eq1c_orient_u
+    pmgate_group_eq1c_orient_l AND pmgate_group_eq1c_orient_d
+    pmgate_group_eq1c_orient_u AND pmgate_group_eq1c_orient_d
+  }
+//
+   pmgate_group_ge2c_orient_r = pmgate_group_ge2c_all_ovs ENCLOSE pmgate_group_ge2c_wexp_grow_r
+   pmgate_group_ge2c_orient_l = pmgate_group_ge2c_all_ovs ENCLOSE pmgate_group_ge2c_wexp_grow_l
+   pmgate_group_ge2c_orient_u = pmgate_group_ge2c_all_ovs ENCLOSE pmgate_group_ge2c_wexp_grow_u
+   pmgate_group_ge2c_orient_d = pmgate_group_ge2c_all_ovs ENCLOSE pmgate_group_ge2c_wexp_grow_d
+//
+  PMOSM2_CM_CURRENT_DIRECT_ERR { @ nmmos current direction must be the same ( 2 or more mirr devices )
+    pmgate_group_ge2c_orient_r AND pmgate_group_ge2c_orient_l
+    pmgate_group_ge2c_orient_r AND pmgate_group_ge2c_orient_u
+    pmgate_group_ge2c_orient_r AND pmgate_group_ge2c_orient_d
+    pmgate_group_ge2c_orient_l AND pmgate_group_ge2c_orient_u
+    pmgate_group_ge2c_orient_l AND pmgate_group_ge2c_orient_d
+    pmgate_group_ge2c_orient_u AND pmgate_group_ge2c_orient_d
+  }
+#ENDIF // pmos_checks
+//
+// check if different L are in same group
+//------------------------------------------
+//
+// oversize group to make sure that expanded edges are inside
+   //pxgate_group_all_1 = (SIZE pxgate_group_eq1c_all BY 0.5) OR (SIZE pxgate_group_ge2c_all BY 0.5)
+   //pmgate_group_all_1 = (SIZE pmgate_group_eq1c_all BY 0.5) OR (SIZE pmgate_group_ge2c_all BY 0.5)
+
+// only good groups
+
+   pxgate_group_all_1 = SIZE pxgate_group_ge2c_good BY 0.5
+   pmgate_group_all_1 = SIZE pmgate_group_ge2c_good BY 0.5
+
+   pgate_group_all = pxgate_group_all_1 OR pmgate_group_all_1
+//
+#IFDEF L_W_CHECK
+  INCLUDE /fsup01/prg/mentor/ams/calibre/dfmcheck/currmirr/includes/pgate_lcheck.run
+#ENDIF
+//
+// check if different W are in same group
+//------------------------------------------
+//
+#IFDEF L_W_CHECK
+  INCLUDE /fsup01/prg/mentor/ams/calibre/dfmcheck/currmirr/includes/pgate_wcheck.run
+#ENDIF
+
+//
+// check metal over trans
+//-------------------------
+   //pxgate_group_eq1c_trans { COPY pxgate_group_eq1c_trans }
+   //pxgate_group_ge2c_trans { COPY pxgate_group_ge2c_trans }
+   //pmgate_group_eq1c_trans { COPY pmgate_group_eq1c_trans }
+   //pmgate_group_ge2c_trans { COPY pmgate_group_ge2c_trans }
+//
+// 26-Jul-06
+// do gap closure for very narrow shapes
+// only for good groups
+//
+   PMOS2_CM_ILL_MET1_DFM0057 { @ DFM0057 illegal metal1 over current mirror circuit
+     ((pxgate_group_ge2c_trans AND pxgate_group_ge2c_good) AND MET1) SIZE BY 0.1 UNDEROVER
+   }
+   PMOS2_CM_ILL_MET2_DFM0058 { @ DFM0058 illegal metal2 over current mirror circuit
+     ((pxgate_group_ge2c_trans AND pxgate_group_ge2c_good) AND MET2) SIZE BY 0.1 UNDEROVER
+   }
+   PMOS2_CM_ILL_MET3_DFM0059 { @ DFM0059 illegal metal3 over current mirror circuit
+     ((pxgate_group_ge2c_trans AND pxgate_group_ge2c_good) AND MET3) SIZE BY 0.1 UNDEROVER
+   }
+#IFDEF fourmetal
+   PMOS2_CM_ILL_MET4_DFM0060 { @ DFM0060 illegal metal4 over current mirror circuit
+     ((pxgate_group_ge2c_trans AND pxgate_group_ge2c_good) AND MET4) SIZE BY 0.1 UNDEROVER
+   }
+#ENDIF
+//
+   PMOSM2_CM_ILL_MET1_DFM0057 { @ DFM0057 illegal metal1 over current mirror circuit
+     ((pmgate_group_ge2c_trans AND pmgate_group_ge2c_good) AND MET1) SIZE BY 0.1 UNDEROVER
+   }
+   PMOSM2_CM_ILL_MET2_DFM0058 { @ DFM0058 illegal metal2 over current mirror circuit
+     ((pmgate_group_ge2c_trans AND pmgate_group_ge2c_good) AND MET2) SIZE BY 0.1 UNDEROVER
+   }
+   PMOSM2_CM_ILL_MET3_DFM0059 { @ DFM0059 illegal metal3 over current mirror circuit
+     ((pmgate_group_ge2c_trans AND pmgate_group_ge2c_good) AND MET3) SIZE BY 0.1 UNDEROVER
+   }
+#IFDEF fourmetal
+   PMOSM2_CM_ILL_MET4_DFM0060 { @ DFM0060 illegal metal4 over current mirror circuit
+     ((pmgate_group_ge2c_trans AND  pmgate_group_ge2c_good) AND MET4) SIZE BY 0.1 UNDEROVER 
+   }
+#ENDIF
+//
+//
+// check min w and min l
+//-----------------------
+//
+// get w and l
+//   pxgate_group_eq1c_l = pxgate_group_eq1c_trans NOT COINCIDENT INSIDE EDGE POLY1
+//   pxgate_group_ge2c_l = pxgate_group_ge2c_trans NOT COINCIDENT INSIDE EDGE POLY1
+//   pxgate_group_eq1c_w = pxgate_group_eq1c_trans COINCIDENT INSIDE EDGE POLY1
+//   pxgate_group_ge2c_w = pxgate_group_ge2c_trans COINCIDENT INSIDE EDGE POLY1
+//
+//   pmgate_group_eq1c_l = pmgate_group_eq1c_trans NOT COINCIDENT INSIDE EDGE POLY1
+//   pmgate_group_ge2c_l = pmgate_group_ge2c_trans NOT COINCIDENT INSIDE EDGE POLY1
+//   pmgate_group_eq1c_w = pmgate_group_eq1c_trans COINCIDENT INSIDE EDGE POLY1
+//   pmgate_group_ge2c_w = pmgate_group_ge2c_trans COINCIDENT INSIDE EDGE POLY1
+//
+   PMOS_CM_MIN_L_ERR_DFM0028 { @ DFM0028 pmos current mirror L < 0.7 U
+      LENGTH pxgate_group_ge2c_l < 0.7
+   }
+   PMOSM_CM_MIN_L_ERR_DFM0032 { @ DFM0032 pmmos current mirror L < 0.75 U
+      LENGTH pmgate_group_ge2c_l < 0.75
+   }
+//
+   PMOS_CM_MIN_W_ERR_DFM0029 { @ DFM0029 pmos current mirror W < 0.5 U
+      LENGTH pxgate_group_ge2c_w < 0.5
+   }
+   PMOSM_CM_MIN_W_ERR_DFM0033 { @ DFM0033 pmmos current mirror W < 0.5 U
+      LENGTH pmgate_group_ge2c_w < 0.5
+   }
+///////////////////////////////////////////////////////////////////////
+//
+//   end of CALIBRE technology file    end of CALIBRE technology file
+//
+///////////////////////////////////////////////////////////////////////
+//
+///////////////////////////////////////////////////////////////////////
+//
+//   end of CALIBRE technology file    end of CALIBRE technology file
+//
+///////////////////////////////////////////////////////////////////////

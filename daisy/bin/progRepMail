@@ -1,0 +1,4 @@
+#!/bin/sh
+
+echo "Sending Virtuoso progress reports to the PJMADM." | mutt -s "$PROJNAME progress reports" -a $1 $EMAIL 
+echo "Sending Virtuoso progress reports to the PJMADM." | mutt -s "$PROJNAME progress reports" -a $1 $PJMADMMAIL

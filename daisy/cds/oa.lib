@@ -1,0 +1,2 @@
+INCLUDE $DAISYAREA/$CDSDATABASE/cds.lib
+# DEFINE pllMMLib $CDS_INSTALL_DIR/samples/artist/pllMMLib

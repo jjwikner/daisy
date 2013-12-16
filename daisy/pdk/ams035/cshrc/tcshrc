@@ -1,0 +1,16 @@
+# Add the pdk specific bin directory to the path
+setenv PATH ${PATH}:${PDK_HOME}/bin
+
+if ( $CDSDATABASE == "oa" ) then
+  module add ams/4.10
+  setenv AMS_KIT 4.10
+  setenv CDSHOME $CDS_HOME # Fix for AMS kit
+else
+  setenv CDS_HOME $CDSHOME # Fix for AMS module
+  module add ams/3.80
+  setenv AMS_KIT 3.80
+endif
+
+source ${PDK_HOME}/cshrc/ams035aliases
+
+# vim: ft=tcsh

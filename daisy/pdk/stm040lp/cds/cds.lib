@@ -1,0 +1,4 @@
+DEFINE  avTech  /sw/cadence/ASSURA320/tools/assura/etc/avtech/avTech 
+SOFTINCLUDE $UCDPRJDIR/.ukcds5/${UK_CDS_PREFIX}cds.lib
+DEFINE unicad_docs unicad_docs
+SOFTINCLUDE tech.lib

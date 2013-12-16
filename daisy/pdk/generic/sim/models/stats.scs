@@ -1,0 +1,12 @@
+library monteLib
+section stats
+
+statistics {
+  process {
+   vary daisyRes1 dist=unif std=10 percent=yes
+   vary daisyRes2 dist=unif std=10 percent=yes
+*   vary daisyOffValue dist=unif std=10 percent=yes
+  }
+}
+endsection stats
+endlibrary monteLib

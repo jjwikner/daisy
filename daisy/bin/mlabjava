@@ -1,0 +1,7 @@
+# DAISY, alias to launch Matlab with java interface
+# Added a & according to the wishes of grandmaster Nuke.
+
+echo "DAISY:: Launching MATLAB with Java Interface"
+cd $WORKAREA
+xterm -T 'MATLAB log (do not kill)' -e matlab -nosplash -logfile "$USERAREA/log/matlab.log" -r "run([getenv('DAISYAREA') '/m/daisy.m'])" &
+

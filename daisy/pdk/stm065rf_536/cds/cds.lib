@@ -1,0 +1,8 @@
+# path for this file /site/edu/es/DAISY/daisy/pdkSpecific/stm065rf/cds
+DEFINE  avTech  /sw/cadence/ASSURA320/tools/assura/etc/avtech/avTech 
+SOFTINCLUDE $UCDPRJDIR/.ukcds5/${UK_CDS_PREFIX}cds.lib
+
+DEFINE cmos065_docs cmos065_docs
+DEFINE unicad_docs unicad_docs
+
+# SOFTINCLUDE cds_stdlib.lib

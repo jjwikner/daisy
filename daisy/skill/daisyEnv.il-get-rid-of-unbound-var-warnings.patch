@@ -1,0 +1,58 @@
+--- daisyEnv.il	2011-12-20 12:04:44.431479712 +0100
++++ daisyEnv_mod.il	2011-12-20 11:56:06.487207852 +0100
+@@ -4,14 +4,23 @@
+ (printf "DAISY:: ... loading %s.il ...\n" "daisyEnv")
+ (setq      WORKAREA (getShellEnvVar "WORKAREA"))
+ 
++;; Schematic settings
++(printf " ... ... setting schematic properties ... \n")
++(if (envIsVal "schematic" "dimming") (envSetVal "schematic"  "dimming"  'boolean  t))
++(if (envIsVal "schematic" "dimmingMode") (envSetVal "schematic"  "dimmingMode"  'string  "Automatic"))
++(if (envIsVal "schematic" "dimmingIntensity") (envSetVal "schematic"  "dimmingIntensity"  'int  50))
++
+ ;; Layout settings
+ (printf " ... ... setting layout properties ... \n")
+ (envSetVal "layout"  "useTrueBBox"      'boolean  t)
+ (envSetVal "layout"  "instLabel"        'string   "instance")
+ (envSetVal "layout"  "originMarkersOn"  'boolean  t)
++(if (envIsVal "layout" "dimming") (envSetVal "layout"  "dimming"  'boolean  t))
++(if (envIsVal "layout" "dimmingMode") (envSetVal "layout"  "dimmingMode"  'string  "Automatic"))
++(if (envIsVal "layout" "dimmingIntensity") (envSetVal "layout"  "dimmingIntensity"  'int  50))
+ (hiSetUndoLimit 8)
+ ;; Layout XL
+-(envSetVal "layoutXL" "templateFileName" 'string (strcat (getShellEnvVar "DAISYAREA") "/daisyLayout.lxt"))
++(if (envIsVal "layoutXL" "templateFileName") (envSetVal "layoutXL" "templateFileName" 'string (strcat (getShellEnvVar "DAISYAREA") "/daisyLayout.lxt")))
+ (envSetVal "layoutXL" "createBoundaryLabel"    'boolean	t)
+ (envSetVal "layoutXL.placement" "createPinRow" 'boolean t)
+ (envSetVal "layoutXL" "lxGroundNetNames" 'string	
+@@ -29,7 +38,7 @@
+ (envSetVal "asimenv.plotting" "artistPlottingMode" 'string  "Append")
+ (envSetVal "asimenv.plotting" "immediatePlot"      'boolean t)
+ 
+-(envSetVal "asimenv.startup"  "cds_ade_wftool"     'string  "awd")
++(if (envIsVal "asimenv.startup"  "cds_ade_wftool") (envSetVal "asimenv.startup"  "cds_ade_wftool"     'string  "awd"))
+ (envSetVal "asimenv.startup"  "projectDir"         'string  (strcat (getShellEnvVar "USERAREA") "/sim"))
+ (envSetVal "asimenv.startup"  "remoteDir"          'string  (strcat (getShellEnvVar "USERAREA") "/sim"))
+ 
+@@ -43,18 +52,18 @@
+ (envSetVal "asimenv"	      "loadCorners"        'boolean nil)
+ (envSetVal "asimenv"	      "saveDir"            'string  (strcat (getShellEnvVar "USERAREA")  "/sim/artist_states"))
+ 
+-(envSetVal "asimenv" "mailTo" 'string (if (getShellEnvVar "EMAIL") (getShellEnvVar "EMAIL") ""))
++(if (envIsVal "asimenv" "mailTo") (envSetVal "asimenv" "mailTo" 'string (if (getShellEnvVar "EMAIL") (getShellEnvVar "EMAIL") "")))
+ 
+ (envSetVal "spectre.qpss"     "evenodd"                 'string   "auto")
+ (envSetVal "spectre.envOpts"  "switchViewList"  'string  "spectre spice cmos_sch cmos.sch schematic extracted veriloga verilogams ams ahdl")
+ (envSetVal "spectre.envOpts"  "printComments"  'boolean t)
+ 
+ ;; Ultrasim
+-(envSetVal "UltraSim.opts" "wf_format" 'string "PSF")
++(if (envIsVal "UltraSim.opts" "wf_format") (envSetVal "UltraSim.opts" "wf_format" 'string "PSF"))
+ 
+ ;; Waveform Settings
+ (envSetVal "wavescan.application" "docdirectory"  'string  (strcat (getShellEnvVar "USERAREA") "/log"))
+-(envSetVal "wavescan.application" "envdirectory"  'string  (strcat (getShellEnvVar "USERAREA") "/log"))
++(if (envIsVal "wavescan.application" "envdirectory") (envSetVal "wavescan.application" "envdirectory"  'string  (strcat (getShellEnvVar "USERAREA") "/log")))
+ 
+ (printf " ... ... setting schematic properties ... \n")
+ 

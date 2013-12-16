@@ -1,0 +1,7 @@
+//---------------------------------------------
+// Global Flags definition 
+// ArtistKit 5.7.2 (C) STMicroelectronics
+// Oct 18 13:28:16 2013
+//---------------------------------------------
+parameters gflag__noisedev__all__cmos065 = 0
+parameters gflag__rgateswitch__all__cmos065 = 0

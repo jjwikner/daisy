@@ -1,0 +1,322 @@
+//---------------------------------------------
+// Simulation Corners file for simulator spectre scenario default 
+// ArtistKit 5.4.1 (C) STMicroelectronics
+// Mar  9 10:56:02 2011
+//---------------------------------------------
+
+library corners
+
+section 0 
+// TYPICAL CORNER (TT)
+
+include "global_flags.scs"
+
+include "STaddon.scs" section=MODEL
+include "cmom.scs" section=typ
+include "common_mc.scs" section=typ
+include "cpolyn18.scs" section=typ
+include "cpolynlp.scs" section=typ
+include "cpolyp18.scs" section=typ
+include "diode18.scs" section=typ
+include "diodeiso.scs" section=typ
+include "diodelp.scs" section=typ
+include "dr18.scs" section=TT
+include "dr18otp.scs" section=TT
+include "hvtlp.scs" section=TT
+include "lvtlp.scs" section=TT
+include "npnv.scs" section=typ
+include "pnpv.scs" section=typ
+include "resistor.scs" section=typ
+include "resmetal.scs" section=typ
+include "svt18.scs" section=TT
+include "svt18ps.scs" section=TT
+include "svtlp.scs" section=TT
+
+endsection 0
+
+section 1
+// FAST CORNER (FF)
+
+include "global_flags.scs"
+
+include "STaddon.scs"   section=MODEL
+include "common_mc.scs" section=typ
+
+
+include "cmom.scs"      section=cmin
+include "cpolyn18.scs"  section=cmin
+include "cpolynlp.scs"  section=cmin
+include "cpolyp18.scs"  section=cmin
+
+include "diode18.scs"   section=fast
+include "diodeiso.scs"  section=fast
+include "diodelp.scs"   section=fast
+
+include "npnv.scs"      section=imax
+include "pnpv.scs"      section=imax
+
+include "resistor.scs"  section=rmin
+include "resmetal.scs"  section=rmin
+
+include "dr18.scs"    section=FFA
+include "dr18otp.scs" section=FFA
+
+include "hvtlp.scs"   section=FF
+include "lvtlp.scs"   section=FF
+include "svt18.scs"   section=FF
+include "svt18ps.scs" section=FF
+include "svtlp.scs"   section=FF
+
+endsection 1
+
+
+section 2
+// SLOW CORNER (SS)
+
+include "global_flags.scs"
+
+include "STaddon.scs"   section=MODEL
+include "common_mc.scs" section=typ
+
+
+include "cmom.scs"      section=cmax
+include "cpolyn18.scs"  section=cmax
+include "cpolynlp.scs"  section=cmax
+include "cpolyp18.scs"  section=cmax
+
+include "diode18.scs"   section=slow
+include "diodeiso.scs"  section=slow
+include "diodelp.scs"   section=slow
+
+include "npnv.scs"      section=imin
+include "pnpv.scs"      section=imin
+
+include "resistor.scs"  section=rmax
+include "resmetal.scs"  section=rmax
+
+include "dr18.scs"    section=SSA
+include "dr18otp.scs" section=SSA
+
+include "hvtlp.scs"   section=SS
+include "lvtlp.scs"   section=SS
+include "svt18.scs"   section=SS
+include "svt18ps.scs" section=SS
+include "svtlp.scs"   section=SS
+
+endsection 2
+
+section 3
+// FAST-SLOW CORNER
+
+include "global_flags.scs"
+
+include "STaddon.scs"   section=MODEL
+include "common_mc.scs" section=typ
+
+
+include "cmom.scs"      section=cmin
+include "cpolyn18.scs"  section=cmin
+include "cpolynlp.scs"  section=cmin
+include "cpolyp18.scs"  section=cmin
+
+include "diode18.scs"   section=fast
+include "diodeiso.scs"  section=fast
+include "diodelp.scs"   section=fast
+
+include "npnv.scs"      section=imax
+include "pnpv.scs"      section=imax
+
+include "resistor.scs"  section=rmin
+include "resmetal.scs"  section=rmin
+
+include "dr18.scs"    section=FFA
+include "dr18otp.scs" section=FFA
+
+include "hvtlp.scs"   section=FS
+include "lvtlp.scs"   section=FS
+include "svt18.scs"   section=FS
+include "svt18ps.scs" section=FS
+include "svtlp.scs"   section=FS
+
+endsection 3
+
+section 4
+// SLOW-FAST CORNER 
+
+include "global_flags.scs"
+
+include "STaddon.scs" section=MODEL
+include "common_mc.scs" section=typ
+
+
+include "cmom.scs"      section=cmax
+include "cpolyn18.scs"  section=cmax
+include "cpolynlp.scs"  section=cmax
+include "cpolyp18.scs"  section=cmax
+
+include "diode18.scs"   section=slow
+include "diodeiso.scs"  section=slow
+include "diodelp.scs"   section=slow
+
+include "npnv.scs"      section=imin
+include "pnpv.scs"      section=imin
+
+include "resistor.scs"  section=rmax
+include "resmetal.scs"  section=rmax
+
+include "dr18.scs"    section=SFA
+include "dr18otp.scs" section=TT
+
+
+include "hvtlp.scs"   section=SF
+include "lvtlp.scs"   section=SF
+include "svt18.scs"   section=SF
+include "svt18ps.scs" section=SF
+include "svtlp.scs"   section=SF
+
+endsection 4
+
+section 5
+// FAST-SLOW2 CORNER (FS for mosfets and Slow settings for others)
+
+include "global_flags.scs"
+
+include "STaddon.scs" section=MODEL
+include "common_mc.scs" section=typ
+
+
+include "cmom.scs"      section=cmax
+include "cpolyn18.scs"  section=cmax
+include "cpolynlp.scs"  section=cmax
+include "cpolyp18.scs"  section=cmax
+
+include "diode18.scs"   section=slow
+include "diodeiso.scs"  section=slow
+include "diodelp.scs"   section=slow
+
+include "npnv.scs"      section=imin
+include "pnpv.scs"      section=imin
+
+include "resistor.scs"  section=rmax
+include "resmetal.scs"  section=rmax
+
+include "dr18.scs"    section=SFA
+include "dr18otp.scs" section=TT
+
+
+include "hvtlp.scs"   section=FS
+include "lvtlp.scs"   section=FS
+include "svt18.scs"   section=FS
+include "svt18ps.scs" section=FS
+include "svtlp.scs"   section=FS
+
+endsection 5
+
+section 6
+// SLOW-FAST2 CORNER (SF for mosfets and Fast settings for others)
+
+include "global_flags.scs"
+
+include "STaddon.scs"   section=MODEL
+include "common_mc.scs" section=typ
+
+
+include "cmom.scs"      section=cmin
+include "cpolyn18.scs"  section=cmin
+include "cpolynlp.scs"  section=cmin
+include "cpolyp18.scs"  section=cmin
+
+include "diode18.scs"   section=fast
+include "diodeiso.scs"  section=fast
+include "diodelp.scs"   section=fast
+
+include "npnv.scs"      section=imax
+include "pnpv.scs"      section=imax
+
+include "resistor.scs"  section=rmin
+include "resmetal.scs"  section=rmin
+
+include "dr18.scs"    section=FFA
+include "dr18otp.scs" section=FFA
+
+include "hvtlp.scs"   section=SF
+include "lvtlp.scs"   section=SF
+include "svt18.scs"   section=SF
+include "svt18ps.scs" section=SF
+include "svtlp.scs"   section=SF
+
+endsection 6
+
+section 7
+// FAST2 CORNER (FF for mosfets and Slow settings for others)
+
+include "global_flags.scs"
+
+include "STaddon.scs"   section=MODEL
+include "common_mc.scs" section=typ
+
+
+include "cmom.scs"      section=cmax
+include "cpolyn18.scs"  section=cmax
+include "cpolynlp.scs"  section=cmax
+include "cpolyp18.scs"  section=cmax
+
+include "diode18.scs"   section=slow
+include "diodeiso.scs"  section=slow
+include "diodelp.scs"   section=slow
+
+include "npnv.scs"      section=imin
+include "pnpv.scs"      section=imin
+
+include "resistor.scs"  section=rmax
+include "resmetal.scs"  section=rmax
+
+include "dr18.scs"    section=SSA
+include "dr18otp.scs" section=SSA
+
+include "hvtlp.scs"   section=FF
+include "lvtlp.scs"   section=FF
+include "svt18.scs"   section=FF
+include "svt18ps.scs" section=FF
+include "svtlp.scs"   section=FF
+
+endsection 7
+
+section 8
+// SLOW2 CORNER (SS for mosfets and Fast settings for others)
+
+include "global_flags.scs"
+
+include "STaddon.scs"   section=MODEL
+include "common_mc.scs" section=typ
+
+
+include "cmom.scs"      section=cmin
+include "cpolyn18.scs"  section=cmin
+include "cpolynlp.scs"  section=cmin
+include "cpolyp18.scs"  section=cmin
+
+include "diode18.scs"   section=fast
+include "diodeiso.scs"  section=fast
+include "diodelp.scs"   section=fast
+
+include "npnv.scs"      section=imax
+include "pnpv.scs"      section=imax
+
+include "resistor.scs"  section=rmin
+include "resmetal.scs"  section=rmin
+
+include "dr18.scs"    section=FFA
+include "dr18otp.scs" section=FFA
+
+include "hvtlp.scs"   section=SS
+include "lvtlp.scs"   section=SS
+include "svt18.scs"   section=SS
+include "svt18ps.scs" section=SS
+include "svtlp.scs"   section=SS
+
+endsection 8
+
+
+
+endlibrary

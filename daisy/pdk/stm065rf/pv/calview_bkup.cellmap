@@ -1,0 +1,102 @@
+
+((p cap c)
+  (analogLib cap symbol)
+  (
+    (MINUS)
+    (PLUS)
+  )
+)
+
+(phvtlp
+  (cmos065 phvtlp symbol)
+  (
+    (b b)
+    (d d)
+    (g g)
+    (s s)
+  )
+)
+
+(nhvtlp
+  (cmos065 nhvtlp symbol)
+  (
+    (b b)
+    (d d)
+    (g g)
+    (s s)
+  )
+)
+
+(phvtgp
+  (cmos065 phvtgp symbol)
+  (
+    (b b)
+    (d d)
+    (g g)
+    (s s)
+  )
+)
+
+(nhvtgp
+  (cmos065 nhvtgp symbol)
+  (
+    (b b)
+    (d d)
+    (g g)
+    (s s)
+  )
+)
+
+(plvtlp
+  (cmos065 plvtlp symbol)
+  (
+    (b b)
+    (d d)
+    (g g)
+    (s s)
+  )
+)
+
+(nlvtlp
+  (cmos065 nlvtlp symbol)
+  (
+    (b b)
+    (d d)
+    (g g)
+    (s s)
+  )
+)
+
+(dnwps
+  (coolpllTDC coolpllTDCProgClkDelaySegm symbol)
+  (
+    (neg)
+    (neg)
+    (pos)
+    (pos)
+  )
+)
+
+(dnwps
+  (coolpllTDC coolpllTDCProgClkDelaySegm symbol)
+  (
+    (NDELAYCLK<1:0>)
+    (NDELAYCLK<1:0>)
+    (VDDLV)
+    (VDDLV)
+    (VSSLV)
+    (VSSLV)
+    (clkIn)
+    (clkIn)
+    (clkOut)
+    (clkOut)
+  )
+)
+
+(dnwps
+  (cmos065 dnwps symbol)
+  (
+    (neg minus)
+    (pos plus)
+  )
+)

@@ -1,0 +1,10 @@
+;; (if (boundp 'cdlOutKeys)
+;;cdlOutKeys->incFILE =  (strcat (getShellEnvVar "PDK_HOME") 
+;;			       "/Calibre/lvs/source_added")
+			      
+cdlOutKeys->incFILE = (strcat (getShellEnvVar "WORKAREA") 
+			      "/daisy/pdkSpecific/" 
+			      (getShellEnvVar "CDSPROCESSNAME") 
+			      "/verification/source_added")
+cdlOutKeys->simViewList = (list  "auCdl" "cdl" "schematicLVS" "schematic")
+cdlOutKeys->simStopList = (list  "auCdl" "cdl")

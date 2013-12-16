@@ -1,0 +1,7 @@
+(setq streamOutKeys 
+      (list	nil 
+		'runDir			
+		(strcat 
+		 (getShellEnvVar "WORKAREA") 
+		 "/work_" (getShellEnvVar "USER") 
+		 "/log/")))

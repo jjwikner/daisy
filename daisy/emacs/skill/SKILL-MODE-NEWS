@@ -1,0 +1,362 @@
+Skill-Mode NEWS -- history of user-visible changes.  February 9 1996
+
+* User-visible changes in skill-mode 3.2
+
+** The tree browser: The sluggish re-scans is now done less often. By
+the use of a new option, il-tree_rescan-trigger, re-scan is deferred
+until N new functions has been added. The browser switch has been
+remolded to a "Tree" minor mode and all associated options has been
+renamed from the `move-' to the `tree_' prefix and has moved to the
+"Tree" minor mode menu entry.
+
+** New function category: `temporary function' that only exists within
+current session. Any `unknown fun' now becomes `temporary' if you decline
+the prototype query, or if the make-prototype switch is turned off.
+Thus, all unknown fun calls is recorded provided that arghelp mode is active.
+A new corresponding completion command has been added.
+
+** New option: il-syntax-blink-time, controls the blink time for
+matching parenthesis & double-quote. Previously, the blink time was
+hard-coded to 1 sec which was a bit slow. Default is now 0.2 sec.
+
+** Syntax warnings when visiting working files is output to a separate
+window without any additional delays. The messages "Probably unbalanced
+parentheses" and "Extraneous closing parenth" has been replaced with
+"End-of-fun regexp mismatch".
+
+** The "Submit-Bug-Report" command now includes help on how to create
+backtrace listings for inclusion in the bug report.
+
+** Help windows of Emacs standard commands is now always half a screen,
+regardless of any previous skill-mode help windows.
+
+** Updated User's manual.
+
+** Cleaned-up "Customize All" command.
+
+** Cleaned-up README file for the gateToOpus package.
+
+** skill-append/prepend hook-in files modified to work properly with
+AUC-TeX, ie. to always insert the skill/ dir directly under site-lisp/
+
+
+* User-visible changes in skill-mode 3.1
+
+** The user manual has been thorougly reworked and updated. 
+Accessible through Mode->Help->View User Manual . 65 pages.
+
+** Hierarchy browser: the option il-move-browser-win-height is now a
+floating number denoting relative height of the browser window as a
+fraction of the total screen height. (Default is 0.15) 
+
+** The Function-menu now works for GnuEmacs and for Lisp syntax, 
+controlled by the option il-move-function-menu (Move->Function Menu).
+   XEmacs: Properly working for coexisting Skill buffers. Faster scanning. 
+Menu has moved to the menu-bar renamed to "Funs". Can also be popped-up
+with Shift-button3 or f8.
+The option il-ui-add-function-menu renamed to il-move-function-menu. 
+
+** End-comments: Now possible to make manually-written end-comments
+write-protected. The end-comment starter and tail now customizable by
+the administrator.
+
+** New command: il-complete-block-global-var, as a quicker complement
+to il-complete-global-var, to handle only the globals in the current
+block. Bound to M-q to be as easy to get at as M-Tab (local-var)
+
+** Declare-mode: The interactive creation of prog/let-clause at
+function definition is now part of declare-mode, and controlled by new
+option: il-declare_use-let-clause. New option il-declare_fill-column
+defines when line-wrapping should happen in local variable lists.
+
+** "rewrite-comment" option added for the region and buffer command in
+the indent menu.
+
+** il-complete-verbose-help converted from user to admin-option.
+
+** Mode version displayed at the right margin of the startup message.
+
+
+Below follows the bug fixes from the beta-test of 3.0 :
+
+** Declare-mode: proper handling of nested and consecutive prog clauses 
+when declaring new local variables.
+
+** Works properly with the VC package. No unsolicited toggling of
+minor-modes or disapperance of VC menu when checking in/out.
+
+** Aritmetic error when loading skill-mode in a buffer with no
+procedures eliminated.
+
+** GateToOpus link corrections; error in makefile that prevented the
+file from loading, error in gateToOpus.il file caused bad path to the
+gateToOpus executive.
+
+** Bad behavior with "<function> is redefined at <line>" message when
+editing the arglist of existing function definition or when yanking
+new lines immediately before beginning of function, now fixed.
+
+** Hierarchy browser; il-tree-move-child-call (mouse-1) now positively
+hilites the same destination instance as was mouse-selected.
+Interactive change of il-move-browser-depth now always gives a new
+tree on the next hierarchical move. Default depth decreased to 3 for
+better survey and smaller trees.
+
+** Arghelp in focus works properly for mouse-pasting of arguments,
+i.e. they are no longer deleted when the closing parenthesis is
+entered.
+
+** Arghelp can now distinguish between a quoted list-argument and the
+end of the argument list, so that the argument-help is not closed prematurely.
+
+** The Help->View User Manual command no longer locks up Emacs. FrameMaker
+viewer option has been discarded, i.e. a postscript viewer must be used.
+
+** The on-line documentation for the API functions is better formated
+and more readable.
+
+** The mode startup behavior is now identical for normal autoload as
+for explicit interactive M-x restart.
+
+** Query Localize has been simplified and works more reliably.
+
+** il-move-begin-fun behaves correct when point is within the function
+keyword.
+
+** il-complete-local-var behaves correct when point is within a prog
+variable list of a function.
+
+** Bug causing message "bad main fun <truncated name> in header" fixed.
+
+
+
+* User-visible changes in skill-mode 3.0
+
+** The header and timestamp formats are not backward compatible. It's
+recommended that the old file headers and timestamps are deleted, and
+that the abstract & arguments sections of the old function headers are
+moved to just below the function head. See below for more details.
+
+** Ported to GnuEmacs V19.
+
+** Gate-to-Opus link. Eval commands send arbitrary code chunks to the
+interpreter in Opus using the gateToOpus package. The interprocess
+communication is done either with ksh or C. The latter possibly doesnt
+work flawlessly in Opus 4.3, so here's an opportunity for the
+voluntary man out on the net. (I lack the possibility to verify this
+myself). For more info, see gateToOpus/README.
+
+** New hierarchy browser for browsing and moving through hierarchy
+trees.  Used as input & output device for the hierarchical move
+commands.  Implemented as a separate major mode called skill-tree-mode
+displaying the surrounding topology, current function and current
+function call for the hierarchical move commands. Gives direct access
+to every local function (& documentation) and local function call in the
+file, with the mouse.  Context-sensitive mouse-scrolling in XEmacs.
+See documentation on `skill-tree-mode' for more info.
+
+** Elaborate customization mechanism. Entirely menu-driven
+customization of 6 minor-modes and 42 user-options, for temporary or
+permanent changes.  Automatic help-info whenever a customize command
+is called.  Commands for management of temporary changes done in the
+current session.  When 3.0 is initially loaded you are prompted for a
+walk-through of the entire customization setup.  'Experienced-user'
+option for less verbose customization.  Two levels of customization:
+administrator and user level.  The administrator sets up 19
+administrator-options (and also has the option to modify the
+user-option defaults for local preferences).
+
+** Source hilite in both Emacses. Implementation based on font-lock
+featuring two hilite levels, Font or colour hilite, and two speedup
+methods (which tend to thrive somewhat better in GnuEmacs). Lazy-lock
+in particular often fails to hilite new text as you type along in XEmacs.
+
+** Symbol libraries for Opus 4.3 added, in total 2200 functions.
+
+** Thoroughly reworked menu system. Number of pulldowns cut down to 5.
+Several new sub-menus and commands added. Grey-shading when commands are
+non-applicable (proper grey-shading of region-commands requires
+transient-mark-mode (GnuEmacs) / zmacs-regions (XEmacs) to be
+non-nil.)
+
+The GnuEmacs menu system is identical to the XEmacs counterpart except
+for the lack of toggle-buttons, user-definable popup menus and a more
+sluggish response (due to the XEmacs menu-emulation).  In XEmacs there
+is also an optional `function' Move-submenu for direct access to every
+function.
+
+The old Customize menu substantially extended and now divided in 4
+menus: Minor Modes, Options, Session Changes, Permanent Changes. Each
+minor-mode has its options in a sub-menu.
+
+** Support for local extensions to symbol libraries. Extra API
+libraries can easily be added either to the installation or to your
+personal setup directory. See documentation on 'il-api-libraries' for
+more info.
+
+** Preliminary 30 page user manual in FrameMaker and ps format.  See
+menu command Mode->Help->View User Manual. It's only partly up to date
+with 3.0.
+
+** Improved support for code writing in Lisp-style. This mode
+of operation is not as solid as the more widely used C-style, but the
+functionality is now *about* as full-featured as the C-style.
+
+** New hierarchy-command: `List Unreferenced Funs', lists the local
+funs unreferenced from a given hierarchy.
+
+** General consolidation of the minor-modes for peaceful coexistence
+without clashes. (Arghelp-mode in particular used to be very shaky.)
+
+** Arghelp-mode: Better working hilite. The function type is now part
+of the arghelp info.
+
+`make-prototype' mechanism interactively creates prototypes.
+If you write function-calls unknown to skill-mode, you are prompted to
+save them as `prototypes'. Prototypes are useful for top-down programming
+or to maintain a private library of miscellaneous funs.
+Prototypes are non-volatile symbols that are saved between sessions.
+For more info, see the documentation on `il-arghelp-mode'.
+
+** Declare-mode: Now works for any prog/let clause combination, not
+just those embedded in function definitions. Declaration is made at
+the innermost prog/let clause. If variable name starts with the
+package prefix, it's assumed to be a global and no query is made.
+
+** Package prefix is displayed at the very right of the echo area when
+a new file is visited. To qualify as package prefix, at least 70% of
+the local funs must share the same prefix. Only one prefix per file
+can be handled.
+
+** 3.0 is rather slow at initial start up. For best operation it's
+recommended that you avoid unsolicited frequent killing and restarting
+Emacs (like vi-users do) but stick to the same Emacs instance
+throughout your working day.
+
+** Conceptual name changes:
+
+`skill function' renamed to `API function'
+`skill system var renamed to `API system var'
+`ChangeLog' (on functions) renamed to `timestamp'
+`unbound function' renamed to `prototype function'
+`user variable' renamed to `option', ie meant for the user.
+   (Some user variables were instead transformed to `admin-options', 
+    ie meant for the administrator.)
+
+** Changed definitions of conceptual terms:
+
+`local var' now denotes a var declared in a surrounding prog/let clause
+or a formal arg of a surrounding function definition, where the
+prog/let clauses can be nested.
+
+** New syntax and placement of the function timestamps. Moved to the
+right of the function head to be less obtrusive in the sourcecode and
+to avoid being left over when functions are moved.
+
+** New syntax and placement of the file timestamp. Now requires the
+existance of a standard file header to be operational.
+
+** New format and structure of the file header. The orginal header has
+been split into a) file header b) revision header c) symbol header, in
+order to facilitate re-creation of the different header sections.  
+
+New menu, Modify->Headers, for the four different header types. 
+
+In the symbol header the page-index option has been dropped and
+`unreferenced functions' option been added. 
+
+Support for version control systems like CVS,RCS,SCCS.
+
+For best operation of skill-mode it's recommended that every source
+file includes a standard file header.
+
+** New format and placement of the function header. Moved to
+immediately below the function head. Skill-mode encourages methodical
+documentation habits by prompting for header information whenever new
+functions or prototypes are defined.
+
+** Indentation: Function definitions that don't begin at left margin
+are no longer force-indented to left margin. Such embedded functions
+will, however, not be recognized as local functions.
+
+** New setup directory, ~/.skill-mode, where all personal data is stored.
+
+** Your personal setup is now stored in a separate file, defaults.el,
+in the setup directory. If you are already using an older skill-mode,
+make sure to remove any old Skill-mode setup from the ~/.emacs file.
+
+** Recognition and acceptance of block-oriented comments has improved,
+but line-oriented comments is still the recommended and best supported
+style.
+
+** Substantially improved on-line documentation, largely menu-driven.
+By doing Help->List Commands/Options/Admin-Otions Verbose and printing
+these pages, you will have a simple reference manual.
+
+** Built-in bug report generator, Mode->Debug->Submit Bug Report, based
+on Barry Warsaw's reporter package.
+
+** Auto-generated closing parentheses: Whenever you start new
+function/prog/let clauses, the closing parenthesis with end-comment is
+produced.
+
+** The definition of a simple expression (ie. sexp) includes the optional 
+end-comment of control expressions.
+
+** il-mark-fun and il-mark-sexp hilites the region in XEmacs, and works
+correctly in both Emacses.
+
+** il-transpose-sexps works better (but still not impeccable).
+
+** Annoying bugs when creating new local functions and prog-clauses are
+fixed.
+
+** Improved dynamic response to name changes of local functions.
+
+** il-describe-fun now works correctly for local as well as external
+funs.
+
+** The default setup requires that Skill source-code files have the
+extension ".il" (extension ".ski" discarded).
+
+** Emacs 18 no longer supported. If you still use V18, you should
+seriously consider upgrading. No one supports V18 any more and it's
+really archaic by today's standards.
+
+** Tons of (here unspecified) reported bugs have been fixed.
+
+-------------------------------------------------------------------
+The following section describes more in-detail changes, relevant
+for example for those who wants to do customization beyond the standard
+methods.
+
+** Extensive name changes on virtually everything in Skill-mode :
+
+  a) All options renamed to form prefix groups of topic.
+  b) All minor modes renamed to shorter names without `auto'.
+  c) All options owned by a minor-mode has underscore after the topic
+     prefix instead of the standard dash.
+  d) All commands bound to printable character keys has the `electric' prefix.
+  e) Most commands renamed to more descriptive names and topic prefix added.
+
+Changed general prefix from "il-" to "skill-", on the following items:
+  f) Major mode name
+  g) Elisp libraries
+  h) Key-map
+
+However, the vast majority of commands and variables retain the
+original il- prefix.
+
+** Extensive changes in the key-binding set. Prefix key C-h have been
+discarded. Prefix key C-x have been added for eval-commands.
+
+** The `skill-mode-hook' is preloaded with system functions, so it's
+an absolute NO-NO to modify the hook contents with destructive
+setq's. Always be *sure* to use add-hook/remove-hook instead of setq !
+
+** User-defined find-file and write-file hooks are no longer destroyed
+by skill-mode.
+
+
+
+

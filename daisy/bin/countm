@@ -1,0 +1,6 @@
+#!/bin/sh
+# Count the number of matches of $2 in $1
+
+
+cat $1 | grep -ci $2
+

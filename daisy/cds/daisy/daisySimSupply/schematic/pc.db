@@ -1,0 +1,30 @@
+#
+analogLib vcvs symbol
+E1
+E0
+#
+analogLib vpwl symbol
+V4
+V6
+#
+analogLib res symbol
+R6
+R4
+R5
+R1
+R3
+R0
+#ISCELL
+daisy daisySheet symbol
+I0
+#ISCELL
+basic iopin symbolr
+PIN7
+PIN5
+PIN3
+PIN1
+PIN6
+PIN0
+#ISCELL
+analogLib gnd symbol
+I1

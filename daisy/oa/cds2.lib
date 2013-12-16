@@ -1,0 +1,24 @@
+## 
+
+SOFTINCLUDE $CDS_HOME/share/cdssetup/cds.lib
+#DEFINE sample $CDS_HOME/tools/dfII/samples/cdslib/sample/
+
+# AMS SIMULATOR CONNECTLIB DEFINITION
+
+# Daisy specific
+
+DEFINE daisy daisy
+DEFINE daisyDocs daisyDocs
+DEFINE daisyDemo daisyDemo
+DEFINE daisyScripts daisyScripts
+
+
+# Project specific
+SOFTINCLUDE $WORKAREA/daisyProjSetup/cds/cds.lib
+SOFTINCLUDE $WORKAREA/daisyProjSetup/cds/cds.testlib
+SOFTINCLUDE $PDK_HOME/cds/cds.lib
+
+# User specific
+
+SOFTINCLUDE $USERAREA/cds/cds.lib
+SOFTINCLUDE $USERAREA/cds/cds.testlib
